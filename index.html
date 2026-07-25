@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SINCE 2018, 이탈리아스냅 포토로 @fotoro.it</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="이탈리아스냅 포토로 | fotoro.it">
+  <meta property="og:description" content="2018년부터 이어온 이탈리아 웨딩스냅 포토로. 피렌체를 비롯해 토스카나, 돌로미티 등 이탈리아 전역에서 촬영을 진행합니다.">
+  <meta property="og:image" content="images/og-index.jpg">
+  
+  
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    }
+
+    header {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-size: 18px;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      font-size: 12px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .kakao-btn {
+      background-color: #FEE500;
+      color: #3C1E1E !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+
+    .insta-btn {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  /* ===== 버튼 hover 효과 ===== */
+  nav a {
+    transition: opacity 0.2s;
+  }
+
+  nav a:hover {
+    opacity: 0.7;
+  }
+
+  .kakao-btn:hover {
+    background-color: #e6cf00;
+    transform: translateY(-1px);
+  }
+
+  .insta-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+
+    /* 버튼 그리드 */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      padding: 40px 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #222;
+  text-decoration: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+    .menu-card .card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #ccc;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+      -webkit-user-drag: none;
+      user-select: none;
+}
+
+.menu-card:hover .card-img {
+  transform: scale(1.06);
+}
+
+    .menu-card .card-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      text-align: center;
+      margin: 20px 0 10px;
+      letter-spacing: 1px;
+    }
+
+    .menu-card .card-sub {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      line-height: 1.8;
+      padding: 0 15px 20px;
+    }
+
+    .menu-card.kakao-card .card-title {
+      color: #3C1E1E;
+    }
+
+    .menu-card.kakao-card .card-title {
+  color: #3C1E1E;
+    }
+
+    .menu-card {
+  position: relative;
+    }
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4a1520;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+
+.intro-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px 60px;
+  text-align: center;
+}
+
+.intro-section h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.intro-section h2::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background-color: #333;
+  margin: 12px auto 0;
+}
+
+.intro-section p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #444;
+  margin-top: 24px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  padding: 40px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+    section {
+      padding: 40px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .lang-notice-wrap {
+    max-width: 620px;
+    margin: 15px auto 20px;
+    padding: 12px 18px;
+    background-color: #faf8f5;
+    border: 1px solid #e8dfc9;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5px;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .lang-notice-slide {
+    position: absolute;
+    width: 100%;
+    padding: 0 15px;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    pointer-events: none;
+  }
+
+  .lang-notice-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lang-notice-wrap .badge {
+    color: #4a1520;
+    font-weight: bold;
+    margin-right: 2px;
+  }
+
+    /* ===== 푸터 (메인과 동일) ===== */
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 40px 30px;
+    background-color: #fff;
+    color: #888;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+  }
+
+  footer .footer-slogan {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  footer .footer-info {
+    width: 100%;
+    text-align: right;
+    font-size: 8.5px;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    footer .footer-info {
+      text-align: center;
+    }
+
+    .page-title h1 {
+      font-size: 11.5px;
+    }
+  }
+
+    /* 화면 너비가 768px 이하일 때 (모바일/태블릿) */
+    .intro-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px 60px;
+  text-align: center;
+}
+
+.intro-section h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.intro-section h2::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background-color: #333;
+  margin: 12px auto 0;
+}
+
+.intro-section p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #444;
+  margin-top: 24px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  padding: 40px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .intro-section {
+    padding: 10px 20px 40px;
+  }
+
+  .intro-section h2 {
+    font-size: 20px;
+  }
+
+  .intro-section p {
+    font-size: 13px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .menu-card .card-title {
+    font-size: 18px;
+  }
+
+  .menu-card .card-sub {
+    font-size: 11px;
+  }
+
+  section {
+    padding: 20px 15px;
+  }
+}
+ /* 화면 너비가 480px 이하일 때 (모바일/태블릿) */
+@media (max-width: 480px) {
+  nav {
+    gap: 5px;
+  }
+
+  nav a {
+    font-size: 10.5px;
+  }
+
+  .kakao-btn,
+  .insta-btn {
+    padding: 5px 8px;
+    font-size: 10.5px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ITALYSNAP FOTORO</h1>
+      <nav>
+        <a href="index.html">홈</a>
+        <a href="florence.html">피렌체</a>
+        <a href="tuscany.html">토스카나</a>
+        <a href="dolomites.html">돌로미티</a>
+        <a href="hairmakeup.html">헤어&메이크업</a>
+        <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="kakao-btn">카톡</a>
+        <a href="https://instagram.com/fotoro.it" target="_blank" class="insta-btn">인스타</a>
+        <a href="index-en.html" style="color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:6px;">EN</a>
+      </nav>
+  
+  </header>
+
+  <main>
+
+    <!-- 은은한 2초 텍스트 전환 박스 -->
+    <div class="lang-notice-wrap">
+      <div class="lang-notice-slide active">
+        <span class="badge">[안내]</span> 본 페이지 금액은 <strong>한국 계좌 송금(원화 결제)</strong> 기준입니다. 해외 거주자는 상단 <strong>[EN]</strong>을 이용해 주세요.
+      </div>
+      <div class="lang-notice-slide">
+        <span class="badge">[Notice]</span> Prices on this page are for <strong>KRW bank transfer</strong>. For foreign currencies, please click <strong>[EN]</strong> above.
+      </div>
+    </div>
+
+    
+    <div class="menu-grid">
+      <a href="florence.html" class="menu-card">
+        <span class="card-badge">365일 가능</span>
+        <div class="card-img" style="background-image:url('images/florence.jpg')"></div>
+        <div class="card-title">Firenze</div>
+        <div class="card-sub">365일 상시 오픈<br>헤메드 패키지 가능</div>
+      </a>
+
+      <a href="hairmakeup.html" class="menu-card">
+        <span class="card-badge">제휴가 할인</span>
+        <div class="card-img" style="background-image:url('images/hair-makeup-dress.jpg')"></div>
+        <div class="card-title">Hair & Make Up</div>
+        <div class="card-sub">피렌체만 가능<br>패키지 할인가 진행 중</div>
+      </a>
+
+      <a href="tuscany.html" class="menu-card">
+        <span class="card-badge">기간 한정</span>
+        <div class="card-img" style="background-image:url('images/tuscany.jpg')"></div>
+        <div class="card-title">Toscana</div>
+        <div class="card-sub">3월-5월만 진행<br>헤메드 패키지 가능</div>
+      </a>
+
+      <a href="dolomites.html" class="menu-card">
+        <span class="card-badge">기간 한정</span>
+        <div class="card-img" style="background-image:url('images/dolomites.jpg')"></div>
+        <div class="card-title">Dolomiti</div>
+        <div class="card-sub">6월-10월만 진행<br>헤메드 패키지 가능</div>
+      </a>
+
+      <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card">
+        <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
+        <div class="card-title">Gallery</div>
+        <div class="card-sub">@fotoro.it<br>@_fotoro</div>
+      </a>
+
+      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="menu-card kakao-card">
+        <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
+        <div class="card-title">Kakao Talk</div>
+        <div class="card-sub">상담 채널로 연결됩니다.</div>
+      </a>
+    </div>
+
+    <div class="intro-section">
+    <h2>소개글</h2>
+    <p>
+      안녕하세요. 2018년 5월을 시작으로 포토로는 이탈리아 로마에서 스냅을 처음 시작하게 되었고, 현재는 피렌체에 상주하고 있습니다. 피렌체와 더불어 토스카나, 돌로미티 외 이탈리아 전 지역에서 촬영을 진행하고 있으며 이탈리아 전 지역 '살롱반하 헤메드 패키지'가 진행 가능한 이탈리아 유일 업체입니다.<br><br>
+      포토로는 포토(Fotografia)+로마(Roma)를 합쳐 'fotoroma'로 만들어졌고, 로마에서만 찍게 될까봐 ma를 제거하고 fotoro가 되었습니다. 'it'는 이탈리아(Italia)를 뜻합니다.<br><br>과하지 않은 디렉팅, 부담스럽지 않은 색감 등으로 오랜 시간이 지나도 질리지 않을 사진을 남겨드리는 것을 가장 우선으로 생각하고 있으며, '클래식'과 '심플'을 추구하고 있습니다.
+    </p>
+  </div>
+  </main>
+
+  <footer>
+  <div class="footer-slogan">
+    SINCE 2018, 이탈리아스냅 전문 포토로
+  </div>
+  <div class="footer-info">
+    포토로 | 국내 사업자등록번호: 519-41-00680<br>
+    &copy; fotoro all rights reserved<br>
+    fotoro_@naver.com
+  </div>
+</footer>
+
+  <script>
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // 2초마다 한국어 / 영어 문구 교대 전환
+  document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.lang-notice-slide');
+    if (slides.length < 2) return;
+    let currentIndex = 0;
+
+    setInterval(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, 3000); // 2000ms = 2초
+  });
+</script>
+
+</body>
+</html>
