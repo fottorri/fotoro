@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SINCE 2018, Italy Wedding Snap FOTORO @fotoro.it</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Italy Wedding Snap Specialist | ITALYSNAP FOTORO">
+  <meta property="og:description" content="Since 2018, ITALYSANP FOTORO has been Italy's wedding snap specialist, shooting in Florence, Tuscany, Dolomiti and beyond.">
+  <meta property="og:image" content="images/og-index.jpg">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    }
+
+    header {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-size: 18px;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      font-size: 12px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .kakao-btn {
+      background-color: #FEE500;
+      color: #3C1E1E !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+
+    .insta-btn {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  /* ===== 버튼 hover 효과 ===== */
+  nav a {
+    transition: opacity 0.2s;
+  }
+
+  nav a:hover {
+    opacity: 0.7;
+  }
+
+  .kakao-btn:hover {
+    background-color: #e6cf00;
+    transform: translateY(-1px);
+  }
+
+  .insta-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      padding: 40px 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      color: #222;
+      text-decoration: none;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .menu-card .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    .menu-card:hover .card-img {
+      transform: scale(1.06);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #4a1520;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .menu-card .card-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      text-align: center;
+      margin: 20px 0 10px;
+      letter-spacing: 1px;
+    }
+
+    .menu-card .card-sub {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      line-height: 1.8;
+      padding: 0 15px 20px;
+    }
+
+    .menu-card.kakao-card .card-title {
+      color: #3C1E1E;
+    }
+
+    .intro-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 30px 60px;
+      text-align: center;
+    }
+
+    .intro-section h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      margin-bottom: 12px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .intro-section h2::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background-color: #333;
+      margin: 12px auto 0;
+    }
+
+    .intro-section p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #444;
+      margin-top: 24px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section {
+      padding: 40px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 40px 30px;
+      background-color: #fff;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+
+    footer .footer-slogan {
+    width: 100%;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  footer .footer-info {
+    width: 100%;
+    text-align: right;
+    font-size: 7.5px;
+    line-height: 1.8;
+  }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      footer .footer-info {
+        text-align: center;
+      }
+
+      .intro-section {
+        padding: 10px 20px 40px;
+      }
+
+      .intro-section h2 {
+        font-size: 20px;
+      }
+
+      .intro-section p {
+        font-size: 13px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 20px;
+      }
+
+      .menu-card .card-title {
+        font-size: 18px;
+      }
+
+      .menu-card .card-sub {
+        font-size: 11px;
+      }
+
+      section {
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 5px;
+      }
+
+      nav a {
+        font-size: 10.5px;
+      }
+
+      .kakao-btn,
+      .insta-btn {
+        padding: 5px 8px;
+        font-size: 10.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ITALYSNAP FOTORO</h1>
+    <nav>
+      <a href="index-en.html">Home</a>
+      <a href="florence-en.html">Firenze</a>
+      <a href="tuscany-en.html">Toscana</a>
+      <a href="dolomites-en.html">Dolomiti</a>
+      <a href="hairmakeup-en.html">Hair&Makeup</a>
+      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="kakao-btn">KakaoTalk</a>
+      <a href="https://instagram.com/fotoro.it" target="_blank" class="insta-btn">IG</a>
+      <a href="index.html" style="color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:6px;">KO</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="menu-grid">
+      <a href="florence-en.html" class="menu-card">
+        <span class="card-badge">Open Year-Round</span>
+        <div class="card-img" style="background-image:url('images/florence.jpg')"></div>
+        <div class="card-title">Firenze</div>
+        <div class="card-sub">Open 365 days a year<br>Hair & makeup package available</div>
+      </a>
+
+      <a href="hairmakeup-en.html" class="menu-card">
+        <span class="card-badge">Partner Discount</span>
+        <div class="card-img" style="background-image:url('images/hair-makeup-dress.jpg')"></div>
+        <div class="card-title">Hair & Make Up</div>
+        <div class="card-sub">Florence only<br>Discounted package ongoing</div>
+      </a>
+
+      <a href="tuscany-en.html" class="menu-card">
+        <span class="card-badge">Seasonal</span>
+        <div class="card-img" style="background-image:url('images/tuscany.jpg')"></div>
+        <div class="card-title">Toscana</div>
+        <div class="card-sub">March-May only<br>Hair & makeup package available</div>
+      </a>
+
+      <a href="dolomites-en.html" class="menu-card">
+        <span class="card-badge">Seasonal</span>
+        <div class="card-img" style="background-image:url('images/dolomites.jpg')"></div>
+        <div class="card-title">Dolomiti</div>
+        <div class="card-sub">June-October only<br>Hair & makeup package available</div>
+      </a>
+
+      <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card">
+        <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
+        <div class="card-title">Gallery</div>
+        <div class="card-sub">@fotoro.it<br>@_fotoro</div>
+      </a>
+
+      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="menu-card kakao-card">
+        <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
+        <div class="card-title">Kakao Talk</div>
+        <div class="card-sub">Connects to our consultation channel.</div>
+      </a>
+    </div>
+
+    <div class="intro-section">
+      <h2>About Us</h2>
+      <p>Hello! FOTORO began shooting wedding snaps in Rome back in May 2018 and is currently based in Florence. Alongside Florence, we shoot across Tuscany, the Dolomites, and all throughout Italy. We are also proud to be the only studio in Italy offering the nationwide "Salon Banha Hair & Makeup + Dress Package".<br><br>
+         The name FOTORO comes from combining Foto(grafia) and Roma. It was originally "fotoroma," but we dropped the "ma" to keep our creative reach open beyond Rome, leaving us with "fotoro". The "it" simply stands for Italia.<br><br>
+        Our main goal is to deliver timeless photos you will never tire of. Through natural direction and understated color tones, we create images that stay effortlessly beautiful over time, pursuing a truly classic and simple aesthetic above all.</p>
+    </div>
+  </main>
+
+  <footer>
+  <div class="footer-slogan">
+    SINCE 2018, Italy Wedding Snap Specialist
+  </div>
+  <div class="footer-info">
+    FOTORO | Reg. Business No. (Korea): 519-41-00680<br>
+    &copy; fotoro all rights reserved<br>
+    fotoro_@naver.com
+  </div>
+</footer>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+      }
+    });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+  </script>
+
+</body>
+</html>
