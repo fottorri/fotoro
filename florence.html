@@ -724,12 +724,15 @@
     min-height: 22px;
   }
 
+  .option-card .option-desc-wrap {
+    min-height: 60px;
+    margin-bottom: 16px;
+  }
+
   .option-card .option-desc {
     font-size: 10px;
     opacity: 0.8;
-    margin-bottom: 16px;
     line-height: 1.6;
-    min-height: 60px;
   }
 
   .option-card .option-detail {
@@ -1216,11 +1219,14 @@
     min-height: auto;
   }
 
+  .option-card .option-desc-wrap {
+    min-height: 32px;
+    margin-bottom: 8px;
+  }
+
   .option-card .option-desc {
     font-size: 11px;
-    margin-bottom: 8px;
     line-height: 1.5;
-    min-height: 32px;
   }
 
   .option-card .option-detail {
@@ -2025,9 +2031,13 @@
       }
       if (!card.querySelector('.option-desc-addon')) {
         const desc = card.querySelector('.option-desc');
+        const wrap = document.createElement('div');
+        wrap.className = 'option-desc-wrap';
+        desc.insertAdjacentElement('afterend', wrap);
+        wrap.appendChild(desc);
         const addonEl = document.createElement('div');
         addonEl.className = 'option-desc-addon';
-        desc.insertAdjacentElement('afterend', addonEl);
+        wrap.appendChild(addonEl);
       }
     });
   }
