@@ -671,6 +671,12 @@
 
   .addon-toggle-btn.active::before {
     background-color: #8a7550;
+    animation: dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 
   .option-card .option-price {
@@ -1755,10 +1761,10 @@
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
-    updateTabIndicators();
 
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     target.classList.add('active');
+    updateTabIndicators();
 
     localStorage.setItem('florence-active-tab', tab);
 

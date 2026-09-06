@@ -1184,10 +1184,10 @@
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
-    updateTabIndicators();
 
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     target.classList.add('active');
+    updateTabIndicators();
 
     localStorage.setItem('florence-active-tab', tab);
 
