@@ -31,8 +31,9 @@
     color: white;
     padding: 12px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     text-align: center;
     gap: 8px;
     position: sticky;
@@ -44,6 +45,18 @@
     font-size: 18px;
     margin: 0;
     letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 6px;
+    cursor: pointer;
   }
 
   nav {
@@ -51,7 +64,7 @@
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   nav a {
@@ -59,6 +72,45 @@
     font-size: 12px;
     white-space: nowrap;
     text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav-toggle {
+      display: block;
+    }
+
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 4px 0 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+
+    nav.open {
+      display: flex;
+    }
+
+    nav a {
+      font-size: 14px;
+      padding: 12px 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    nav .kakao-btn,
+    nav .insta-btn {
+      width: calc(100% - 40px);
+      margin: 6px 20px 0;
+      text-align: center;
+    }
   }
 
   .kakao-btn {
@@ -97,6 +149,7 @@
     opacity: 0.85;
     transform: translateY(-1px);
   }
+
 
   .tab-btn:hover {
     background-color: #e5e5e5;
@@ -175,31 +228,40 @@
     margin-right: 2px;
   }
 
-  /* ===== 탭 버튼 ===== */
-  .tab-bar {
+  /* ===== 탭 + 헤메/패키지 토글 한 줄 ===== */
+  .toolbar-row {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 0 20px 0;
-    margin-bottom: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-bottom: 16px;
+  }
+
+  .tab-bar {
+    display: inline-flex;
+    background-color: #f7f7f6;
+    border: 1px solid #e3e3e0;
+    border-radius: 20px;
+    padding: 3px;
   }
 
   .tab-btn {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    color: #888;
-    font-size: 15px;
+    background: none;
+    border: none;
+    color: #96938c;
+    font-size: 12.5px;
     font-weight: bold;
-    padding: 14px 50px;
-    border-radius: 36px;
+    padding: 8px 20px;
+    border-radius: 17px;
     cursor: pointer;
     transition: all 0.2s;
   }
 
   .tab-btn.active {
-    background-color: #333;
+    background-color: #4d4d4d;
     color: white;
-    border-color: #333;
   }
 
   /* ===== 탭 콘텐츠 ===== */
@@ -480,11 +542,43 @@
   }
 
   /* ===== 카드 영역 고정 블록 ===== */
+  .cards-block {
+    position: relative;
+  }
+
   @media (min-width: 769px) {
     .cards-block {
       height: 280px;
       overflow: hidden;
     }
+  }
+
+  /* ===== 탭 전환 모래시계 연출 ===== */
+  .tab-switch-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .tab-switch-overlay.show {
+    display: flex;
+  }
+
+  .tab-switch-overlay span {
+    display: inline-block;
+    animation: hourglass-flip 0.9s ease-in-out;
+  }
+
+  @keyframes hourglass-flip {
+    0%   { transform: rotate(0deg); }
+    45%  { transform: rotate(180deg); }
+    55%  { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
   }
 
   /* ===== 카드 카루셀 ===== */
@@ -496,6 +590,11 @@
     padding: 10px 15% 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .carousel-wrap.fading {
+    opacity: 0.12;
   }
 
   .carousel-wrap::-webkit-scrollbar {
@@ -508,20 +607,20 @@
     border-radius: 14px;
     padding: 24px 18px;
     text-align: center;
-    background-color: #e8e8e8;
-    color: #999;
+    background-color: #f1f0ee;
+    color: #9a958c;
     transition: background-color 0.25s, color 0.25s;
     position: relative;
     padding-top: 30px;
   }
 
   .option-card.active {
-    background-color: #333;
+    background-color: #4d4d4d;
     color: #fff;
   }
 
   .option-card.featured {
-    border: 2px solid #333;
+    border: 2px solid #4d4d4d;
   }
 
   .option-card.featured.active {
@@ -533,7 +632,7 @@
     top: 0;
     left: 20%;
     transform: translate(-50%, -50%);
-    background-color: #4a1520;
+    background-color: #8c3149;
     color: #fff;
     font-size: 10px;
     font-weight: bold;
@@ -542,6 +641,104 @@
     border-radius: 20px;
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .option-card .badge-heme {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    background-color: #8a7550;
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .addon-toggle-row {
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  .addon-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fff;
+    border: 1px solid #e3e3e0;
+    color: #2a2723;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 7px 14px 7px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .addon-toggle-btn::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #96938c;
+    display: inline-block;
+  }
+
+  .addon-toggle-btn.active {
+    border-color: #8a7550;
+    color: #8a7550;
+  }
+
+  .addon-toggle-btn.active::before {
+    background-color: #8a7550;
+  }
+
+  .option-card .option-price {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.7;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(0,0,0,0.15);
+  }
+
+  .option-card.active .option-price {
+    border-top: 1px dashed rgba(255,255,255,0.25);
+  }
+
+  .option-card .option-desc-addon {
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  .option-card .discount-slot {
+    margin-top: 6px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .option-card .discount-note {
+    font-size: 9px;
+    font-weight: bold;
+    color: #8c3149;
+    background-color: rgba(140, 49, 73, 0.12);
+    border-radius: 20px;
+    padding: 3px 10px;
+    display: inline-block;
+  }
+
+  .option-card.active .discount-note {
+    color: #fff;
+    background-color: #8c3149;
   }
 
   .option-card .option-name {
@@ -624,12 +821,12 @@
     }
 
     .option-card {
-      background-color: #f5f5f5;
-      color: #222;
+      background-color: #f1f0ee;
+      color: #9a958c;
     }
 
     .option-card.active {
-      background-color: #333;
+      background-color: #4d4d4d;
       color: #fff;
     }
 
@@ -999,8 +1196,8 @@
   /* ===== 모바일 반응형 (기타) ===== */
   @media (max-width: 768px) {
     .tab-btn {
-      padding: 12px 34px;
-      font-size: 16px;
+      padding: 7px 16px;
+      font-size: 12px;
     }
 
     .page-title h1 {
@@ -1010,20 +1207,6 @@
 
    /* 화면 너비가 480px 이하일 때 (모바일/태블릿) */
 @media (max-width: 480px) {
-  nav {
-    gap: 5px;
-  }
-
-  nav a {
-    font-size: 10.5px;
-  }
-
-  .kakao-btn,
-  .insta-btn {
-    padding: 5px 8px;
-    font-size: 10.5px;
-  }
-
   .intro-row {
     margin-bottom: 20px;
   }
@@ -1042,14 +1225,9 @@
     margin-top: 6px;
   }
 
-  .tab-bar {
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-
   .tab-btn {
-    padding: 9px 24px;
-    font-size: 14px;
+    padding: 6px 13px;
+    font-size: 11px;
   }
 
   .carousel-wrap {
@@ -1104,6 +1282,7 @@
 
 <header>
   <h1>ITALYSNAP FOTORO</h1>
+  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="메뉴 열기">☰</button>
   <nav>
     <a href="index.html">홈</a>
     <a href="florence.html">피렌체</a>
@@ -1198,12 +1377,20 @@
     </div>
   </div>
 
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="afternoon" onclick="switchTab('afternoon')">오후</button>
-    <button class="tab-btn" data-tab="morning" onclick="switchTab('morning')">오전</button>
+  <div class="toolbar-row">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="afternoon" onclick="switchTab('afternoon')">오후</button>
+      <button class="tab-btn" data-tab="morning" onclick="switchTab('morning')">오전</button>
+    </div>
+
+    <div class="addon-toggle-row">
+      <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
+      <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
+    </div>
   </div>
 
   <div class="cards-block">
+    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-afternoon">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
         <div class="option-name">일몰 + 야경 2시간</div>
@@ -1257,17 +1444,6 @@
     <button class="carousel-arrow" onclick="moveCarousel('carousel-afternoon', 1)">›</button>
   </div>
 
-  <div class="price-card">
-    <div class="price-col">
-      <div class="price-label">2시간</div>
-      <div class="price-amount">예약금 30만원<br>+ 잔금 150유로</div>
-    </div>
-    <div class="price-col">
-      <div class="price-label">3시간</div>
-      <div class="price-amount">예약금 35만원<br>+ 잔금 200유로</div>
-    </div>
-  </div>
-
   <div class="notes-block">
   <div class="extra-note">
     11월-2월의 경우, 2시간은 낮 상품을 권장드리며, 야경 촬영은 일몰+야경 3시간 진행하시면 됩니다.<br>
@@ -1275,15 +1451,6 @@
 
   <div class="event-note">
     블로그 업로드 후기 이벤트 진행 중 (상품권 3만원 또는 아크릴 액자 12x16)
-  </div>
-</div>
-
-  <div class="addon-card">
-  <div class="addon-row">
-    <span>살롱반하 헤메 추가 시 <strong>+30만원</strong> · 드레스/수트 유상대여</span>
-  </div>
-  <div class="addon-btn-wrap">
-    <a href="hairmakeup.html" class="addon-btn">헤메드 상세 안내 보기</a>
   </div>
 </div>
 
@@ -1401,12 +1568,20 @@
     </div>
   </div>
 
-  <div class="tab-bar">
-    <button class="tab-btn" data-tab="afternoon" onclick="switchTab('afternoon')">오후</button>
-    <button class="tab-btn active" data-tab="morning" onclick="switchTab('morning')">오전</button>
+  <div class="toolbar-row">
+    <div class="tab-bar">
+      <button class="tab-btn" data-tab="afternoon" onclick="switchTab('afternoon')">오후</button>
+      <button class="tab-btn active" data-tab="morning" onclick="switchTab('morning')">오전</button>
+    </div>
+
+    <div class="addon-toggle-row">
+      <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
+      <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
+    </div>
   </div>
 
   <div class="cards-block">
+    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-morning">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-morning', 4)">
         <div class="option-name">아침 3시간</div>
@@ -1417,7 +1592,7 @@
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">인기 상품</span>
         <div class="option-name">새벽 3시간</div>
-        <div class="option-desc">야경샷 포함된 스타트<br>새벽촬영 +50유로</div>
+        <div class="option-desc">야경샷 포함된 스타트<br>새벽촬영 포함</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
@@ -1450,7 +1625,7 @@
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">인기 상품</span>
         <div class="option-name">새벽 3시간</div>
-        <div class="option-desc">언덕 야경샷 포함<br>새벽 추가금 +50유로</div>
+        <div class="option-desc">언덕 야경샷 포함<br>새벽촬영 포함</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
     </div>
@@ -1462,35 +1637,11 @@
     <button class="carousel-arrow" onclick="moveCarousel('carousel-morning', 1)">›</button>
   </div>
 
-  <div class="price-card">
-    <div class="price-col">
-      <div class="price-label">2시간</div>
-      <div class="price-amount">예약금 30만원<br>+ 잔금 150유로</div>
-    </div>
-    <div class="price-col">
-      <div class="price-label">3시간</div>
-      <div class="price-amount">예약금 35만원<br>+ 잔금 200유로</div>
-    </div>
-  </div>
-
   <div class="notes-block">
-    <div class="extra-note">
-      * 새벽 3시간 촬영 또는 야간 20분 별도 추가는 50유로 추가됩니다.
-    </div>
-
     <div class="event-note">
       블로그 업로드 후기 이벤트 진행 중 (상품권 3만원 또는 아크릴 액자 12x16)
     </div>
   </div>
-
-  <div class="addon-card">
-  <div class="addon-row">
-    <span>살롱반하 헤메 추가 시 <strong>+30만원</strong> · 드레스/수트 유상대여</span>
-  </div>
-  <div class="addon-btn-wrap">
-    <a href="hairmakeup.html" class="addon-btn">헤메드 상세 안내 보기</a>
-  </div>
-</div>
 
 <div class="accordion">
   <button class="accordion-toggle" onclick="toggleAccordion(this)">
@@ -1615,17 +1766,35 @@
   });
 
   function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.getElementById(tab).classList.add('active');
+    const current = document.querySelector('.tab-content.active');
+    const target = document.getElementById(tab);
+    if (!current || current === target) return;
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
 
-    localStorage.setItem('florence-active-tab', tab);
+    const wrap = current.querySelector('.carousel-wrap');
+    const overlay = current.querySelector('.tab-switch-overlay');
+    if (wrap) wrap.classList.add('fading');
+    if (overlay) {
+      overlay.querySelector('span').style.animation = 'none';
+      overlay.offsetWidth; // restart the flip animation
+      overlay.querySelector('span').style.animation = '';
+      overlay.classList.add('show');
+    }
 
-    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
-    resyncCarousel(carouselId);
+    setTimeout(() => {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      target.classList.add('active');
+      if (wrap) wrap.classList.remove('fading');
+      if (overlay) overlay.classList.remove('show');
+
+      localStorage.setItem('florence-active-tab', tab);
+
+      const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
+      resyncCarousel(carouselId);
+    }, 500);
   }
 
   function resyncCarousel(id) {
@@ -1713,13 +1882,6 @@
     config.targets.forEach(tid => {
       const el = document.getElementById(tid);
       if (el) el.classList.add('tl-active');
-    });
-
-    const priceCols = tabEl.querySelectorAll('.price-card .price-col');
-    priceCols.forEach((col, i) => {
-      const isMatch = (config.hours === 2 && i === 0) || (config.hours === 3 && i === 1);
-      col.classList.toggle('price-active', isMatch);
-      col.classList.toggle('price-inactive', !isMatch);
     });
 
     if (tab === 'afternoon') {
@@ -1843,6 +2005,120 @@
 
     setActiveCard(id, nextIndex);
   }
+
+  /* ===== 카드별 가격 + 헤메/패키지 토글 ===== */
+  const PRICE_DATA = {
+    afternoon: [
+      { hours: 2 },                                              // 0 낮 2시간
+      { hours: 2 },                                              // 1 일몰 2시간
+      { hours: 3 },                                              // 2 일몰 + 야경 3시간
+      { hours: 3 },                                              // 3 일몰 3시간
+      { hours: 2 },                                              // 4 일몰 + 야경 2시간
+    ],
+    morning: [
+      { hours: 3, balance: '250유로', packageBalance: '400유로' }, // 0 새벽 3시간
+      { hours: 3 },                                              // 1 일출 3시간
+      { hours: 2 },                                              // 2 일출 2시간
+      { hours: 2 },                                              // 3 아침 2시간
+      { hours: 3 },                                              // 4 아침 3시간
+    ],
+  };
+  const BASE_PRICE = {
+    2: { deposit: 30, balance: '150유로' },
+    3: { deposit: 35, balance: '200유로' },
+  };
+  const HEME_ADDON = 30;
+  const PACKAGE_BALANCE = { 2: '300유로', 3: '350유로' };
+  const ADDON_DESC = {
+    heme: ['남·여 각 헤메 1회씩 진행'],
+    package: ['남·여 각 헤메 1회씩 진행', '여성 드레스 1벌 대여 포함'],
+  };
+  const ADDON_BADGE = { heme: '헤메 포함', package: '헤메 및 드레스 포함' };
+
+  let addonMode = 'none'; // 'none' | 'heme' | 'package'
+
+  function priceLines(info) {
+    const base = BASE_PRICE[info.hours];
+    if (addonMode === 'package') {
+      const deposit = info.hours === 3 ? 60 : (base.deposit + HEME_ADDON);
+      const balance = info.packageBalance || PACKAGE_BALANCE[info.hours];
+      return [`예약금 ${deposit}만원`, `+ 잔금 ${balance}`];
+    }
+    const deposit = base.deposit + (addonMode === 'heme' ? HEME_ADDON : 0);
+    const balance = info.balance || base.balance;
+    return [`예약금 ${deposit}만원`, `+ 잔금 ${balance}`];
+  }
+
+  function ensureCardExtras() {
+    document.querySelectorAll('.option-card').forEach(card => {
+      if (!card.querySelector('.option-price')) {
+        const detail = card.querySelector('.option-detail');
+        const priceEl = document.createElement('div');
+        priceEl.className = 'option-price';
+        const slotEl = document.createElement('div');
+        slotEl.className = 'discount-slot';
+        detail.insertAdjacentElement('afterend', slotEl);
+        detail.insertAdjacentElement('afterend', priceEl);
+      }
+      if (!card.querySelector('.option-desc-addon')) {
+        const desc = card.querySelector('.option-desc');
+        const addonEl = document.createElement('div');
+        addonEl.className = 'option-desc-addon';
+        desc.insertAdjacentElement('afterend', addonEl);
+      }
+    });
+  }
+
+  function cardInfo(card, tab) {
+    if (card.dataset.mapsTo !== undefined) {
+      return PRICE_DATA[tab][+card.dataset.mapsTo];
+    }
+    const wrap = card.closest('.carousel-wrap');
+    const nonClones = Array.from(wrap.querySelectorAll('.option-card:not(.clone)'));
+    return PRICE_DATA[tab][nonClones.indexOf(card)];
+  }
+
+  function updateAllPrices() {
+    ['afternoon', 'morning'].forEach(tab => {
+      const wrap = document.getElementById('carousel-' + tab);
+      wrap.querySelectorAll('.option-card').forEach(card => {
+        const info = cardInfo(card, tab);
+        const [l1, l2] = priceLines(info);
+        card.querySelector('.option-price').innerHTML = `${l1}<br>${l2}`;
+
+        const slot = card.querySelector('.discount-slot');
+        slot.innerHTML = (addonMode === 'package' && info.hours === 3)
+          ? '<span class="discount-note">3시간 패키지 할인</span>'
+          : '';
+
+        const addonDesc = card.querySelector('.option-desc-addon');
+        addonDesc.innerHTML = addonMode !== 'none' ? ADDON_DESC[addonMode].join('<br>') : '';
+
+        let heme = card.querySelector('.badge-heme');
+        if (addonMode !== 'none') {
+          if (!heme) {
+            heme = document.createElement('span');
+            heme.className = 'badge-heme';
+            card.prepend(heme);
+          }
+          heme.textContent = ADDON_BADGE[addonMode];
+        } else if (heme) {
+          heme.remove();
+        }
+      });
+    });
+  }
+
+  function toggleAddon(mode) {
+    addonMode = (addonMode === mode) ? 'none' : mode;
+    document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === addonMode);
+    });
+    updateAllPrices();
+  }
+
+  ensureCardExtras();
+  updateAllPrices();
 
   initCarousel('carousel-afternoon', 1);
   initCarousel('carousel-morning', 2);
