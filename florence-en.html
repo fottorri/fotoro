@@ -150,13 +150,6 @@
     transform: translateY(-1px);
   }
 
-  .tab-btn:hover {
-    background-color: #e5e5e5;
-  }
-
-  .tab-btn.active:hover {
-    background-color: #333;
-  }
 
   .accordion-toggle:hover {
     background-color: #ececec;
@@ -199,6 +192,7 @@
   }
 
   .tab-bar {
+    position: relative;
     display: inline-flex;
     background-color: #f7f7f6;
     border: 1px solid #e3e3e0;
@@ -206,7 +200,22 @@
     padding: 3px;
   }
 
+  .tab-indicator {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    width: 0;
+    background-color: #4d4d4d;
+    border-radius: 17px;
+    transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 0;
+  }
+
   .tab-btn {
+    position: relative;
+    z-index: 1;
     background: none;
     border: none;
     color: #96938c;
@@ -215,7 +224,7 @@
     padding: 8px 20px;
     border-radius: 17px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: color 0.2s;
   }
 
   .addon-toggle-row {
@@ -258,7 +267,6 @@
   }
 
   .tab-btn.active {
-    background-color: #4d4d4d;
     color: white;
   }
 
@@ -382,33 +390,6 @@
     position: relative;
   }
 
-  .tab-switch-overlay {
-    position: absolute;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 34px;
-    z-index: 5;
-    pointer-events: none;
-  }
-
-  .tab-switch-overlay.show {
-    display: flex;
-  }
-
-  .tab-switch-overlay span {
-    display: inline-block;
-    animation: hourglass-flip 0.9s ease-in-out;
-  }
-
-  @keyframes hourglass-flip {
-    0%   { transform: rotate(0deg); }
-    45%  { transform: rotate(180deg); }
-    55%  { transform: rotate(180deg); }
-    100% { transform: rotate(360deg); }
-  }
-
   .carousel-wrap {
     display: flex;
     gap: 14px;
@@ -417,11 +398,6 @@
     padding: 10px 15% 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    transition: opacity 0.25s ease;
-  }
-
-  .carousel-wrap.fading {
-    opacity: 0.12;
   }
 
   .carousel-wrap::-webkit-scrollbar {
@@ -434,11 +410,18 @@
     border-radius: 14px;
     padding: 24px 18px;
     text-align: center;
-    background-color: #f1f0ee;
-    color: #9a958c;
-    transition: background-color 0.25s, color 0.25s;
+    background-color: #ece9e1;
+    color: #5c574d;
+    border: 1px solid #ddd7c8;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     padding-top: 30px;
+  }
+
+  .option-card:not(.active):hover {
+    background-color: #e1dccc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(28,26,25,0.12);
   }
 
   .option-card.active {
@@ -604,11 +587,6 @@
       display: none;
     }
 
-    .option-card {
-      background-color: #f1f0ee;
-      color: #9a958c;
-    }
-
     .option-card.active {
       background-color: #4d4d4d;
       color: #fff;
@@ -616,10 +594,6 @@
 
     .option-card .option-detail {
       border-top: 1px dashed rgba(0,0,0,0.15);
-    }
-
-    .option-card:hover {
-      background-color: #e9e7e2;
     }
   }
 
@@ -932,12 +906,12 @@
   </div>
 
   <div class="tab-bar">
+    <span class="tab-indicator"></span>
     <button class="tab-btn active" data-tab="afternoon" onclick="switchTab('afternoon')">Afternoon</button>
     <button class="tab-btn" data-tab="morning" onclick="switchTab('morning')">Morning</button>
   </div>
 
   <div class="cards-block">
-    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-afternoon">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
         <div class="option-name">Sunset + Night 2h</div>
@@ -1068,12 +1042,12 @@
   </div>
 
   <div class="tab-bar">
+    <span class="tab-indicator"></span>
     <button class="tab-btn" data-tab="afternoon" onclick="switchTab('afternoon')">Afternoon</button>
     <button class="tab-btn active" data-tab="morning" onclick="switchTab('morning')">Morning</button>
   </div>
 
   <div class="cards-block">
-    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-morning">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-morning', 4)">
         <div class="option-name">Morning 3h</div>
@@ -1192,6 +1166,16 @@
 </footer>
 
 <script>
+  function updateTabIndicators() {
+    document.querySelectorAll('.tab-bar').forEach(bar => {
+      const activeBtn = bar.querySelector('.tab-btn.active');
+      const indicator = bar.querySelector('.tab-indicator');
+      if (!activeBtn || !indicator) return;
+      indicator.style.left = activeBtn.offsetLeft + 'px';
+      indicator.style.width = activeBtn.offsetWidth + 'px';
+    });
+  }
+
   function switchTab(tab) {
     const current = document.querySelector('.tab-content.active');
     const target = document.getElementById(tab);
@@ -1200,28 +1184,15 @@
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
+    updateTabIndicators();
 
-    const wrap = current.querySelector('.carousel-wrap');
-    const overlay = current.querySelector('.tab-switch-overlay');
-    if (wrap) wrap.classList.add('fading');
-    if (overlay) {
-      overlay.querySelector('span').style.animation = 'none';
-      overlay.offsetWidth; // restart the flip animation
-      overlay.querySelector('span').style.animation = '';
-      overlay.classList.add('show');
-    }
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    target.classList.add('active');
 
-    setTimeout(() => {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      target.classList.add('active');
-      if (wrap) wrap.classList.remove('fading');
-      if (overlay) overlay.classList.remove('show');
+    localStorage.setItem('florence-active-tab', tab);
 
-      localStorage.setItem('florence-active-tab', tab);
-
-      const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
-      resyncCarousel(carouselId);
-    }, 500);
+    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
+    resyncCarousel(carouselId);
   }
 
   function resyncCarousel(id) {
@@ -1347,6 +1318,9 @@
 
     setActiveCard(id, nextIndex);
   }
+
+  updateTabIndicators();
+  window.addEventListener('resize', updateTabIndicators);
 
   initCarousel('carousel-afternoon', 1);
   initCarousel('carousel-morning', 2);
