@@ -264,6 +264,12 @@
 
   .addon-toggle-btn.active::before {
     background-color: #8a7550;
+    animation: dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 
   .tab-btn.active {
@@ -516,12 +522,15 @@
     min-height: 22px;
   }
 
+  .option-card .option-desc-wrap {
+    min-height: 60px;
+    margin-bottom: 16px;
+  }
+
   .option-card .option-desc {
     font-size: 10.5px;
     opacity: 0.8;
-    margin-bottom: 16px;
     line-height: 1.6;
-    min-height: 60px;
   }
 
   .option-card .option-detail {
@@ -911,6 +920,11 @@
       <button class="tab-btn active" data-tab="afternoon" onclick="switchTab('afternoon')">Afternoon</button>
       <button class="tab-btn" data-tab="morning" onclick="switchTab('morning')">Morning</button>
     </div>
+
+    <div class="addon-toggle-row">
+      <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">Makeup</button>
+      <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">Package</button>
+    </div>
   </div>
 
   <div class="cards-block">
@@ -1048,6 +1062,11 @@
       <span class="tab-indicator"></span>
       <button class="tab-btn" data-tab="afternoon" onclick="switchTab('afternoon')">Afternoon</button>
       <button class="tab-btn active" data-tab="morning" onclick="switchTab('morning')">Morning</button>
+    </div>
+
+    <div class="addon-toggle-row">
+      <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">Makeup</button>
+      <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">Package</button>
     </div>
   </div>
 
@@ -1323,6 +1342,108 @@
     setActiveCard(id, nextIndex);
   }
 
+  /* ===== Per-card pricing + Makeup/Package toggle ===== */
+  const PRICE_DATA = {
+    afternoon: [
+      { hours: 2 },                                            // 0 Daylight 2h
+      { hours: 2 },                                            // 1 Sunset 2h
+      { hours: 3 },                                            // 2 Sunset + Night 3h
+      { hours: 3 },                                            // 3 Sunset 3h
+      { hours: 2 },                                            // 4 Sunset + Night 2h
+    ],
+    morning: [
+      { hours: 3, balance: '250 EUR', packageBalance: '500 EUR' }, // 0 Dawn 3h
+      { hours: 3 },                                            // 1 Sunrise 3h
+      { hours: 2 },                                            // 2 Sunrise 2h
+      { hours: 2 },                                            // 3 Morning 2h
+      { hours: 3 },                                            // 4 Morning 3h
+    ],
+  };
+  const BASE_PRICE = {
+    2: { deposit: 300, balance: '150 EUR' },
+    3: { deposit: 350, balance: '200 EUR' },
+  };
+  const ADDON_DEPOSIT = 700;
+  const PACKAGE_BALANCE = { 2: '400 EUR', 3: '450 EUR' };
+  const ADDON_DESC = {
+    heme: ['One hair & makeup session each (bride & groom)'],
+    package: ['One hair & makeup session each (bride & groom)', 'Includes 1 dress rental'],
+  };
+  const ADDON_BADGE = { heme: 'Makeup Included', package: 'Makeup + Dress Included' };
+
+  let addonMode = 'none'; // 'none' | 'heme' | 'package'
+
+  function priceLines(info) {
+    const base = BASE_PRICE[info.hours];
+    if (addonMode === 'none') {
+      return [`Deposit ${base.deposit} EUR`, `+ Balance ${info.balance || base.balance}`];
+    }
+    const balance = addonMode === 'heme'
+      ? (info.balance || base.balance)
+      : (info.packageBalance || PACKAGE_BALANCE[info.hours]);
+    return [`Deposit ${ADDON_DEPOSIT} EUR`, `+ Balance ${balance}`];
+  }
+
+  function ensureCardExtras() {
+    document.querySelectorAll('.option-card').forEach(card => {
+      if (!card.querySelector('.option-desc-addon')) {
+        const desc = card.querySelector('.option-desc');
+        const wrap = document.createElement('div');
+        wrap.className = 'option-desc-wrap';
+        desc.insertAdjacentElement('afterend', wrap);
+        wrap.appendChild(desc);
+        const addonEl = document.createElement('div');
+        addonEl.className = 'option-desc-addon';
+        wrap.appendChild(addonEl);
+      }
+    });
+  }
+
+  function cardInfo(card, tab) {
+    if (card.dataset.mapsTo !== undefined) {
+      return PRICE_DATA[tab][+card.dataset.mapsTo];
+    }
+    const wrap = card.closest('.carousel-wrap');
+    const nonClones = Array.from(wrap.querySelectorAll('.option-card:not(.clone)'));
+    return PRICE_DATA[tab][nonClones.indexOf(card)];
+  }
+
+  function updateAllPrices() {
+    ['afternoon', 'morning'].forEach(tab => {
+      const wrap = document.getElementById('carousel-' + tab);
+      wrap.querySelectorAll('.option-card').forEach(card => {
+        const info = cardInfo(card, tab);
+        const [l1, l2] = priceLines(info);
+        card.querySelector('.option-price').innerHTML = `${l1}<br>${l2}`;
+
+        const addonDesc = card.querySelector('.option-desc-addon');
+        addonDesc.innerHTML = addonMode !== 'none' ? ADDON_DESC[addonMode].join('<br>') : '';
+
+        let heme = card.querySelector('.badge-heme');
+        if (addonMode !== 'none') {
+          if (!heme) {
+            heme = document.createElement('span');
+            heme.className = 'badge-heme';
+            card.prepend(heme);
+          }
+          heme.textContent = ADDON_BADGE[addonMode];
+        } else if (heme) {
+          heme.remove();
+        }
+      });
+    });
+  }
+
+  function toggleAddon(mode) {
+    addonMode = (addonMode === mode) ? 'none' : mode;
+    document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === addonMode);
+    });
+    updateAllPrices();
+  }
+
+  ensureCardExtras();
+  updateAllPrices();
   updateTabIndicators();
   window.addEventListener('resize', updateTabIndicators);
 
