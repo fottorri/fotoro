@@ -31,8 +31,9 @@
     color: white;
     padding: 12px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     text-align: center;
     gap: 8px;
     position: sticky;
@@ -46,12 +47,23 @@
     letter-spacing: 1px;
   }
 
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 6px;
+    cursor: pointer;
+  }
+
   nav {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   nav a {
@@ -60,6 +72,46 @@
     white-space: nowrap;
     text-decoration: none;
   }
+
+  @media (max-width: 640px) {
+    .nav-toggle {
+      display: block;
+    }
+
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 4px 0 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    }
+
+    nav.open {
+      display: flex;
+    }
+
+    nav a {
+      font-size: 14px;
+      padding: 12px 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    nav .kakao-btn,
+    nav .insta-btn {
+      width: calc(100% - 40px);
+      margin: 6px 20px 0;
+      text-align: center;
+    }
+  }
+
 
   .kakao-btn {
     background-color: #FEE500;
@@ -136,30 +188,78 @@
   }
 
   /* ===== 탭 버튼 ===== */
-  .tab-bar {
+  .toolbar-row {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 0 20px 0;
-    margin-bottom: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-bottom: 16px;
+  }
+
+  .tab-bar {
+    display: inline-flex;
+    background-color: #f7f7f6;
+    border: 1px solid #e3e3e0;
+    border-radius: 20px;
+    padding: 3px;
   }
 
   .tab-btn {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    color: #888;
-    font-size: 13px;
+    background: none;
+    border: none;
+    color: #96938c;
+    font-size: 12.5px;
     font-weight: bold;
-    padding: 14px 50px;
-    border-radius: 36px;
+    padding: 8px 20px;
+    border-radius: 17px;
     cursor: pointer;
     transition: all 0.2s;
   }
 
+  .addon-toggle-row {
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  .addon-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fff;
+    border: 1px solid #e3e3e0;
+    color: #2a2723;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 7px 14px 7px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .addon-toggle-btn::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #96938c;
+    display: inline-block;
+  }
+
+  .addon-toggle-btn.active {
+    border-color: #8a7550;
+    color: #8a7550;
+  }
+
+  .addon-toggle-btn.active::before {
+    background-color: #8a7550;
+  }
+
   .tab-btn.active {
-    background-color: #333;
+    background-color: #4d4d4d;
     color: white;
-    border-color: #333;
   }
 
   /* ===== 탭 콘텐츠 ===== */
@@ -278,11 +378,42 @@
     }
   }
 
+  .cards-block {
+    position: relative;
+  }
+
   @media (min-width: 769px) {
     .cards-block {
       height: 280px;
       overflow: hidden;
     }
+  }
+
+  .tab-switch-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .tab-switch-overlay.show {
+    display: flex;
+  }
+
+  .tab-switch-overlay span {
+    display: inline-block;
+    animation: hourglass-flip 0.9s ease-in-out;
+  }
+
+  @keyframes hourglass-flip {
+    0%   { transform: rotate(0deg); }
+    45%  { transform: rotate(180deg); }
+    55%  { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
   }
 
   .carousel-wrap {
@@ -293,6 +424,11 @@
     padding: 10px 15% 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .carousel-wrap.fading {
+    opacity: 0.12;
   }
 
   .carousel-wrap::-webkit-scrollbar {
@@ -305,20 +441,20 @@
     border-radius: 14px;
     padding: 24px 18px;
     text-align: center;
-    background-color: #e8e8e8;
-    color: #999;
+    background-color: #f1f0ee;
+    color: #9a958c;
     transition: background-color 0.25s, color 0.25s;
     position: relative;
     padding-top: 30px;
   }
 
   .option-card.active {
-    background-color: #333;
+    background-color: #4d4d4d;
     color: #fff;
   }
 
   .option-card.featured {
-    border: 2px solid #333;
+    border: 2px solid #4d4d4d;
   }
 
   .option-card .badge {
@@ -326,7 +462,7 @@
     top: 0;
     left: 20%;
     transform: translate(-50%, -50%);
-    background-color: #4a1520;
+    background-color: #8c3149;
     color: #fff;
     font-size: 10px;
     font-weight: bold;
@@ -335,6 +471,65 @@
     border-radius: 20px;
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .option-card .badge-heme {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    background-color: #8a7550;
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .option-card .option-price {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.7;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(0,0,0,0.15);
+  }
+
+  .option-card.active .option-price {
+    border-top: 1px dashed rgba(255,255,255,0.25);
+  }
+
+  .option-card .option-desc-addon {
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  .option-card .discount-slot {
+    margin-top: 6px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .option-card .discount-note {
+    font-size: 9px;
+    font-weight: bold;
+    color: #8c3149;
+    background-color: rgba(140, 49, 73, 0.12);
+    border-radius: 20px;
+    padding: 3px 10px;
+    display: inline-block;
+  }
+
+  .option-card.active .discount-note {
+    color: #fff;
+    background-color: #8c3149;
   }
 
   .option-card .option-name {
@@ -416,10 +611,14 @@
       display: none;
     }
 
-    .option-card,
+    .option-card {
+      background-color: #f1f0ee;
+      color: #9a958c;
+    }
+
     .option-card.active {
-      background-color: #f5f5f5;
-      color: #222;
+      background-color: #4d4d4d;
+      color: #fff;
     }
 
     .option-card .option-detail {
@@ -427,7 +626,7 @@
     }
 
     .option-card:hover {
-      background-color: #ececec;
+      background-color: #e9e7e2;
     }
   }
 
@@ -664,8 +863,8 @@
 
   @media (max-width: 768px) {
     .tab-btn {
-      padding: 12px 34px;
-      font-size: 16px;
+      padding: 7px 16px;
+      font-size: 12px;
     }
 
     .page-title h1 {
@@ -694,6 +893,7 @@
 
 <header>
   <h1>ITALYSNAP FOTORO</h1>
+  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="메뉴 열기">☰</button>
   <nav>
     <a href="index-en.html">Home</a>
     <a href="florence-en.html">Firenze</a>
@@ -744,17 +944,20 @@
   </div>
 
   <div class="cards-block">
+    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-afternoon">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
         <div class="option-name">Sunset + Night 2h</div>
         <div class="option-desc">June 10 - July 20 limited</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 0)">
         <div class="option-name">Daylight 2h</div>
         <div class="option-desc">Bright hours only (Recommended Nov-Feb)</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-afternoon', 1)">
@@ -762,6 +965,7 @@
         <div class="option-name">Sunset 2h</div>
         <div class="option-desc">No night shots<br>Hill option available</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-afternoon', 2)">
@@ -769,24 +973,28 @@
         <div class="option-name">Sunset + Night 3h</div>
         <div class="option-desc">City 2h + Night 30m<br>Includes travel & wait time</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 3)">
         <div class="option-name">Sunset 3h</div>
-        <div class="option-desc">Hill location included<br>Night addon +100€</div>
+        <div class="option-desc">Hill location included<br>Night addon +50€</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 4)">
         <div class="option-name">Sunset + Night 2h</div>
         <div class="option-desc">June 10 - July 20 limited<br>Includes travel & wait time</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-afternoon', 0)">
         <div class="option-name">Daylight 2h</div>
         <div class="option-desc">Bright hours only (Recommended Nov-Feb)</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
     </div>
   </div>
@@ -795,17 +1003,6 @@
     <button class="carousel-arrow" onclick="moveCarousel('carousel-afternoon', -1)">‹</button>
     <div class="carousel-dots" id="dots-carousel-afternoon"></div>
     <button class="carousel-arrow" onclick="moveCarousel('carousel-afternoon', 1)">›</button>
-  </div>
-
-  <div class="price-card">
-    <div class="price-col">
-      <div class="price-label">2 Hours</div>
-      <div class="price-amount">Deposit 300 EUR<br>+ Balance 150 EUR</div>
-    </div>
-    <div class="price-col">
-      <div class="price-label">3 Hours</div>
-      <div class="price-amount">Deposit 350 EUR<br>+ Balance 200 EUR</div>
-    </div>
   </div>
 
   <div class="notes-block">
@@ -883,24 +1080,28 @@
   </div>
 
   <div class="cards-block">
+    <div class="tab-switch-overlay"><span>⏳</span></div>
     <div class="carousel-wrap" id="carousel-morning">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-morning', 4)">
         <div class="option-name">Morning 3h</div>
         <div class="option-desc">Hill location included<br>Night 20m addon (+50€)</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">Popular</span>
         <div class="option-name">Dawn 3h</div>
-        <div class="option-desc">Includes night shots start<br>Dawn surcharge +50€</div>
+        <div class="option-desc">Includes night shots start<br>Dawn photography included</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 250 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-morning', 1)">
         <div class="option-name">Sunrise 3h</div>
         <div class="option-desc">Night 20m addon (+50€)</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 2)">
@@ -908,6 +1109,7 @@
         <div class="option-name">Sunrise 2h</div>
         <div class="option-desc">Starts at Piazzale Michelangelo</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 3)">
@@ -915,19 +1117,22 @@
         <div class="option-name">Morning 2h</div>
         <div class="option-desc">Starts in City Center<br>Hill optional</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-morning', 4)">
         <div class="option-name">Morning 3h</div>
         <div class="option-desc">Hill location included</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">Popular</span>
         <div class="option-name">Dawn 3h</div>
-        <div class="option-desc">Hill night shots included<br>Dawn surcharge +50€</div>
+        <div class="option-desc">Hill night shots included<br>Dawn photography included</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 250 EUR</div>
       </div>
     </div>
   </div>
@@ -936,23 +1141,6 @@
     <button class="carousel-arrow" onclick="moveCarousel('carousel-morning', -1)">‹</button>
     <div class="carousel-dots" id="dots-carousel-morning"></div>
     <button class="carousel-arrow" onclick="moveCarousel('carousel-morning', 1)">›</button>
-  </div>
-
-  <div class="price-card">
-    <div class="price-col">
-      <div class="price-label">2 Hours</div>
-      <div class="price-amount">Deposit 300 €<br>+ Balance 150 €</div>
-    </div>
-    <div class="price-col">
-      <div class="price-label">3 Hours</div>
-      <div class="price-amount">Deposit 350 €<br>+ Balance 200 €</div>
-    </div>
-  </div>
-
-  <div class="notes-block">
-    <div class="extra-note">
-      * Dawn 3h sessions or adding 20m Night photography incur an extra +50€ fee.
-    </div>
   </div>
 
   <div class="addon-card">
@@ -1012,17 +1200,35 @@
 
 <script>
   function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.getElementById(tab).classList.add('active');
+    const current = document.querySelector('.tab-content.active');
+    const target = document.getElementById(tab);
+    if (!current || current === target) return;
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === tab);
     });
 
-    localStorage.setItem('florence-active-tab', tab);
+    const wrap = current.querySelector('.carousel-wrap');
+    const overlay = current.querySelector('.tab-switch-overlay');
+    if (wrap) wrap.classList.add('fading');
+    if (overlay) {
+      overlay.querySelector('span').style.animation = 'none';
+      overlay.offsetWidth; // restart the flip animation
+      overlay.querySelector('span').style.animation = '';
+      overlay.classList.add('show');
+    }
 
-    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
-    resyncCarousel(carouselId);
+    setTimeout(() => {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      target.classList.add('active');
+      if (wrap) wrap.classList.remove('fading');
+      if (overlay) overlay.classList.remove('show');
+
+      localStorage.setItem('florence-active-tab', tab);
+
+      const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
+      resyncCarousel(carouselId);
+    }, 500);
   }
 
   function resyncCarousel(id) {
