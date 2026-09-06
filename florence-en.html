@@ -422,6 +422,8 @@
     transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     padding-top: 30px;
+    display: flex;
+    flex-direction: column;
   }
 
   .option-card:not(.active):hover {
@@ -475,7 +477,7 @@
     font-size: 12px;
     font-weight: bold;
     line-height: 1.7;
-    margin-top: 14px;
+    margin-top: auto;
     padding-top: 14px;
     border-top: 1px dashed rgba(0,0,0,0.15);
   }
@@ -523,7 +525,8 @@
   }
 
   .option-card .option-desc-wrap {
-    min-height: 60px;
+    height: 70px;
+    overflow: hidden;
     margin-bottom: 16px;
   }
 
