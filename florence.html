@@ -379,10 +379,10 @@
 
   .warn-banner {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    gap: 9px;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    text-align: left;
     background: #fdf1de;
     border: 1px solid #e0a940;
     border-radius: 9px;
@@ -393,6 +393,7 @@
   .warn-banner .icon {
     font-size: 1rem;
     line-height: 1.35;
+    flex-shrink: 0;
   }
 
   .warn-banner .msg {
