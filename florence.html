@@ -412,13 +412,13 @@
 
   .check-select {
     font-family: inherit;
-    font-size: .76rem;
+    font-size: .68rem;
     font-weight: 700;
     color: #2a2723;
     background: #f5f5f5;
     border: 1px solid #e5e0d5;
-    border-radius: 8px;
-    padding: 7px 8px;
+    border-radius: 7px;
+    padding: 5px 6px;
   }
 
   .check-btn {
@@ -428,10 +428,10 @@
     background: #4a3f2b;
     color: #fff;
     font-family: inherit;
-    font-size: .76rem;
+    font-size: .68rem;
     font-weight: 700;
-    padding: 8px 14px;
-    border-radius: 18px;
+    padding: 6px 12px;
+    border-radius: 16px;
     text-decoration: none;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
   }
@@ -460,7 +460,7 @@
     width: 38px;
     flex-shrink: 0;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 600;
     color: #333;
   }
 
@@ -483,7 +483,7 @@
 
   .tl-scale .tl-anchor {
     color: #4a1520;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   .timeline-track {
@@ -513,7 +513,7 @@
     align-items: center;
     justify-content: center;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     line-height: 1.3;
     padding: 0 2px;
@@ -566,7 +566,7 @@
     font-size: 9px;
     line-height: 1.3;
     color: #4a1520;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
   }
 
@@ -1560,7 +1560,7 @@
   <div class="timeline-card">
     <div class="warn-banner">
       <span class="icon">⚠️</span>
-      <span class="msg">일출 06:00 · 일몰 20:00 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담시 안내드립니다.</span>
+      <span class="msg">일출 06:00 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담시 안내드립니다.</span>
     </div>
 
     <div class="check-row">
@@ -2240,6 +2240,7 @@
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tab === 'morning');
     });
+    updateTabIndicators();
     resyncCarousel('carousel-morning');
   }
 
