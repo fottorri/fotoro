@@ -18,6 +18,7 @@
   margin: 0;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
+  background-color: #f4f1ea;
   color: #222;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -513,12 +514,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.25;
     padding: 0 2px;
     overflow: hidden;
+    white-space: nowrap;
     transition: box-shadow 0.25s, filter 0.25s, left 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
   }
 
@@ -589,6 +591,21 @@
     text-align: center;
   }
 
+  .timeline-row.tl-row-hidden {
+    display: none;
+  }
+
+  .tl-range {
+    text-align: center;
+    font-size: 11px;
+    color: #7c7562;
+    margin-top: 10px;
+  }
+
+  .tl-range b {
+    color: #2a2723;
+  }
+
   @media (max-width: 480px) {
     .timeline-card {
       padding: 16px 12px;
@@ -656,8 +673,9 @@
   }
 
   .option-card.active {
-    background-color: #4d4d4d;
-    color: #fff;
+    background-color: #fdecea;
+    color: #4a1520;
+    box-shadow: 0 4px 14px rgba(74,21,32,0.12);
   }
 
   .option-card.featured {
@@ -665,7 +683,7 @@
   }
 
   .option-card.featured.active {
-    border-color: #fff;
+    border-color: #4a1520;
   }
 
   .option-card .badge {
@@ -810,7 +828,7 @@
   }
 
   .option-card.active .option-price {
-    border-top: 1px dashed rgba(255,255,255,0.25);
+    border-top: 1px dashed rgba(0,0,0,0.15);
   }
 
   .option-card .option-desc-addon {
@@ -866,7 +884,7 @@
   .option-card .option-detail {
     font-size: 10.5px;
     line-height: 1.7;
-    border-top: 1px dashed rgba(255,255,255,0.25);
+    border-top: 1px dashed rgba(0,0,0,0.15);
     padding-top: 14px;
   }
 
@@ -875,11 +893,7 @@
   }
 
   .carousel-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
+    display: none;
   }
 
   .carousel-arrow {
@@ -922,17 +936,14 @@
       flex-wrap: nowrap;
     }
 
-    .carousel-controls {
-      display: none;
-    }
-
     .option-card.active {
-      background-color: #4d4d4d;
-      color: #fff;
+      background-color: #fdecea;
+      color: #4a1520;
+      box-shadow: 0 4px 14px rgba(74,21,32,0.12);
     }
 
     .option-card.active .option-detail {
-      border-top: 1px dashed rgba(255,255,255,0.25);
+      border-top: 1px dashed rgba(0,0,0,0.15);
     }
 
     .option-card:not(.active) .option-detail {
@@ -1540,7 +1551,7 @@
       </div>
     </div>
 
-    <div class="timeline-row">
+    <div class="timeline-row" id="tl-row-pm-day">
       <div class="tl-label">낮</div>
       <div class="timeline-track">
         <div class="tl-line" style="left:11.1%;"></div>
@@ -1548,11 +1559,11 @@
         <div class="tl-line active" style="left:33.3%;"></div>
         <div class="tl-line" style="left:55.6%;"></div>
         <div class="tl-line" style="left:77.8%;"></div>
-        <div class="tl-seg" id="tl-pm-day" style="left:0%; width:22.2%; background:#f5e8c2; color:#7a6420; border-radius:8px;">2h</div>
+        <div class="tl-seg" id="tl-pm-day" style="left:0%; width:22.2%; background:#f5e8c2; color:#7a6420; border-radius:8px;">15:30 ~ 17:30 (2h)</div>
       </div>
     </div>
 
-    <div class="timeline-row">
+    <div class="timeline-row" id="tl-row-pm-sunset">
       <div class="tl-label">일몰</div>
       <div class="timeline-track">
         <div class="tl-line" style="left:11.1%;"></div>
@@ -1564,6 +1575,8 @@
         <div class="tl-seg" id="tl-pm-sunset-3h" style="left:77.8%; width:22.2%; background:#cabfe0; color:#4a3f70; border-radius:0 8px 8px 0;">3h</div>
       </div>
     </div>
+
+    <div class="tl-range" id="tl-pm-range"></div>
 
     <div class="timeline-footnote">
       일몰 2시간 상품에는 <strong>'박명(薄明, twilight)'</strong>이 포함되지 않으며, 일몰+야경 3시간에 포함됩니다.<br>
@@ -1702,21 +1715,21 @@
       <div style="width:68px; flex-shrink:0;"></div>
     </div>
 
-    <div class="timeline-row">
+    <div class="timeline-row" id="tl-row-am-dawn">
       <div class="tl-label">새벽</div>
       <div class="timeline-track">
         <div class="tl-line active" style="left:15.4%;"></div>
         <div class="tl-line" style="left:46.2%;"></div>
         <div class="tl-line" style="left:53.8%;"></div>
         <div class="tl-line" style="left:61.5%;"></div>
-        <div class="tl-seg" id="tl-am-dawn-a" style="left:0%; width:15.4%; background:#d4c2e8; color:#4a2f66; border-radius:8px 0 0 8px;">야경</div>
-        <div class="tl-seg" id="tl-am-dawn-b" style="left:15.4%; width:30.8%; background:#e6dcf0; color:#4a2f66; border-radius:0 8px 8px 0;">3h</div>
+        <div class="tl-seg" id="tl-am-dawn-a" style="left:0%; width:15.4%; background:#d4c2e8; color:#4a2f66; border-radius:8px 0 0 8px;">05:00 ~ 06:00 (1h)</div>
+        <div class="tl-seg" id="tl-am-dawn-b" style="left:15.4%; width:30.8%; background:#e6dcf0; color:#4a2f66; border-radius:0 8px 8px 0;">06:00 ~ 08:00 (2h)</div>
       </div>
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon empty">–</div>
     </div>
 
-    <div class="timeline-row">
+    <div class="timeline-row" id="tl-row-am-sunrise">
       <div class="tl-label">일출</div>
       <div class="timeline-track">
         <div class="tl-line active" style="left:15.4%;"></div>
@@ -1730,7 +1743,7 @@
       <div class="tl-addon">21:00~<br>야경 20분</div>
     </div>
 
-    <div class="timeline-row">
+    <div class="timeline-row" id="tl-row-am-morning">
       <div class="tl-label">아침</div>
       <div class="timeline-track">
         <div class="tl-line" style="left:15.4%;"></div>
@@ -1743,6 +1756,8 @@
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon">21:00~<br>야경 20분</div>
     </div>
+
+    <div class="tl-range" id="tl-am-range"></div>
 
     <div class="timeline-footnote">
       새벽 3시간은 야경 촬영 후 일출까지 이어져요 · 일출은 해가 뜬 직후부터 시작 · 아침은 더 늦은 시간에 시작
@@ -2040,28 +2055,67 @@
   };
 
   const sunsetBarGeom = [
-    { seg2h: { left: 33.3, width: 44.4, text: '2h' }, seg3h: { left: 77.8, width: 22.2, text: '1h' } },
-    { seg2h: { left: 33.3, width: 44.4, text: '2h' }, seg3h: { left: 77.8, width: 0, text: '' } },
-    { seg2h: { left: 33.3, width: 44.4, text: '2h' }, seg3h: { left: 77.8, width: 22.2, text: '1h' } },
-    { seg2h: { left: 11.1, width: 66.7, text: '3h' }, seg3h: { left: 77.8, width: 0, text: '' } },
-    { seg2h: { left: 55.6, width: 22.2, text: '1h' }, seg3h: { left: 77.8, width: 22.2, text: '1h' } }
+    { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
+    { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
+    { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } },
+    { seg2h: { left: 11.1, width: 66.7, text: '17:00 ~ 20:00 (3h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
+    { seg2h: { left: 55.6, width: 22.2, text: '19:00 ~ 20:00 (1h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } }
   ];
 
   const sunriseBarGeom = [
-    { seg2h: { left: 15.4, width: 30.8, text: '2h' }, seg3h: { left: 46.2, width: 15.3, text: '1h' } },
-    { seg2h: { left: 15.4, width: 46.1, text: '3h' }, seg3h: { left: 46.2, width: 0, text: '' } },
-    { seg2h: { left: 15.4, width: 30.8, text: '2h' }, seg3h: { left: 46.2, width: 0, text: '' } },
-    { seg2h: { left: 15.4, width: 30.8, text: '2h' }, seg3h: { left: 46.2, width: 15.3, text: '1h' } },
-    { seg2h: { left: 15.4, width: 30.8, text: '2h' }, seg3h: { left: 46.2, width: 15.3, text: '1h' } }
+    { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
+    { seg2h: { left: 15.4, width: 46.1, text: '06:00 ~ 09:00 (3h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
+    { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
+    { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
+    { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } }
   ];
 
   const morningBarGeom = [
-    { seg2h: { left: 53.8, width: 30.8, text: '2h' }, seg3h: { left: 84.6, width: 15.4, text: '1h' } },
-    { seg2h: { left: 53.8, width: 30.8, text: '2h' }, seg3h: { left: 84.6, width: 15.4, text: '1h' } },
-    { seg2h: { left: 53.8, width: 30.8, text: '2h' }, seg3h: { left: 84.6, width: 15.4, text: '1h' } },
-    { seg2h: { left: 53.8, width: 30.8, text: '2h' }, seg3h: { left: 84.6, width: 0, text: '' } },
-    { seg2h: { left: 53.8, width: 46.2, text: '3h' }, seg3h: { left: 84.6, width: 0, text: '' } }
+    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
+    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
+    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
+    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
+    { seg2h: { left: 53.8, width: 46.2, text: '08:30 ~ 11:30 (3h)' }, seg3h: { left: 84.6, width: 0, text: '' } }
   ];
+
+  // Which single row (낮/일몰, 새벽/일출/아침) should be visible per card index,
+  // and the overall start/end/hours summary line shown under the track.
+  const ROW_CATEGORY = {
+    afternoon: ['day', 'sunset', 'sunset', 'sunset', 'sunset'],
+    morning: ['dawn', 'sunrise', 'sunrise', 'morning', 'morning']
+  };
+  const ROW_IDS = {
+    afternoon: { day: 'tl-row-pm-day', sunset: 'tl-row-pm-sunset' },
+    morning: { dawn: 'tl-row-am-dawn', sunrise: 'tl-row-am-sunrise', morning: 'tl-row-am-morning' }
+  };
+  const TIME_SUMMARY = {
+    afternoon: [
+      { start: '15:30', end: '17:30', hours: 2 },
+      { start: '18:00', end: '20:00', hours: 2 },
+      { start: '18:00', end: '21:00', hours: 3 },
+      { start: '17:00', end: '20:00', hours: 3 },
+      { start: '19:00', end: '21:00', hours: 2 }
+    ],
+    morning: [
+      { start: '05:00', end: '08:00', hours: 3 },
+      { start: '06:00', end: '09:00', hours: 3 },
+      { start: '06:00', end: '08:00', hours: 2 },
+      { start: '08:30', end: '10:30', hours: 2 },
+      { start: '08:30', end: '11:30', hours: 3 }
+    ]
+  };
+
+  // Full labels like "20:00 ~ 21:00 (1h)" don't fit inside a narrow bar
+  // (e.g. a lone 1h segment). Shrink the label to match the bar's width
+  // instead of letting it get clipped.
+  function fitLabel(text, width) {
+    const m = text.match(/^(\d{2}:\d{2}) ~ (\d{2}:\d{2}) \((\d)h\)$/);
+    if (!m) return text;
+    const [, start, end, hours] = m;
+    if (width >= 30) return text;
+    if (width >= 18) return `${start}~${end}`;
+    return `${hours}h`;
+  }
 
   function applyRowGeom(idA, idB, config) {
     const segA = document.getElementById(idA);
@@ -2070,12 +2124,12 @@
 
     segA.style.left = config.seg2h.left + '%';
     segA.style.width = config.seg2h.width + '%';
-    segA.textContent = config.seg2h.text;
+    segA.textContent = fitLabel(config.seg2h.text, config.seg2h.width);
     segA.style.borderRadius = config.seg3h.width > 0 ? '8px 0 0 8px' : '8px';
 
     segB.style.left = config.seg3h.left + '%';
     segB.style.width = config.seg3h.width + '%';
-    if (config.seg3h.width > 0) segB.textContent = config.seg3h.text;
+    if (config.seg3h.width > 0) segB.textContent = fitLabel(config.seg3h.text, config.seg3h.width);
   }
 
   function updateTimelineHighlight(carouselId, index) {
@@ -2086,6 +2140,19 @@
       chipsWrap.querySelectorAll('.price-chip').forEach((chip, i) => {
         chip.classList.toggle('on', i === index);
       });
+    }
+
+    const rowIds = ROW_IDS[tab];
+    const activeCategory = ROW_CATEGORY[tab] && ROW_CATEGORY[tab][index];
+    Object.keys(rowIds).forEach(cat => {
+      const rowEl = document.getElementById(rowIds[cat]);
+      if (rowEl) rowEl.classList.toggle('tl-row-hidden', cat !== activeCategory);
+    });
+
+    const summary = TIME_SUMMARY[tab] && TIME_SUMMARY[tab][index];
+    const rangeEl = document.getElementById(tab === 'afternoon' ? 'tl-pm-range' : 'tl-am-range');
+    if (summary && rangeEl) {
+      rangeEl.innerHTML = `<b>${summary.start}</b> 시작 · <b>${summary.end}</b> 종료 (총 ${summary.hours}시간)`;
     }
 
     const config = timelineMap[tab] && timelineMap[tab][index];
@@ -2361,6 +2428,16 @@
 
   buildChips('carousel-afternoon');
   buildChips('carousel-morning');
+
+  // Static (never repositioned) segments also need width-aware labels.
+  [
+    ['tl-pm-day', 22.2],
+    ['tl-am-dawn-a', 15.4],
+    ['tl-am-dawn-b', 30.8]
+  ].forEach(([id, width]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = fitLabel(el.textContent, width);
+  });
 
   initCarousel('carousel-afternoon', 1);
   initCarousel('carousel-morning', 2);
