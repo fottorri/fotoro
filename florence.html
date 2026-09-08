@@ -12,7 +12,10 @@
 <meta property="og:image" content="images/og-firenze_.jpg">
 
 <style>
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  button, a { outline: none; }
+  button:focus, a:focus { outline: none; }
 
   body {
   margin: 0;
@@ -1505,12 +1508,6 @@
   color: #2a2723;
   font-weight: bold;
   line-height: 1.6;
-}
-
-@media (max-width: 480px) {
-  .accordion-body .info-grid {
-    flex-direction: column;
-  }
 }
 
   /* ===== 하단 유의사항 ===== */
