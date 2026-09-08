@@ -1088,19 +1088,23 @@
   }
   /* ===== 동선안내 (오전/오후 통합 아코디언) ===== */
   .route-panel {
-    max-width: 500px;
+    max-width: 700px;
     margin: 20px auto 0;
+    background: #fff;
+    border: 1px solid #e5e0d5;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
   }
 
   .route-panel-head {
     width: 100%;
-    background-color: #f5f5f5;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    padding: 14px 18px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #333;
+    background: none;
+    border: none;
+    padding: 18px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #2a2723;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1111,7 +1115,7 @@
   .route-panel-head .arrow {
     transition: transform 0.25s;
     font-size: 12px;
-    color: #888;
+    color: #96938c;
   }
 
   .route-panel.open .route-panel-head .arrow {
@@ -1122,39 +1126,40 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background-color: #fafafa;
-    border-radius: 0 0 8px 8px;
-    padding: 0 18px;
+    padding: 0 20px;
   }
 
   .route-panel.open .route-panel-body {
-    max-height: 800px;
-    padding: 16px 18px;
+    max-height: 900px;
+    padding: 0 20px 22px;
   }
 
   .route-subtabs {
     display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
+    background: #f5f5f4;
+    border-radius: 20px;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 18px;
   }
 
   .route-subtab {
     flex: 1;
     font-family: inherit;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 800;
     color: #96938c;
-    background: #fff;
-    border: 1px solid #e5e0d5;
+    background: none;
+    border: none;
     border-radius: 16px;
-    padding: 8px 0;
+    padding: 9px 0;
     cursor: pointer;
+    transition: background 0.2s, color 0.2s;
   }
 
   .route-subtab.active {
     color: #fff;
     background-color: #4a1520;
-    border-color: #4a1520;
   }
 
   .route-block {
@@ -1167,29 +1172,34 @@
 
   /* ===== 코스 안내 =====*/
   .accordion {
-  max-width: 500px;
+  max-width: 700px;
   margin: 20px auto 0;
+  background: #fff;
+  border: 1px solid #e5e0d5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
 .accordion-toggle {
   width: 100%;
-  background-color: #f5f5f5;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  padding: 14px 18px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #333;
+  background: none;
+  border: none;
+  padding: 18px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #2a2723;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: inherit;
 }
 
 .accordion-toggle .arrow {
   transition: transform 0.25s;
   font-size: 12px;
-  color: #888;
+  color: #96938c;
 }
 
 .accordion-toggle.open .arrow {
@@ -1200,14 +1210,12 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background-color: #fafafa;
-  border-radius: 0 0 8px 8px;
-  padding: 0 18px;
+  padding: 0 20px;
 }
 
 .accordion-body.open {
-  max-height: 600px;
-  padding: 16px 18px;
+  max-height: 900px;
+  padding: 0 20px 22px;
 }
 
 .accordion-body h4,
