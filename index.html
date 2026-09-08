@@ -75,46 +75,6 @@
       text-decoration: none;
     }
 
-  @media (max-width: 640px) {
-    .nav-toggle {
-      display: block;
-    }
-
-    nav {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #333;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-      gap: 0;
-      padding: 4px 0 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-    }
-
-    nav.open {
-      display: flex;
-    }
-
-    nav a {
-      font-size: 14px;
-      padding: 12px 20px;
-      width: 100%;
-      text-align: left;
-    }
-
-    nav .kakao-btn,
-    nav .insta-btn {
-      width: calc(100% - 40px);
-      margin: 6px 20px 0;
-      text-align: center;
-    }
-  }
-
-
     .kakao-btn {
       background-color: #FEE500;
       color: #3C1E1E !important;
@@ -466,18 +426,7 @@ section {
 
   <header>
     <h1><a href="index.html" style="color:inherit; text-decoration:none;">ITALYSNAP FOTORO</a></h1>
-  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="메뉴 열기">☰</button>
-      <nav>
-        <a href="index.html">홈</a>
-        <a href="florence.html">피렌체</a>
-        <a href="tuscany.html">토스카나</a>
-        <a href="dolomites.html">돌로미티</a>
-        <a href="hairmakeup.html">헤어&메이크업</a>
-        <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="kakao-btn">카톡</a>
-        <a href="https://instagram.com/fotoro.it" target="_blank" class="insta-btn">인스타</a>
-        <a href="index-en.html" style="color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:6px;">EN</a>
-      </nav>
-  
+    <a href="index-en.html" style="color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:6px; text-decoration:none;">EN</a>
   </header>
 
   <main>
