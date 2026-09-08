@@ -1052,6 +1052,85 @@
   .extra-note strong {
     color: #111;
   }
+  /* ===== 동선안내 (오전/오후 통합 아코디언) ===== */
+  .route-panel {
+    max-width: 500px;
+    margin: 20px auto 0;
+  }
+
+  .route-panel-head {
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+  }
+
+  .route-panel-head .arrow {
+    transition: transform 0.25s;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .route-panel.open .route-panel-head .arrow {
+    transform: rotate(180deg);
+  }
+
+  .route-panel-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #fafafa;
+    border-radius: 0 0 8px 8px;
+    padding: 0 18px;
+  }
+
+  .route-panel.open .route-panel-body {
+    max-height: 800px;
+    padding: 16px 18px;
+  }
+
+  .route-subtabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .route-subtab {
+    flex: 1;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    color: #96938c;
+    background: #fff;
+    border: 1px solid #e5e0d5;
+    border-radius: 16px;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .route-subtab.active {
+    color: #fff;
+    background-color: #4a1520;
+    border-color: #4a1520;
+  }
+
+  .route-block {
+    display: none;
+  }
+
+  .route-block.active {
+    display: block;
+  }
+
   /* ===== 코스 안내 =====*/
   .accordion {
   max-width: 500px;
@@ -1097,20 +1176,23 @@
   padding: 16px 18px;
 }
 
-.accordion-body h4 {
+.accordion-body h4,
+.route-panel-body h4 {
   font-size: 12px;
   font-weight: bold;
   color: #4a1520;
   margin: 0 0 8px;
 }
 
-.accordion-body ul {
+.accordion-body ul,
+.route-panel-body ul {
   list-style: none;
   padding: 0;
   margin: 0 0 16px;
 }
 
-.accordion-body li {
+.accordion-body li,
+.route-panel-body li {
   font-size: 12px;
   color: #444;
   line-height: 1.7;
@@ -1118,14 +1200,16 @@
   position: relative;
 }
 
-.accordion-body li::before {
+.accordion-body li::before,
+.route-panel-body li::before {
   content: '-';
   position: absolute;
   left: 0;
   color: #999;
 }
 
-.accordion-body .course-block:last-child ul {
+.accordion-body .course-block:last-child ul,
+.route-panel-body .course-block:last-child ul {
   margin-bottom: 0;
 }
 
@@ -1568,31 +1652,6 @@
   </div>
 </div>
 
-<div class="accordion">
-  <button class="accordion-toggle" onclick="toggleAccordion(this)">
-    오후촬영 동선안내
-    <span class="arrow">▾</span>
-  </button>
-  <div class="accordion-body">
-    <div class="course-block">
-      <h4>2시간</h4>
-      <ul>
-        <li>시내코스: 안눈치아타 · 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
-        <li>언덕코스: 시내(두오모, 베키오 다리) + 미켈란젤로 광장</li>
-        <li>언덕 이동은 택시 우선 (15-20유로 내외)</li>
-      </ul>
-    </div>
-    <div class="course-block">
-      <h4>3시간</h4>
-      <ul>
-        <li>시내 + 언덕 촬영이 기본 (2시간 코스 + 미켈란젤로 광장)</li>
-        <li>노을타임은 도보 이동, 택시 이용 시 고객 부담 (택시비 15-20유로, 도보 30-40분)</li>
-        <li>언덕 촬영 후 시내 야경으로 마무리 선택 가능</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 </div>
 
 <!-- ===== 오전 탭 ===== -->
@@ -1769,28 +1828,53 @@
     </div>
   </div>
 
-<div class="accordion">
-  <button class="accordion-toggle" onclick="toggleAccordion(this)">
-    오전촬영 동선안내
-    <span class="arrow">▾</span>
-  </button>
-  <div class="accordion-body">
-    <div class="course-block">
-      <h4>2시간</h4>
-      <ul>
-        <li>시내코스: 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
-        <li>언덕코스: 미켈란젤로 광장 + 시내(두오모, 베키오 다리)</li>
-      </ul>
-    </div>
-    <div class="course-block">
-      <h4>3시간</h4>
-      <ul>
-        <li>언덕 시작 + 시내 이동 촬영이 기본 (미켈란젤로 광장 + 2시간 시내코스)</li>
-      </ul>
-    </div>
-  </div>
 </div>
 
+<!-- ===== 동선안내 (오전/오후 통합, 탭 공통, 항상 표시) ===== -->
+<div class="route-panel" id="routePanel">
+  <button class="route-panel-head" onclick="toggleRoutePanel()">
+    동선안내
+    <span class="arrow">▾</span>
+  </button>
+  <div class="route-panel-body">
+    <div class="route-subtabs">
+      <button type="button" class="route-subtab active" onclick="showRoute('pm', this)">오후촬영</button>
+      <button type="button" class="route-subtab" onclick="showRoute('am', this)">오전촬영</button>
+    </div>
+    <div class="route-block active" id="route-pm">
+      <div class="course-block">
+        <h4>2시간</h4>
+        <ul>
+          <li>시내코스: 안눈치아타 · 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
+          <li>언덕코스: 시내(두오모, 베키오 다리) + 미켈란젤로 광장</li>
+          <li>언덕 이동은 택시 우선 (20유로 내외)</li>
+        </ul>
+      </div>
+      <div class="course-block">
+        <h4>3시간</h4>
+        <ul>
+          <li>시내 + 언덕 촬영이 기본 (2시간 코스 + 미켈란젤로 광장)</li>
+          <li>노을타임은 도보 이동, 택시 이용 시 고객 부담 (택시비 20유로 내외, 도보 30-40분)</li>
+          <li>언덕 촬영 후 시내 야경으로 마무리 선택 가능</li>
+        </ul>
+      </div>
+    </div>
+    <div class="route-block" id="route-am">
+      <div class="course-block">
+        <h4>2시간</h4>
+        <ul>
+          <li>시내코스: 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
+          <li>언덕코스: 미켈란젤로 광장 + 시내(두오모, 베키오 다리)</li>
+        </ul>
+      </div>
+      <div class="course-block">
+        <h4>3시간</h4>
+        <ul>
+          <li>언덕 시작 + 시내 이동 촬영이 기본 (미켈란젤로 광장 + 2시간 시내코스)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== 계절 한정 상품 / 별도 안내 (탭 공통, 항상 표시) ===== -->
@@ -1849,7 +1933,8 @@
     <div class="notice-text">
       젤라또 샷, 카페 샷, 두오모 뷰 숙소 샷 등은 사전에 미리 말씀 해주시면 시간 분배 해드려서 진행 가능합니다.<br>
       (카페 및 숙소 비용은 고객님 지불) 예쁜 숙소를 예약하셨다면 한 번쯤 말씀해주세요!<br>
-      촬영 장소는 기본적인 장소 안내이며, 촬영 순서를 안내하는 것은 아닙니다.<br><br>
+      촬영 장소는 기본적인 장소 안내이며, 촬영 순서를 안내하는 것은 아닙니다.<br>
+      현지 사정에 따라 공사중인 배경이거나 촬영이 불가한 경우가 있습니다.<br><br>
       원본은 촬영일 기준 7일-14일 이내 전송이 완료 됩니다.<br>
       보정본은 요청 날짜 기준 최소 30일- 최대90일 사이에 보정이 완료 됩니다.<br>
       별도로 요청하시는 경우 2주 이내 보정본을 받아보실 수 있습니다.
@@ -1860,7 +1945,7 @@
 <div class="fine-print">
   * 상품별 시간은 이동 및 대기시간을 포함한 총 소요시간 개념입니다.<br>
   * 2인 기준 금액이며 초과시 1인당 6만원 추가비용 발생합니다.<br>
-  * 오후 2시간 촬영 언덕 이동은 택시 탑승을 기본으로 합니다. (택시비 15-20유로 내외, 고객 부담)<br>
+  * 오후 2시간 촬영 언덕 이동은 택시 탑승을 기본으로 합니다. (택시비 20유로 내외, 고객 부담)<br>
   * SNS 업로드 게시 허용시 금액이며, 한화 현금영수증 발급됩니다. 잔금 카드 결제시 수수료 5% 추가됩니다.<br>
   * 새벽, 일출 2-3시간은 언덕 시작 고정이며, 아침은 언덕, 시내(기본) 선택 가능합니다.
 </div>
@@ -2340,6 +2425,17 @@
   btn.classList.toggle('open');
   const body = btn.nextElementSibling;
   body.classList.toggle('open');
+  }
+
+  function toggleRoutePanel() {
+    document.getElementById('routePanel').classList.toggle('open');
+  }
+
+  function showRoute(tab, btn) {
+    document.querySelectorAll('.route-subtab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('route-pm').classList.toggle('active', tab === 'pm');
+    document.getElementById('route-am').classList.toggle('active', tab === 'am');
   }
 
   document.addEventListener('keydown', function(e) {
