@@ -415,40 +415,9 @@ section {
   }
 }
 
-  #app-splash {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: #f4f1ea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.25s ease;
-  }
-
-  #app-splash img {
-    width: 152px;
-    height: 152px;
-    border-radius: 34px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  }
-
-  #app-splash.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
   </style>
 </head>
 <body>
-
-  <div id="app-splash">
-    <img src="images/favicon.png" alt="">
-  </div>
-  <script>
-    setTimeout(function() {
-      document.getElementById('app-splash').classList.add('hide');
-    }, 250);
-  </script>
 
   <header>
     <h1><a href="index.html" style="color:inherit; text-decoration:none;">ITALYSNAP FOTORO</a></h1>
