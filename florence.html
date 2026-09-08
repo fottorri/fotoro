@@ -1089,7 +1089,7 @@
   /* ===== 동선안내 (오전/오후 통합 아코디언) ===== */
   .route-panel {
     max-width: 700px;
-    margin: 20px auto 0;
+    margin: 20px 14px 0;
     background: #fff;
     border: 1px solid #e5e0d5;
     border-radius: 12px;
@@ -1097,12 +1097,18 @@
     overflow: hidden;
   }
 
+  @media (min-width: 729px) {
+    .route-panel {
+      margin: 20px auto 0;
+    }
+  }
+
   .route-panel-head {
     width: 100%;
     background: none;
     border: none;
-    padding: 18px 20px;
-    font-size: 14px;
+    padding: 16px 18px;
+    font-size: 13px;
     font-weight: 800;
     color: #2a2723;
     cursor: pointer;
@@ -1136,29 +1142,35 @@
 
   .route-subtabs {
     display: flex;
-    background: #f5f5f4;
-    border-radius: 20px;
-    padding: 4px;
-    gap: 4px;
+    gap: 22px;
+    border-bottom: 1px solid #e5e0d5;
     margin-bottom: 18px;
   }
 
   .route-subtab {
-    flex: 1;
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
     color: #96938c;
     background: none;
     border: none;
-    border-radius: 16px;
-    padding: 9px 0;
+    padding: 0 0 10px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    position: relative;
+    transition: color 0.2s;
   }
 
   .route-subtab.active {
-    color: #fff;
+    color: #4a1520;
+  }
+
+  .route-subtab.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
     background-color: #4a1520;
   }
 
@@ -1173,7 +1185,7 @@
   /* ===== 코스 안내 =====*/
   .accordion {
   max-width: 700px;
-  margin: 20px auto 0;
+  margin: 20px 14px 0;
   background: #fff;
   border: 1px solid #e5e0d5;
   border-radius: 12px;
@@ -1181,12 +1193,18 @@
   overflow: hidden;
 }
 
+@media (min-width: 729px) {
+  .accordion {
+    margin: 20px auto 0;
+  }
+}
+
 .accordion-toggle {
   width: 100%;
   background: none;
   border: none;
-  padding: 18px 20px;
-  font-size: 14px;
+  padding: 16px 18px;
+  font-size: 13px;
   font-weight: 800;
   color: #2a2723;
   cursor: pointer;
@@ -1226,6 +1244,29 @@
   margin: 0 0 8px;
 }
 
+.route-panel-body .course-block h4 {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background-color: #4a1520;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin: 0 0 12px;
+}
+
+.route-panel-body .course-block {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed #e5e0d5;
+}
+
+.route-panel-body .course-block:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
 .accordion-body ul,
 .route-panel-body ul {
   list-style: none;
@@ -1238,16 +1279,21 @@
   font-size: 12px;
   color: #444;
   line-height: 1.7;
-  padding-left: 12px;
+  padding-left: 14px;
   position: relative;
 }
 
 .accordion-body li::before,
 .route-panel-body li::before {
-  content: '-';
+  content: '•';
   position: absolute;
   left: 0;
-  color: #999;
+  color: #c9a0a8;
+  font-weight: 800;
+}
+
+.route-panel-body li strong {
+  color: #4a1520;
 }
 
 .accordion-body .course-block:last-child ul,
@@ -1257,18 +1303,28 @@
 
 /* ===== 시즌 한정 상품 / 별도 안내 ===== */
 .accordion-body .season-warn-wrap {
-  text-align: center;
-  margin: -4px 0 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdf1de;
+  border: 1px solid #e0a940;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 0 0 18px;
+}
+
+.accordion-body .season-warn-wrap::before {
+  content: '⚠️';
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .accordion-body .season-warn {
-  display: inline-block;
-  padding: 4px 10px;
-  background-color: #fdecea;
-  color: #c0392b;
+  color: #7a4e0a;
   font-size: 10px;
-  font-weight: bold;
-  border-radius: 20px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .accordion-body .info-grid {
@@ -1281,52 +1337,77 @@
 
 .accordion-body .info-col {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: #fff;
   border: 1px solid #e5e0d5;
   border-radius: 10px;
-  padding: 12px 10px 10px;
+  padding: 16px 12px 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.accordion-body .info-col h5 {
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0 0 6px;
-  padding-bottom: 6px;
-  border-bottom: 1px dashed rgba(0,0,0,0.12);
-  color: #333;
+.accordion-body .info-tag {
+  align-self: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
 }
 
-.accordion-body .info-col.orange h5 { color: #c77d1f; }
-.accordion-body .info-col.purple h5 { color: #7b4fa3; }
+.accordion-body .info-col.orange .info-tag { background: #f5e8c2; color: #7a6420; }
+.accordion-body .info-col.purple .info-tag { background: #e3d9f0; color: #5a3f80; }
+
+.accordion-body .info-col h5 {
+  font-size: 13px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #2a2723;
+}
 
 .accordion-body .info-col p {
   font-size: 11px;
-  color: #555;
+  color: #7c7562;
   line-height: 1.6;
   margin: 0 0 5px;
 }
 
+.accordion-body .info-col .info-rule {
+  border: none;
+  border-top: 1px dashed #e5e0d5;
+  margin: 8px 0;
+}
+
 .accordion-body .info-col .info-price {
-  display: inline-block;
-  margin-top: 4px;
-  padding: 4px 12px;
+  align-self: center;
+  margin-top: auto;
+  padding: 8px 0;
+  width: 100%;
   background-color: #4a1520;
   color: #fff;
-  font-size: 11.5px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 800;
   border-radius: 20px;
 }
 
 .accordion-body .info-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 12px;
-  font-weight: bold;
-  color: #4a1520;
-  text-align: center;
-  margin: 14px 0 8px;
-  padding-top: 10px;
-  border-top: 1px dashed rgba(0,0,0,0.12);
+  font-weight: 800;
+  color: #2a2723;
+  margin: 22px 0 14px;
+}
+
+.accordion-body .info-title::before,
+.accordion-body .info-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e0d5;
 }
 
 .accordion-body .notice-text {
@@ -1336,24 +1417,92 @@
   text-align: center;
 }
 
+.notes-section {
+  max-width: 700px;
+  margin: 20px 14px 0;
+  background: #fff;
+  border: 1px solid #e5e0d5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 18px 20px 6px;
+}
+
+@media (min-width: 729px) {
+  .notes-section {
+    margin: 20px auto 0;
+  }
+}
+
+.notes-heading {
+  font-size: 13px;
+  font-weight: 800;
+  color: #2a2723;
+  margin: 0 0 4px;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.note-item + .note-item {
+  border-top: 1px dashed #e5e0d5;
+}
+
+.note-item .note-ico {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fdecea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.note-item .note-body p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #2a2723;
+}
+
+.note-item .note-body p.muted {
+  color: #96938c;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.note-item .note-body strong {
+  color: #4a1520;
+}
+
 .accordion-body .info-desc {
-  font-size: 10px;
-  color: #555;
+  font-size: 11px;
+  color: #7c7562;
   line-height: 1.6;
-  padding-bottom: 6px;
-  margin-bottom: 6px;
-  border-bottom: 1px dashed rgba(0,0,0,0.15);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #e5e0d5;
 }
 
 .accordion-body .info-price-list {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-top: auto;
 }
 
 .accordion-body .info-price-row {
-  font-size: 10px;
-  color: #333;
+  font-size: 11px;
+  color: #2a2723;
   font-weight: bold;
   line-height: 1.6;
 }
@@ -1369,7 +1518,7 @@
     max-width: 1100px;
     margin: 16px auto 0;
     padding: 0 20px 60px;
-    font-size: 12px;
+    font-size: 11.5px;
     color: #888;
     line-height: 2;
   }
@@ -1882,8 +2031,8 @@
       <div class="course-block">
         <h4>2시간</h4>
         <ul>
-          <li>시내코스: 안눈치아타 · 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
-          <li>언덕코스: 시내(두오모, 베키오 다리) + 미켈란젤로 광장</li>
+          <li><strong>시내코스:</strong> 안눈치아타 · 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
+          <li><strong>언덕코스:</strong> 시내(두오모, 베키오 다리) + 미켈란젤로 광장</li>
           <li>언덕 이동은 택시 우선 (20유로 내외)</li>
         </ul>
       </div>
@@ -1900,8 +2049,8 @@
       <div class="course-block">
         <h4>2시간</h4>
         <ul>
-          <li>시내코스: 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
-          <li>언덕코스: 미켈란젤로 광장 + 시내(두오모, 베키오 다리)</li>
+          <li><strong>시내코스:</strong> 두오모 · 레푸블리카 · 베키오 다리 · 아르노 강변 · 골목길 · 시뇨리아 등</li>
+          <li><strong>언덕코스:</strong> 미켈란젤로 광장 + 시내(두오모, 베키오 다리)</li>
         </ul>
       </div>
       <div class="course-block">
@@ -1922,25 +2071,29 @@
   </button>
   <div class="accordion-body">
     <div class="season-warn-wrap">
-      <span class="season-warn">다른 계절은 진행 불가해요. 물어보셔도 안돼요!</span>
+      <span class="season-warn">다른 계절은 진행 불가해요 — 문의 주셔도 안내드리기 어려워요</span>
     </div>
 
     <div class="info-grid">
       <div class="info-col orange">
-        <h5>낮 1시간 (일몰 x)</h5>
+        <span class="info-tag">☀️ 낮 · 일몰 X</span>
+        <h5>낮 1시간</h5>
         <p>11시-14시 촬영 고정<br>가능한시간 별도안내</p>
+        <hr class="info-rule">
         <p>원본 600장 내외, 보정본 5장</p>
         <div class="info-price">완납 43만원</div>
       </div>
       <div class="info-col purple">
-        <h5>피렌체 시내 야간 1시간</h5>
+        <span class="info-tag">🌙 피렌체 시내 야간</span>
+        <h5>야간 1시간</h5>
         <p>18시-22시 사이 촬영 고정<br>가능한 시간 별도 안내</p>
+        <hr class="info-rule">
         <p>원본 400장 내외, 보정본 5장</p>
         <div class="info-price">완납 38만원</div>
       </div>
     </div>
 
-    <div class="info-title">솔로스냅 및 대학생 할인(대학원생 x)</div>
+    <div class="info-title">솔로스냅 · 대학생 할인 (대학원생 제외)</div>
 
     <div class="info-grid">
       <div class="info-col">
@@ -1961,20 +2114,35 @@
   </div>
 </div>
 
-<div class="accordion">
-  <button class="accordion-toggle" onclick="toggleAccordion(this)">
-    별도 안내
-    <span class="arrow">▾</span>
-  </button>
-  <div class="accordion-body">
-    <div class="notice-text">
-      젤라또 샷, 카페 샷, 두오모 뷰 숙소 샷 등은 사전에 미리 말씀 해주시면 시간 분배 해드려서 진행 가능합니다.<br>
-      (카페 및 숙소 비용은 고객님 지불) 예쁜 숙소를 예약하셨다면 한 번쯤 말씀해주세요!<br>
-      촬영 장소는 기본적인 장소 안내이며, 촬영 순서를 안내하는 것은 아닙니다.<br>
-      현지 사정에 따라 공사중인 배경이거나 촬영이 불가한 경우가 있습니다.<br><br>
-      원본은 촬영일 기준 7일-14일 이내 전송이 완료 됩니다.<br>
-      보정본은 요청 날짜 기준 최소 30일- 최대90일 사이에 보정이 완료 됩니다.<br>
-      별도로 요청하시는 경우 2주 이내 보정본을 받아보실 수 있습니다.
+<div class="notes-section">
+  <h2 class="notes-heading">별도 안내</h2>
+  <div class="notes-list">
+    <div class="note-item">
+      <span class="note-ico">🍦</span>
+      <div class="note-body">
+        <p>젤라또·카페·두오모 뷰 숙소 샷은 사전에 말씀해주시면 시간 분배해서 진행 가능해요.</p>
+        <p class="muted">카페·숙소 비용은 고객님 부담 — 예쁜 숙소 예약하셨다면 미리 알려주세요!</p>
+      </div>
+    </div>
+    <div class="note-item">
+      <span class="note-ico">🗺️</span>
+      <div class="note-body">
+        <p>촬영 장소는 기본적인 장소 안내이며, 촬영 순서를 안내하는 것은 아니에요.</p>
+        <p class="muted">현지 사정에 따라 공사중인 배경이거나 촬영이 불가한 경우가 있습니다.</p>
+      </div>
+    </div>
+    <div class="note-item">
+      <span class="note-ico">📦</span>
+      <div class="note-body">
+        <p>원본은 촬영일 기준 <strong>7-14일 이내</strong> 전송 완료돼요.</p>
+      </div>
+    </div>
+    <div class="note-item">
+      <span class="note-ico">🎨</span>
+      <div class="note-body">
+        <p>보정본은 요청일 기준 <strong>최소 30일 ~ 최대 90일</strong> 사이에 완료돼요.</p>
+        <p class="muted">별도 요청 시 2주 이내로도 받아보실 수 있어요.</p>
+      </div>
     </div>
   </div>
 </div>
