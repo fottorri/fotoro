@@ -445,14 +445,14 @@
   .option-card .badge {
     position: absolute;
     top: 0;
-    left: 20%;
-    transform: translate(-50%, -50%);
+    left: 10px;
+    transform: translateY(-50%);
     background-color: #8c3149;
     color: #fff;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 4px 12px;
+    letter-spacing: 0.3px;
+    padding: 4px 10px;
     border-radius: 20px;
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -461,14 +461,14 @@
   .option-card .badge-heme {
     position: absolute;
     top: 0;
-    left: 80%;
-    transform: translate(-50%, -50%);
+    right: 10px;
+    transform: translateY(-50%);
     background-color: #8a7550;
     color: #fff;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 4px 12px;
+    letter-spacing: 0.3px;
+    padding: 4px 10px;
     border-radius: 20px;
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -1373,7 +1373,7 @@
     heme: ['One hair & makeup session each (bride & groom)'],
     package: ['One hair & makeup session each (bride & groom)', 'Includes 1 dress rental'],
   };
-  const ADDON_BADGE = { heme: 'Makeup Included', package: 'Makeup + Dress Included' };
+  const ADDON_BADGE = { heme: 'Makeup Included', package: 'HMU + Dress Incl.' };
 
   let addonMode = 'none'; // 'none' | 'heme' | 'package'
 
