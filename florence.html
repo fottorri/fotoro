@@ -2108,12 +2108,16 @@
   // Full labels like "20:00 ~ 21:00 (1h)" don't fit inside a narrow bar
   // (e.g. a lone 1h segment). Shrink the label to match the bar's width
   // instead of letting it get clipped.
+  function shortTime(t) {
+    return t.endsWith(':00') ? t.slice(0, 2) : t;
+  }
+
   function fitLabel(text, width) {
     const m = text.match(/^(\d{2}:\d{2}) ~ (\d{2}:\d{2}) \((\d)h\)$/);
     if (!m) return text;
     const [, start, end, hours] = m;
     if (width >= 30) return text;
-    if (width >= 12) return `${start}~${end}`;
+    if (width >= 12) return `${shortTime(start)}-${shortTime(end)} (${hours}h)`;
     return `${hours}h`;
   }
 
