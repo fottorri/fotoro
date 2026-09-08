@@ -745,6 +745,46 @@
     50% { opacity: 0.3; }
   }
 
+  /* ===== 가격 비교용 칩 스트립 ===== */
+  .price-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    max-width: 700px;
+    margin: 0 auto 14px;
+  }
+
+  .price-chip {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #7c7562;
+    background: #fff;
+    border: 1px solid #e5e0d5;
+    border-radius: 10px;
+    padding: 8px 3px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .price-chip.on {
+    border-color: #4a1520;
+    background: #fdecea;
+    color: #4a1520;
+  }
+
+  @media (max-width: 480px) {
+    .price-strip {
+      gap: 4px;
+    }
+    .price-chip {
+      font-size: 10px;
+      padding: 7px 2px;
+    }
+  }
+
   .option-card .option-price {
     font-size: 12px;
     font-weight: bold;
@@ -1445,6 +1485,8 @@
     </div>
   </div>
 
+  <div class="price-strip" id="chips-carousel-afternoon"></div>
+
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-afternoon">
       <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
@@ -1643,6 +1685,8 @@
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
     </div>
   </div>
+
+  <div class="price-strip" id="chips-carousel-morning"></div>
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-morning">
@@ -1932,6 +1976,14 @@
 
   function updateTimelineHighlight(carouselId, index) {
     const tab = carouselId === 'carousel-afternoon' ? 'afternoon' : 'morning';
+
+    const chipsWrap = document.getElementById('chips-' + carouselId);
+    if (chipsWrap) {
+      chipsWrap.querySelectorAll('.price-chip').forEach((chip, i) => {
+        chip.classList.toggle('on', i === index);
+      });
+    }
+
     const config = timelineMap[tab] && timelineMap[tab][index];
     if (!config) return;
 
@@ -2185,6 +2237,26 @@
   updateAllPrices();
   updateTabIndicators();
   window.addEventListener('resize', updateTabIndicators);
+
+  function buildChips(id) {
+    const wrap = document.getElementById(id);
+    const chipsWrap = document.getElementById('chips-' + id);
+    if (!wrap || !chipsWrap) return;
+    const cards = wrap.querySelectorAll('.option-card:not(.clone)');
+    chipsWrap.innerHTML = '';
+    cards.forEach((card, i) => {
+      const name = card.querySelector('.option-name').textContent.replace(/시간/g, 'H');
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'price-chip';
+      chip.textContent = name;
+      chip.onclick = () => setActiveCard(id, i);
+      chipsWrap.appendChild(chip);
+    });
+  }
+
+  buildChips('carousel-afternoon');
+  buildChips('carousel-morning');
 
   initCarousel('carousel-afternoon', 1);
   initCarousel('carousel-morning', 2);
