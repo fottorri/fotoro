@@ -377,6 +377,68 @@
     margin-bottom: 18px;
   }
 
+  .warn-banner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+    background: #fdf1de;
+    border: 1px solid #e0a940;
+    border-radius: 9px;
+    padding: 11px 13px;
+    margin-bottom: 14px;
+  }
+
+  .warn-banner .icon {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .warn-banner .msg {
+    font-size: .78rem;
+    line-height: 1.55;
+    color: #7a4e0a;
+  }
+
+  .check-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+  }
+
+  .check-select {
+    font-family: inherit;
+    font-size: .76rem;
+    font-weight: 700;
+    color: #2a2723;
+    background: #f5f5f5;
+    border: 1px solid #e5e0d5;
+    border-radius: 8px;
+    padding: 7px 8px;
+  }
+
+  .check-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #4a3f2b;
+    color: #fff;
+    font-family: inherit;
+    font-size: .76rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  }
+
+  .check-btn:hover {
+    filter: brightness(1.06);
+  }
+
   .timeline-axis,
   .timeline-row {
     display: flex;
@@ -1313,7 +1375,16 @@
   </div>
 
   <div class="timeline-card">
-    <div class="timeline-caption">예시 시간 · 일몰 20:00 기준 (실제 시간은 계절마다 다름)</div>
+    <div class="warn-banner">
+      <span class="icon">⚠️</span>
+      <span class="msg">20:00 일몰 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담시 안내드립니다.</span>
+    </div>
+
+    <div class="check-row">
+      <select class="check-select" id="tlPmSelYear"></select>
+      <select class="check-select" id="tlPmSelMonth"></select>
+      <a class="check-btn" id="tlPmCheckBtn" href="https://www.timeanddate.com/sun/italy/firenze" target="_blank" rel="noopener">🔗 일몰시간 확인하기</a>
+    </div>
 
     <div class="timeline-axis">
       <div class="tl-label"></div>
@@ -1486,7 +1557,16 @@
   </div>
 
   <div class="timeline-card">
-    <div class="timeline-caption">예시 시간 · 일출 06:00 / 일몰 20:00 기준 (실제 시간은 계절마다 다름)</div>
+    <div class="warn-banner">
+      <span class="icon">⚠️</span>
+      <span class="msg">06:00 일출 / 20:00 일몰 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담시 안내드립니다.</span>
+    </div>
+
+    <div class="check-row">
+      <select class="check-select" id="tlAmSelYear"></select>
+      <select class="check-select" id="tlAmSelMonth"></select>
+      <a class="check-btn" id="tlAmCheckBtn" href="https://www.timeanddate.com/sun/italy/firenze" target="_blank" rel="noopener">🔗 일출·일몰시간 확인하기</a>
+    </div>
 
     <div class="timeline-axis">
       <div class="tl-label"></div>
@@ -2178,7 +2258,43 @@
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
-  
+
+  function setupSunCheck(selYearId, selMonthId, btnId) {
+    const selYear = document.getElementById(selYearId);
+    const selMonth = document.getElementById(selMonthId);
+    const btn = document.getElementById(btnId);
+    if (!selYear || !selMonth || !btn) return;
+
+    const now = new Date();
+    const curY = now.getFullYear();
+    const curM = now.getMonth() + 1;
+
+    for (let y = curY; y <= curY + 2; y++) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y + '년';
+      if (y === curY) opt.selected = true;
+      selYear.appendChild(opt);
+    }
+    for (let m = 1; m <= 12; m++) {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m + '월';
+      if (m === curM) opt.selected = true;
+      selMonth.appendChild(opt);
+    }
+
+    function updateLink() {
+      btn.href = `https://www.timeanddate.com/sun/italy/firenze?month=${selMonth.value}&year=${selYear.value}`;
+    }
+    selYear.addEventListener('change', updateLink);
+    selMonth.addEventListener('change', updateLink);
+    updateLink();
+  }
+
+  setupSunCheck('tlPmSelYear', 'tlPmSelMonth', 'tlPmCheckBtn');
+  setupSunCheck('tlAmSelYear', 'tlAmSelMonth', 'tlAmCheckBtn');
+
 </script>
 
 </body>
