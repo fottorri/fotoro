@@ -657,9 +657,9 @@
     border-radius: 14px;
     padding: 24px 18px;
     text-align: center;
-    background-color: #ece9e1;
+    background-color: #f2f1ee;
     color: #5c574d;
-    border: 1px solid #ddd7c8;
+    border: 1px solid #e5e3dd;
     transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     padding-top: 30px;
@@ -668,7 +668,7 @@
   }
 
   .option-card:not(.active):hover {
-    background-color: #e1dccc;
+    background-color: #e8e6e1;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(28,26,25,0.12);
   }
@@ -828,6 +828,24 @@
     border-top: 1px dashed rgba(0,0,0,0.15);
   }
 
+  .option-card .option-price .deposit {
+    font-size: 13px;
+    font-weight: 800;
+    color: #4a1520;
+  }
+
+  .option-card.active .option-price .deposit {
+    color: #4a1520;
+  }
+
+  .option-card .option-price .balance {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #96938c;
+    margin-top: 2px;
+  }
+
   .option-card.active .option-price {
     border-top: 1px dashed rgba(0,0,0,0.15);
   }
@@ -863,7 +881,7 @@
   }
 
   .option-card .option-name {
-    font-size: 13.5px;
+    font-size: 14.5px;
     font-weight: bold;
     margin-bottom: 8px;
     margin-top: 4px;
@@ -2105,20 +2123,14 @@
     ]
   };
 
-  // Full labels like "20:00 ~ 21:00 (1h)" don't fit inside a narrow bar
-  // (e.g. a lone 1h segment). Shrink the label to match the bar's width
-  // instead of letting it get clipped.
-  function shortTime(t) {
-    return t.endsWith(':00') ? t.slice(0, 2) : t;
-  }
-
-  function fitLabel(text, width) {
-    const m = text.match(/^(\d{2}:\d{2}) ~ (\d{2}:\d{2}) \((\d)h\)$/);
+  // On mobile the bar just shows the plain duration ("2h") — the exact
+  // start/end times live in the tl-range summary line under the track.
+  // Desktop/tablet has room to show the full time range on the bar itself.
+  function fitLabel(text) {
+    const m = text.match(/\((\d)h\)$/);
     if (!m) return text;
-    const [, start, end, hours] = m;
-    if (width >= 30) return text;
-    if (width >= 12) return `${shortTime(start)}-${shortTime(end)} (${hours}h)`;
-    return `${hours}h`;
+    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+    return isDesktop ? text : `${m[1]}h`;
   }
 
   function applyRowGeom(idA, idB, config) {
@@ -2156,7 +2168,15 @@
     const summary = TIME_SUMMARY[tab] && TIME_SUMMARY[tab][index];
     const rangeEl = document.getElementById(tab === 'afternoon' ? 'tl-pm-range' : 'tl-am-range');
     if (summary && rangeEl) {
-      rangeEl.innerHTML = `<b>${summary.start}</b> 시작 · <b>${summary.end}</b> 종료 (총 ${summary.hours}시간)`;
+      let html = `<b>${summary.start}</b> 시작 · <b>${summary.end}</b> 종료 (총 ${summary.hours}시간)`;
+      // On mobile the side-by-side 야경 addon box doesn't fit well, so fold
+      // that info into this summary line instead (일출/아침 카드에만 해당).
+      const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+      const hasNightAddon = tab === 'morning' && (activeCategory === 'sunrise' || activeCategory === 'morning');
+      if (!isDesktop && hasNightAddon) {
+        html += ` · <b>21:00</b> 야경 20분 시작`;
+      }
+      rangeEl.innerHTML = html;
     }
 
     const config = timelineMap[tab] && timelineMap[tab][index];
@@ -2375,7 +2395,7 @@
       wrap.querySelectorAll('.option-card').forEach(card => {
         const info = cardInfo(card, tab);
         const [l1, l2] = priceLines(info);
-        card.querySelector('.option-price').innerHTML = `${l1}<br>${l2}`;
+        card.querySelector('.option-price').innerHTML = `<span class="deposit">${l1}</span><span class="balance">${l2}</span>`;
 
         const slot = card.querySelector('.discount-slot');
         slot.innerHTML = (addonMode === 'package' && info.hours === 3)
