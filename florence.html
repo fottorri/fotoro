@@ -2113,7 +2113,7 @@
     if (!m) return text;
     const [, start, end, hours] = m;
     if (width >= 30) return text;
-    if (width >= 18) return `${start}~${end}`;
+    if (width >= 12) return `${start}~${end}`;
     return `${hours}h`;
   }
 
