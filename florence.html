@@ -142,8 +142,10 @@
 
 
 
-  .accordion-toggle:hover {
-    background-color: #ececec;
+  @media (hover: hover) {
+    .accordion-toggle:hover {
+      background-color: #ececec;
+    }
   }
 
   .carousel-arrow:hover {
@@ -1297,29 +1299,22 @@
 }
 
 /* ===== 시즌 한정 상품 / 별도 안내 ===== */
-.accordion-body .season-warn-wrap {
+.accordion-body .season-warn {
   display: flex;
-  gap: 8px;
   align-items: center;
   justify-content: center;
-  background-color: #fdf1de;
-  border: 1px solid #e0a940;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin: 0 0 18px;
+  gap: 6px;
+  color: #b5560a;
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: center;
+  margin: 4px 0 20px;
 }
 
-.accordion-body .season-warn-wrap::before {
+.accordion-body .season-warn::before {
   content: '⚠️';
-  font-size: 13px;
-  flex-shrink: 0;
-}
-
-.accordion-body .season-warn {
-  color: #7a4e0a;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: 12px;
 }
 
 .accordion-body .info-grid {
@@ -2080,9 +2075,7 @@
     <span class="arrow">▾</span>
   </button>
   <div class="accordion-body">
-    <div class="season-warn-wrap">
-      <span class="season-warn">다른 계절은 진행 불가해요 — 문의 주셔도 안내드리기 어려워요</span>
-    </div>
+    <p class="season-warn">다른 계절은 진행 불가해요 — 문의 주셔도 안내드리기 어려워요</p>
 
     <div class="info-grid">
       <div class="info-col orange">
