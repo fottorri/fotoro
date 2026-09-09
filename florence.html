@@ -142,12 +142,6 @@
 
 
 
-  @media (hover: hover) {
-    .accordion-toggle:hover {
-      background-color: #ececec;
-    }
-  }
-
   .carousel-arrow:hover {
     color: #000;
   }
@@ -301,6 +295,7 @@
     flex-shrink: 0;
     overflow: hidden;
     margin: 0 auto;
+    cursor: pointer;
     -webkit-user-drag: none;
     user-select: none;
   }
@@ -2707,6 +2702,18 @@
 
   startTimer();
 
+  wrap.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  let justSwiped = false;
+
+  wrap.addEventListener('click', (e) => {
+    if (justSwiped) { justSwiped = false; return; }
+    const rect = wrap.getBoundingClientRect();
+    const clickedLeftHalf = (e.clientX - rect.left) < rect.width / 2;
+    showSlide(current + (clickedLeftHalf ? -1 : 1));
+    startTimer();
+  });
+
   let touchStartX = 0;
 
   wrap.addEventListener('touchstart', (e) => {
@@ -2718,6 +2725,7 @@
     const diff = touchStartX - touchEndX;
 
     if (Math.abs(diff) > 40) {
+      justSwiped = true;
       if (diff > 0) {
         showSlide(current + 1);
       } else {
