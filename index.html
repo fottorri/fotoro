@@ -31,41 +31,29 @@
     header {
     background-color: #333;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 16px 12px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    gap: 8px;
+    gap: 6px;
     position: sticky;
     top: 0;
     z-index: 1000;
   }
 
   header h1 {
-    font-size: 18px;
+    font-size: 17px;
     margin: 0;
     letter-spacing: 1px;
-  }
-
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 22px;
-    line-height: 1;
-    padding: 4px 6px;
-    cursor: pointer;
+    white-space: nowrap;
   }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px 10px;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
     }
 
     nav a {
@@ -73,6 +61,44 @@
       font-size: 12px;
       white-space: nowrap;
       text-decoration: none;
+    }
+
+    .lang-btn {
+      color: #fff;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 8px 10px 10px;
+        gap: 5px;
+      }
+
+      header h1 {
+        font-size: 14px;
+      }
+
+      nav {
+        gap: 5px 6px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .kakao-btn,
+      .insta-btn {
+        padding: 5px 8px;
+      }
+
+      .lang-btn {
+        font-size: 10px;
+        padding: 3px 6px;
+      }
     }
 
     .kakao-btn {
@@ -421,7 +447,16 @@ section {
 
   <header>
     <h1><a href="index.html" style="color:inherit; text-decoration:none;">ITALYSNAP FOTORO</a></h1>
-    <a href="index-en.html" style="color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:6px; text-decoration:none;">EN</a>
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="florence.html">피렌체</a>
+      <a href="tuscany.html">토스카나</a>
+      <a href="dolomites.html">돌로미티</a>
+      <a href="hairmakeup.html">헤어&메이크업</a>
+      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="kakao-btn">카톡</a>
+      <a href="https://instagram.com/fotoro.it" target="_blank" class="insta-btn">인스타</a>
+      <a href="index-en.html" class="lang-btn">EN</a>
+    </nav>
   </header>
 
   <main>
