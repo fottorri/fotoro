@@ -396,6 +396,27 @@
     color: #7a4e0a;
   }
 
+  .timeline-chart {
+    position: relative;
+  }
+
+  .example-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+    z-index: 4;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: rgba(180, 110, 20, 0.16);
+    transform: rotate(-16deg);
+    white-space: nowrap;
+  }
+
   .check-row {
     display: flex;
     justify-content: center;
@@ -834,7 +855,7 @@
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: #96938c;
+    color: #222;
     margin-top: 2px;
   }
 
@@ -1709,7 +1730,7 @@
   <div class="timeline-card">
     <div class="warn-banner">
       <span class="icon">⚠️</span>
-      <span class="msg">일몰 20:00 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담 시 안내드립니다.</span>
+      <span class="msg"><strong>예시 화면입니다.</strong> 일몰 20:00 기준이며, 실제 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담 시 안내드립니다.</span>
     </div>
 
     <div class="check-row">
@@ -1717,6 +1738,9 @@
       <select class="check-select" id="tlPmSelMonth"></select>
       <a class="check-btn" id="tlPmCheckBtn" href="https://www.timeanddate.com/sun/italy/firenze" target="_blank" rel="noopener">🔗 일몰시간 확인하기</a>
     </div>
+
+    <div class="timeline-chart">
+    <div class="example-watermark" aria-hidden="true">예시</div>
 
     <div class="timeline-axis">
       <div class="tl-label"></div>
@@ -1754,6 +1778,7 @@
         <div class="tl-seg" id="tl-pm-sunset-2h" style="left:33.3%; width:44.4%; background:#eccb92; color:#8a5a15; border-radius:8px 0 0 8px;">2h</div>
         <div class="tl-seg" id="tl-pm-sunset-3h" style="left:77.8%; width:22.2%; background:#cabfe0; color:#4a3f70; border-radius:0 8px 8px 0;">3h</div>
       </div>
+    </div>
     </div>
 
     <div class="tl-range" id="tl-pm-range"></div>
@@ -1867,7 +1892,7 @@
   <div class="timeline-card">
     <div class="warn-banner">
       <span class="icon">⚠️</span>
-      <span class="msg">일출 06:00 기준 예시이며 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담 시 안내드립니다.</span>
+      <span class="msg"><strong>예시 화면입니다.</strong> 일출 06:00 기준이며, 실제 날짜별 시간은 아래 버튼으로 확인 가능하고 촬영시간은 상담 시 안내드립니다.</span>
     </div>
 
     <div class="check-row">
@@ -1875,6 +1900,9 @@
       <select class="check-select" id="tlAmSelMonth"></select>
       <a class="check-btn" id="tlAmCheckBtn" href="https://www.timeanddate.com/sun/italy/firenze" target="_blank" rel="noopener">🔗 일출시간 확인하기</a>
     </div>
+
+    <div class="timeline-chart">
+    <div class="example-watermark" aria-hidden="true">예시</div>
 
     <div class="timeline-axis">
       <div class="tl-label"></div>
@@ -1897,7 +1925,7 @@
         <div class="tl-line" style="left:46.2%;"></div>
         <div class="tl-line" style="left:53.8%;"></div>
         <div class="tl-line" style="left:61.5%;"></div>
-        <div class="tl-seg" id="tl-am-dawn-a" style="left:0%; width:15.4%; background:#d4c2e8; color:#4a2f66; border-radius:8px 0 0 8px;">05:00 ~ 06:00 (1h)</div>
+        <div class="tl-seg" id="tl-am-dawn-a" style="left:0%; width:15.4%; background:#d4c2e8; color:#4a2f66; border-radius:8px 0 0 8px;">1h</div>
         <div class="tl-seg" id="tl-am-dawn-b" style="left:15.4%; width:30.8%; background:#e6dcf0; color:#4a2f66; border-radius:0 8px 8px 0;">06:00 ~ 08:00 (2h)</div>
       </div>
       <div class="tl-break">⁄⁄</div>
@@ -1930,6 +1958,7 @@
       </div>
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon">21:00~<br>야경 20분</div>
+    </div>
     </div>
 
     <div class="tl-range" id="tl-am-range"></div>
