@@ -1722,7 +1722,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 .choice-row{display:flex; flex-wrap:wrap; gap:5px; align-items:center;}
 .choice-btn{padding:8px 14px; border-radius:999px; border:1px solid var(--iq-border-light); background:#fff; color:var(--iq-muted); font-size:12.5px; font-weight:700; cursor:pointer;}
 .choice-btn.active{background:var(--iq-accent); border-color:var(--iq-accent); color:#fff;}
-.choice-btn.tight{padding:6px 10px; font-size:11px;}
+.choice-btn.tight{padding:5px 8px; font-size:10px;}
 .field-input.inline{flex:1; min-width:110px; width:auto;}
 .cal-widget{border:1px solid var(--iq-border-light); border-radius:10px; padding:8px; background:#fff;}
 .cal-head{display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:6px;}
@@ -2909,15 +2909,15 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   // ===== 카카오톡 문의 버튼 + 모달 =====
   const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_Gxdxnwxj';
-  const INQUIRY_TITLE = '[문의] 피렌체스냅';
+  const INQUIRY_TITLE = '[이탈리아스냅 문의]';
   const INQUIRY_PEOPLE = ['2명', '3명 이상', '1명'];
   const INQUIRY_LOCATIONS = ['피렌체', '토스카나', '돌로미티'];
   const INQUIRY_DEFAULT_LOCATION = '피렌체';
   const INQUIRY_PRODUCT_GROUPS = [
-    { key:'morning', label:'오전', items:['새벽 3h', '일출 3h', '일출 2h', '아침 2h', '아침 3h'] },
-    { key:'afternoon', label:'오후', items:['낮 2h', '일몰 2h', '일몰+야경 3h', '일몰 3h', '일몰+야경 2h'] }
+    { key:'morning', label:'오전', items:['새벽', '일출', '아침'] },
+    { key:'afternoon', label:'오후', items:['낮', '일몰', '일몰+야경'] }
   ];
-  const INQUIRY_SEASONAL_PRODUCT = { name:'일몰+야경 2h', startMD:'06-10', endMD:'07-20' };
+  const INQUIRY_DURATIONS = ['1시간', '2시간', '3시간'];
 
   const inquiryNow = new Date();
   const inquiryState = {
@@ -2925,24 +2925,22 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     inquiry:{
       name:'', dates:[], calY: inquiryNow.getFullYear(), calM: inquiryNow.getMonth(),
       location: INQUIRY_DEFAULT_LOCATION, customLocation:'',
-      products:[], addon:'',
+      products:[], durations:[], addon:'',
       people:'', message:''
     }
   };
 
-  function inquirySeasonalProductVisible(){
-    const dates = inquiryState.inquiry.dates;
-    if(!dates.length) return false;
-    return dates.some(d => {
-      const md = d.slice(5);
-      return md >= INQUIRY_SEASONAL_PRODUCT.startMD && md <= INQUIRY_SEASONAL_PRODUCT.endMD;
-    });
-  }
-
   function inquiryVisibleGroupItems(groupKey){
     const group = INQUIRY_PRODUCT_GROUPS.find(g => g.key === groupKey);
-    const seasonalOk = inquirySeasonalProductVisible();
-    return group.items.filter(name => name !== INQUIRY_SEASONAL_PRODUCT.name || seasonalOk);
+    return group.items;
+  }
+
+  function toggleInquiryDuration(name){
+    const arr = inquiryState.inquiry.durations;
+    const i = arr.indexOf(name);
+    if(i >= 0) arr.splice(i, 1);
+    else arr.push(name);
+    renderInquiryModal();
   }
 
   function inquiryProductsDisplay(){
@@ -2986,6 +2984,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const line = (label, val) => `${label}: ${val || '-'}`;
     const location = q.customLocation || q.location || '-';
     const products = inquiryProductsDisplay();
+    const durations = q.durations.length ? q.durations.join(', ') : '-';
     const addon = q.addon || '-';
     return [
       INQUIRY_TITLE,
@@ -2993,6 +2992,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       line('촬영 장소', location),
       line('희망 날짜', inquiryDatesDisplay(q.dates)),
       line('촬영 상품', products),
+      line('촬영 시간', durations),
       line('추가 옵션', addon),
       line('인원 수', q.people),
       line('기타', q.message)
@@ -3080,15 +3080,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const prevCard = root.querySelector('.inquiry-card');
     const prevScroll = prevCard ? prevCard.scrollTop : 0;
 
-    // 계절 상품이 보이지 않게 된 경우 선택돼있던 값 정리
-    const seasonalOk = inquirySeasonalProductVisible();
-    if(!seasonalOk){
-      const i = inquiryState.inquiry.products.indexOf(INQUIRY_SEASONAL_PRODUCT.name);
-      if(i >= 0) inquiryState.inquiry.products.splice(i, 1);
-    }
-
     const radioRow = (key, options) => options.map(opt =>
-      `<div class="choice-btn${inquiryState.inquiry[key]===opt?' active':''}" onclick="selectInquiryChoice(this,'${key}','${opt}')">${opt}</div>`
+      `<div class="choice-btn tight${inquiryState.inquiry[key]===opt?' active':''}" onclick="selectInquiryChoice(this,'${key}','${opt}')">${opt}</div>`
     ).join('');
 
     const locationChips = INQUIRY_LOCATIONS.map(loc => {
@@ -3105,6 +3098,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       ).join('');
       const allChip = `<div class="choice-btn tight${allActive ? ' active' : ''}" onclick="toggleInquiryProductGroup('${group.key}')">${group.label} 전체</div>`;
       return `<div class="choice-row" style="margin-bottom:5px;">${items}${allChip}</div>`;
+    }).join('');
+
+    const durationChips = INQUIRY_DURATIONS.map(name => {
+      const active = inquiryState.inquiry.durations.includes(name);
+      return `<div class="choice-btn tight${active ? ' active' : ''}" onclick="toggleInquiryDuration('${name}')">${name}</div>`;
     }).join('');
 
     root.innerHTML = `
@@ -3139,6 +3137,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           <div class="field-group">
             <div class="field-label">촬영 상품 (중복 선택 가능)</div>
             ${productGroupHtml}
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">촬영 시간 (중복 선택 가능)</div>
+            <div class="choice-row">${durationChips}</div>
           </div>
 
           <div class="field-group">

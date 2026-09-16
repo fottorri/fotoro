@@ -560,7 +560,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 .choice-row{display:flex; flex-wrap:wrap; gap:5px; align-items:center;}
 .choice-btn{padding:8px 14px; border-radius:999px; border:1px solid var(--iq-border-light); background:#fff; color:var(--iq-muted); font-size:12.5px; font-weight:700; cursor:pointer;}
 .choice-btn.active{background:var(--iq-accent); border-color:var(--iq-accent); color:#fff;}
-.choice-btn.tight{padding:6px 10px; font-size:11px;}
+.choice-btn.tight{padding:5px 8px; font-size:10px;}
 .field-input.inline{flex:1; min-width:110px; width:auto;}
 .cal-widget{border:1px solid var(--iq-border-light); border-radius:10px; padding:8px; background:#fff;}
 .cal-head{display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:6px;}
@@ -810,7 +810,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   // ===== 카카오톡 문의 버튼 + 모달 =====
   const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_Gxdxnwxj';
-  const INQUIRY_TITLE = '[문의] 돌로미티스냅';
+  const INQUIRY_TITLE = '[이탈리아스냅 문의]';
   const INQUIRY_PEOPLE = ['2명', '3명 이상', '1명'];
   const INQUIRY_LOCATIONS = ['돌로미티', '피렌체', '토스카나'];
   const INQUIRY_DEFAULT_LOCATION = '돌로미티';
@@ -946,7 +946,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     }
 
     const radioRow = (key, options) => options.map(opt =>
-      `<div class="choice-btn${inquiryState.inquiry[key]===opt?' active':''}" onclick="selectInquiryChoice(this,'${key}','${opt}')">${opt}</div>`
+      `<div class="choice-btn tight${inquiryState.inquiry[key]===opt?' active':''}" onclick="selectInquiryChoice(this,'${key}','${opt}')">${opt}</div>`
     ).join('');
 
     const locationChips = INQUIRY_LOCATIONS.map(loc => {
