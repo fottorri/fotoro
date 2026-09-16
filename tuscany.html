@@ -524,7 +524,14 @@
 .cta-button:hover{background:#e6cf00;}
 
 /* 화면 우측 하단 고정 플로팅 */
-.cta-button.cta-floating{position:fixed; right:16px; bottom:18px; z-index:50; box-shadow:0 6px 20px rgba(0,0,0,0.25); padding:7px 17px;}
+@keyframes cta-bounce-in {
+  0% { transform: scale(0.6) translateY(24px); opacity: 0; }
+  55% { transform: scale(1.1) translateY(-8px); opacity: 1; }
+  75% { transform: scale(0.96) translateY(2px); }
+  90% { transform: scale(1.03) translateY(-1px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.cta-button.cta-floating{position:fixed; right:16px; bottom:18px; z-index:50; box-shadow:0 8px 26px rgba(0,0,0,0.35); padding:13px 24px; font-size:14.5px; gap:6px; animation:cta-bounce-in 0.8s cubic-bezier(.34,1.56,.64,1) 0.3s both;}
 
 .inquiry-overlay{position:fixed; inset:0; background:rgba(20,16,12,0.5); display:flex; align-items:flex-end; justify-content:center; z-index:60;}
 .inquiry-card{width:100%; max-width:480px; max-height:90vh; overflow-y:auto; background:#fff; border-radius:18px 18px 0 0; padding:15px; box-shadow:0 -10px 40px rgba(0,0,0,0.3); font-family:"Noto Sans KR",system-ui,sans-serif; color:var(--iq-ink);}
@@ -716,7 +723,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 </footer>
 
 <!-- 화면 우측 하단 고정 플로팅 버튼 -->
-<div class="cta-button cta-floating" onclick="openInquiry()">카카오톡 문의</div>
+<div class="cta-button cta-floating" onclick="openInquiry()">💬 카카오톡 문의</div>
 <div id="inquiryRoot"></div>
 
 
