@@ -3014,16 +3014,15 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     if(!arr.length) return '-';
     if(!catalog) return arr.join(', ');
     const parts = [];
-    const consumed = new Set();
     catalog.groups.forEach(group => {
-      if(!group.showAll) return;
-      const allSelected = group.items.length > 0 && group.items.every(name => arr.includes(name));
-      if(allSelected){
+      const selectedItems = group.items.filter(name => arr.includes(name));
+      if(!selectedItems.length) return;
+      if(group.showAll && selectedItems.length === group.items.length){
         parts.push(group.label + ' 전체');
-        group.items.forEach(name => consumed.add(name));
+      } else {
+        parts.push(...selectedItems);
       }
     });
-    arr.forEach(name => { if(!consumed.has(name)) parts.push(name); });
     return parts.join(', ');
   }
 
@@ -3059,7 +3058,10 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     ];
     if(catalog){
       lines.push(line('촬영 상품', inquiryProductsDisplay()));
-      if(catalog.durations) lines.push(line('촬영 시간', q.durations.length ? q.durations.join(', ') : '-'));
+      if(catalog.durations){
+        const orderedDurations = inquiryVisibleDurations(catalog).filter(d => q.durations.includes(d));
+        lines.push(line('촬영 시간', orderedDurations.length ? orderedDurations.join(', ') : '-'));
+      }
       if(inquiryAddonVisible(catalog)) lines.push(line('추가 옵션', q.addon || '-'));
     }
     lines.push(line('인원 수', q.people));
