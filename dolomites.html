@@ -1067,7 +1067,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const done = (ok) => {
       if(!btn) return;
       const orig = btn.textContent;
-      btn.textContent = ok ? '복사됐어요! 카카오톡에 붙여넣어 주세요' : '복사에 실패했어요. 직접 선택해서 복사해주세요';
+      btn.textContent = ok ? '완료! 카톡으로 보내주세요.' : '복사에 실패했어요. 직접 선택해서 복사해주세요';
       setTimeout(()=>{ btn.textContent = orig; }, 2200);
     };
     if(navigator.clipboard && navigator.clipboard.writeText){
@@ -1195,7 +1195,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           </div>
 
           <div class="inquiry-actions">
-            <div class="inquiry-btn copy" id="copyBtn" onclick="copyInquiryText()">문의 내용 복사하기</div>
+            <div class="inquiry-btn copy" id="copyBtn" onclick="copyInquiryText()">내용 복사하기</div>
             <a class="inquiry-btn kakao" href="${KAKAO_CHANNEL_URL}" target="_blank" rel="noopener">카카오톡 열기</a>
           </div>
         </div>
