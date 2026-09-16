@@ -2913,11 +2913,35 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   const INQUIRY_PEOPLE = ['2명', '3명 이상', '1명'];
   const INQUIRY_LOCATIONS = ['피렌체', '토스카나', '돌로미티'];
   const INQUIRY_DEFAULT_LOCATION = '피렌체';
-  const INQUIRY_PRODUCT_GROUPS = [
-    { key:'morning', label:'오전', items:['새벽', '일출', '아침'] },
-    { key:'afternoon', label:'오후', items:['낮', '일몰', '일몰+야경'] }
-  ];
-  const INQUIRY_DURATIONS = ['1시간', '2시간', '3시간'];
+  const LOCATION_CATALOGS = {
+    '피렌체': {
+      groups: [
+        { key:'morning', label:'오전', items:['새벽', '일출', '아침'], showAll:true },
+        { key:'afternoon', label:'오후', items:['낮', '일몰', '일몰+야경'], showAll:true }
+      ],
+      durations: ['1시간', '2시간', '3시간'],
+      addonOptions: ['헤메', '패키지'],
+      addonBundled: []
+    },
+    '토스카나': {
+      groups: [
+        { key:'tuscany', label:'', items:['토스카나 웨딩', '토스카나 기록'], showAll:false }
+      ],
+      durations: null,
+      addonOptions: ['헤메'],
+      addonBundled: ['토스카나 웨딩'],
+      singleSelect: true
+    },
+    '돌로미티': {
+      groups: [
+        { key:'dolomites', label:'', items:['돌로미티에서 웨딩', '돌로미티의 추억'], showAll:false }
+      ],
+      durations: null,
+      addonOptions: ['헤메'],
+      addonBundled: ['돌로미티에서 웨딩'],
+      singleSelect: true
+    }
+  };
 
   const inquiryNow = new Date();
   const inquiryState = {
@@ -2930,9 +2954,16 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     }
   };
 
-  function inquiryVisibleGroupItems(groupKey){
-    const group = INQUIRY_PRODUCT_GROUPS.find(g => g.key === groupKey);
-    return group.items;
+  function inquiryCurrentCatalog(){
+    const q = inquiryState.inquiry;
+    if(q.customLocation) return null;
+    return LOCATION_CATALOGS[q.location] || null;
+  }
+
+  function inquiryAddonVisible(catalog){
+    if(!catalog) return false;
+    if(catalog.addonBundled.length === 0) return true;
+    return inquiryState.inquiry.products.some(name => !catalog.addonBundled.includes(name));
   }
 
   function toggleInquiryDuration(name){
@@ -2944,16 +2975,18 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   function inquiryProductsDisplay(){
+    const catalog = inquiryCurrentCatalog();
     const arr = inquiryState.inquiry.products;
     if(!arr.length) return '-';
+    if(!catalog) return arr.join(', ');
     const parts = [];
     const consumed = new Set();
-    INQUIRY_PRODUCT_GROUPS.forEach(group => {
-      const visible = inquiryVisibleGroupItems(group.key);
-      const allSelected = visible.length > 0 && visible.every(name => arr.includes(name));
+    catalog.groups.forEach(group => {
+      if(!group.showAll) return;
+      const allSelected = group.items.length > 0 && group.items.every(name => arr.includes(name));
       if(allSelected){
         parts.push(group.label + ' 전체');
-        visible.forEach(name => consumed.add(name));
+        group.items.forEach(name => consumed.add(name));
       }
     });
     arr.forEach(name => { if(!consumed.has(name)) parts.push(name); });
@@ -2981,22 +3014,23 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   function buildInquiryText(){
     const q = inquiryState.inquiry;
+    const catalog = inquiryCurrentCatalog();
     const line = (label, val) => `${label}: ${val || '-'}`;
     const location = q.customLocation || q.location || '-';
-    const products = inquiryProductsDisplay();
-    const durations = q.durations.length ? q.durations.join(', ') : '-';
-    const addon = q.addon || '-';
-    return [
+    const lines = [
       INQUIRY_TITLE,
       line('성함', q.name),
       line('촬영 장소', location),
-      line('희망 날짜', inquiryDatesDisplay(q.dates)),
-      line('촬영 상품', products),
-      line('촬영 시간', durations),
-      line('추가 옵션', addon),
-      line('인원 수', q.people),
-      line('기타', q.message)
-    ].join('\n');
+      line('희망 날짜', inquiryDatesDisplay(q.dates))
+    ];
+    if(catalog){
+      lines.push(line('촬영 상품', inquiryProductsDisplay()));
+      if(catalog.durations) lines.push(line('촬영 시간', q.durations.length ? q.durations.join(', ') : '-'));
+      if(inquiryAddonVisible(catalog)) lines.push(line('추가 옵션', q.addon || '-'));
+    }
+    lines.push(line('인원 수', q.people));
+    lines.push(line('기타', q.message));
+    return lines.join('\n');
   }
 
   function refreshInquiryPreview(){
@@ -3011,31 +3045,61 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     refreshInquiryPreview();
   }
 
+  function inquiryResetProductSelection(){
+    inquiryState.inquiry.products = [];
+    inquiryState.inquiry.durations = [];
+    inquiryState.inquiry.addon = '';
+  }
+
   function selectInquiryLocation(loc){
+    if(inquiryState.inquiry.location === loc && !inquiryState.inquiry.customLocation) return;
     inquiryState.inquiry.location = loc;
     inquiryState.inquiry.customLocation = '';
+    inquiryResetProductSelection();
     renderInquiryModal();
   }
 
   function setInquiryCustomLocation(val){
+    const wasCustom = !!inquiryState.inquiry.customLocation;
+    const isCustom = !!val;
     inquiryState.inquiry.customLocation = val;
-    document.querySelectorAll('#inquiryLocationRow .choice-btn').forEach(b => b.classList.toggle('active', false));
-    refreshInquiryPreview();
+    if(wasCustom !== isCustom){
+      if(isCustom) inquiryResetProductSelection();
+      renderInquiryModal();
+      const input = document.querySelector('#inquiryLocationRow .field-input.inline');
+      if(input){
+        input.focus();
+        input.value = val;
+        input.setSelectionRange(val.length, val.length);
+      }
+    } else {
+      document.querySelectorAll('#inquiryLocationRow .choice-btn').forEach(b => b.classList.toggle('active', false));
+      refreshInquiryPreview();
+    }
   }
 
   function toggleInquiryProduct(name){
-    const arr = inquiryState.inquiry.products;
-    const i = arr.indexOf(name);
-    if(i >= 0) arr.splice(i, 1);
-    else arr.push(name);
+    const catalog = inquiryCurrentCatalog();
+    if(catalog && catalog.singleSelect){
+      const arr = inquiryState.inquiry.products;
+      inquiryState.inquiry.products = arr.includes(name) ? [] : [name];
+    } else {
+      const arr = inquiryState.inquiry.products;
+      const i = arr.indexOf(name);
+      if(i >= 0) arr.splice(i, 1);
+      else arr.push(name);
+    }
     renderInquiryModal();
   }
 
   function toggleInquiryProductGroup(groupKey){
-    const visible = inquiryVisibleGroupItems(groupKey);
+    const catalog = inquiryCurrentCatalog();
+    if(!catalog) return;
+    const group = catalog.groups.find(g => g.key === groupKey);
+    if(!group) return;
     const arr = inquiryState.inquiry.products;
-    const allSelected = visible.length > 0 && visible.every(name => arr.includes(name));
-    visible.forEach(name => {
+    const allSelected = group.items.length > 0 && group.items.every(name => arr.includes(name));
+    group.items.forEach(name => {
       const i = arr.indexOf(name);
       if(allSelected){ if(i >= 0) arr.splice(i, 1); }
       else if(i < 0){ arr.push(name); }
@@ -3089,21 +3153,30 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       return `<div class="choice-btn tight${active ? ' active' : ''}" onclick="selectInquiryLocation('${loc}')">${loc}</div>`;
     }).join('');
 
-    const productGroupHtml = INQUIRY_PRODUCT_GROUPS.map(group => {
-      const visible = inquiryVisibleGroupItems(group.key);
-      const arr = inquiryState.inquiry.products;
-      const allActive = visible.length > 0 && visible.every(name => arr.includes(name));
-      const items = visible.map(name =>
+    const catalog = inquiryCurrentCatalog();
+    const arr = inquiryState.inquiry.products;
+
+    const productGroupHtml = catalog ? catalog.groups.map(group => {
+      const items = group.items.map(name =>
         `<div class="choice-btn tight${arr.includes(name) ? ' active' : ''}" onclick="toggleInquiryProduct('${name}')">${name}</div>`
       ).join('');
-      const allChip = `<div class="choice-btn tight${allActive ? ' active' : ''}" onclick="toggleInquiryProductGroup('${group.key}')">${group.label} 전체</div>`;
+      let allChip = '';
+      if(group.showAll){
+        const allActive = group.items.length > 0 && group.items.every(name => arr.includes(name));
+        allChip = `<div class="choice-btn tight${allActive ? ' active' : ''}" onclick="toggleInquiryProductGroup('${group.key}')">${group.label} 전체</div>`;
+      }
       return `<div class="choice-row" style="margin-bottom:5px;">${items}${allChip}</div>`;
-    }).join('');
+    }).join('') : '';
 
-    const durationChips = INQUIRY_DURATIONS.map(name => {
+    const durationChips = (catalog && catalog.durations) ? catalog.durations.map(name => {
       const active = inquiryState.inquiry.durations.includes(name);
       return `<div class="choice-btn tight${active ? ' active' : ''}" onclick="toggleInquiryDuration('${name}')">${name}</div>`;
-    }).join('');
+    }).join('') : '';
+
+    const addonVisible = inquiryAddonVisible(catalog);
+    const addonChips = catalog ? catalog.addonOptions.map(opt =>
+      `<div class="choice-btn tight${inquiryState.inquiry.addon === opt ? ' active' : ''}" onclick="selectInquiryAddon('${opt}')">${opt}</div>`
+    ).join('') : '';
 
     root.innerHTML = `
       <div class="inquiry-overlay" onclick="closeInquiry()">
@@ -3134,23 +3207,23 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
             <div class="cal-widget" id="inquiryCalendar"></div>
           </div>
 
+          ${catalog ? `
           <div class="field-group">
-            <div class="field-label">촬영 상품 (중복 선택 가능)</div>
+            <div class="field-label">촬영 상품${catalog && catalog.singleSelect ? '' : ' (중복 선택 가능)'}</div>
             ${productGroupHtml}
-          </div>
+          </div>` : ''}
 
+          ${(catalog && catalog.durations) ? `
           <div class="field-group">
             <div class="field-label">촬영 시간 (중복 선택 가능)</div>
             <div class="choice-row">${durationChips}</div>
-          </div>
+          </div>` : ''}
 
+          ${addonVisible ? `
           <div class="field-group">
             <div class="field-label">추가 옵션</div>
-            <div class="choice-row">
-              <div class="choice-btn tight${inquiryState.inquiry.addon === '헤메' ? ' active' : ''}" onclick="selectInquiryAddon('헤메')">헤메</div>
-              <div class="choice-btn tight${inquiryState.inquiry.addon === '패키지' ? ' active' : ''}" onclick="selectInquiryAddon('패키지')">패키지</div>
-            </div>
-          </div>
+            <div class="choice-row">${addonChips}</div>
+          </div>` : ''}
 
           <div class="field-group">
             <div class="field-label">인원 수</div>
