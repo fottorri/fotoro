@@ -689,6 +689,7 @@
     transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative;
     padding-top: 30px;
+    padding-bottom: 19px;
     display: flex;
     flex-direction: column;
   }
@@ -879,7 +880,7 @@
 
   .option-card .option-desc-addon {
     font-size: 10px;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 4px;
     opacity: 0.8;
   }
@@ -924,12 +925,12 @@
   .option-card .option-desc {
     font-size: 10px;
     opacity: 0.8;
-    line-height: 1.6;
+    line-height: 1.5;
   }
 
   .option-card .option-detail {
     font-size: 10.5px;
-    line-height: 1.7;
+    line-height: 1.6;
     border-top: 1px dashed rgba(0,0,0,0.15);
     padding-top: 14px;
   }
@@ -2928,7 +2929,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       groups: [
         { key:'tuscany', label:'', items:['토스카나 웨딩', '토스카나 기록'], showAll:false }
       ],
-      durations: null,
+      durations: ['오전', '오후'],
       addonOptions: ['헤메'],
       addonBundled: ['토스카나 웨딩'],
       singleSelect: true
@@ -2937,7 +2938,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       groups: [
         { key:'dolomites', label:'', items:['돌로미티에서 웨딩', '돌로미티의 추억'], showAll:false }
       ],
-      durations: null,
+      durations: ['오전', '오후'],
       addonOptions: ['헤메'],
       addonBundled: ['돌로미티에서 웨딩'],
       singleSelect: true
@@ -2950,7 +2951,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     '아침': ['2시간', '3시간'],
     '낮': ['2시간', '1시간'],
     '일몰': ['2시간', '3시간'],
-    '일몰+야경': ['3시간']
+    '일몰+야경': ['3시간'],
+    '토스카나 웨딩': [],
+    '토스카나 기록': ['오전', '오후'],
+    '돌로미티에서 웨딩': [],
+    '돌로미티의 추억': ['오전', '오후']
   };
 
   function inquiryVisibleDurations(catalog){
@@ -3058,8 +3063,9 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     ];
     if(catalog){
       lines.push(line('촬영 상품', inquiryProductsDisplay()));
-      if(catalog.durations){
-        const orderedDurations = inquiryVisibleDurations(catalog).filter(d => q.durations.includes(d));
+      const visibleDurationsForText = inquiryVisibleDurations(catalog);
+      if(visibleDurationsForText.length){
+        const orderedDurations = visibleDurationsForText.filter(d => q.durations.includes(d));
         lines.push(line('촬영 시간', orderedDurations.length ? orderedDurations.join(', ') : '-'));
       }
       if(inquiryAddonVisible(catalog)) lines.push(line('추가 옵션', q.addon || '-'));
@@ -3252,7 +3258,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
             ${productGroupHtml}
           </div>` : ''}
 
-          ${(catalog && catalog.durations) ? `
+          ${visibleDurations.length > 0 ? `
           <div class="field-group">
             <div class="field-label">촬영 시간 (중복 선택 가능)</div>
             <div class="choice-row">${durationChips}</div>

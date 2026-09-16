@@ -541,6 +541,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 .choice-btn.active{background:var(--iq-accent); border-color:var(--iq-accent); color:#fff;}
 .choice-btn.tight{padding:5px 8px; font-size:10px;}
 .field-input.inline{flex:1; min-width:110px; width:auto;}
+.duration-divider{width:1px; align-self:stretch; background:var(--iq-border-light); margin:2px 3px;}
 .cal-widget{border:1px solid var(--iq-border-light); border-radius:10px; padding:8px; background:#fff;}
 .cal-head{display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:6px;}
 .cal-month-picker{display:flex; align-items:center; gap:4px;}
@@ -787,7 +788,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       groups: [
         { key:'tuscany', label:'', items:['토스카나 웨딩', '토스카나 기록'], showAll:false }
       ],
-      durations: null,
+      durations: ['오전', '오후'],
       addonOptions: ['헤메'],
       addonBundled: ['토스카나 웨딩'],
       singleSelect: true
@@ -796,12 +797,49 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       groups: [
         { key:'dolomites', label:'', items:['돌로미티에서 웨딩', '돌로미티의 추억'], showAll:false }
       ],
-      durations: null,
+      durations: ['오전', '오후'],
       addonOptions: ['헤메'],
       addonBundled: ['돌로미티에서 웨딩'],
       singleSelect: true
     }
   };
+
+  const PRODUCT_DURATION_RULES = {
+    '새벽': ['3시간'],
+    '일출': ['2시간', '3시간'],
+    '아침': ['2시간', '3시간'],
+    '낮': ['2시간', '1시간'],
+    '일몰': ['2시간', '3시간'],
+    '일몰+야경': ['3시간'],
+    '토스카나 웨딩': [],
+    '토스카나 기록': ['오전', '오후'],
+    '돌로미티에서 웨딩': [],
+    '돌로미티의 추억': ['오전', '오후']
+  };
+
+  function inquiryVisibleDurations(catalog){
+    if(!catalog || !catalog.durations) return [];
+    const selected = inquiryState.inquiry.products;
+    let result;
+    if(!selected.length){
+      result = [...catalog.durations];
+    } else {
+      result = [];
+      selected.forEach(name => {
+        const list = PRODUCT_DURATION_RULES[name] || catalog.durations;
+        list.forEach(d => { if(!result.includes(d)) result.push(d); });
+      });
+      const only1hAllowed = selected.length === 1 && selected[0] === '낮';
+      if(!only1hAllowed){
+        const i = result.indexOf('1시간');
+        if(i >= 0) result.splice(i, 1);
+      }
+    }
+    if(result.includes('1시간') && result.length > 1){
+      result = result.filter(d => d !== '1시간').concat(['1시간']);
+    }
+    return result;
+  }
 
   const inquiryNow = new Date();
   const inquiryState = {
@@ -840,16 +878,15 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     if(!arr.length) return '-';
     if(!catalog) return arr.join(', ');
     const parts = [];
-    const consumed = new Set();
     catalog.groups.forEach(group => {
-      if(!group.showAll) return;
-      const allSelected = group.items.length > 0 && group.items.every(name => arr.includes(name));
-      if(allSelected){
+      const selectedItems = group.items.filter(name => arr.includes(name));
+      if(!selectedItems.length) return;
+      if(group.showAll && selectedItems.length === group.items.length){
         parts.push(group.label + ' 전체');
-        group.items.forEach(name => consumed.add(name));
+      } else {
+        parts.push(...selectedItems);
       }
     });
-    arr.forEach(name => { if(!consumed.has(name)) parts.push(name); });
     return parts.join(', ');
   }
 
@@ -885,7 +922,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     ];
     if(catalog){
       lines.push(line('촬영 상품', inquiryProductsDisplay()));
-      if(catalog.durations) lines.push(line('촬영 시간', q.durations.length ? q.durations.join(', ') : '-'));
+      const visibleDurationsForText = inquiryVisibleDurations(catalog);
+      if(visibleDurationsForText.length){
+        const orderedDurations = visibleDurationsForText.filter(d => q.durations.includes(d));
+        lines.push(line('촬영 시간', orderedDurations.length ? orderedDurations.join(', ') : '-'));
+      }
       if(inquiryAddonVisible(catalog)) lines.push(line('추가 옵션', q.addon || '-'));
     }
     lines.push(line('인원 수', q.people));
@@ -1028,10 +1069,13 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       return `<div class="choice-row" style="margin-bottom:5px;">${items}${allChip}</div>`;
     }).join('') : '';
 
-    const durationChips = (catalog && catalog.durations) ? catalog.durations.map(name => {
+    const visibleDurations = inquiryVisibleDurations(catalog);
+    inquiryState.inquiry.durations = inquiryState.inquiry.durations.filter(d => visibleDurations.includes(d));
+    const durationChips = visibleDurations.map((name, idx) => {
       const active = inquiryState.inquiry.durations.includes(name);
-      return `<div class="choice-btn tight${active ? ' active' : ''}" onclick="toggleInquiryDuration('${name}')">${name}</div>`;
-    }).join('') : '';
+      const divider = (name === '1시간' && idx > 0) ? '<span class="duration-divider"></span>' : '';
+      return divider + `<div class="choice-btn tight${active ? ' active' : ''}" onclick="toggleInquiryDuration('${name}')">${name}</div>`;
+    }).join('');
 
     const addonVisible = inquiryAddonVisible(catalog);
     const addonChips = catalog ? catalog.addonOptions.map(opt =>
@@ -1073,7 +1117,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
             ${productGroupHtml}
           </div>` : ''}
 
-          ${(catalog && catalog.durations) ? `
+          ${visibleDurations.length > 0 ? `
           <div class="field-group">
             <div class="field-label">촬영 시간 (중복 선택 가능)</div>
             <div class="choice-row">${durationChips}</div>
