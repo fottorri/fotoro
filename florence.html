@@ -1745,6 +1745,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 .cal-cell.empty{cursor:default;}
 .cal-cell.disabled{color:var(--iq-faint); opacity:0.35; cursor:default; pointer-events:none;}
 .cal-cell.active{background:var(--iq-accent); color:#fff; font-weight:700;}
+.cal-open-note{font-size:9px; line-height:1.55; color:var(--iq-accent); background:#f8eef0; border-radius:7px; padding:6px 8px; margin-bottom:8px; text-align:center;}
+.cal-closed-note{font-size:9px; font-weight:700; color:#b0413e; text-align:center; margin-top:6px;}
 .cal-selected{font-size:9px; color:var(--iq-muted); margin-top:6px; padding-top:6px; border-top:1px dashed var(--iq-border); line-height:1.5;}
 .inquiry-preview-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;}
 .inquiry-preview{white-space:pre-wrap; font-size:10.5px; line-height:1.55; color:var(--iq-ink); background:var(--iq-bg); border:1px solid var(--iq-border); border-radius:9px; padding:10px; font-family:inherit;}
@@ -3328,6 +3330,19 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   function setInquiryCalYear(y){ inquiryState.inquiry.calY = parseInt(y, 10); renderInquiryCalendar(); }
   function setInquiryCalMonth(m){ inquiryState.inquiry.calM = parseInt(m, 10); renderInquiryCalendar(); }
 
+  function inquiryBookingWindow(){
+    const t = new Date();
+    const y = t.getFullYear();
+    if(t.getMonth() >= 6){
+      return { openUntil: `${y + 1}-06-30`, lastYear: y + 1,
+        openUntilLabel: `${y + 1}년 6월 30일`,
+        nextLabel: `${y + 1}년 하반기(7~12월)`, nextOpen: `${y + 1}년 1월 1일` };
+    }
+    return { openUntil: `${y}-12-31`, lastYear: y,
+      openUntilLabel: `${y}년 12월 31일`,
+      nextLabel: `${y + 1}년 상반기(1~6월)`, nextOpen: `${y}년 7월 1일` };
+  }
+
   function renderInquiryCalendar(){
     const container = document.getElementById('inquiryCalendar');
     if(!container) return;
@@ -3337,24 +3352,34 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const numDays = inquiryDaysInMonth(calY, calM);
     const today = new Date();
     const todayStr = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+    const win = inquiryBookingWindow();
+    let hasClosed = false;
     let cells = '';
     for(let i = 0; i < startDow; i++) cells += `<div class="cal-cell empty"></div>`;
     for(let d = 1; d <= numDays; d++){
       const dateStr = `${calY}-${pad(calM + 1)}-${pad(d)}`;
-      const blockedSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
-      if(dateStr < todayStr || blockedSeason){
+      if(dateStr < todayStr){
         cells += `<div class="cal-cell disabled">${d}</div>`;
+        continue;
+      }
+      const offSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
+      if(dateStr > win.openUntil || offSeason){
+        hasClosed = true;
+        cells += `<div class="cal-cell disabled closed">${d}</div>`;
         continue;
       }
       const active = dates.includes(dateStr) ? ' active' : '';
       cells += `<div class="cal-cell${active}" onclick="toggleInquiryDate('${dateStr}')">${d}</div>`;
     }
     const nowY = new Date().getFullYear();
-    const yearOptions = Array.from({length:5}, (_, i) => nowY - 1 + i)
+    const yFrom = Math.min(nowY, calY);
+    const yTo = Math.max(win.lastYear, calY);
+    const yearOptions = Array.from({length: yTo - yFrom + 1}, (_, i) => yFrom + i)
       .map(y => `<option value="${y}"${y === calY ? ' selected' : ''}>${y}년</option>`).join('');
     const monthOptions = Array.from({length:12}, (_, i) => i)
       .map(m => `<option value="${m}"${m === calM ? ' selected' : ''}>${m + 1}월</option>`).join('');
     container.innerHTML = `
+      <div class="cal-open-note">${win.openUntilLabel}까지 예약 가능해요<br>${win.nextLabel} 일정은 <b>${win.nextOpen}</b>부터 오픈됩니다</div>
       <div class="cal-head">
         <div class="cal-nav" onclick="shiftInquiryCalMonth(-1)">‹</div>
         <div class="cal-month-picker">
@@ -3365,6 +3390,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       </div>
       <div class="cal-weekdays">${['일','월','화','수','목','금','토'].map(w => `<div class="cal-wd">${w}</div>`).join('')}</div>
       <div class="cal-grid">${cells}</div>
+      ${hasClosed ? '<div class="cal-closed-note">예약 시즌이 아닙니다</div>' : ''}
       <div class="cal-selected">선택한 날짜: ${inquiryDatesDisplay(dates)}</div>
     `;
     refreshInquiryPreview();
