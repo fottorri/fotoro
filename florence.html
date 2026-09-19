@@ -3363,7 +3363,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         continue;
       }
       const offSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
-      if(dateStr > win.openUntil || offSeason){
+      if(offSeason){
+        cells += `<div class="cal-cell disabled">${d}</div>`;
+        continue;
+      }
+      if(dateStr > win.openUntil){
         hasClosed = true;
         cells += `<div class="cal-cell disabled closed">${d}</div>`;
         continue;
