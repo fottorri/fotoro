@@ -1241,7 +1241,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     for(let i = 0; i < startDow; i++) cells += `<div class="cal-cell empty"></div>`;
     for(let d = 1; d <= numDays; d++){
       const dateStr = `${calY}-${pad(calM + 1)}-${pad(d)}`;
-      if(dateStr < todayStr){
+      const blockedSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
+      if(dateStr < todayStr || blockedSeason){
         cells += `<div class="cal-cell disabled">${d}</div>`;
         continue;
       }
