@@ -803,11 +803,15 @@
 
   /* ===== 가격 비교용 칩 스트립 ===== */
   .price-strip {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 6px;
     max-width: 700px;
     margin: 0 auto 14px;
+  }
+  .price-strip .price-chip {
+    flex: 0 0 calc((100% - 24px) / 5);
+    min-width: 0;
   }
 
   .price-chip {
@@ -834,6 +838,9 @@
   @media (max-width: 480px) {
     .price-strip {
       gap: 4px;
+    }
+    .price-strip .price-chip {
+      flex-basis: calc((100% - 16px) / 5);
     }
     .price-chip {
       font-size: 9.5px;
@@ -2755,13 +2762,35 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   buildChips('carousel-morning');
 
   // Static (never repositioned) segments also need width-aware labels.
-  [
+  const STATIC_SEGS = [
     ['tl-pm-day', 22.2],
     ['tl-am-dawn-a', 15.4],
     ['tl-am-dawn-b', 30.8]
-  ].forEach(([id, width]) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = fitLabel(el.textContent, width);
+  ];
+
+  function fitStaticSegs() {
+    STATIC_SEGS.forEach(([id, width]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (!el.dataset.full) el.dataset.full = el.textContent;
+      el.textContent = fitLabel(el.dataset.full, width);
+    });
+  }
+  fitStaticSegs();
+
+  // Re-fit every bar label when the viewport crosses the desktop/mobile
+  // breakpoint (e.g. window resized after load), not just at page load.
+  let lastIsDesktop = window.matchMedia('(min-width: 769px)').matches;
+  window.addEventListener('resize', () => {
+    const nowDesktop = window.matchMedia('(min-width: 769px)').matches;
+    if (nowDesktop === lastIsDesktop) return;
+    lastIsDesktop = nowDesktop;
+    fitStaticSegs();
+    ['carousel-afternoon', 'carousel-morning'].forEach(id => {
+      const cards = document.querySelectorAll('#' + id + ' .option-card:not(.clone)');
+      const i = [...cards].findIndex(c => c.classList.contains('active'));
+      if (i >= 0) updateTimelineHighlight(id, i);
+    });
   });
 
   initCarousel('carousel-afternoon', 1);
