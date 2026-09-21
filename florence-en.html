@@ -913,11 +913,11 @@
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-afternoon">
-      <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
-        <div class="option-name">Sunset + Night 2h</div>
-        <div class="option-desc">June 10 - July 20 limited</div>
-        <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
-        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
+      <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-afternoon', 3)">
+        <div class="option-name">Sunset 3h</div>
+        <div class="option-desc">Hill location included<br>Night addon +50€</div>
+        <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
+        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 0)">
@@ -948,13 +948,6 @@
         <div class="option-desc">Hill location included<br>Night addon +50€</div>
         <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
         <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
-      </div>
-
-      <div class="option-card" onclick="setActiveCard('carousel-afternoon', 4)">
-        <div class="option-name">Sunset + Night 2h</div>
-        <div class="option-desc">June 10 - July 20 limited<br>Includes travel & wait time</div>
-        <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
-        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-afternoon', 0)">
@@ -1056,11 +1049,12 @@
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-morning">
-      <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-morning', 4)">
-        <div class="option-name">Morning 3h</div>
-        <div class="option-desc">Hill location included<br>Night 20m addon (+50€)</div>
-        <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
-        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
+      <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-morning', 3)">
+        <span class="badge">Popular</span>
+        <div class="option-name">Morning 2h</div>
+        <div class="option-desc">Starts in City Center<br>Hill optional</div>
+        <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
+        <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 0)">
@@ -1092,13 +1086,6 @@
         <div class="option-desc">Starts in City Center<br>Hill optional</div>
         <div class="option-detail">~800 Original JPGs<br>15 Retouched JPGs</div>
         <div class="option-price">Deposit 300 EUR<br>+ Balance 150 EUR</div>
-      </div>
-
-      <div class="option-card" onclick="setActiveCard('carousel-morning', 4)">
-        <div class="option-name">Morning 3h</div>
-        <div class="option-desc">Hill location included</div>
-        <div class="option-detail">~1200 Original JPGs<br>25 Retouched JPGs</div>
-        <div class="option-price">Deposit 350 EUR<br>+ Balance 200 EUR</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-morning', 0)">
@@ -1333,14 +1320,12 @@
       { hours: 2 },                                            // 1 Sunset 2h
       { hours: 3 },                                            // 2 Sunset + Night 3h
       { hours: 3 },                                            // 3 Sunset 3h
-      { hours: 2 },                                            // 4 Sunset + Night 2h
     ],
     morning: [
       { hours: 3, balance: '250 EUR', packageBalance: '500 EUR' }, // 0 Dawn 3h
       { hours: 3 },                                            // 1 Sunrise 3h
       { hours: 2 },                                            // 2 Sunrise 2h
       { hours: 2 },                                            // 3 Morning 2h
-      { hours: 3 },                                            // 4 Morning 3h
     ],
   };
   const BASE_PRICE = {

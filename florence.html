@@ -1877,10 +1877,10 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-afternoon">
-      <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-afternoon', 4)">
-        <div class="option-name">일몰 + 야경 2시간</div>
-        <div class="option-desc">6월 10일-7월 20일 한정<br>이동 및 대기시간 약 30분 포함</div>
-        <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
+      <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-afternoon', 3)">
+        <div class="option-name">일몰 3시간</div>
+        <div class="option-desc">언덕 필수 포함<br>야경 별도 추가 50유로</div>
+        <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 0)">
@@ -1907,12 +1907,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="option-name">일몰 3시간</div>
         <div class="option-desc">언덕 필수 포함<br>야경 별도 추가 50유로</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
-      </div>
-
-      <div class="option-card" onclick="setActiveCard('carousel-afternoon', 4)">
-        <div class="option-name">일몰 + 야경 2시간</div>
-        <div class="option-desc">6월 10일-7월 20일 한정<br>이동 및 대기시간 약 30분 포함</div>
-        <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-afternoon', 0)">
@@ -2053,10 +2047,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-morning">
-      <div class="option-card clone" data-maps-to="4" onclick="setActiveCard('carousel-morning', 4)">
-        <div class="option-name">아침 3시간</div>
-        <div class="option-desc">언덕 필수 포함</div>
-        <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
+      <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-morning', 3)">
+        <span class="badge">인기 상품</span>
+        <div class="option-name">아침 2시간</div>
+        <div class="option-desc">시내 시작 기본<br>언덕 선택 사항</div>
+        <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 0)">
@@ -2084,12 +2079,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="option-name">아침 2시간</div>
         <div class="option-desc">시내 시작 기본<br>언덕 선택 사항</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
-      </div>
-
-      <div class="option-card" onclick="setActiveCard('carousel-morning', 4)">
-        <div class="option-name">아침 3시간</div>
-        <div class="option-desc">언덕 필수 포함</div>
-        <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-morning', 0)">
@@ -2335,15 +2324,13 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       { hours: 2, targets: ['tl-pm-day', 'tl-pm-axis-1530'] },
       { hours: 2, targets: ['tl-pm-sunset-2h', 'tl-pm-axis-1800'] },
       { hours: 3, targets: ['tl-pm-sunset-2h', 'tl-pm-sunset-3h', 'tl-pm-axis-1800'] },
-      { hours: 3, targets: ['tl-pm-axis-1700', 'tl-pm-sunset-2h'] },
-      { hours: 2, targets: ['tl-pm-axis-1900', 'tl-pm-sunset-2h', 'tl-pm-sunset-3h'] }
+      { hours: 3, targets: ['tl-pm-axis-1700', 'tl-pm-sunset-2h'] }
     ],
     morning: [
       { hours: 3, targets: ['tl-am-dawn-a', 'tl-am-dawn-b', 'tl-am-axis-0500'] },
       { hours: 3, targets: ['tl-am-sunrise-2h', 'tl-am-axis-0600'] },
       { hours: 2, targets: ['tl-am-sunrise-2h', 'tl-am-axis-0600'] },
-      { hours: 2, targets: ['tl-am-morning-2h', 'tl-am-axis-0830'] },
-      { hours: 3, targets: ['tl-am-morning-2h', 'tl-am-axis-0830'] }
+      { hours: 2, targets: ['tl-am-morning-2h', 'tl-am-axis-0830'] }
     ]
   };
 
@@ -2351,14 +2338,12 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
     { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
     { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } },
-    { seg2h: { left: 11.1, width: 66.7, text: '17:00 ~ 20:00 (3h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
-    { seg2h: { left: 55.6, width: 22.2, text: '19:00 ~ 20:00 (1h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } }
+    { seg2h: { left: 11.1, width: 66.7, text: '17:00 ~ 20:00 (3h)' }, seg3h: { left: 77.8, width: 0, text: '' } }
   ];
 
   const sunriseBarGeom = [
     { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
     { seg2h: { left: 15.4, width: 46.1, text: '06:00 ~ 09:00 (3h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
-    { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
     { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } },
     { seg2h: { left: 15.4, width: 30.8, text: '06:00 ~ 08:00 (2h)' }, seg3h: { left: 46.2, width: 0, text: '' } }
   ];
@@ -2367,15 +2352,14 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
     { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
     { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
-    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } },
-    { seg2h: { left: 53.8, width: 46.2, text: '08:30 ~ 11:30 (3h)' }, seg3h: { left: 84.6, width: 0, text: '' } }
+    { seg2h: { left: 53.8, width: 30.8, text: '08:30 ~ 10:30 (2h)' }, seg3h: { left: 84.6, width: 0, text: '' } }
   ];
 
   // Which single row (낮/일몰, 새벽/일출/아침) should be visible per card index,
   // and the overall start/end/hours summary line shown under the track.
   const ROW_CATEGORY = {
-    afternoon: ['day', 'sunset', 'sunset', 'sunset', 'sunset'],
-    morning: ['dawn', 'sunrise', 'sunrise', 'morning', 'morning']
+    afternoon: ['day', 'sunset', 'sunset', 'sunset'],
+    morning: ['dawn', 'sunrise', 'sunrise', 'morning']
   };
   const ROW_IDS = {
     afternoon: { day: 'tl-row-pm-day', sunset: 'tl-row-pm-sunset' },
@@ -2386,15 +2370,13 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       { start: '15:30', end: '17:30', hours: 2 },
       { start: '18:00', end: '20:00', hours: 2 },
       { start: '18:00', end: '21:00', hours: 3 },
-      { start: '17:00', end: '20:00', hours: 3 },
-      { start: '19:00', end: '21:00', hours: 2 }
+      { start: '17:00', end: '20:00', hours: 3 }
     ],
     morning: [
       { start: '05:00', end: '08:00', hours: 3 },
       { start: '06:00', end: '09:00', hours: 3 },
       { start: '06:00', end: '08:00', hours: 2 },
-      { start: '08:30', end: '10:30', hours: 2 },
-      { start: '08:30', end: '11:30', hours: 3 }
+      { start: '08:30', end: '10:30', hours: 2 }
     ]
   };
 
@@ -2595,14 +2577,12 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       { hours: 2 },                                              // 1 일몰 2시간
       { hours: 3 },                                              // 2 일몰 + 야경 3시간
       { hours: 3 },                                              // 3 일몰 3시간
-      { hours: 2 },                                              // 4 일몰 + 야경 2시간
     ],
     morning: [
       { hours: 3, balance: '250유로', packageBalance: '400유로' }, // 0 새벽 3시간
       { hours: 3 },                                              // 1 일출 3시간
       { hours: 2 },                                              // 2 일출 2시간
       { hours: 2 },                                              // 3 아침 2시간
-      { hours: 3 },                                              // 4 아침 3시간
     ],
   };
   const BASE_PRICE = {
@@ -2957,7 +2937,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   const PRODUCT_DURATION_RULES = {
     '새벽': ['3시간'],
     '일출': ['2시간', '3시간'],
-    '아침': ['2시간', '3시간'],
+    '아침': ['2시간'],
     '낮': ['2시간', '1시간'],
     '일몰': ['2시간', '3시간'],
     '일몰+야경': ['3시간'],
