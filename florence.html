@@ -1260,7 +1260,7 @@
 }
 
 .accordion-body.open {
-  max-height: 900px;
+  max-height: 1400px;
   padding: 0 20px 22px;
 }
 
@@ -1355,6 +1355,9 @@
 }
 
 .accordion-body .info-grid:last-child { margin-bottom: 0; }
+
+.accordion-body .info-grid.single { justify-content: center; }
+.accordion-body .info-grid.single .info-col { flex: 0 1 360px; }
 
 .accordion-body .info-col {
   flex: 1;
@@ -2153,7 +2156,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 <!-- ===== 계절 한정 상품 / 별도 안내 (탭 공통, 항상 표시) ===== -->
 <div class="accordion">
   <button class="accordion-toggle" onclick="toggleAccordion(this)">
-    11월-2월 한정상품 및 1인 및 학생 촬영 안내
+    11월-2월, 6월-7월 한정상품 및 1인 및 학생 촬영 안내
     <span class="arrow">▾</span>
   </button>
   <div class="accordion-body">
@@ -2175,6 +2178,19 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <hr class="info-rule">
         <p>원본 400장 내외, 보정본 5장</p>
         <div class="info-price">완납 38만원</div>
+      </div>
+    </div>
+
+    <div class="info-title">6월 10일-7월 15일 한정상품</div>
+
+    <div class="info-grid single">
+      <div class="info-col purple">
+        <span class="info-tag">🌇 일몰 · 야경 포함</span>
+        <h5>일몰 + 야경 2시간</h5>
+        <p>6월 10일-7월 15일 한정<br>이동 및 대기시간 약 30분 포함</p>
+        <hr class="info-rule">
+        <p>원본 800장 내외, 보정본 15장</p>
+        <div class="info-price">예약금 30만원 + 잔금 150유로</div>
       </div>
     </div>
 
