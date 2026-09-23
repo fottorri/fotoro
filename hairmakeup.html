@@ -1012,7 +1012,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     open:false,
     inquiry:{
       name:'', dates:[], calY: inquiryNow.getFullYear(), calM: inquiryNow.getMonth(),
-      products:[],
+      products:[], extend30:false,
       people:'', message:''
     }
   };
@@ -1045,6 +1045,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       line('성함', q.name),
       line('희망 날짜', inquiryDatesDisplay(q.dates)),
       line('촬영 상품', products),
+      line('추가 옵션', q.extend30 ? '30분 추가' : ''),
       line('인원 수', q.people),
       line('기타', q.message)
     ].join('\n');
@@ -1067,6 +1068,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const i = arr.indexOf(name);
     if(i >= 0) arr.splice(i, 1);
     else arr.push(name);
+    renderInquiryModal();
+  }
+
+  function toggleInquiryExtend(){
+    inquiryState.inquiry.extend30 = !inquiryState.inquiry.extend30;
     renderInquiryModal();
   }
 
@@ -1135,6 +1141,13 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           <div class="field-group">
             <div class="field-label">촬영 상품 (중복 선택 가능)</div>
             <div class="choice-row">${productChips}</div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">추가 옵션</div>
+            <div class="choice-row">
+              <div class="choice-btn tight${inquiryState.inquiry.extend30 ? ' active' : ''}" onclick="toggleInquiryExtend()">30분 추가</div>
+            </div>
           </div>
 
           <div class="field-group">
