@@ -2770,7 +2770,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   const EXTENDABLE_CARDS = {
     afternoon: {
-      1: { baseName: '일몰 2h', extName: '일몰 2h 30m', addBalance: 50 },
+      1: {
+        baseName: '일몰 2h', extName: '일몰 2h 30m', addBalance: 50,
+        baseDesc: '야경 없음<br>언덕 추가 선택 가능',
+        extDesc: '야경 없음<br>언덕 선택 가능'
+      },
       2: {
         baseName: '일몰 + 야경 3h', extName: '일몰 + 야경 3h 30m', addBalance: 50,
         baseDesc: '시내 2시간 + 야경 30분 내외<br>이동 및 대기시간 약 30분 포함',
