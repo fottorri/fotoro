@@ -904,7 +904,18 @@
     font-size: 10px;
     line-height: 1.5;
     margin-top: 4px;
+  }
+
+  .option-card .addon-dim {
     opacity: 0.8;
+  }
+
+  .option-card .addon-em {
+    font-weight: 800;
+    color: #75602f;
+    background-color: rgba(138, 117, 80, 0.2);
+    border-radius: 4px;
+    padding: 0 3px;
   }
 
   .option-card .discount-slot {
@@ -2703,9 +2714,12 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   };
   const HEME_ADDON = 30;
   const PACKAGE_BALANCE = { 2: '300유로', 3: '350유로' };
+  const addonDim = t => `<span class="addon-dim">${t}</span>`;
+  const addonEm = t => `<b class="addon-em">${t}</b>`;
+  const HEME_LINE = addonDim('남·여 각 ') + addonEm('헤메 1회') + addonDim('씩 진행');
   const ADDON_DESC = {
-    heme: ['남·여 각 헤메 1회씩 진행'],
-    package: ['남·여 각 헤메 1회씩 진행', '여성 드레스 1벌 대여 포함'],
+    heme: [HEME_LINE],
+    package: [HEME_LINE, addonDim('여성 ') + addonEm('드레스 1벌 대여') + addonDim(' 포함')],
   };
   const ADDON_BADGE = { heme: '헤메 포함', package: '헤메 및 드레스 포함' };
 
