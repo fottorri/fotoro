@@ -809,12 +809,6 @@
     background-color: #4a1520;
   }
 
-  .ext-toggle-btn.disabled {
-    opacity: 0.4;
-    cursor: default;
-    pointer-events: none;
-  }
-
   @keyframes dot-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -1921,7 +1915,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
-      <button type="button" class="addon-toggle-btn ext-toggle-btn disabled" id="ext-toggle-afternoon" onclick="toggleExtendActive('afternoon')">30분 추가</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-afternoon" onclick="toggleExtendActive('afternoon')">30분 추가</button>
     </div>
   </div>
 
@@ -2090,7 +2084,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
-      <button type="button" class="addon-toggle-btn ext-toggle-btn disabled" id="ext-toggle-morning" onclick="toggleExtendActive('morning')">30분 추가</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-morning" onclick="toggleExtendActive('morning')">30분 추가</button>
     </div>
   </div>
 
@@ -2517,7 +2511,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   function updateTimelineHighlight(carouselId, index) {
     const tab = carouselId === 'carousel-afternoon' ? 'afternoon' : 'morning';
 
-    updateExtToggleBtn(tab, index);
+    updateExtToggleBtn(tab);
 
     const chipsWrap = document.getElementById('chips-' + carouselId);
     if (chipsWrap) {
@@ -2796,20 +2790,22 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       3: { baseName: '아침 2h', extName: '아침 2h 30m', addBalance: 50 }
     }
   };
-  const extendedCards = new Set();
+  // Extend is a per-section toggle, same as 헤메/패키지 — one click extends
+  // every extendable card in that tab together (낮 2h / 일출 3시간 stay
+  // excluded since they have no EXTENDABLE_CARDS entry either way).
+  const extendedTabs = new Set();
 
   function extendConfig(tab, index) {
     return (EXTENDABLE_CARDS[tab] || {})[index];
   }
 
   function isExtended(tab, index) {
-    return extendedCards.has(tab + ':' + index);
+    return extendedTabs.has(tab) && !!extendConfig(tab, index);
   }
 
-  function toggleExtend(tab, index) {
-    const key = tab + ':' + index;
-    if (extendedCards.has(key)) extendedCards.delete(key);
-    else extendedCards.add(key);
+  function toggleExtendActive(tab) {
+    if (extendedTabs.has(tab)) extendedTabs.delete(tab);
+    else extendedTabs.add(tab);
     updateAllPrices();
     equalizeCardHeights();
 
@@ -2820,26 +2816,10 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     if (activeIndex !== -1) updateTimelineHighlight(carouselId, activeIndex);
   }
 
-  // The "30분 추가" toggle lives in the 헤메/패키지 toolbar rather than on
-  // each card, so it always acts on whichever card is currently active.
-  function toggleExtendActive(tab) {
-    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
-    const wrap = document.getElementById(carouselId);
-    const cards = wrap.querySelectorAll('.option-card:not(.clone)');
-    const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
-    if (activeIndex === -1 || !extendConfig(tab, activeIndex)) return;
-    toggleExtend(tab, activeIndex);
-  }
-
-  // Stays visible on every card (dimmed + inert where there's nothing to
-  // extend, e.g. 낮 2h / 일출 3시간) instead of display:none — otherwise it
-  // pops in and out of the toolbar as the active card changes while swiping.
-  function updateExtToggleBtn(tab, index) {
+  function updateExtToggleBtn(tab) {
     const btn = document.getElementById(tab === 'afternoon' ? 'ext-toggle-afternoon' : 'ext-toggle-morning');
     if (!btn) return;
-    const cfg = extendConfig(tab, index);
-    btn.classList.toggle('disabled', !cfg);
-    btn.classList.toggle('active', !!cfg && isExtended(tab, index));
+    btn.classList.toggle('active', extendedTabs.has(tab));
   }
 
   function cardIndex(card, tab) {
