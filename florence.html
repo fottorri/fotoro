@@ -2585,9 +2585,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   function setActiveCard(id, index) {
-    const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
-    if (isAddonLocked(tab, index)) return;
-
     const wrap = document.getElementById(id);
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const dotsWrap = document.getElementById('dots-' + id);
@@ -2609,15 +2606,12 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   function moveCarousel(id, dir) {
     const wrap = document.getElementById(id);
-    const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const currentIndex = [...cards].findIndex(c => c.classList.contains('active'));
-    let nextIndex = currentIndex;
+    let nextIndex = currentIndex + dir;
 
-    for (let i = 0; i < cards.length; i++) {
-      nextIndex = (nextIndex + dir + cards.length) % cards.length;
-      if (!isAddonLocked(tab, nextIndex)) break;
-    }
+    if (nextIndex >= cards.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = cards.length - 1;
 
     setActiveCard(id, nextIndex);
   }
@@ -2727,7 +2721,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
             lockNote = document.createElement('div');
             lockNote.className = 'addon-lock-note';
             lockNote.textContent = ADDON_LOCK_TEXT;
-            lockNote.onclick = (e) => e.stopPropagation();
+            lockNote.style.pointerEvents = 'none';
             card.appendChild(lockNote);
           }
         } else if (lockNote) {
