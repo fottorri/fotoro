@@ -2462,6 +2462,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       el.style.borderRadius = geom.side === 'left' ? radiusStr(true, false) : radiusStr(false, true);
       const isDesktop = window.matchMedia('(min-width: 769px)').matches;
       el.textContent = isDesktop ? '+30분' : '+30m';
+      el.classList.add('tl-active');
     }
     return { on: true, side: geom.side };
   }
@@ -2847,7 +2848,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
         const slot = card.querySelector('.discount-slot');
         slot.innerHTML = (addonMode === 'package' && info.hours === 3)
-          ? '<span class="discount-note">3시간 패키지 할인</span>'
+          ? '<span class="discount-note">패키지 추가 할인 적용</span>'
           : '';
 
         const addonDesc = card.querySelector('.option-desc-addon');
