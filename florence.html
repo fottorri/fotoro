@@ -800,6 +800,21 @@
     animation: dot-pulse 1.6s ease-in-out infinite;
   }
 
+  .ext-toggle-btn.active {
+    border-color: #4a1520;
+    color: #4a1520;
+  }
+
+  .ext-toggle-btn.active::before {
+    background-color: #4a1520;
+  }
+
+  .ext-toggle-btn.disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+
   @keyframes dot-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -906,6 +921,8 @@
     margin-top: 3px;
     min-height: 20px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
     align-items: center;
     justify-content: center;
   }
@@ -923,6 +940,21 @@
   .option-card.active .discount-note {
     color: #fff;
     background-color: #8c3149;
+  }
+
+  .option-card .extend-note {
+    font-size: 9px;
+    font-weight: bold;
+    color: #4a1520;
+    background-color: rgba(74, 21, 32, 0.12);
+    border-radius: 20px;
+    padding: 3px 10px;
+    display: inline-block;
+  }
+
+  .option-card.active .extend-note {
+    color: #fff;
+    background-color: #4a1520;
   }
 
   .option-card .option-name {
@@ -1889,7 +1921,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
-      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-afternoon" style="display:none;" onclick="toggleExtendActive('afternoon')">30분 추가</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn disabled" id="ext-toggle-afternoon" onclick="toggleExtendActive('afternoon')">30분 추가</button>
     </div>
   </div>
 
@@ -2058,7 +2090,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
-      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-morning" style="display:none;" onclick="toggleExtendActive('morning')">30분 추가</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn disabled" id="ext-toggle-morning" onclick="toggleExtendActive('morning')">30분 추가</button>
     </div>
   </div>
 
@@ -2795,19 +2827,19 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const wrap = document.getElementById(carouselId);
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
-    if (activeIndex !== -1) toggleExtend(tab, activeIndex);
+    if (activeIndex === -1 || !extendConfig(tab, activeIndex)) return;
+    toggleExtend(tab, activeIndex);
   }
 
+  // Stays visible on every card (dimmed + inert where there's nothing to
+  // extend, e.g. 낮 2h / 일출 3시간) instead of display:none — otherwise it
+  // pops in and out of the toolbar as the active card changes while swiping.
   function updateExtToggleBtn(tab, index) {
     const btn = document.getElementById(tab === 'afternoon' ? 'ext-toggle-afternoon' : 'ext-toggle-morning');
     if (!btn) return;
     const cfg = extendConfig(tab, index);
-    if (!cfg) {
-      btn.style.display = 'none';
-      return;
-    }
-    btn.style.display = '';
-    btn.classList.toggle('active', isExtended(tab, index));
+    btn.classList.toggle('disabled', !cfg);
+    btn.classList.toggle('active', !!cfg && isExtended(tab, index));
   }
 
   function cardIndex(card, tab) {
@@ -2846,10 +2878,10 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           }
         }
 
-        const slot = card.querySelector('.discount-slot');
-        slot.innerHTML = (addonMode === 'package' && info.hours === 3)
-          ? '<span class="discount-note">패키지 추가 할인 적용</span>'
-          : '';
+        const notes = [];
+        if (addonMode === 'package' && info.hours === 3) notes.push('<span class="discount-note">패키지 추가 할인 적용</span>');
+        if (extended) notes.push('<span class="extend-note">+30분 연장 적용</span>');
+        card.querySelector('.discount-slot').innerHTML = notes.join('');
 
         const addonDesc = card.querySelector('.option-desc-addon');
         addonDesc.innerHTML = addonMode !== 'none' ? ADDON_DESC[addonMode].join('<br>') : '';
