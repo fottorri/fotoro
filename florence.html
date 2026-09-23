@@ -746,6 +746,31 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
 
+  .option-card.addon-locked {
+    cursor: default;
+  }
+
+  .option-card.addon-locked > *:not(.addon-lock-note) {
+    opacity: 0.35;
+  }
+
+  .option-card .addon-lock-note {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 16px;
+    background: rgba(242,241,238,0.55);
+    border-radius: 14px;
+    color: #6b1f2a;
+    font-size: 11.5px;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
   .addon-toggle-row {
     display: inline-flex;
     flex-shrink: 0;
@@ -2560,6 +2585,9 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   function setActiveCard(id, index) {
+    const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
+    if (isAddonLocked(tab, index)) return;
+
     const wrap = document.getElementById(id);
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const dotsWrap = document.getElementById('dots-' + id);
@@ -2581,12 +2609,15 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   function moveCarousel(id, dir) {
     const wrap = document.getElementById(id);
+    const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const currentIndex = [...cards].findIndex(c => c.classList.contains('active'));
-    let nextIndex = currentIndex + dir;
+    let nextIndex = currentIndex;
 
-    if (nextIndex >= cards.length) nextIndex = 0;
-    if (nextIndex < 0) nextIndex = cards.length - 1;
+    for (let i = 0; i < cards.length; i++) {
+      nextIndex = (nextIndex + dir + cards.length) % cards.length;
+      if (!isAddonLocked(tab, nextIndex)) break;
+    }
 
     setActiveCard(id, nextIndex);
   }
@@ -2600,7 +2631,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       { hours: 3 },                                              // 3 일몰 3시간
     ],
     morning: [
-      { hours: 3, balance: '250유로', packageBalance: '400유로' }, // 0 새벽 3시간
+      { hours: 3, balance: '200유로', packageBalance: '350유로', depositAdjust: 5 }, // 0 새벽 3시간
       { hours: 3 },                                              // 1 일출 3시간
       { hours: 2 },                                              // 2 일출 2시간
       { hours: 2 },                                              // 3 아침 2시간
@@ -2622,12 +2653,13 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   function priceLines(info) {
     const base = BASE_PRICE[info.hours];
+    const adj = info.depositAdjust || 0;
     if (addonMode === 'package') {
-      const deposit = info.hours === 3 ? 60 : (base.deposit + HEME_ADDON);
+      const deposit = (info.hours === 3 ? 60 : (base.deposit + HEME_ADDON)) + adj;
       const balance = info.packageBalance || PACKAGE_BALANCE[info.hours];
       return [`예약금 ${deposit}만원`, `+ 잔금 ${balance}`];
     }
-    const deposit = base.deposit + (addonMode === 'heme' ? HEME_ADDON : 0);
+    const deposit = base.deposit + (addonMode === 'heme' ? HEME_ADDON : 0) + adj;
     const balance = info.balance || base.balance;
     return [`예약금 ${deposit}만원`, `+ 잔금 ${balance}`];
   }
@@ -2656,6 +2688,20 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     });
   }
 
+  const ADDON_REQUIRED_INDEX = { morning: [1] }; // 일출 3시간: 헤메/패키지 선택 시에만 예약 가능
+  const ADDON_LOCK_TEXT = '헤메, 패키지 예약시 가능합니다';
+
+  function isAddonLocked(tab, index) {
+    return addonMode === 'none' && (ADDON_REQUIRED_INDEX[tab] || []).includes(index);
+  }
+
+  function cardIndex(card, tab) {
+    if (card.dataset.mapsTo !== undefined) return +card.dataset.mapsTo;
+    const wrap = card.closest('.carousel-wrap');
+    const nonClones = Array.from(wrap.querySelectorAll('.option-card:not(.clone)'));
+    return nonClones.indexOf(card);
+  }
+
   function cardInfo(card, tab) {
     if (card.dataset.mapsTo !== undefined) {
       return PRICE_DATA[tab][+card.dataset.mapsTo];
@@ -2672,6 +2718,21 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         const info = cardInfo(card, tab);
         const [l1, l2] = priceLines(info);
         card.querySelector('.option-price').innerHTML = `<span class="deposit">${l1}</span><span class="balance">${l2}</span>`;
+
+        const locked = isAddonLocked(tab, cardIndex(card, tab));
+        card.classList.toggle('addon-locked', locked);
+        let lockNote = card.querySelector('.addon-lock-note');
+        if (locked) {
+          if (!lockNote) {
+            lockNote = document.createElement('div');
+            lockNote.className = 'addon-lock-note';
+            lockNote.textContent = ADDON_LOCK_TEXT;
+            lockNote.onclick = (e) => e.stopPropagation();
+            card.appendChild(lockNote);
+          }
+        } else if (lockNote) {
+          lockNote.remove();
+        }
 
         const slot = card.querySelector('.discount-slot');
         slot.innerHTML = (addonMode === 'package' && info.hours === 3)
