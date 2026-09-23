@@ -747,28 +747,7 @@
   }
 
   .option-card.addon-locked {
-    cursor: default;
-  }
-
-  .option-card.addon-locked > *:not(.addon-lock-note) {
-    opacity: 0.35;
-  }
-
-  .option-card .addon-lock-note {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 12px 16px;
-    background: rgba(242,241,238,0.55);
-    border-radius: 14px;
-    color: #6b1f2a;
-    font-size: 11.5px;
-    font-weight: 800;
-    line-height: 1.5;
+    display: none;
   }
 
   .addon-toggle-row {
@@ -835,7 +814,7 @@
     margin: 0 auto 14px;
   }
   .price-strip .price-chip {
-    flex: 0 0 calc((100% - 24px) / 5);
+    flex: 1 1 0;
     min-width: 0;
   }
 
@@ -863,9 +842,6 @@
   @media (max-width: 480px) {
     .price-strip {
       gap: 4px;
-    }
-    .price-strip .price-chip {
-      flex-basis: calc((100% - 16px) / 5);
     }
     .price-chip {
       font-size: 9.5px;
@@ -2357,9 +2333,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
     if (activeIndex === -1) return;
 
-    const cardWidth = cards[0].offsetWidth + 14;
     wrap.style.scrollBehavior = 'auto';
-    wrap.scrollLeft = cardWidth * (activeIndex + 1);
+    wrap.scrollLeft = cardScrollLeft(wrap, cards[activeIndex]);
     wrap.style.scrollBehavior = '';
   }
 
@@ -2532,9 +2507,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
             const mapIndex = parseInt(entry.target.dataset.mapsTo, 10);
             clearTimeout(wrap._loopTimer);
             wrap._loopTimer = setTimeout(() => {
-              const cardWidth = cards[0].offsetWidth + 14;
               wrap.style.scrollBehavior = 'auto';
-              wrap.scrollLeft = cardWidth * (mapIndex + 1);
+              wrap.scrollLeft = cardScrollLeft(wrap, cards[mapIndex]);
               wrap.style.scrollBehavior = '';
 
               cards.forEach(c => c.classList.remove('active'));
@@ -2573,15 +2547,20 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         detachObserver();
       } else {
         attachObserver();
-        const cardWidth = cards[0].offsetWidth + 14;
         wrap.style.scrollBehavior = 'auto';
-        wrap.scrollLeft = cardWidth * (startIndex + 1);
+        wrap.scrollLeft = cardScrollLeft(wrap, cards[startIndex]);
         wrap.style.scrollBehavior = '';
       }
     }
 
     mq.addEventListener('change', handleBreakpoint);
     handleBreakpoint();
+  }
+
+  function cardScrollLeft(wrap, card) {
+    const wrapRect = wrap.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    return wrap.scrollLeft + (cardRect.left - wrapRect.left);
   }
 
   function setActiveCard(id, index) {
@@ -2600,18 +2579,20 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const isDesktop = window.matchMedia('(min-width: 769px)').matches;
     if (isDesktop) return;
 
-    const cardWidth = cards[0].offsetWidth + 14;
-    wrap.scrollTo({ left: cardWidth * (index + 1), behavior: 'smooth' });
+    wrap.scrollTo({ left: cardScrollLeft(wrap, cards[index]), behavior: 'smooth' });
   }
 
   function moveCarousel(id, dir) {
     const wrap = document.getElementById(id);
+    const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const currentIndex = [...cards].findIndex(c => c.classList.contains('active'));
-    let nextIndex = currentIndex + dir;
+    let nextIndex = currentIndex;
 
-    if (nextIndex >= cards.length) nextIndex = 0;
-    if (nextIndex < 0) nextIndex = cards.length - 1;
+    for (let i = 0; i < cards.length; i++) {
+      nextIndex = (nextIndex + dir + cards.length) % cards.length;
+      if (!isAddonLocked(tab, nextIndex)) break;
+    }
 
     setActiveCard(id, nextIndex);
   }
@@ -2683,7 +2664,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   const ADDON_REQUIRED_INDEX = { morning: [1] }; // 일출 3시간: 헤메/패키지 선택 시에만 예약 가능
-  const ADDON_LOCK_TEXT = '헤메, 패키지 예약시 가능합니다';
 
   function isAddonLocked(tab, index) {
     return addonMode === 'none' && (ADDON_REQUIRED_INDEX[tab] || []).includes(index);
@@ -2713,20 +2693,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         const [l1, l2] = priceLines(info);
         card.querySelector('.option-price').innerHTML = `<span class="deposit">${l1}</span><span class="balance">${l2}</span>`;
 
-        const locked = isAddonLocked(tab, cardIndex(card, tab));
-        card.classList.toggle('addon-locked', locked);
-        let lockNote = card.querySelector('.addon-lock-note');
-        if (locked) {
-          if (!lockNote) {
-            lockNote = document.createElement('div');
-            lockNote.className = 'addon-lock-note';
-            lockNote.textContent = ADDON_LOCK_TEXT;
-            lockNote.style.pointerEvents = 'none';
-            card.appendChild(lockNote);
-          }
-        } else if (lockNote) {
-          lockNote.remove();
-        }
+        card.classList.toggle('addon-locked', isAddonLocked(tab, cardIndex(card, tab)));
 
         const slot = card.querySelector('.discount-slot');
         slot.innerHTML = (addonMode === 'package' && info.hours === 3)
@@ -2748,6 +2715,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           heme.remove();
         }
       });
+
+      wrap.querySelectorAll('.option-card:not(.clone)').forEach((card, i) => {
+        const chip = document.querySelector('#chips-carousel-' + tab + ' .price-chip[data-index="' + i + '"]');
+        if (chip) chip.style.display = isAddonLocked(tab, i) ? 'none' : '';
+      });
     });
   }
 
@@ -2759,6 +2731,21 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     updateAllPrices();
     equalizeCardHeights();
     equalizeTabContentHeights();
+
+    ['carousel-afternoon', 'carousel-morning'].forEach(id => {
+      const tab = id === 'carousel-afternoon' ? 'afternoon' : 'morning';
+      const wrap = document.getElementById(id);
+      const cards = wrap.querySelectorAll('.option-card:not(.clone)');
+      let activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
+      if (activeIndex === -1) return;
+      if (isAddonLocked(tab, activeIndex)) {
+        for (let i = 0; i < cards.length; i++) {
+          activeIndex = (activeIndex + 1) % cards.length;
+          if (!isAddonLocked(tab, activeIndex)) break;
+        }
+      }
+      setActiveCard(id, activeIndex);
+    });
   }
 
   function equalizeCardHeights() {
@@ -2792,7 +2779,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   ensureCardExtras();
-  updateAllPrices();
   updateTabIndicators();
   window.addEventListener('resize', updateTabIndicators);
 
@@ -2807,6 +2793,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       const chip = document.createElement('button');
       chip.type = 'button';
       chip.className = 'price-chip';
+      chip.dataset.index = i;
       chip.textContent = name;
       chip.onclick = () => setActiveCard(id, i);
       chipsWrap.appendChild(chip);
@@ -2815,6 +2802,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   buildChips('carousel-afternoon');
   buildChips('carousel-morning');
+  updateAllPrices();
 
   // Static (never repositioned) segments also need width-aware labels.
   const STATIC_SEGS = [
