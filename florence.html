@@ -543,6 +543,11 @@
     z-index: 3;
   }
 
+  .tl-seg-ext {
+    font-size: 8px;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.45) 0 3px, transparent 3px 6px);
+  }
+
   .tl-mark {
     transition: color 0.25s, background-color 0.25s;
     border-radius: 4px;
@@ -650,6 +655,10 @@
 
     .tl-seg {
       font-size: 8.5px;
+    }
+
+    .tl-seg-ext {
+      font-size: 7px;
     }
 
     .tl-scale {
@@ -1887,6 +1896,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="tl-line active" style="left:33.3%;"></div>
         <div class="tl-line" style="left:55.6%;"></div>
         <div class="tl-line" style="left:77.8%;"></div>
+        <div class="tl-seg tl-seg-ext" id="tl-pm-sunset-ext" style="display:none; background:#eccb92; color:#8a5a15;"></div>
         <div class="tl-seg" id="tl-pm-sunset-2h" style="left:33.3%; width:44.4%; background:#eccb92; color:#8a5a15; border-radius:8px 0 0 8px;">2h</div>
         <div class="tl-seg" id="tl-pm-sunset-3h" style="left:77.8%; width:22.2%; background:#cabfe0; color:#4a3f70; border-radius:0 8px 8px 0;">3h</div>
       </div>
@@ -1915,40 +1925,35 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-afternoon">
-      <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-afternoon', 3)">
-        <div class="option-name">일몰 3시간</div>
-        <div class="option-desc">언덕 필수 포함<br>야경 별도 추가 50유로</div>
+      <div class="option-card clone" data-maps-to="2" onclick="setActiveCard('carousel-afternoon', 2)">
+        <span class="badge">인기 상품</span>
+        <div class="option-name">일몰 + 야경 3h</div>
+        <div class="option-desc">시내 2시간 + 야경 30분 내외<br>이동 및 대기시간 약 30분 포함</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-afternoon', 0)">
-        <div class="option-name">낮 2시간</div>
+        <div class="option-name">낮 2h</div>
         <div class="option-desc">11월-2월 추천</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-afternoon', 1)">
         <span class="badge">인기 상품</span>
-        <div class="option-name">일몰 2시간</div>
+        <div class="option-name">일몰 2h</div>
         <div class="option-desc">야경 없음<br>언덕 추가 선택 가능</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-afternoon', 2)">
         <span class="badge">인기 상품</span>
-        <div class="option-name">일몰 + 야경 3시간</div>
+        <div class="option-name">일몰 + 야경 3h</div>
         <div class="option-desc">시내 2시간 + 야경 30분 내외<br>이동 및 대기시간 약 30분 포함</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
-      <div class="option-card" onclick="setActiveCard('carousel-afternoon', 3)">
-        <div class="option-name">일몰 3시간</div>
-        <div class="option-desc">언덕 필수 포함<br>야경 별도 추가 50유로</div>
-        <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
-      </div>
-
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-afternoon', 0)">
-        <div class="option-name">낮 2시간</div>
+        <div class="option-name">낮 2h</div>
         <div class="option-desc">11월-2월 추천</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
@@ -2029,6 +2034,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="tl-line" style="left:61.5%;"></div>
         <div class="tl-seg" id="tl-am-dawn-a" style="left:0%; width:15.4%; background:#d4c2e8; color:#4a2f66; border-radius:8px 0 0 8px;">1h</div>
         <div class="tl-seg" id="tl-am-dawn-b" style="left:15.4%; width:30.8%; background:#e6dcf0; color:#4a2f66; border-radius:0 8px 8px 0;">06:00 ~ 08:00 (2h)</div>
+        <div class="tl-seg tl-seg-ext" id="tl-am-dawn-ext" style="display:none; background:#e6dcf0; color:#4a2f66;"></div>
       </div>
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon empty">–</div>
@@ -2043,6 +2049,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="tl-line" style="left:61.5%;"></div>
         <div class="tl-seg" id="tl-am-sunrise-2h" style="left:15.4%; width:30.8%; background:#eccb92; color:#8a5a15; border-radius:8px 0 0 8px;">2h</div>
         <div class="tl-seg" id="tl-am-sunrise-3h" style="left:46.2%; width:15.3%; background:#f3ddb8; color:#8a5a15; border-radius:0 8px 8px 0;">3h</div>
+        <div class="tl-seg tl-seg-ext" id="tl-am-sunrise-ext" style="display:none; background:#eccb92; color:#8a5a15;"></div>
       </div>
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon">21:00~<br>야경 20분</div>
@@ -2057,6 +2064,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="tl-line" style="left:61.5%;"></div>
         <div class="tl-seg" id="tl-am-morning-2h" style="left:53.8%; width:30.8%; background:#bcd8dd; color:#2a4d55; border-radius:8px 0 0 8px;">2h</div>
         <div class="tl-seg" id="tl-am-morning-3h" style="left:84.6%; width:15.4%; background:#d6e8eb; color:#2a4d55; border-radius:0 8px 8px 0;">3h</div>
+        <div class="tl-seg tl-seg-ext" id="tl-am-morning-ext" style="display:none; background:#bcd8dd; color:#2a4d55;"></div>
       </div>
       <div class="tl-break">⁄⁄</div>
       <div class="tl-addon">21:00~<br>야경 20분</div>
@@ -2086,40 +2094,40 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   <div class="cards-block">
     <div class="carousel-wrap" id="carousel-morning">
       <div class="option-card clone" data-maps-to="3" onclick="setActiveCard('carousel-morning', 3)">
-        <div class="option-name">아침 2시간</div>
+        <div class="option-name">아침 2h</div>
         <div class="option-desc">시내 시작 기본<br>언덕 선택 사항</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">인기 상품</span>
-        <div class="option-name">새벽 3시간</div>
+        <div class="option-name">새벽 3h</div>
         <div class="option-desc">야경+일출 촬영<br>새벽시간 야경으로 시작</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-morning', 1)">
-        <div class="option-name">일출 3시간</div>
+        <div class="option-name">일출 3h</div>
         <div class="option-desc">헤메&패키지 특별 상품<br>언덕 시작 고정</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
 
       <div class="option-card featured" onclick="setActiveCard('carousel-morning', 2)">
         <span class="badge">인기 상품</span>
-        <div class="option-name">일출 2시간</div>
+        <div class="option-name">일출 2h</div>
         <div class="option-desc">언덕 시작 고정</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card" onclick="setActiveCard('carousel-morning', 3)">
-        <div class="option-name">아침 2시간</div>
+        <div class="option-name">아침 2h</div>
         <div class="option-desc">시내 시작 기본<br>언덕 선택 사항</div>
         <div class="option-detail">JPG 원본 800장 내외<br>보정본 15장</div>
       </div>
 
       <div class="option-card clone" data-maps-to="0" onclick="setActiveCard('carousel-morning', 0)">
         <span class="badge">인기 상품</span>
-        <div class="option-name">새벽 3시간</div>
+        <div class="option-name">새벽 3h</div>
         <div class="option-desc">야경+일출 촬영<br>새벽시간 야경으로 시작</div>
         <div class="option-detail">JPG 원본 1200장 내외<br>보정본 25장</div>
       </div>
@@ -2371,8 +2379,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     afternoon: [
       { hours: 2, targets: ['tl-pm-day', 'tl-pm-axis-1530'] },
       { hours: 2, targets: ['tl-pm-sunset-2h', 'tl-pm-axis-1800'] },
-      { hours: 3, targets: ['tl-pm-sunset-2h', 'tl-pm-sunset-3h', 'tl-pm-axis-1800'] },
-      { hours: 3, targets: ['tl-pm-axis-1700', 'tl-pm-sunset-2h'] }
+      { hours: 3, targets: ['tl-pm-sunset-2h', 'tl-pm-sunset-3h', 'tl-pm-axis-1800'] }
     ],
     morning: [
       { hours: 3, targets: ['tl-am-dawn-a', 'tl-am-dawn-b', 'tl-am-axis-0500'] },
@@ -2385,8 +2392,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   const sunsetBarGeom = [
     { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
     { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 0, text: '' } },
-    { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } },
-    { seg2h: { left: 11.1, width: 66.7, text: '17:00 ~ 20:00 (3h)' }, seg3h: { left: 77.8, width: 0, text: '' } }
+    { seg2h: { left: 33.3, width: 44.4, text: '18:00 ~ 20:00 (2h)' }, seg3h: { left: 77.8, width: 22.2, text: '20:00 ~ 21:00 (1h)' } }
   ];
 
   const sunriseBarGeom = [
@@ -2406,7 +2412,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   // Which single row (낮/일몰, 새벽/일출/아침) should be visible per card index,
   // and the overall start/end/hours summary line shown under the track.
   const ROW_CATEGORY = {
-    afternoon: ['day', 'sunset', 'sunset', 'sunset'],
+    afternoon: ['day', 'sunset', 'sunset'],
     morning: ['dawn', 'sunrise', 'sunrise', 'morning']
   };
   const ROW_IDS = {
@@ -2417,8 +2423,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     afternoon: [
       { start: '15:30', end: '17:30', hours: 2 },
       { start: '18:00', end: '20:00', hours: 2 },
-      { start: '18:00', end: '21:00', hours: 3 },
-      { start: '17:00', end: '20:00', hours: 3 }
+      { start: '18:00', end: '21:00', hours: 3 }
     ],
     morning: [
       { start: '05:00', end: '08:00', hours: 3 },
@@ -2438,7 +2443,55 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     return isDesktop ? text : `${m[1]}h`;
   }
 
-  function applyRowGeom(idA, idB, config) {
+  function radiusStr(roundLeft, roundRight) {
+    const l = roundLeft ? '8px' : '0';
+    const r = roundRight ? '8px' : '0';
+    return l + ' ' + r + ' ' + r + ' ' + l;
+  }
+
+  function shiftTime(hhmm, deltaMin) {
+    const [h, m] = hhmm.split(':').map(Number);
+    const total = ((h * 60 + m + deltaMin) % 1440 + 1440) % 1440;
+    return String(Math.floor(total / 60)).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0');
+  }
+
+  // Extra 30-minute block appended (오전, later) or prepended (오후, earlier)
+  // next to an extended card's existing bar segment — the base bar itself
+  // keeps its original width/text; only this small block grows the graph.
+  const TL_EXT_GEOM = {
+    'afternoon:1': { id: 'tl-pm-sunset-ext', left: 22.2, width: 11.1, side: 'left' },
+    'afternoon:2': { id: 'tl-pm-sunset-ext', left: 22.2, width: 11.1, side: 'left' },
+    'morning:0': { id: 'tl-am-dawn-ext', left: 46.2, width: 7.7, side: 'right' },
+    'morning:2': { id: 'tl-am-sunrise-ext', left: 46.2, width: 7.7, side: 'right' },
+    'morning:3': { id: 'tl-am-morning-ext', left: 84.6, width: 7.7, side: 'right' }
+  };
+
+  function applyExtSeg(tab, index) {
+    const allIds = tab === 'afternoon'
+      ? ['tl-pm-sunset-ext']
+      : ['tl-am-dawn-ext', 'tl-am-sunrise-ext', 'tl-am-morning-ext'];
+    allIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+
+    const geom = TL_EXT_GEOM[tab + ':' + index];
+    const on = !!geom && isExtended(tab, index);
+    if (!geom || !on) return { on: false };
+
+    const el = document.getElementById(geom.id);
+    if (el) {
+      el.style.display = '';
+      el.style.left = geom.left + '%';
+      el.style.width = geom.width + '%';
+      el.style.borderRadius = geom.side === 'left' ? radiusStr(true, false) : radiusStr(false, true);
+      const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+      el.textContent = isDesktop ? '+30분' : '+30m';
+    }
+    return { on: true, side: geom.side };
+  }
+
+  function applyRowGeom(idA, idB, config, extLeft, extRight) {
     const segA = document.getElementById(idA);
     const segB = document.getElementById(idB);
     if (!segA || !segB || !config) return;
@@ -2446,7 +2499,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     segA.style.left = config.seg2h.left + '%';
     segA.style.width = config.seg2h.width + '%';
     segA.textContent = fitLabel(config.seg2h.text, config.seg2h.width);
-    segA.style.borderRadius = config.seg3h.width > 0 ? '8px 0 0 8px' : '8px';
+    segA.style.borderRadius = radiusStr(!extLeft, config.seg3h.width === 0 && !extRight);
 
     segB.style.left = config.seg3h.left + '%';
     segB.style.width = config.seg3h.width + '%';
@@ -2470,10 +2523,20 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       if (rowEl) rowEl.classList.toggle('tl-row-hidden', cat !== activeCategory);
     });
 
+    const extGeom = TL_EXT_GEOM[tab + ':' + index];
+    const extOn = !!extGeom && isExtended(tab, index);
+
     const summary = TIME_SUMMARY[tab] && TIME_SUMMARY[tab][index];
     const rangeEl = document.getElementById(tab === 'afternoon' ? 'tl-pm-range' : 'tl-am-range');
     if (summary && rangeEl) {
-      let html = `<b>${summary.start}</b> 시작 · <b>${summary.end}</b> 종료 (약 ${summary.hours}시간)`;
+      let start = summary.start, end = summary.end, hours = summary.hours;
+      if (extOn) {
+        // 오전은 뒤로(종료 시각이 늦어짐), 오후는 앞으로(시작 시각이 빨라짐) 30분 연장
+        if (tab === 'afternoon') start = shiftTime(start, -30);
+        else end = shiftTime(end, 30);
+        hours += 0.5;
+      }
+      let html = `<b>${start}</b> 시작 · <b>${end}</b> 종료 (약 ${hours}시간)`;
       // On mobile the side-by-side 야경 addon box doesn't fit well, so fold
       // that info into this summary line instead (일출/아침 카드에만 해당).
       const isDesktop = window.matchMedia('(min-width: 769px)').matches;
@@ -2496,12 +2559,19 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       if (el) el.classList.add('tl-active');
     });
 
+    applyExtSeg(tab, index);
+
     if (tab === 'afternoon') {
-      applyRowGeom('tl-pm-sunset-2h', 'tl-pm-sunset-3h', sunsetBarGeom[index]);
+      applyRowGeom('tl-pm-sunset-2h', 'tl-pm-sunset-3h', sunsetBarGeom[index], extOn && extGeom.side === 'left', false);
     }
     if (tab === 'morning') {
-      applyRowGeom('tl-am-sunrise-2h', 'tl-am-sunrise-3h', sunriseBarGeom[index]);
-      applyRowGeom('tl-am-morning-2h', 'tl-am-morning-3h', morningBarGeom[index]);
+      const sunriseExtOn = extOn && extGeom.id === 'tl-am-sunrise-ext';
+      const morningExtOn = extOn && extGeom.id === 'tl-am-morning-ext';
+      const dawnExtOn = extOn && extGeom.id === 'tl-am-dawn-ext';
+      applyRowGeom('tl-am-sunrise-2h', 'tl-am-sunrise-3h', sunriseBarGeom[index], false, sunriseExtOn);
+      applyRowGeom('tl-am-morning-2h', 'tl-am-morning-3h', morningBarGeom[index], false, morningExtOn);
+      const dawnB = document.getElementById('tl-am-dawn-b');
+      if (dawnB) dawnB.style.borderRadius = radiusStr(false, !dawnExtOn);
     }
   }
 
@@ -2630,7 +2700,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       { hours: 2 },                                              // 0 낮 2시간
       { hours: 2 },                                              // 1 일몰 2시간
       { hours: 3 },                                              // 2 일몰 + 야경 3시간
-      { hours: 3 },                                              // 3 일몰 3시간
     ],
     morning: [
       { hours: 3, balance: '200유로', packageBalance: '350유로', depositAdjust: 5 }, // 0 새벽 3시간
@@ -2709,7 +2778,15 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   }
 
   const EXTENDABLE_CARDS = {
-    morning: { 2: { baseName: '일출 2시간', extName: '일출 2.5시간', addBalance: 50 } }
+    afternoon: {
+      1: { baseName: '일몰 2h', extName: '일몰 2h 30m', addBalance: 50 },
+      2: { baseName: '일몰 + 야경 3h', extName: '일몰 + 야경 3h 30m', addBalance: 50 }
+    },
+    morning: {
+      0: { baseName: '새벽 3h', extName: '새벽 3h 30m', addBalance: 50 },
+      2: { baseName: '일출 2h', extName: '일출 2h 30m', addBalance: 50 },
+      3: { baseName: '아침 2h', extName: '아침 2h 30m', addBalance: 50 }
+    }
   };
   const extendedCards = new Set();
 
@@ -2727,6 +2804,12 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     else extendedCards.add(key);
     updateAllPrices();
     equalizeCardHeights();
+
+    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
+    const wrap = document.getElementById(carouselId);
+    const cards = wrap.querySelectorAll('.option-card:not(.clone)');
+    const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
+    if (activeIndex !== -1) updateTimelineHighlight(carouselId, activeIndex);
   }
 
   function cardIndex(card, tab) {
