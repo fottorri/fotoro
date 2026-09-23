@@ -433,6 +433,69 @@
     margin-top: 4px;
   }
 
+  /* ===== 30분 추가 토글 (피렌체 페이지의 버튼과 동일한 톤) ===== */
+  .ext-toggle-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .ext-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fff;
+    border: 1px solid #e3e3e0;
+    color: #2a2723;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 7px 14px 7px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .ext-toggle::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #96938c;
+    display: inline-block;
+  }
+
+  .ext-toggle.active {
+    border-color: #4a1520;
+    color: #4a1520;
+  }
+
+  .ext-toggle.active::before {
+    background-color: #4a1520;
+    animation: ext-dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes ext-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .ext-only {
+    display: none;
+  }
+
+  .ext-on .ext-only {
+    display: inline;
+  }
+
+  .ext-bump {
+    color: #8c3149;
+    font-weight: 800;
+    background-color: rgba(140, 49, 73, 0.10);
+    border-radius: 4px;
+    padding: 0 3px;
+  }
+
   @media (max-width: 480px) {
     .package-grid {
       grid-template-columns: 1fr 1fr;
@@ -802,43 +865,46 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     </div>
 
   <!-- ===== 2h / 3h 패키지 (핵심, 상단 배치) ===== -->
-  <div class="info-section">
+  <div class="info-section" id="hmPackages">
     <h3>헤메드 패키지</h3>
+    <div class="ext-toggle-row">
+      <button type="button" class="ext-toggle" id="hmExtToggle" onclick="toggleHmExtend()">30분 추가</button>
+    </div>
     <div class="package-grid">
       <div class="package-card">
         <div class="pkg-header">
-          <div class="pkg-name">포토로 2h x 살롱반하</div>
+          <div class="pkg-name">포토로 2h<span class="ext-only"> 30m</span> x 살롱반하</div>
           <div class="pkg-time">일출, 아침 / 일몰</div>
         </div>
         <div class="pkg-detail">
-          JPG 원본 800장 내외<br>
-          보정본 15장
+          JPG 원본 <span class="ext-num" data-base="800" data-bonus="150" data-unit="장">800장</span> 내외<br>
+          보정본 <span class="ext-num" data-base="15" data-bonus="5" data-unit="장">15장</span>
           <span class="divider"></span>
           남성&여성 헤어, 메이크업 포함<br>
           여성 드레스 1벌 포함<br>
           조화부케 + 헤어장식 포함
         </div>
         <div class="pkg-price">
-          예약금 60만원<br>+ 잔금 300유로<br><br>
+          예약금 60만원<br>+ 잔금 <span class="ext-num" data-base="300" data-bonus="50" data-unit="유로" data-plain>300유로</span><br><br>
         </div>
       </div>
 
       <div class="package-card featured">
         <span class="badge">패키지 할인 이벤트 중</span>
         <div class="pkg-header">
-          <div class="pkg-name">포토로 3h x 살롱반하</div>
+          <div class="pkg-name">포토로 3h<span class="ext-only"> 30m</span> x 살롱반하</div>
           <div class="pkg-time">새벽 / 일출, 아침 / 일몰<br>(일몰 야경 기본 포함)</div>
         </div>
         <div class="pkg-detail">
-          JPG 원본 1200장 내외<br>
-          보정본 25장
+          JPG 원본 <span class="ext-num" data-base="1200" data-bonus="150" data-unit="장">1200장</span> 내외<br>
+          보정본 <span class="ext-num" data-base="25" data-bonus="5" data-unit="장">25장</span>
           <span class="divider"></span>
           남성&여성 헤어, 메이크업 포함<br>
           여성 드레스 1벌 포함<br>
           조화부케 + 헤어장식 포함
         </div>
         <div class="pkg-price">
-          예약금 60만원<br>+ 잔금 350유로
+          예약금 60만원<br>+ 잔금 <span class="ext-num" data-base="350" data-bonus="50" data-unit="유로" data-plain>350유로</span>
         </div>
         <div class="pkg-note">새벽타임 진행 시 +50유로</div>
       </div>
@@ -923,6 +989,17 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
       slides[currentIndex].classList.add('active');
     }, 3000); // 2000ms = 2초
   });
+
+  // ===== 30분 추가: 2h / 3h 패키지 카드에 한 번에 적용 =====
+  function toggleHmExtend() {
+    const root = document.getElementById('hmPackages');
+    const on = root.classList.toggle('ext-on');
+    document.getElementById('hmExtToggle').classList.toggle('active', on);
+    root.querySelectorAll('.ext-num').forEach(el => {
+      el.textContent = (+el.dataset.base + (on ? +el.dataset.bonus : 0)) + el.dataset.unit;
+      if (!el.hasAttribute('data-plain')) el.classList.toggle('ext-bump', on);
+    });
+  }
 
   // ===== 카카오톡 문의 버튼 + 모달 =====
   const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_Gxdxnwxj/chat';

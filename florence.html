@@ -947,6 +947,14 @@
     background-color: #4a1520;
   }
 
+  .option-card .ext-bump {
+    color: #8c3149;
+    font-weight: 800;
+    background-color: rgba(140, 49, 73, 0.10);
+    border-radius: 4px;
+    padding: 0 3px;
+  }
+
   .option-card .option-name {
     font-size: 14.5px;
     font-weight: bold;
@@ -2766,6 +2774,16 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   // it has no EXTENDABLE_CARDS entry).
   const extendedTabs = new Set();
 
+  // Extra photos an extended card includes, on top of its base counts.
+  const EXTEND_BONUS = { original: 150, retouched: 5 };
+
+  function extendedDetailHtml(base) {
+    const bump = (n, extra, unit) => `<span class="ext-bump">${+n + extra}${unit}</span>`;
+    return base
+      .replace(/(원본 )(\d+)(장)/, (_, pre, n, unit) => pre + bump(n, EXTEND_BONUS.original, unit))
+      .replace(/(보정본 )(\d+)(장)/, (_, pre, n, unit) => pre + bump(n, EXTEND_BONUS.retouched, unit));
+  }
+
   function extendConfig(tab, index) {
     return (EXTENDABLE_CARDS[tab] || {})[index];
   }
@@ -2825,6 +2843,9 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
           if (extCfg.baseDesc && extCfg.extDesc) {
             card.querySelector('.option-desc').innerHTML = extended ? extCfg.extDesc : extCfg.baseDesc;
           }
+          const detail = card.querySelector('.option-detail');
+          if (detail.dataset.base === undefined) detail.dataset.base = detail.innerHTML;
+          detail.innerHTML = extended ? extendedDetailHtml(detail.dataset.base) : detail.dataset.base;
         }
 
         const notes = [];
