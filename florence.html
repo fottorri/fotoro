@@ -920,33 +920,6 @@
     display: inline-block;
   }
 
-  .option-card .extend-slot {
-    min-height: 0;
-  }
-
-  .option-card .extend-slot:not(:empty) {
-    margin: 4px 0 2px;
-  }
-
-  .option-card .extend-btn {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    color: #7c7562;
-    background: #fff;
-    border: 1px solid #e5e0d5;
-    border-radius: 20px;
-    padding: 4px 10px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, color 0.2s;
-  }
-
-  .option-card .extend-btn.active {
-    border-color: #4a1520;
-    background: #4a1520;
-    color: #fff;
-  }
-
   .option-card.active .discount-note {
     color: #fff;
     background-color: #8c3149;
@@ -1916,6 +1889,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-afternoon" style="display:none;" onclick="toggleExtendActive('afternoon')">30분 추가</button>
     </div>
   </div>
 
@@ -2084,6 +2058,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     <div class="addon-toggle-row">
       <button type="button" class="addon-toggle-btn" data-mode="heme" onclick="toggleAddon(this.dataset.mode)">헤메</button>
       <button type="button" class="addon-toggle-btn" data-mode="package" onclick="toggleAddon(this.dataset.mode)">패키지</button>
+      <button type="button" class="addon-toggle-btn ext-toggle-btn" id="ext-toggle-morning" style="display:none;" onclick="toggleExtendActive('morning')">30분 추가</button>
     </div>
   </div>
 
@@ -2509,6 +2484,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   function updateTimelineHighlight(carouselId, index) {
     const tab = carouselId === 'carousel-afternoon' ? 'afternoon' : 'morning';
 
+    updateExtToggleBtn(tab, index);
+
     const chipsWrap = document.getElementById('chips-' + carouselId);
     if (chipsWrap) {
       chipsWrap.querySelectorAll('.price-chip').forEach((chip, i) => {
@@ -2762,12 +2739,6 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         addonEl.className = 'option-desc-addon';
         wrap.appendChild(addonEl);
       }
-      if (!card.querySelector('.extend-slot')) {
-        const descWrap = card.querySelector('.option-desc-wrap');
-        const extendSlot = document.createElement('div');
-        extendSlot.className = 'extend-slot';
-        descWrap.insertAdjacentElement('afterend', extendSlot);
-      }
     });
   }
 
@@ -2780,7 +2751,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   const EXTENDABLE_CARDS = {
     afternoon: {
       1: { baseName: '일몰 2h', extName: '일몰 2h 30m', addBalance: 50 },
-      2: { baseName: '일몰 + 야경 3h', extName: '일몰 + 야경 3h 30m', addBalance: 50 }
+      2: {
+        baseName: '일몰 + 야경 3h', extName: '일몰 + 야경 3h 30m', addBalance: 50,
+        baseDesc: '시내 2시간 + 야경 30분 내외<br>이동 및 대기시간 약 30분 포함',
+        extDesc: '시내 2.5시간 + 야경 30분 내외<br>이동 및 대기시간 약 30분 포함'
+      }
     },
     morning: {
       0: { baseName: '새벽 3h', extName: '새벽 3h 30m', addBalance: 50 },
@@ -2810,6 +2785,28 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
     const cards = wrap.querySelectorAll('.option-card:not(.clone)');
     const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
     if (activeIndex !== -1) updateTimelineHighlight(carouselId, activeIndex);
+  }
+
+  // The "30분 추가" toggle lives in the 헤메/패키지 toolbar rather than on
+  // each card, so it always acts on whichever card is currently active.
+  function toggleExtendActive(tab) {
+    const carouselId = tab === 'afternoon' ? 'carousel-afternoon' : 'carousel-morning';
+    const wrap = document.getElementById(carouselId);
+    const cards = wrap.querySelectorAll('.option-card:not(.clone)');
+    const activeIndex = [...cards].findIndex(c => c.classList.contains('active'));
+    if (activeIndex !== -1) toggleExtend(tab, activeIndex);
+  }
+
+  function updateExtToggleBtn(tab, index) {
+    const btn = document.getElementById(tab === 'afternoon' ? 'ext-toggle-afternoon' : 'ext-toggle-morning');
+    if (!btn) return;
+    const cfg = extendConfig(tab, index);
+    if (!cfg) {
+      btn.style.display = 'none';
+      return;
+    }
+    btn.style.display = '';
+    btn.classList.toggle('active', isExtended(tab, index));
   }
 
   function cardIndex(card, tab) {
@@ -2843,16 +2840,9 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
         if (extCfg) {
           card.querySelector('.option-name').textContent = extended ? extCfg.extName : extCfg.baseName;
-          const extSlot = card.querySelector('.extend-slot');
-          let extBtn = extSlot.querySelector('.extend-btn');
-          if (!extBtn) {
-            extBtn = document.createElement('div');
-            extBtn.className = 'extend-btn';
-            extBtn.onclick = (e) => { e.stopPropagation(); toggleExtend(tab, idx); };
-            extSlot.appendChild(extBtn);
+          if (extCfg.baseDesc && extCfg.extDesc) {
+            card.querySelector('.option-desc').innerHTML = extended ? extCfg.extDesc : extCfg.baseDesc;
           }
-          extBtn.textContent = extended ? `30분 추가됨 (+${extCfg.addBalance}유로)` : `30분 추가 (+${extCfg.addBalance}유로)`;
-          extBtn.classList.toggle('active', extended);
         }
 
         const slot = card.querySelector('.discount-slot');
@@ -2885,7 +2875,7 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
   function toggleAddon(mode) {
     addonMode = (addonMode === mode) ? 'none' : mode;
-    document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
+    document.querySelectorAll('.addon-toggle-btn:not(.ext-toggle-btn)').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === addonMode);
     });
     updateAllPrices();
