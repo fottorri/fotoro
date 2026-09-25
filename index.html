@@ -443,7 +443,149 @@ section {
 }
 
   
-/* ===== 모바일 카드: 사진 위에 글씨 (피렌체·헤메는 가로로 넓게) ===== */
+/* ===== 카드: 사진 위에 글씨 (기본 = 데스크탑, 모바일은 아래 @media 에서 덮어씀) ===== */
+.menu-card.photo {
+  justify-content: flex-end;
+  aspect-ratio: 8 / 7;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  background-color: #222;
+}
+
+/* 데스크탑: 피렌체만 2칸, 갤러리·카톡은 한 칸을 위아래 반반 */
+.menu-card.photo.main {
+  grid-column: span 2;
+  aspect-ratio: auto;
+}
+
+.menu-side {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.menu-card.photo .card-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.menu-card.photo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.menu-card .card-sub {
+  word-break: keep-all;
+}
+
+.menu-card.photo .card-title,
+.menu-card.photo .card-sub {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+
+.menu-card.photo .card-title {
+  margin: 0;
+  padding: 0 18px;
+  font-size: clamp(20px, 2.4vw, 24px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.menu-card.photo .card-sub {
+  padding: 4px 18px 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.menu-card.photo.main .card-title {
+  font-size: clamp(30px, 4vw, 40px);
+}
+
+.menu-card.photo.main .card-sub span {
+  display: inline;
+}
+
+.menu-card.photo.main .card-sub span + span::before {
+  content: ' · ';
+}
+
+.menu-card.chip {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 16px;
+  align-content: center;
+  padding: 10px 18px;
+  border-radius: 14px;
+}
+
+.menu-card.chip .card-img {
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 56px;
+  height: 56px;
+  aspect-ratio: auto;
+  background-color: transparent;
+  background-size: 106px auto;
+  background-repeat: no-repeat;
+}
+
+.menu-card.chip .card-title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin: 0;
+  text-align: left;
+  font-size: clamp(16px, 2vw, 20px);
+  letter-spacing: 0.5px;
+}
+
+.menu-card.chip .card-sub {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  padding: 0;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* ===== 배너 자리 (데스크탑 전용 / 지금은 비어 있어서 hidden — 배너를 넣을 때 hidden 만 지우면 됨 / 미리보기: 주소 끝에 ?banner) ===== */
+.home-banner {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border: 1px dashed #c9c3b6;
+  border-radius: 14px;
+  background-color: #f1eee8;
+  background-position: center;
+  background-size: cover;
+  color: #9b9484;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.home-banner[hidden] {
+  display: none;
+}
+
+/* ===== 모바일 카드: 피렌체·헤메는 가로로 넓게 ===== */
 @media (max-width: 768px) {
   .lang-notice-wrap {
     margin-bottom: 8px;
@@ -455,69 +597,32 @@ section {
     max-width: 520px;
   }
 
-  .menu-card.wide {
-    grid-column: 1 / -1;
+  .menu-side {
+    display: contents;
+  }
+
+  .home-banner {
+    display: none;
   }
 
   .menu-card.photo {
-    justify-content: flex-end;
     aspect-ratio: 6 / 7;
-    border: 0;
-    border-radius: 14px;
-    color: #fff;
-    background-color: #222;
   }
 
   .menu-card.photo.wide {
+    grid-column: 1 / -1;
     aspect-ratio: auto;
     height: min(calc(40vw - 7.8px), 200.2px);
   }
 
-  .menu-card.photo .card-img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    aspect-ratio: auto;
-  }
-
-  .menu-card.photo::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 70%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .menu-card .card-sub {
-    word-break: keep-all;
-  }
-
-  .menu-card.photo .card-title,
-  .menu-card.photo .card-sub {
-    position: relative;
-    z-index: 2;
-    text-align: left;
-  }
-
   .menu-card.photo .card-title {
-    margin: 0;
     padding: 0 12px;
     font-size: 17px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
 
   .menu-card.photo .card-sub {
     padding: 3px 12px 11px;
     font-size: 11px;
-    line-height: 1.45;
-    color: rgba(255, 255, 255, 0.9);
   }
 
   .menu-card.photo.wide .card-title {
@@ -554,42 +659,24 @@ section {
   }
 
   .menu-card.chip {
-    display: grid;
     grid-template-columns: 40px 1fr;
     column-gap: 10px;
-    align-content: center;
     padding: 8px 10px;
     border-radius: 12px;
   }
 
   .menu-card.chip .card-img {
-    grid-row: 1 / span 2;
-    align-self: center;
     width: 40px;
     height: 40px;
-    aspect-ratio: auto;
-    background-color: transparent;
     background-size: 76px auto;
-    background-repeat: no-repeat;
   }
 
   .menu-card.chip .card-title {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: end;
-    margin: 0;
-    text-align: left;
     font-size: 14px;
-    letter-spacing: 0.5px;
   }
 
   .menu-card.chip .card-sub {
-    grid-column: 2;
-    grid-row: 2;
-    align-self: start;
-    padding: 0;
-    text-align: left;
-    line-height: 1.45;
+    font-size: 11px;
   }
 }
 
@@ -688,6 +775,8 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
 
     
     <div class="menu-grid">
+      <div class="home-banner" hidden>배너 자리</div>
+
       <a href="florence.html" class="menu-card photo wide main">
         <div class="card-img" style="background-image:url('images/florence.jpg')"></div>
         <div class="card-title">Firenze</div>
@@ -712,17 +801,19 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
         <div class="card-sub"><span>6월-10월만 진행</span><span>헤메드 패키지 가능</span></div>
       </a>
 
-      <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card chip">
-        <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
-        <div class="card-title">Gallery</div>
-        <div class="card-sub"><span>@fotoro.it</span><span>@_fotoro</span></div>
-      </a>
+      <div class="menu-side">
+        <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card chip">
+          <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
+          <div class="card-title">Gallery</div>
+          <div class="card-sub"><span>@fotoro.it</span><span>@_fotoro</span></div>
+        </a>
 
-      <a href="#" role="button" class="menu-card chip kakao-card" onclick="openInquiry(); return false;">
-        <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
-        <div class="card-title">Kakao Talk</div>
-        <div class="card-sub"><span>문의 양식 작성 및 상담</span></div>
-      </a>
+        <a href="#" role="button" class="menu-card chip kakao-card" onclick="openInquiry(); return false;">
+          <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
+          <div class="card-title">Kakao Talk</div>
+          <div class="card-sub"><span>문의 및 상담</span></div>
+        </a>
+      </div>
     </div>
 
     <div class="intro-section">
@@ -759,6 +850,11 @@ textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
+
+  // 배너 자리 미리보기: 주소 끝에 ?banner
+  if (location.search.indexOf('banner') !== -1) {
+    document.querySelector('.home-banner').hidden = false;
+  }
 
   // 2초마다 한국어 / 영어 문구 교대 전환
   document.addEventListener('DOMContentLoaded', function() {
