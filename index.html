@@ -48,6 +48,12 @@
     white-space: nowrap;
   }
 
+  header h1 a {
+    display: inline-block;
+    padding: 6px 14px;
+    margin: -6px -14px;
+  }
+
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -441,6 +447,72 @@ section {
   }
 }
 
+  
+/* ===== 카카오톡 문의 버튼 + 모달 ===== */
+:root{
+  --iq-ink:#2a2723;
+  --iq-bg:#f4f1ea;
+  --iq-border-light:#ccc;
+  --iq-accent:#4a1520;
+  --iq-muted:#7c7562;
+  --iq-muted-light:#96938c;
+  --iq-faint:#96938c;
+  --iq-pill:#e5e0d5;
+  --iq-border:#e5e0d5;
+  --iq-kakao-bg:#FEE500;
+  --iq-kakao-text:#3C1E1E;
+}
+.cta-button{display:inline-flex; align-items:center; justify-content:center; background:var(--iq-kakao-bg); color:var(--iq-kakao-text) !important; font-size:13px; font-weight:800; text-align:center; padding:11px 20px; border-radius:12px; text-decoration:none; cursor:pointer; transition:background-color 0.2s;}
+.cta-button:hover{background:#e6cf00;}
+
+/* 화면 우측 하단 고정 플로팅 */
+@keyframes cta-bounce-in {
+  0% { transform: scale(0.6) translateY(24px); opacity: 0; }
+  55% { transform: scale(1.1) translateY(-8px); opacity: 1; }
+  75% { transform: scale(0.96) translateY(2px); }
+  90% { transform: scale(1.03) translateY(-1px); }
+  100% { transform: scale(1) translateY(0); }
+}
+.cta-button.cta-floating{position:fixed; right:16px; bottom:18px; z-index:50; box-shadow:0 8px 26px rgba(0,0,0,0.35); padding:13px 24px; font-size:14.5px; gap:6px; animation:cta-bounce-in 0.8s cubic-bezier(.34,1.56,.64,1) 0.3s both;}
+
+.inquiry-overlay{position:fixed; inset:0; background:rgba(20,16,12,0.5); display:flex; align-items:flex-end; justify-content:center; z-index:60;}
+.inquiry-card{width:100%; max-width:480px; max-height:90vh; overflow-y:auto; background:#fff; border-radius:18px 18px 0 0; padding:15px; box-shadow:0 -10px 40px rgba(0,0,0,0.3); font-family:"Noto Sans KR",system-ui,sans-serif; color:var(--iq-ink);}
+.inquiry-head{display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:12px;}
+.inquiry-title{font-size:13.5px; font-weight:800; color:var(--iq-ink);}
+.inquiry-sub{font-size:9.5px; color:var(--iq-muted-light); margin-top:3px; line-height:1.45;}
+.inquiry-close{flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--iq-pill); color:var(--iq-muted-light); display:flex; align-items:center; justify-content:center; font-size:12px; cursor:pointer;}
+.field-group{margin-bottom:12px;}
+.field-label{font-size:10px; font-weight:700; color:var(--iq-muted); margin-bottom:5px;}
+.field-input{width:100%; border:1px solid var(--iq-border-light); border-radius:9px; padding:7px 9px; font-size:11px; color:var(--iq-ink); font-family:inherit; background:#fff; box-sizing:border-box;}
+textarea.field-input{resize:vertical; min-height:56px; line-height:1.5;}
+.choice-row{display:flex; flex-wrap:wrap; gap:5px; align-items:center;}
+.choice-btn{padding:8px 14px; border-radius:999px; border:1px solid var(--iq-border-light); background:#fff; color:var(--iq-muted); font-size:12.5px; font-weight:700; cursor:pointer;}
+.choice-btn.active{background:var(--iq-accent); border-color:var(--iq-accent); color:#fff;}
+.choice-btn.tight{padding:5px 8px; font-size:10px;}
+.field-input.inline{flex:1; min-width:110px; width:auto;}
+.duration-divider{width:1px; align-self:stretch; background:var(--iq-border-light); margin:2px 3px;}
+.cal-widget{border:1px solid var(--iq-border-light); border-radius:10px; padding:8px; background:#fff;}
+.cal-head{display:flex; align-items:center; justify-content:space-between; gap:4px; margin-bottom:6px;}
+.cal-month-picker{display:flex; align-items:center; gap:4px;}
+.cal-select{font-size:9.5px; font-weight:700; color:var(--iq-ink); border:1px solid var(--iq-border-light); border-radius:999px; padding:3px 8px; background:#fff; font-family:inherit;}
+.cal-nav{width:18px; height:18px; border-radius:50%; background:var(--iq-pill); color:var(--iq-ink); display:flex; align-items:center; justify-content:center; font-size:10px; cursor:pointer; user-select:none; flex-shrink:0;}
+.cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:1px;}
+.cal-wd{text-align:center; font-size:7.5px; font-weight:700; color:var(--iq-muted-light); padding:2px 0;}
+.cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:1px;}
+.cal-cell{height:26px; display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--iq-ink); border-radius:6px; cursor:pointer;}
+.cal-cell.empty{cursor:default;}
+.cal-cell.disabled{color:var(--iq-faint); opacity:0.35; cursor:default; pointer-events:none;}
+.cal-cell.active{background:var(--iq-accent); color:#fff; font-weight:700;}
+.cal-open-note{font-size:9px; line-height:1.55; color:var(--iq-accent); background:#f8eef0; border-radius:7px; padding:6px 8px; margin-bottom:8px; text-align:center;}
+.cal-closed-note{font-size:9px; font-weight:700; color:#b0413e; text-align:center; margin-top:6px;}
+.cal-selected{font-size:9px; color:var(--iq-muted); margin-top:6px; padding-top:6px; border-top:1px dashed var(--iq-border); line-height:1.5;}
+.inquiry-preview-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;}
+.inquiry-preview{white-space:pre-wrap; font-size:10.5px; line-height:1.55; color:var(--iq-ink); background:var(--iq-bg); border:1px solid var(--iq-border); border-radius:9px; padding:10px; font-family:inherit;}
+.inquiry-actions{display:flex; gap:8px; margin-top:12px;}
+.inquiry-btn{flex:1; text-align:center; padding:10px; border-radius:10px; font-size:11px; font-weight:800; cursor:pointer; text-decoration:none;}
+.inquiry-btn.copy{background:var(--iq-pill); color:var(--iq-ink);}
+.inquiry-btn.kakao{background:var(--iq-kakao-bg); color:var(--iq-kakao-text);}
+
   </style>
 </head>
 <body>
@@ -448,7 +520,6 @@ section {
   <header>
     <h1><a href="index.html" style="color:inherit; text-decoration:none;">ITALYSNAP FOTORO</a></h1>
     <nav>
-      <a href="index.html">홈</a>
       <a href="florence.html">피렌체</a>
       <a href="tuscany.html">토스카나</a>
       <a href="dolomites.html">돌로미티</a>
@@ -506,10 +577,10 @@ section {
         <div class="card-sub">@fotoro.it<br>@_fotoro</div>
       </a>
 
-      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="menu-card kakao-card">
+      <a href="#" role="button" class="menu-card kakao-card" onclick="openInquiry(); return false;">
         <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
         <div class="card-title">Kakao Talk</div>
-        <div class="card-sub">상담 채널로 연결됩니다.</div>
+        <div class="card-sub">문의 양식 작성 및 상담</div>
       </a>
     </div>
 
@@ -533,6 +604,8 @@ section {
   </div>
 </footer>
 
+  <div id="inquiryRoot"></div>
+
   <script>
   document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
@@ -555,6 +628,506 @@ section {
       currentIndex = (currentIndex + 1) % slides.length;
       slides[currentIndex].classList.add('active');
     }, 3000); // 2000ms = 2초
+  });
+
+// ===== 카카오톡 문의 버튼 + 모달 =====
+  const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_Gxdxnwxj/chat';
+  const INQUIRY_TITLE = '[이탈리아스냅 문의]';
+  const INQUIRY_PEOPLE = ['2명', '3명 이상', '1명'];
+  const INQUIRY_LOCATIONS = ['피렌체', '토스카나', '돌로미티'];
+  const INQUIRY_DEFAULT_LOCATION = '피렌체';
+  const LOCATION_CATALOGS = {
+    '피렌체': {
+      groups: [
+        { key:'morning', label:'오전', items:['새벽', '일출', '아침'], showAll:true },
+        { key:'afternoon', label:'오후', items:['낮', '일몰', '일몰+야경'], showAll:true }
+      ],
+      durations: ['1시간', '2시간', '3시간'],
+      addonOptions: ['헤메', '패키지'],
+      addonBundled: [],
+      extendOption: true
+    },
+    '토스카나': {
+      groups: [
+        { key:'tuscany', label:'', items:['토스카나 웨딩', '토스카나 기록'], showAll:false }
+      ],
+      durations: ['오전', '오후'],
+      addonOptions: ['헤메'],
+      addonBundled: ['토스카나 웨딩'],
+      singleSelect: true
+    },
+    '돌로미티': {
+      groups: [
+        { key:'dolomites', label:'', items:['돌로미티에서 웨딩', '돌로미티의 추억'], showAll:false }
+      ],
+      durations: ['오전', '오후'],
+      addonOptions: ['헤메'],
+      addonBundled: ['돌로미티에서 웨딩'],
+      singleSelect: true
+    }
+  };
+
+  const PRODUCT_DURATION_RULES = {
+    '새벽': ['3시간'],
+    '일출': ['2시간'],
+    '아침': ['2시간'],
+    '낮': ['2시간', '1시간'],
+    '일몰': ['2시간'],
+    '일몰+야경': ['3시간'],
+    '토스카나 웨딩': [],
+    '토스카나 기록': ['오전', '오후'],
+    '돌로미티에서 웨딩': [],
+    '돌로미티의 추억': ['오전', '오후']
+  };
+
+  function inquiryVisibleDurations(catalog){
+    if(!catalog || !catalog.durations) return [];
+    const selected = inquiryState.inquiry.products;
+    let result;
+    if(!selected.length){
+      result = [...catalog.durations];
+    } else {
+      result = [];
+      selected.forEach(name => {
+        const list = PRODUCT_DURATION_RULES[name] || catalog.durations;
+        list.forEach(d => { if(!result.includes(d)) result.push(d); });
+      });
+      const only1hAllowed = selected.length === 1 && selected[0] === '낮';
+      if(!only1hAllowed){
+        const i = result.indexOf('1시간');
+        if(i >= 0) result.splice(i, 1);
+      }
+    }
+    if(result.includes('1시간') && result.length > 1){
+      result = result.filter(d => d !== '1시간').concat(['1시간']);
+    }
+    return result;
+  }
+
+  const inquiryNow = new Date();
+  const inquiryState = {
+    open:false,
+    inquiry:{
+      name:'', dates:[], calY: inquiryNow.getFullYear(), calM: inquiryNow.getMonth(),
+      location: INQUIRY_DEFAULT_LOCATION, customLocation:'',
+      products:[], durations:[], addon:'', extend30:false,
+      people:'', message:''
+    }
+  };
+
+  function inquiryCurrentCatalog(){
+    const q = inquiryState.inquiry;
+    if(q.customLocation) return null;
+    return LOCATION_CATALOGS[q.location] || null;
+  }
+
+  function inquiryAddonVisible(catalog){
+    if(!catalog) return false;
+    if(catalog.addonBundled.length === 0) return true;
+    return inquiryState.inquiry.products.some(name => !catalog.addonBundled.includes(name));
+  }
+
+  function toggleInquiryDuration(name){
+    const arr = inquiryState.inquiry.durations;
+    const i = arr.indexOf(name);
+    if(i >= 0) arr.splice(i, 1);
+    else arr.push(name);
+    renderInquiryModal();
+  }
+
+  function inquiryProductsDisplay(){
+    const catalog = inquiryCurrentCatalog();
+    const arr = inquiryState.inquiry.products;
+    if(!arr.length) return '-';
+    if(!catalog) return arr.join(', ');
+    const parts = [];
+    catalog.groups.forEach(group => {
+      const selectedItems = group.items.filter(name => arr.includes(name));
+      if(!selectedItems.length) return;
+      if(group.showAll && selectedItems.length === group.items.length){
+        parts.push(group.label + ' 전체');
+      } else {
+        parts.push(...selectedItems);
+      }
+    });
+    return parts.join(', ');
+  }
+
+  function escapeHtml(str){
+    return String(str || '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+  }
+
+  function inquiryDatesDisplay(dates){
+    if(!dates || !dates.length) return '-';
+    const sorted = [...dates].sort();
+    const groups = [];
+    sorted.forEach(dt => {
+      const [yyyy, mm, dd] = dt.split('-');
+      const yy = yyyy.slice(2);
+      const label = `${parseInt(mm)}/${parseInt(dd)}`;
+      const last = groups[groups.length - 1];
+      if(last && last.yy === yy) last.labels.push(label);
+      else groups.push({ yy, labels:[label] });
+    });
+    return groups.map(g => `${g.yy}년 ${g.labels.join(', ')}`).join(', ');
+  }
+
+  function buildInquiryText(){
+    const q = inquiryState.inquiry;
+    const catalog = inquiryCurrentCatalog();
+    const line = (label, val) => `${label}: ${val || '-'}`;
+    const location = q.customLocation || q.location || '-';
+    const lines = [
+      INQUIRY_TITLE,
+      line('성함', q.name),
+      line('촬영 장소', location),
+      line('희망 날짜', inquiryDatesDisplay(q.dates))
+    ];
+    if(catalog){
+      lines.push(line('촬영 상품', inquiryProductsDisplay()));
+      const visibleDurationsForText = inquiryVisibleDurations(catalog);
+      if(visibleDurationsForText.length){
+        const orderedDurations = visibleDurationsForText.filter(d => q.durations.includes(d));
+        lines.push(line('촬영 시간', orderedDurations.length ? orderedDurations.join(', ') : '-'));
+      }
+      if(inquiryAddonVisible(catalog)){
+        const options = [q.addon];
+        if(catalog.extendOption && q.extend30) options.push('30분 추가');
+        lines.push(line('추가 옵션', options.filter(Boolean).join(', ')));
+      }
+    }
+    lines.push(line('인원 수', q.people));
+    lines.push(line('기타', q.message));
+    return lines.join('\n');
+  }
+
+  function refreshInquiryPreview(){
+    const el = document.getElementById('inquiryPreview');
+    if(el) el.textContent = buildInquiryText();
+  }
+
+  function selectInquiryChoice(el, key, value){
+    Array.from(el.parentElement.children).forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    inquiryState.inquiry[key] = value;
+    refreshInquiryPreview();
+  }
+
+  function inquiryResetProductSelection(){
+    inquiryState.inquiry.products = [];
+    inquiryState.inquiry.durations = [];
+    inquiryState.inquiry.addon = '';
+    inquiryState.inquiry.extend30 = false;
+  }
+
+  function selectInquiryLocation(loc){
+    if(inquiryState.inquiry.location === loc && !inquiryState.inquiry.customLocation) return;
+    inquiryState.inquiry.location = loc;
+    inquiryState.inquiry.customLocation = '';
+    inquiryResetProductSelection();
+    renderInquiryModal();
+  }
+
+  function setInquiryCustomLocation(val){
+    const wasCustom = !!inquiryState.inquiry.customLocation;
+    const isCustom = !!val;
+    inquiryState.inquiry.customLocation = val;
+    if(wasCustom !== isCustom){
+      if(isCustom) inquiryResetProductSelection();
+      renderInquiryModal();
+      const input = document.querySelector('#inquiryLocationRow .field-input.inline');
+      if(input){
+        input.focus();
+        input.value = val;
+        input.setSelectionRange(val.length, val.length);
+      }
+    } else {
+      document.querySelectorAll('#inquiryLocationRow .choice-btn').forEach(b => b.classList.toggle('active', false));
+      refreshInquiryPreview();
+    }
+  }
+
+  function toggleInquiryProduct(name){
+    const catalog = inquiryCurrentCatalog();
+    if(catalog && catalog.singleSelect){
+      const arr = inquiryState.inquiry.products;
+      inquiryState.inquiry.products = arr.includes(name) ? [] : [name];
+    } else {
+      const arr = inquiryState.inquiry.products;
+      const i = arr.indexOf(name);
+      if(i >= 0) arr.splice(i, 1);
+      else arr.push(name);
+    }
+    renderInquiryModal();
+  }
+
+  function toggleInquiryProductGroup(groupKey){
+    const catalog = inquiryCurrentCatalog();
+    if(!catalog) return;
+    const group = catalog.groups.find(g => g.key === groupKey);
+    if(!group) return;
+    const arr = inquiryState.inquiry.products;
+    const allSelected = group.items.length > 0 && group.items.every(name => arr.includes(name));
+    group.items.forEach(name => {
+      const i = arr.indexOf(name);
+      if(allSelected){ if(i >= 0) arr.splice(i, 1); }
+      else if(i < 0){ arr.push(name); }
+    });
+    renderInquiryModal();
+  }
+
+  function selectInquiryAddon(value){
+    inquiryState.inquiry.addon = inquiryState.inquiry.addon === value ? '' : value;
+    renderInquiryModal();
+  }
+
+  function toggleInquiryExtend(){
+    inquiryState.inquiry.extend30 = !inquiryState.inquiry.extend30;
+    renderInquiryModal();
+  }
+
+  function copyInquiryText(){
+    const text = buildInquiryText();
+    const btn = document.getElementById('copyBtn');
+    const done = (ok) => {
+      if(!btn) return;
+      const orig = btn.textContent;
+      btn.textContent = ok ? '완료! 카톡으로 보내주세요.' : '복사에 실패했어요. 직접 선택해서 복사해주세요';
+      setTimeout(()=>{ btn.textContent = orig; }, 2200);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(()=>done(true)).catch(()=>done(false));
+    } else {
+      done(false);
+    }
+  }
+
+  function openInquiry(){
+    inquiryState.open = true;
+    renderInquiryModal();
+  }
+  function closeInquiry(){
+    inquiryState.open = false;
+    document.getElementById('inquiryRoot').innerHTML = '';
+  }
+
+  function renderInquiryModal(){
+    const root = document.getElementById('inquiryRoot');
+    if(!inquiryState.open){ root.innerHTML=''; return; }
+
+    const prevCard = root.querySelector('.inquiry-card');
+    const prevScroll = prevCard ? prevCard.scrollTop : 0;
+
+    const radioRow = (key, options) => options.map(opt =>
+      `<div class="choice-btn tight${inquiryState.inquiry[key]===opt?' active':''}" onclick="selectInquiryChoice(this,'${key}','${opt}')">${opt}</div>`
+    ).join('');
+
+    const locationChips = INQUIRY_LOCATIONS.map(loc => {
+      const active = inquiryState.inquiry.location === loc && !inquiryState.inquiry.customLocation;
+      return `<div class="choice-btn tight${active ? ' active' : ''}" onclick="selectInquiryLocation('${loc}')">${loc}</div>`;
+    }).join('');
+
+    const catalog = inquiryCurrentCatalog();
+    const arr = inquiryState.inquiry.products;
+
+    const productGroupHtml = catalog ? catalog.groups.map(group => {
+      const items = group.items.map(name =>
+        `<div class="choice-btn tight${arr.includes(name) ? ' active' : ''}" onclick="toggleInquiryProduct('${name}')">${name}</div>`
+      ).join('');
+      let allChip = '';
+      if(group.showAll){
+        const allActive = group.items.length > 0 && group.items.every(name => arr.includes(name));
+        allChip = `<div class="choice-btn tight${allActive ? ' active' : ''}" onclick="toggleInquiryProductGroup('${group.key}')">${group.label} 전체</div>`;
+      }
+      return `<div class="choice-row" style="margin-bottom:5px;">${items}${allChip}</div>`;
+    }).join('') : '';
+
+    const visibleDurations = inquiryVisibleDurations(catalog);
+    inquiryState.inquiry.durations = inquiryState.inquiry.durations.filter(d => visibleDurations.includes(d));
+    const durationChips = visibleDurations.map((name, idx) => {
+      const active = inquiryState.inquiry.durations.includes(name);
+      const divider = (name === '1시간' && idx > 0) ? '<span class="duration-divider"></span>' : '';
+      return divider + `<div class="choice-btn tight${active ? ' active' : ''}" onclick="toggleInquiryDuration('${name}')">${name}</div>`;
+    }).join('');
+
+    const addonVisible = inquiryAddonVisible(catalog);
+    const addonChips = catalog ? catalog.addonOptions.map(opt =>
+      `<div class="choice-btn tight${inquiryState.inquiry.addon === opt ? ' active' : ''}" onclick="selectInquiryAddon('${opt}')">${opt}</div>`
+    ).join('') : '';
+    const extendChip = (catalog && catalog.extendOption)
+      ? `<span class="duration-divider"></span><div class="choice-btn tight${inquiryState.inquiry.extend30 ? ' active' : ''}" onclick="toggleInquiryExtend()">30분 추가</div>`
+      : '';
+
+    root.innerHTML = `
+      <div class="inquiry-overlay" onclick="closeInquiry()">
+        <div class="inquiry-card" onclick="event.stopPropagation()">
+          <div class="inquiry-head">
+            <div>
+              <div class="inquiry-title">문의 내용 작성</div>
+              <div class="inquiry-sub">아래 버튼으로 선택하면 문의 내용이 자동으로 완성돼요. 다 채운 뒤 복사해서 카카오톡 채팅에 붙여넣어 주세요.</div>
+            </div>
+            <div class="inquiry-close" onclick="closeInquiry()">✕</div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">성함</div>
+            <input type="text" class="field-input" placeholder="예: 홍길동" value="${escapeHtml(inquiryState.inquiry.name)}" oninput="inquiryState.inquiry.name=this.value; refreshInquiryPreview();">
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">촬영 장소</div>
+            <div class="choice-row" id="inquiryLocationRow">
+              ${locationChips}
+              <input type="text" class="field-input inline" placeholder="예: 로마 등" value="${escapeHtml(inquiryState.inquiry.customLocation)}" oninput="setInquiryCustomLocation(this.value)">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">촬영 가능한 모든 기간</div>
+            <div class="cal-widget" id="inquiryCalendar"></div>
+          </div>
+
+          ${catalog ? `
+          <div class="field-group">
+            <div class="field-label">촬영 상품${catalog && catalog.singleSelect ? '' : ' (중복 선택 가능)'}</div>
+            ${productGroupHtml}
+          </div>` : ''}
+
+          ${visibleDurations.length > 0 ? `
+          <div class="field-group">
+            <div class="field-label">촬영 시간 (중복 선택 가능)</div>
+            <div class="choice-row">${durationChips}</div>
+          </div>` : ''}
+
+          ${addonVisible ? `
+          <div class="field-group">
+            <div class="field-label">추가 옵션</div>
+            <div class="choice-row">${addonChips}${extendChip}</div>
+          </div>` : ''}
+
+          <div class="field-group">
+            <div class="field-label">인원 수</div>
+            <div class="choice-row">${radioRow('people', INQUIRY_PEOPLE)}</div>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">기타 하고 싶은 말</div>
+            <textarea class="field-input" rows="3" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." oninput="inquiryState.inquiry.message=this.value; refreshInquiryPreview();"></textarea>
+          </div>
+
+          <div class="field-group">
+            <div class="inquiry-preview-label">
+              <div class="field-label" style="margin-bottom:0;">문의 내용 미리보기</div>
+            </div>
+            <div class="inquiry-preview" id="inquiryPreview">${buildInquiryText()}</div>
+          </div>
+
+          <div class="inquiry-actions">
+            <div class="inquiry-btn copy" id="copyBtn" onclick="copyInquiryText()">내용 복사하기</div>
+            <a class="inquiry-btn kakao" href="${KAKAO_CHANNEL_URL}" target="_blank" rel="noopener">카카오톡 열기</a>
+          </div>
+        </div>
+      </div>
+    `;
+    const newCard = root.querySelector('.inquiry-card');
+    renderInquiryCalendar();
+    if(newCard) newCard.scrollTop = prevScroll;
+  }
+
+  function inquiryDaysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
+
+  function toggleInquiryDate(dateStr){
+    const arr = inquiryState.inquiry.dates;
+    const i = arr.indexOf(dateStr);
+    if(i >= 0) arr.splice(i, 1);
+    else arr.push(dateStr);
+    renderInquiryModal();
+  }
+
+  function shiftInquiryCalMonth(delta){
+    let { calY, calM } = inquiryState.inquiry;
+    calM += delta;
+    if(calM < 0){ calM = 11; calY -= 1; }
+    if(calM > 11){ calM = 0; calY += 1; }
+    inquiryState.inquiry.calY = calY;
+    inquiryState.inquiry.calM = calM;
+    renderInquiryCalendar();
+  }
+  function setInquiryCalYear(y){ inquiryState.inquiry.calY = parseInt(y, 10); renderInquiryCalendar(); }
+  function setInquiryCalMonth(m){ inquiryState.inquiry.calM = parseInt(m, 10); renderInquiryCalendar(); }
+
+  function inquiryBookingWindow(){
+    const t = new Date();
+    const y = t.getFullYear();
+    if(t.getMonth() >= 6){
+      return { openUntil: `${y + 1}-06-30`, lastYear: y + 1,
+        openUntilLabel: `${y + 1}년 6월 30일`,
+        nextLabel: `${y + 1}년 하반기(7~12월)`, nextOpen: `${y + 1}년 1월 1일` };
+    }
+    return { openUntil: `${y}-12-31`, lastYear: y,
+      openUntilLabel: `${y}년 12월 31일`,
+      nextLabel: `${y + 1}년 상반기(1~6월)`, nextOpen: `${y}년 7월 1일` };
+  }
+
+  function renderInquiryCalendar(){
+    const container = document.getElementById('inquiryCalendar');
+    if(!container) return;
+    const { calY, calM, dates } = inquiryState.inquiry;
+    const pad = n => String(n).padStart(2, '0');
+    const startDow = new Date(calY, calM, 1).getDay();
+    const numDays = inquiryDaysInMonth(calY, calM);
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+    const win = inquiryBookingWindow();
+    let hasClosed = false;
+    let cells = '';
+    for(let i = 0; i < startDow; i++) cells += `<div class="cal-cell empty"></div>`;
+    for(let d = 1; d <= numDays; d++){
+      const dateStr = `${calY}-${pad(calM + 1)}-${pad(d)}`;
+      if(dateStr < todayStr){
+        cells += `<div class="cal-cell disabled">${d}</div>`;
+        continue;
+      }
+      const offSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
+      if(offSeason){
+        cells += `<div class="cal-cell disabled">${d}</div>`;
+        continue;
+      }
+      if(dateStr > win.openUntil){
+        hasClosed = true;
+        cells += `<div class="cal-cell disabled closed">${d}</div>`;
+        continue;
+      }
+      const active = dates.includes(dateStr) ? ' active' : '';
+      cells += `<div class="cal-cell${active}" onclick="toggleInquiryDate('${dateStr}')">${d}</div>`;
+    }
+    const nowY = new Date().getFullYear();
+    const yFrom = Math.min(nowY, calY);
+    const yTo = Math.max(win.lastYear, calY);
+    const yearOptions = Array.from({length: yTo - yFrom + 1}, (_, i) => yFrom + i)
+      .map(y => `<option value="${y}"${y === calY ? ' selected' : ''}>${y}년</option>`).join('');
+    const monthOptions = Array.from({length:12}, (_, i) => i)
+      .map(m => `<option value="${m}"${m === calM ? ' selected' : ''}>${m + 1}월</option>`).join('');
+    container.innerHTML = `
+      <div class="cal-open-note">${win.openUntilLabel}까지 예약 가능해요<br>${win.nextLabel} 일정은 <b>${win.nextOpen}</b>부터 오픈됩니다</div>
+      <div class="cal-head">
+        <div class="cal-nav" onclick="shiftInquiryCalMonth(-1)">‹</div>
+        <div class="cal-month-picker">
+          <select class="cal-select" onchange="setInquiryCalYear(this.value)">${yearOptions}</select>
+          <select class="cal-select" onchange="setInquiryCalMonth(this.value)">${monthOptions}</select>
+        </div>
+        <div class="cal-nav" onclick="shiftInquiryCalMonth(1)">›</div>
+      </div>
+      <div class="cal-weekdays">${['일','월','화','수','목','금','토'].map(w => `<div class="cal-wd">${w}</div>`).join('')}</div>
+      <div class="cal-grid">${cells}</div>
+      ${hasClosed ? '<div class="cal-closed-note">예약 시즌이 아닙니다</div>' : ''}
+      <div class="cal-selected">선택한 날짜: ${inquiryDatesDisplay(dates)}</div>
+    `;
+    refreshInquiryPreview();
+  }
+
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && inquiryState.open) closeInquiry();
   });
 </script>
 
