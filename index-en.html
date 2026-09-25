@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Italy Wedding Snap Specialist | ITALYSNAP FOTORO">
-  <meta property="og:description" content="Since 2018, ITALYSANP FOTORO has been Italy's wedding snap specialist, shooting in Florence, Tuscany, Dolomiti and beyond.">
+  <meta property="og:description" content="Since 2018, ITALYSNAP FOTORO has been Italy's wedding snap specialist, shooting in Florence, Tuscany, Dolomiti and beyond.">
   <meta property="og:image" content="images/og-index.jpg">
 
   <style>
@@ -156,20 +156,6 @@
       transform: scale(1.06);
     }
 
-    .card-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background-color: #4a1520;
-      color: #fff;
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 0.3px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      z-index: 2;
-    }
-
     .menu-card .card-title {
       font-family: Georgia, 'Times New Roman', serif;
       font-size: 24px;
@@ -188,6 +174,10 @@
 
     .menu-card.kakao-card .card-title {
       color: #3C1E1E;
+    }
+
+    .menu-card .card-sub span {
+      display: block;
     }
 
     .intro-section {
@@ -222,6 +212,11 @@
       max-width: 560px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .intro-section p .em {
+      font-weight: 600;
+      color: #222;
     }
 
     section {
@@ -328,6 +323,235 @@
         padding: 3px 6px;
       }
     }
+
+    /* ===== 카드: 사진 위에 글씨 (기본 = 데스크탑, 모바일은 아래 @media 에서 덮어씀) ===== */
+    .menu-card.photo {
+      justify-content: flex-end;
+      aspect-ratio: 8 / 7;
+      border: 0;
+      border-radius: 14px;
+      color: #fff;
+      background-color: #222;
+    }
+
+    /* 데스크탑: 피렌체만 2칸, 갤러리·카톡은 한 칸을 위아래 반반 */
+    .menu-card.photo.main {
+      grid-column: span 2;
+      aspect-ratio: auto;
+    }
+
+    .menu-side {
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .menu-card.photo .card-img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .menu-card.photo::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .menu-card .card-sub {
+      word-break: keep-all;
+    }
+
+    .menu-card.photo .card-title,
+    .menu-card.photo .card-sub {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+    }
+
+    .menu-card.photo .card-title {
+      margin: 0;
+      padding: 0 18px;
+      font-size: clamp(20px, 2.4vw, 24px);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    .menu-card.photo .card-sub {
+      padding: 4px 18px 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .menu-card.photo.main .card-title {
+      font-size: clamp(30px, 4vw, 40px);
+    }
+
+    .menu-card.photo.main .card-sub span {
+      display: inline;
+    }
+
+    .menu-card.photo.main .card-sub span + span::before {
+      content: ' · ';
+    }
+
+    .menu-card.chip {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      column-gap: 16px;
+      align-content: center;
+      padding: 10px 18px;
+      border-radius: 14px;
+    }
+
+    .menu-card.chip .card-img {
+      grid-row: 1 / span 2;
+      align-self: center;
+      width: 56px;
+      height: 56px;
+      aspect-ratio: auto;
+      background-color: transparent;
+      background-size: 106px auto;
+      background-repeat: no-repeat;
+    }
+
+    .menu-card.chip .card-title {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: end;
+      margin: 0;
+      text-align: left;
+      font-size: clamp(16px, 2vw, 20px);
+      letter-spacing: 0.5px;
+    }
+
+    .menu-card.chip .card-sub {
+      grid-column: 2;
+      grid-row: 2;
+      align-self: start;
+      padding: 0;
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* ===== 배너 자리 (데스크탑 전용 / 지금은 비어 있어서 hidden — 배너를 넣을 때 hidden 만 지우면 됨 / 미리보기: 주소 끝에 ?banner) ===== */
+    .home-banner {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 140px;
+      border: 1px dashed #c9c3b6;
+      border-radius: 14px;
+      background-color: #f1eee8;
+      background-position: center;
+      background-size: cover;
+      color: #9b9484;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .home-banner[hidden] {
+      display: none;
+    }
+
+    /* ===== 모바일 카드: 피렌체·헤메는 가로로 넓게 ===== */
+    @media (max-width: 768px) {
+      .menu-grid {
+        gap: 10px;
+        padding: 16px;
+        max-width: 520px;
+      }
+
+      .menu-side {
+        display: contents;
+      }
+
+      .home-banner {
+        display: none;
+      }
+
+      .menu-card.photo {
+        aspect-ratio: 6 / 7;
+      }
+
+      .menu-card.photo.wide {
+        grid-column: 1 / -1;
+        aspect-ratio: auto;
+        height: min(calc(40vw - 7.8px), 200.2px);
+      }
+
+      .menu-card.photo .card-title {
+        padding: 0 12px;
+        font-size: 17px;
+      }
+
+      .menu-card.photo .card-sub {
+        padding: 3px 44px 11px 12px;
+        font-size: 11px;
+      }
+
+      .menu-card.photo.wide .card-title {
+        font-size: 21px;
+      }
+
+      .menu-card.photo.main .card-title {
+        font-size: 28px;
+      }
+
+      .menu-card.photo::before {
+        content: '';
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23222' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .menu-card.photo.main .card-sub span {
+        display: block;
+      }
+
+      .menu-card.photo.main .card-sub span + span::before {
+        content: none;
+      }
+
+      .menu-card.chip {
+        grid-template-columns: 40px 1fr;
+        column-gap: 10px;
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+
+      .menu-card.chip .card-img {
+        width: 40px;
+        height: 40px;
+        background-size: 76px auto;
+      }
+
+      .menu-card.chip .card-title {
+        font-size: 14px;
+      }
+
+      .menu-card.chip .card-sub {
+        font-size: 11px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -346,52 +570,53 @@
 
   <main>
     <div class="menu-grid">
-      <a href="florence-en.html" class="menu-card">
-        <span class="card-badge">Open Year-Round</span>
+      <div class="home-banner" hidden>Banner</div>
+
+      <a href="florence-en.html" class="menu-card photo wide main">
         <div class="card-img" style="background-image:url('images/florence.jpg')"></div>
         <div class="card-title">Firenze</div>
-        <div class="card-sub">Open 365 days a year<br>Hair & makeup package available</div>
+        <div class="card-sub"><span>Open 365 days a year</span><span>Hair & makeup package available</span></div>
       </a>
 
-      <a href="hairmakeup-en.html" class="menu-card">
-        <span class="card-badge">Partner Discount</span>
+      <a href="hairmakeup-en.html" class="menu-card photo wide">
         <div class="card-img" style="background-image:url('images/hair-makeup-dress.jpg')"></div>
         <div class="card-title">Hair & Make Up</div>
-        <div class="card-sub">Florence only<br>Discounted package ongoing</div>
+        <div class="card-sub"><span>Florence only</span><span>Discounted package ongoing</span></div>
       </a>
 
-      <a href="tuscany-en.html" class="menu-card">
-        <span class="card-badge">Seasonal</span>
+      <a href="tuscany-en.html" class="menu-card photo">
         <div class="card-img" style="background-image:url('images/tuscany.jpg')"></div>
         <div class="card-title">Toscana</div>
-        <div class="card-sub">March-May only<br>Hair & makeup package available</div>
+        <div class="card-sub"><span>March-May only</span><span>Hair & makeup package available</span></div>
       </a>
 
-      <a href="dolomites-en.html" class="menu-card">
-        <span class="card-badge">Seasonal</span>
+      <a href="dolomites-en.html" class="menu-card photo">
         <div class="card-img" style="background-image:url('images/dolomites.jpg')"></div>
         <div class="card-title">Dolomiti</div>
-        <div class="card-sub">June-October only<br>Hair & makeup package available</div>
+        <div class="card-sub"><span>June-October only</span><span>Hair & makeup package available</span></div>
       </a>
 
-      <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card">
-        <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
-        <div class="card-title">Gallery</div>
-        <div class="card-sub">@fotoro.it<br>@_fotoro</div>
-      </a>
+      <div class="menu-side">
+        <a href="https://instagram.com/fotoro.it" target="_blank" class="menu-card chip">
+          <div class="card-img" style="background-image:url('images/gallery.jpg')"></div>
+          <div class="card-title">Gallery</div>
+          <div class="card-sub"><span>@fotoro.it</span><span>@_fotoro</span></div>
+        </a>
 
-      <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="menu-card kakao-card">
-        <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
-        <div class="card-title">Kakao Talk</div>
-        <div class="card-sub">Connects to our consultation channel.</div>
-      </a>
+        <a href="https://pf.kakao.com/_Gxdxnwxj" target="_blank" class="menu-card chip kakao-card">
+          <div class="card-img" style="background-image:url('images/kakao.jpg')"></div>
+          <div class="card-title">Kakao Talk</div>
+          <div class="card-sub"><span>Inquiries & consultation</span></div>
+        </a>
+      </div>
     </div>
 
     <div class="intro-section">
       <h2>About Us</h2>
-      <p>Hello! FOTORO began shooting wedding snaps in Rome back in May 2018 and is currently based in Florence. Alongside Florence, we shoot across Tuscany, the Dolomites, and all throughout Italy. We are also proud to be the only studio in Italy offering the nationwide "Salon Banha Hair & Makeup + Dress Package".<br><br>
-         The name FOTORO comes from combining Foto(grafia) and Roma. It was originally "fotoroma," but we dropped the "ma" to keep our creative reach open beyond Rome, leaving us with "fotoro". The "it" simply stands for Italia.<br><br>
-        Our main goal is to deliver timeless photos you will never tire of. Through natural direction and understated color tones, we create images that stay effortlessly beautiful over time, pursuing a truly classic and simple aesthetic above all.</p>
+      <p>Hello! FOTORO began shooting wedding snaps in Rome in <b class="em">May 2018</b> and is <b class="em">run by a single lead photographer</b>. I know how unsettling it is to book a studio where the photographer can change without you knowing, or where the photos on show are of unknown origin and you can't tell who took them. That is why I, as the sole lead photographer, personally handle <b class="em">consultation, shooting and retouching</b>. Three accounts are active (fotoro_, fottorri and fotoro.it), and every photo uploaded to them was taken by me.<br><br>
+        Since 2023, after COVID, I have been based in Florence. Alongside Florence, FOTORO shoots in Tuscany, the Dolomites and all across Italy, and it is the only Korean studio in Italy that can offer the <b class="em">"Salon Banha Hair & Makeup + Dress Package"</b> nationwide. <b class="em">Salon Banha, the makeup partner for the package, has worked not only in weddings but in many other fields</b>, and <b class="em">their skill has already been proven by countless reviews</b>.<br><br>
+        The name FOTORO comes from combining Foto(grafia) and Roma. It started out as "<b class="em">fotoroma</b>", but for fear of ending up shooting only in Rome, the "ma" was dropped and it became "fotoro". The "<b class="em">it</b>" stands for Italia. There's no deeper meaning, really...<br><br>
+        FOTORO's first priority is to leave you with photos that never grow tiresome or childish, however much time passes, through understated direction and unobtrusive color tones, and it pursues a <b class="em">classic and simple</b> style. At the same time, so as never to lose sight of <b class="em">the essence of a travel photo</b>, the goal is to <b class="em">capture your trip in a variety of places, compositions and moods</b>.</p>
     </div>
   </main>
 
@@ -416,6 +641,11 @@
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
+
+  // 배너 자리 미리보기: 주소 끝에 ?banner
+  if (location.search.indexOf('banner') !== -1) {
+    document.querySelector('.home-banner').hidden = false;
+  }
   </script>
 
 </body>
