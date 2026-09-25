@@ -528,6 +528,23 @@ section {
     font-size: 28px;
   }
 
+  .menu-card.photo::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23222' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .menu-card.photo.wide .card-sub {
+    padding-right: 44px;
+  }
+
   .menu-card.photo.wide .card-sub span {
     display: inline;
   }
