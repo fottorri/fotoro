@@ -186,6 +186,22 @@
   .pattern-range button#patRangeApply { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .pattern-range.active-range { border-color: var(--accent); }
 
+  .pattern-guide { flex-basis: 100%; }
+  .pattern-guide summary {
+    font-size: 12px; color: var(--text-muted); cursor: pointer; padding: 4px 0; user-select: none;
+  }
+  .pattern-guide-list {
+    display: grid; grid-template-columns: 1fr; gap: 2px; max-height: 260px; overflow-y: auto;
+    margin-top: 6px; padding: 8px; border-radius: 8px; background: var(--card-bg);
+  }
+  .pattern-guide-row {
+    display: flex; gap: 8px; padding: 4px 6px; border-radius: 6px; font-size: 12px; cursor: pointer;
+  }
+  .pattern-guide-row:hover { background: var(--accent-soft); }
+  .pattern-guide-num { color: var(--accent); font-weight: 700; min-width: 26px; flex-shrink: 0; }
+  .pattern-guide-it { color: var(--text); font-weight: 600; flex-shrink: 0; }
+  .pattern-guide-kr { color: var(--text-muted); }
+
   .group-header { font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 12px 2px 6px; }
   .group-header:first-child { padding-top: 2px; }
 
@@ -363,6 +379,10 @@
       <input type="number" id="patRangeEnd" min="1" max="100" placeholder="끝">
       <button type="button" id="patRangeApply">적용</button>
       <button type="button" id="patRangeClear">전체보기</button>
+      <details class="pattern-guide">
+        <summary>패턴 번호 1~100 목록 보기</summary>
+        <div class="pattern-guide-list" id="patternGuideList"></div>
+      </details>
     </div>
 
     <div class="list-header">
@@ -549,6 +569,111 @@
     "Devo + ~ il più presto possibile": 98,
     "Ogni volta che + ~,": 99,
     "[주어] non funziona": 100
+  };
+
+  // Korean gloss of what each numbered pattern's grammar construction means,
+  // keyed by pattern number (1-100), shown in the pattern number guide list.
+  var PATTERN_EXPLANATIONS = {
+    1: "~이 있다",
+    2: "~에 관심이 있다",
+    3: "~할 준비가 되어 있다",
+    4: "[주어]가 ~되어 있다 (상태)",
+    5: "~해도 소용없다",
+    6: "~하는 것은 쉽다",
+    7: "~할 필요가 있다",
+    8: "~하는 것은 금지되어 있다",
+    9: "~하기엔 너무 [형용사]하다",
+    10: "~하느라 바쁘다",
+    11: "~해서 기쁘다",
+    12: "~하는 것이 지겹다",
+    13: "~하는 게 낫다",
+    14: "~라는 것이 사실이다",
+    15: "막 ~하려는 참이다",
+    16: "~할 기분이 아니다",
+    17: "중요한 것은 ~이다",
+    18: "~할 때가 되었다",
+    19: "~하는 것이 가능하다",
+    20: "~라는 것이 확실하다",
+    21: "~이 있나요? (있으세요?)",
+    22: "~할 게 있다",
+    23: "~하고 싶다 (voglia)",
+    24: "~이 아프다",
+    25: "~할 시간이 있다",
+    26: "~할 작정이다",
+    27: "~하는 게 무섭다, 두렵다",
+    28: "~하는 버릇, 습관이 있다",
+    29: "~하는 게 급하다",
+    30: "~할 필요가 없다",
+    31: "~하고 싶다 (의지)",
+    32: "~해도 될까요? (허락 요청)",
+    33: "~해 주실 수 있나요? (존댓말)",
+    34: "~해도 되나요? (일반적 허용)",
+    35: "어떻게 하면 그가 나에게 ~하게 할 수 있을까?",
+    36: "~하지 않아도 되길 바란다",
+    37: "[주어]는 ~해야 한다 (상태)",
+    38: "너는 ~했어야 했다 (후회)",
+    39: "몇 시에 ~해?",
+    40: "~인지 궁금하다, 누가 알겠어",
+    41: "어디서, 어디에 ~해?",
+    42: "무엇을 ~해?",
+    43: "어떻게 ~해?",
+    44: "왜 ~안 해? (의아함)",
+    45: "~중에 뭐가 더 [형용사]해?",
+    46: "얼마나 ~해? (양, 수 질문)",
+    47: "왜 ~안 해? (제안)",
+    48: "~하지 않아도 된다",
+    49: "아무도 ~하지 않는다",
+    50: "~인지 모르겠다",
+    51: "~하는 걸 멈출 수가 없다",
+    52: "더 이상 ~할 수 없다",
+    53: "~하는 거 잊지 마",
+    54: "한 번도 ~한 적 없다",
+    55: "아직 ~안 했어?",
+    56: "~할 수 없어서 아쉽다",
+    57: "~인 척하지 마",
+    58: "나를 ~하게 하지 마",
+    59: "~하는 게 간절하다, 초조하다",
+    60: "잠깐만, ~해야 해",
+    61: "~하러 가자",
+    62: "여기 ~이 있다 (내밀며)",
+    63: "미안하지만 ~",
+    64: "~하는 중이다 (현재진행)",
+    65: "막 ~하려던 참이다",
+    66: "~을 좋아한다",
+    67: "~을 안 좋아한다",
+    68: "이미 ~했다",
+    69: "~이 걱정된다",
+    70: "~하는 것 같다 (느낌)",
+    71: "~을 잘하다, 잘 되다",
+    72: "~하려면 [명사]가 필요하다",
+    73: "~한 후에, ...",
+    74: "언제까지 ~해야 해?",
+    75: "나중에 ~",
+    76: "가능하다면 ~하고 싶다",
+    77: "나에게 ~하게 해줘",
+    78: "~하려면 뭘 해야 해?",
+    79: "[사람]에 따르면, ~",
+    80: "~할 줄 안다",
+    81: "~을 알고 있다",
+    82: "당장, 즉시 ~해",
+    83: "~이 어디에 있어?",
+    84: "~라는 거 알아?",
+    85: "나에게 ~을 줘",
+    86: "나에게 ~을 말해줘",
+    87: "~라고 생각한다",
+    88: "~하지 않도록 조심해",
+    89: "~해도 괜찮을까? (양해)",
+    90: "[명사]의 경우에 ~",
+    91: "~할까 생각 중이다",
+    92: "~해보려는 중이다",
+    93: "~인지 궁금하다",
+    94: "~에도 불구하고",
+    95: "~없이",
+    96: "~을 못 견디겠다",
+    97: "~해 주세요 (부탁)",
+    98: "최대한 빨리 ~해야 한다",
+    99: "~할 때마다",
+    100: "[주어]가 작동하지 않는다"
   };
 
   function E(qIt, qKr, aIt, aKr, aItFem) { return { qIt: qIt, qKr: qKr, aIt: aIt, aKr: aKr, aItFem: aItFem || null }; }
@@ -4975,6 +5100,55 @@
     }
     if (endInput && document.activeElement !== endInput) {
       endInput.value = patternRangeEnd === null ? "" : patternRangeEnd;
+    }
+    if (filterPos === "패턴") renderPatternGuideList();
+  }
+
+  var patternNumToNote = null;
+  function getPatternNumToNote() {
+    if (!patternNumToNote) {
+      patternNumToNote = {};
+      Object.keys(PATTERN_NUMBERS).forEach(function (note) {
+        patternNumToNote[PATTERN_NUMBERS[note]] = note;
+      });
+    }
+    return patternNumToNote;
+  }
+
+  function renderPatternGuideList() {
+    var container = $("patternGuideList");
+    if (!container || container.childElementCount > 0) return;
+    var numToNote = getPatternNumToNote();
+    for (var n = 1; n <= 100; n++) {
+      var note = numToNote[n];
+      if (!note) continue;
+      var row = document.createElement("div");
+      row.className = "pattern-guide-row";
+      row.title = "클릭하면 이 패턴만 선택됩니다";
+
+      var numEl = document.createElement("span");
+      numEl.className = "pattern-guide-num";
+      numEl.textContent = n + ".";
+
+      var itEl = document.createElement("span");
+      itEl.className = "pattern-guide-it";
+      itEl.textContent = note;
+
+      var krEl = document.createElement("span");
+      krEl.className = "pattern-guide-kr";
+      krEl.textContent = PATTERN_EXPLANATIONS[n] || "";
+
+      row.appendChild(numEl);
+      row.appendChild(itEl);
+      row.appendChild(krEl);
+      row.addEventListener("click", function (num) {
+        return function () {
+          $("patRangeStart").value = num;
+          $("patRangeEnd").value = num;
+          applyPatternRange();
+        };
+      }(n));
+      container.appendChild(row);
     }
   }
 
