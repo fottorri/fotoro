@@ -170,6 +170,22 @@
   .filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .filter-chip .chip-count { opacity: 0.8; font-size: 11px; }
 
+  .pattern-range {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px;
+    padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--accent-soft);
+  }
+  .pattern-range-label { font-size: 12.5px; color: var(--text-muted); margin-right: 2px; }
+  .pattern-range input[type="number"] {
+    width: 60px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px;
+    font-family: inherit; font-size: 13px; background: var(--bg); color: var(--text);
+  }
+  .pattern-range button {
+    border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+    padding: 6px 12px; border-radius: 8px; font-size: 12.5px; cursor: pointer; font-family: inherit;
+  }
+  .pattern-range button#patRangeApply { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .pattern-range.active-range { border-color: var(--accent); }
+
   .group-header { font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 12px 2px 6px; }
   .group-header:first-child { padding-top: 2px; }
 
@@ -340,6 +356,15 @@
       <button type="button" class="filter-chip" data-filter="기타">기타 <span class="chip-count">0</span></button>
     </div>
 
+    <div class="pattern-range" id="patternRangeGroup" style="display:none;">
+      <span class="pattern-range-label">패턴 번호 구간</span>
+      <input type="number" id="patRangeStart" min="1" max="100" placeholder="시작">
+      <span>~</span>
+      <input type="number" id="patRangeEnd" min="1" max="100" placeholder="끝">
+      <button type="button" id="patRangeApply">적용</button>
+      <button type="button" id="patRangeClear">전체보기</button>
+    </div>
+
     <div class="list-header">
       <span class="count" id="wordCountLabel">총 0개</span>
       <button class="clear-all-btn" id="clearAllBtn">전체 삭제</button>
@@ -420,6 +445,111 @@
   var GAP_IT_KR_MS = 150;
   var POS_OPTIONS = ["명사", "동사", "형용사", "패턴", "기타"];
   var POS_ORDER = ["동사", "명사", "형용사", "패턴", "기타"];
+
+  // Maps each pattern's grammar-template (note) to its 1-100 course pattern number,
+  // so pattern cards can be filtered/looped by number range.
+  var PATTERN_NUMBERS = {
+    "C'è + ~": 1,
+    "Sono interessato/a a + ~": 2,
+    "Sono pronto/a a + ~": 3,
+    "[soggetto] è + [participio]": 4,
+    "È inutile + ~": 5,
+    "È facile + ~": 6,
+    "È necessario + ~": 7,
+    "È vietato + ~": 8,
+    "È troppo [agg] per + ~": 9,
+    "Sono occupato/a a + ~": 10,
+    "Sono lieto/a di + ~": 11,
+    "Sono stufo/a di + ~": 12,
+    "È meglio + ~": 13,
+    "È vero che + ~": 14,
+    "Sono sul punto di + ~": 15,
+    "Non sono in vena di + ~": 16,
+    "L'importante è + ~": 17,
+    "È giunto il momento di + ~": 18,
+    "È possibile + ~": 19,
+    "È sicuro che + ~": 20,
+    "Avete + ~?": 21,
+    "Ho + ~ da + [동사원형]": 22,
+    "Ho voglia di + ~": 23,
+    "Ho mal di + ~": 24,
+    "Ho tempo di + ~": 25,
+    "Ho intenzione di + ~": 26,
+    "Ho paura di + ~": 27,
+    "Ho l'abitudine di + ~": 28,
+    "Ho fretta di + ~": 29,
+    "Non ho bisogno di + ~": 30,
+    "Voglio + ~": 31,
+    "Posso + ~?": 32,
+    "Può + ~?": 33,
+    "Si può + ~?": 34,
+    "Come posso farmi + ~ da lui?": 35,
+    "Spero di non dover + ~": 36,
+    "[주어] deve essere + ~": 37,
+    "Saresti dovuto + ~": 38,
+    "A che ora + ~?": 39,
+    "Chissà + ~": 40,
+    "Dove + ~?": 41,
+    "Che cosa + ~?": 42,
+    "Come + ~?": 43,
+    "Come mai non + ~?": 44,
+    "Qual è più [형용사] tra + ~?": 45,
+    "Quanto/a/i/e + ~?": 46,
+    "Perché non + ~?": 47,
+    "Non devi + ~": 48,
+    "Non + ~ + nessuno": 49,
+    "Non so + ~": 50,
+    "Non posso smettere di + ~": 51,
+    "Non posso più + ~": 52,
+    "Non dimenticare di + ~": 53,
+    "Non ho mai + ~": 54,
+    "Non hai ancora + ~?": 55,
+    "Peccato che non posso + ~": 56,
+    "Non fare finta di + ~": 57,
+    "Non farmi + ~": 58,
+    "Sono ansioso/a di + ~": 59,
+    "Aspetta un attimo che devo + ~": 60,
+    "Andiamo a + ~": 61,
+    "Ecco + ~": 62,
+    "Mi dispiace ma + ~": 63,
+    "Sto + ~ando/endo": 64,
+    "Sto per + ~": 65,
+    "Mi piace + ~": 66,
+    "Non mi piace + ~": 67,
+    "Sono già + ~": 68,
+    "Mi preoccupo di/del + ~": 69,
+    "Mi sembra di + ~": 70,
+    "[문장] + bene": 71,
+    "Per + ~, ci vuole + [명사]": 72,
+    "Dopo aver + [과거분사], ~": 73,
+    "Fino a quando devo + ~?": 74,
+    "[문장] + più tardi": 75,
+    "Se è possibile vorrei + ~": 76,
+    "Fammi + ~": 77,
+    "Cosa devo fare per + ~?": 78,
+    "Secondo + [사람], ~": 79,
+    "So + [동사원형]": 80,
+    "Conosco + ~": 81,
+    "[명령] + subito": 82,
+    "Dove si trova + ~?": 83,
+    "Lo sai che + ~?": 84,
+    "Dammi + ~": 85,
+    "Dimmi + ~": 86,
+    "Penso che + ~": 87,
+    "Stai attento a non + ~": 88,
+    "Ti dispiace se + ~?": 89,
+    "~ in caso di + [명사]": 90,
+    "Sto pensando di + ~": 91,
+    "Sto provando a + ~": 92,
+    "Mi chiedo se + ~": 93,
+    "Nonostante + ~,": 94,
+    "Senza + ~": 95,
+    "Non posso sopportare + ~": 96,
+    "~, per favore": 97,
+    "Devo + ~ il più presto possibile": 98,
+    "Ogni volta che + ~,": 99,
+    "[주어] non funziona": 100
+  };
 
   function E(qIt, qKr, aIt, aKr, aItFem) { return { qIt: qIt, qKr: qKr, aIt: aIt, aKr: aKr, aItFem: aItFem || null }; }
   function V(it, kr) { return { it: it, kr: kr }; }
@@ -4363,6 +4493,8 @@
   var expandedConjRows = {};
   var filterPos = "all";
   var includeExample = true;
+  var patternRangeStart = null;
+  var patternRangeEnd = null;
 
   function $(id) { return document.getElementById(id); }
 
@@ -4434,6 +4566,7 @@
       localStorage.setItem(SETTINGS_KEY, JSON.stringify({
         rate: rate, gapSeconds: gapSeconds, repeatMode: repeatMode,
         filterPos: filterPos, includeExample: includeExample,
+        patternRangeStart: patternRangeStart, patternRangeEnd: patternRangeEnd,
         gapMigratedV2: true
       }));
     } catch (e) {}
@@ -4785,14 +4918,28 @@
     $("displayPos").textContent = pos;
   }
 
+  function patternRangeActive() {
+    return filterPos === "패턴" && patternRangeStart !== null && patternRangeEnd !== null;
+  }
+
+  function inPatternRange(w) {
+    var num = PATTERN_NUMBERS[w.note];
+    return num !== undefined && num >= patternRangeStart && num <= patternRangeEnd;
+  }
+
   function visibleIndices() {
-    if (filterPos === "all") {
+    var rangeOn = patternRangeActive();
+    if (filterPos === "all" && !rangeOn) {
       var all = [];
       for (var i = 0; i < words.length; i++) all.push(i);
       return all;
     }
     var out = [];
-    words.forEach(function (w, i) { if (w.pos === filterPos) out.push(i); });
+    words.forEach(function (w, i) {
+      if (filterPos !== "all" && w.pos !== filterPos) return;
+      if (rangeOn && !inPatternRange(w)) return;
+      out.push(i);
+    });
     return out;
   }
 
@@ -4814,6 +4961,21 @@
       var span = btn.querySelector(".chip-count");
       if (span) span.textContent = counts[key] || 0;
     });
+    renderPatternRangeUI();
+  }
+
+  function renderPatternRangeUI() {
+    var group = $("patternRangeGroup");
+    if (!group) return;
+    group.style.display = filterPos === "패턴" ? "flex" : "none";
+    group.classList.toggle("active-range", patternRangeActive());
+    var startInput = $("patRangeStart"), endInput = $("patRangeEnd");
+    if (startInput && document.activeElement !== startInput) {
+      startInput.value = patternRangeStart === null ? "" : patternRangeStart;
+    }
+    if (endInput && document.activeElement !== endInput) {
+      endInput.value = patternRangeEnd === null ? "" : patternRangeEnd;
+    }
   }
 
   function setFilter(pos) {
@@ -4835,6 +4997,47 @@
     renderList();
     renderCurrentWord();
     updatePlayButton();
+  }
+
+  function applyRangeChange() {
+    var indices = visibleIndices();
+    var wasPlaying = isPlaying;
+    if (indices.indexOf(currentIndex) === -1) {
+      stopSpeechAndInvalidate();
+      if (indices.length) {
+        currentIndex = indices[0];
+        isPlaying = wasPlaying;
+        if (wasPlaying) runPlayback(playToken);
+      } else {
+        isPlaying = false;
+      }
+    }
+    saveSettings();
+    renderPatternRangeUI();
+    renderList();
+    renderCurrentWord();
+    updatePlayButton();
+  }
+
+  function applyPatternRange() {
+    var startInput = $("patRangeStart"), endInput = $("patRangeEnd");
+    var s = parseInt(startInput.value, 10);
+    var e = parseInt(endInput.value, 10);
+    if (isNaN(s) || isNaN(e)) { showToast("시작/끝 번호를 입력해주세요."); return; }
+    if (s > e) { var t = s; s = e; e = t; }
+    s = Math.max(1, Math.min(100, s));
+    e = Math.max(1, Math.min(100, e));
+    patternRangeStart = s;
+    patternRangeEnd = e;
+    applyRangeChange();
+    showToast("패턴 " + s + " ~ " + e + "번 구간만 재생합니다.");
+  }
+
+  function clearPatternRange() {
+    if (patternRangeStart === null && patternRangeEnd === null) return;
+    patternRangeStart = null;
+    patternRangeEnd = null;
+    applyRangeChange();
   }
 
   function buildWordRowElement(w, i) {
@@ -5336,6 +5539,14 @@
     document.querySelectorAll("#posFilterGroup .filter-chip").forEach(function (btn) {
       btn.addEventListener("click", function () { setFilter(btn.getAttribute("data-filter")); });
     });
+
+    $("patRangeApply").addEventListener("click", applyPatternRange);
+    $("patRangeClear").addEventListener("click", clearPatternRange);
+    [$("patRangeStart"), $("patRangeEnd")].forEach(function (input) {
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") applyPatternRange();
+      });
+    });
   }
 
   function init() {
@@ -5348,6 +5559,8 @@
       if (settings.repeatMode === "all" || settings.repeatMode === "one") repeatMode = settings.repeatMode;
       if (settings.filterPos === "all" || POS_OPTIONS.indexOf(settings.filterPos) !== -1) filterPos = settings.filterPos;
       if (typeof settings.includeExample === "boolean") includeExample = settings.includeExample;
+      if (typeof settings.patternRangeStart === "number") patternRangeStart = settings.patternRangeStart;
+      if (typeof settings.patternRangeEnd === "number") patternRangeEnd = settings.patternRangeEnd;
     }
     if (currentIndex >= words.length) currentIndex = 0;
 
