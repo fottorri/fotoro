@@ -4978,7 +4978,7 @@
     return 0;
   }
 
-  var ALLOWED_VOICE_NAMES = { "it-IT": ["Alice"], "ko-KR": ["유나"] };
+  var ALLOWED_VOICE_NAMES = { "it-IT": ["Luca", "Alice"], "ko-KR": ["유나"] };
 
   function filterAllowed(list, lang) {
     var allowed = ALLOWED_VOICE_NAMES[lang];
@@ -4990,6 +4990,12 @@
   function pickVoice(lang) {
     if (!("speechSynthesis" in window)) return null;
     var voices = window.speechSynthesis.getVoices();
+    // Prefer a male IT voice (Luca) over the hardcoded fallback (Alice, female)
+    // when the device actually has one installed, before trying wantName/allowed-list logic.
+    if (lang === "it-IT") {
+      var luca = voices.filter(function (v) { return v.name === "Luca"; });
+      if (luca.length) return luca[0];
+    }
     var wantName = (lang === "it-IT") ? voiceItName : voiceKrName;
     if (wantName) {
       var found = voices.filter(function (v) { return v.name === wantName; });
