@@ -1647,6 +1647,30 @@ header nav {
       nextLabel: `${y + 1}년 상반기(1~6월)`, nextOpen: `${y}년 7월 1일` };
   }
 
+  // ===== 포토로 캘린더에서 "홈페이지 문의 달력에서도 막기"로 표시한 날짜 (하루 종일 불가인 날) =====
+  const INQUIRY_CLOSED_URL = 'https://fotoroschedule.doiry92.workers.dev/api/closed-dates';
+  // 주소가 안 열릴 때를 대비한 기본 목록입니다. 주소가 열리면 그쪽 목록으로 바뀝니다.
+  let inquiryClosedSet = new Set(['2026-12-16', '2026-12-17', '2026-12-18']);
+
+  function loadInquiryClosedDates(){
+    if(typeof fetch !== 'function') return;
+    const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+    const timer = ctl ? setTimeout(() => ctl.abort(), 6000) : null;
+    fetch(INQUIRY_CLOSED_URL, ctl ? { signal: ctl.signal } : undefined)
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('http ' + r.status)))
+      .then(j => {
+        if(!j || !Array.isArray(j.closed)) return;
+        inquiryClosedSet = new Set(j.closed.filter(d => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d)));
+        const picked = inquiryState.inquiry.dates;
+        for(let i = picked.length - 1; i >= 0; i--){
+          if(inquiryClosedSet.has(picked[i])) picked.splice(i, 1);
+        }
+        if(inquiryState.open) renderInquiryCalendar();
+      })
+      .catch(() => {})
+      .then(() => { if(timer) clearTimeout(timer); });
+  }
+
   function renderInquiryCalendar(){
     const container = document.getElementById('inquiryCalendar');
     if(!container) return;
@@ -1668,6 +1692,10 @@ header nav {
       }
       const offSeason = dateStr >= '2027-01-04' && dateStr <= '2027-02-15';
       if(offSeason){
+        cells += `<div class="cal-cell disabled">${d}</div>`;
+        continue;
+      }
+      if(inquiryClosedSet.has(dateStr)){
         cells += `<div class="cal-cell disabled">${d}</div>`;
         continue;
       }
@@ -1707,6 +1735,9 @@ header nav {
   document.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape' && inquiryState.open) closeInquiry();
   });
+
+  if(document.readyState === 'complete') setTimeout(loadInquiryClosedDates, 300);
+  else window.addEventListener('load', () => { setTimeout(loadInquiryClosedDates, 300); });
 
 </script>
 <script>
