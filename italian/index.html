@@ -186,6 +186,21 @@
   .pattern-range button#patRangeApply { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
   .pattern-range.active-range { border-color: var(--accent); }
 
+  .jump-row { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 8px; }
+  .jump-row label { font-size: 12px; color: var(--text-muted); }
+  .jump-row input {
+    width: 72px; padding: 5px 8px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text); font-family: inherit; font-size: 13px; text-align: center;
+  }
+  .jump-row button {
+    border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+    padding: 5px 12px; border-radius: 8px; font-size: 12.5px; cursor: pointer; font-family: inherit;
+  }
+  .row-num {
+    color: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums;
+    min-width: 28px; text-align: right;
+  }
+
   .pattern-guide { flex-basis: 100%; }
   .pattern-guide summary {
     font-size: 12px; color: var(--text-muted); cursor: pointer; padding: 4px 0; user-select: none;
@@ -327,6 +342,11 @@
     <h2>재생</h2>
     <div class="now-playing">
       <div class="pos-line" id="miniPos">0 / 0</div>
+      <div class="jump-row">
+        <label for="jumpInput" id="jumpLabel">번호로 이동</label>
+        <input type="number" id="jumpInput" min="1" inputmode="numeric" placeholder="번호">
+        <button type="button" id="jumpBtn">이동</button>
+      </div>
       <div class="badges" id="miniBadges"></div>
       <div class="it" id="miniIt" lang="it">단어를 추가해주세요</div>
       <div class="kr" id="miniKr" lang="ko"></div>
@@ -5044,9 +5064,19 @@
     $("miniExampleBlock").classList.toggle("show", hasEx);
     buildExampleLines($("displayExample"), w ? w.ex : null, w);
 
-    var pos = words.length ? (currentIndex + 1) + " / " + words.length : "0 / 0";
+    var pos = "0 / 0";
+    var jumpLabel = "번호로 이동";
+    var jumpMax = "";
+    if (words.length && words[currentIndex]) {
+      var sr = sectorRank(currentIndex, visibleIndices());
+      pos = sr.pos + " " + (sr.rank || "-") + " / " + sr.total;
+      jumpLabel = sr.pos + " 번호";
+      jumpMax = sr.total;
+    }
     $("miniPos").textContent = pos;
     $("displayPos").textContent = pos;
+    $("jumpLabel").textContent = jumpLabel;
+    $("jumpInput").max = jumpMax;
   }
 
   function patternRangeActive() {
@@ -5059,19 +5089,36 @@
   }
 
   function visibleIndices() {
-    var rangeOn = patternRangeActive();
-    if (filterPos === "all" && !rangeOn) {
-      var all = [];
-      for (var i = 0; i < words.length; i++) all.push(i);
-      return all;
-    }
     var out = [];
+    if (filterPos === "all") {
+      // Grouped by chapter in the same order the list shows them (동사, 명사, 형용사, 패턴, 기타),
+      // so chapters are contiguous for playback and numbering.
+      var seen = {};
+      POS_ORDER.forEach(function (pos) {
+        words.forEach(function (w, i) { if (w.pos === pos) { out.push(i); seen[i] = true; } });
+      });
+      words.forEach(function (w, i) { if (!seen[i]) out.push(i); });
+      return out;
+    }
+    var rangeOn = patternRangeActive();
     words.forEach(function (w, i) {
-      if (filterPos !== "all" && w.pos !== filterPos) return;
+      if (w.pos !== filterPos) return;
       if (rangeOn && !inPatternRange(w)) return;
       out.push(i);
     });
     return out;
+  }
+
+  // 1-based position of word `idx` among the visible words of its own chapter (POS),
+  // so each chapter's numbering starts at 1 instead of counting across all words.
+  function sectorRank(idx, indices) {
+    var pos = words[idx].pos, total = 0, rank = 0;
+    for (var k = 0; k < indices.length; k++) {
+      if (words[indices[k]].pos !== pos) continue;
+      total++;
+      if (indices[k] === idx) rank = total;
+    }
+    return { pos: pos, rank: rank, total: total };
   }
 
   function stepIndex(delta) {
@@ -5162,17 +5209,10 @@
     if (pos === filterPos) return;
     filterPos = pos;
     var indices = visibleIndices();
-    var wasPlaying = isPlaying;
-    if (indices.indexOf(currentIndex) === -1) {
-      stopSpeechAndInvalidate();
-      if (indices.length) {
-        currentIndex = indices[0];
-        isPlaying = wasPlaying;
-        if (wasPlaying) runPlayback(playToken);
-      } else {
-        isPlaying = false;
-      }
-    }
+    // Changing chapter always stops playback; the user picks a start number and presses play.
+    stopSpeechAndInvalidate();
+    isPlaying = false;
+    if (indices.length && indices.indexOf(currentIndex) === -1) currentIndex = indices[0];
     saveSettings();
     renderList();
     renderCurrentWord();
@@ -5220,7 +5260,7 @@
     applyRangeChange();
   }
 
-  function buildWordRowElement(w, i) {
+  function buildWordRowElement(w, i, num) {
     var row = document.createElement("div");
     row.className = "word-row" + (i === currentIndex ? " current" : "");
 
@@ -5230,6 +5270,13 @@
     var head = document.createElement("div");
     head.className = "word-head";
     head.addEventListener("click", function () { goTo(i); });
+
+    if (num) {
+      var numEl = document.createElement("span");
+      numEl.className = "row-num";
+      numEl.textContent = num;
+      head.appendChild(numEl);
+    }
 
     var posBadge = document.createElement("span");
     posBadge.className = "pos-badge";
@@ -5345,10 +5392,10 @@
         header.className = "group-header";
         header.textContent = pos + " · " + groupIndices.length + "개";
         listEl.appendChild(header);
-        groupIndices.forEach(function (i) { listEl.appendChild(buildWordRowElement(words[i], i)); });
+        groupIndices.forEach(function (i, k) { listEl.appendChild(buildWordRowElement(words[i], i, k + 1)); });
       });
     } else {
-      indices.forEach(function (i) { listEl.appendChild(buildWordRowElement(words[i], i)); });
+      indices.forEach(function (i, k) { listEl.appendChild(buildWordRowElement(words[i], i, k + 1)); });
     }
   }
 
@@ -5555,7 +5602,20 @@
         if (token !== playToken) return Promise.reject("stale");
         if (repeatMode !== "one") {
           var nextIdx = stepIndex(1);
-          if (nextIdx !== null) currentIndex = nextIdx;
+          if (nextIdx !== null) {
+            var finishedPos = words[currentIndex].pos;
+            var chapterChanged = filterPos === "all" && words[nextIdx].pos !== finishedPos;
+            currentIndex = nextIdx;
+            if (chapterChanged) {
+              isPlaying = false;
+              stopSpeechAndInvalidate();
+              renderCurrentWord();
+              renderList();
+              updatePlayButton();
+              showToast(finishedPos + " 챕터 끝! 멈췄어요. " + words[nextIdx].pos + " 1번부터 ▶ 를 누르거나 번호를 입력하세요.");
+              return;
+            }
+          }
         }
         return runPlayback(token);
       })
@@ -5600,6 +5660,21 @@
 
   function next() { var t = stepIndex(1); if (t !== null) goTo(t); }
   function prev() { var t = stepIndex(-1); if (t !== null) goTo(t); }
+
+  // Jump to the Nth card (1-based) of the chapter that is currently shown.
+  function jumpToNumber() {
+    var input = $("jumpInput");
+    var indices = visibleIndices();
+    if (indices.length === 0) return;
+    var n = parseInt(input.value, 10);
+    if (isNaN(n)) { showToast("이동할 번호를 입력해주세요."); return; }
+    var pos = indices.indexOf(currentIndex) === -1 ? words[indices[0]].pos : words[currentIndex].pos;
+    var chapter = indices.filter(function (i) { return words[i].pos === pos; });
+    n = Math.max(1, Math.min(chapter.length, n));
+    goTo(chapter[n - 1]);
+    input.value = "";
+    showToast(pos + " " + n + "번으로 이동했어요.");
+  }
 
   function splitFirst(line, delimiter) {
     var idx = line.indexOf(delimiter);
@@ -5718,6 +5793,11 @@
 
     document.querySelectorAll("#posFilterGroup .filter-chip").forEach(function (btn) {
       btn.addEventListener("click", function () { setFilter(btn.getAttribute("data-filter")); });
+    });
+
+    $("jumpBtn").addEventListener("click", jumpToNumber);
+    $("jumpInput").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") jumpToNumber();
     });
 
     $("patRangeApply").addEventListener("click", applyPatternRange);
