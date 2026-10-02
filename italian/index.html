@@ -336,7 +336,7 @@
 <body>
 <div class="container">
   <h1>이탈리아어 단어 반복 학습</h1>
-  <p class="subtitle">단어를 등록하고 재생하면 이탈리아어 → 한국어 순으로 계속 반복해서 읽어줍니다.</p>
+  <p class="subtitle">단어를 등록하고 재생하면 한국어 → 이탈리아어 순으로 계속 반복해서 읽어줍니다.</p>
 
   <section class="card">
     <h2>재생</h2>
@@ -5624,32 +5624,26 @@
   }
   function gapStep(ms) { return { type: "gap", ms: ms }; }
 
+  // Every card plays Korean first, then Italian (words, patterns and their example sentences alike).
   function buildSteps(word) {
     var steps = [];
-    var isPattern = word.pos === "패턴";
-    if (isPattern) {
-      steps.push(krStep(word.kr, word.audio && word.audio.kr));
-      steps.push(gapStep(GAP_IT_KR_MS));
-      steps.push(itStep(word.it, word.audio && word.audio.it));
-    } else {
-      steps.push(itStep(word.it, word.audio && word.audio.it));
-      steps.push(gapStep(GAP_IT_KR_MS));
-      steps.push(krStep(word.kr, word.audio && word.audio.kr));
-    }
+    steps.push(krStep(word.kr, word.audio && word.audio.kr));
+    steps.push(gapStep(GAP_IT_KR_MS));
+    steps.push(itStep(word.it, word.audio && word.audio.it));
 
     var hasEx = includeExample && word.ex && (word.ex.qIt || word.ex.aIt);
     if (hasEx) {
       steps.push(gapStep(gapSeconds * 1000));
       if (word.ex.qIt) {
-        steps.push(itStep(word.ex.qIt));
-        steps.push(gapStep(GAP_IT_KR_MS));
         steps.push(krStep(word.ex.qKr));
+        steps.push(gapStep(GAP_IT_KR_MS));
+        steps.push(itStep(word.ex.qIt));
         steps.push(gapStep(gapSeconds * 1000));
       }
       if (word.ex.aIt) {
-        steps.push(itStep(word.ex.aIt));
-        steps.push(gapStep(GAP_IT_KR_MS));
         steps.push(krStep(word.ex.aKr));
+        steps.push(gapStep(GAP_IT_KR_MS));
+        steps.push(itStep(word.ex.aIt));
       }
     }
     steps.push(gapStep(gapSeconds * 1000));
