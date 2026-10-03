@@ -433,13 +433,6 @@
     margin-top: 10px;
   }
 
-  .krw-note {
-    font-size: 9.5px;
-    font-weight: 500;
-    color: #8a7f7f;
-    white-space: nowrap;
-  }
-
   .package-card .pkg-note {
     font-size: 9.5px;
     color: #999;
@@ -1099,7 +1092,7 @@ header nav {
           조화부케 + 헤어장식 포함
         </div>
         <div class="pkg-price">
-          예약금 70만원<br>+ 잔금 <span class="ext-num" data-base="250" data-bonus="50" data-unit="유로" data-plain>250유로</span> <span class="krw-note" data-deposit="70">(완납 115만원)</span><br><br>
+          예약금 70만원<br>+ 잔금 <span class="ext-num" data-base="250" data-bonus="50" data-unit="유로" data-plain>250유로</span><br><br>
         </div>
       </div>
 
@@ -1118,7 +1111,7 @@ header nav {
           조화부케 + 헤어장식 포함
         </div>
         <div class="pkg-price">
-          예약금 70만원<br>+ 잔금 <span class="ext-num" data-base="300" data-bonus="50" data-unit="유로" data-plain>300유로</span> <span class="krw-note" data-deposit="70">(완납 120만원)</span>
+          예약금 70만원<br>+ 잔금 <span class="ext-num" data-base="300" data-bonus="50" data-unit="유로" data-plain>300유로</span>
         </div>
         <div class="pkg-note">새벽타임 진행 시 +5만원</div>
       </div>
@@ -1140,7 +1133,7 @@ header nav {
         남성 수트 1벌, 여성 드레스 2벌<br>
         조화부케, 헤어장식 포함
       </div>
-      <div class="pkg-price">예약금 100만원 + 잔금 500유로 <span class="krw-note">(완납 185만원)</span></div>
+      <div class="pkg-price">예약금 100만원 + 잔금 500유로</div>
       <div class="pkg-note">새벽타임 진행 시 +5만원</div>
     </div>
 
@@ -1204,9 +1197,6 @@ header nav {
     }, 3000); // 2000ms = 2초
   });
 
-  // 잔금(유로)을 한화로 낼 때의 금액(만원). 완납 금액 = 예약금 + 이 금액. 표에 없는 금액이면 문구를 비워 둔다.
-  const BALANCE_KRW = { 100: 17, 150: 26, 200: 35, 250: 45, 300: 50, 350: 60, 400: 70, 500: 85 };
-
   // ===== 30분 추가: 2h / 3h 패키지 카드에 한 번에 적용 =====
   function toggleHmExtend() {
     const root = document.getElementById('hmPackages');
@@ -1215,11 +1205,6 @@ header nav {
     root.querySelectorAll('.ext-num').forEach(el => {
       el.textContent = (+el.dataset.base + (on ? +el.dataset.bonus : 0)) + el.dataset.unit;
       if (!el.hasAttribute('data-plain')) el.classList.toggle('ext-bump', on);
-      const note = el.nextElementSibling;
-      if (note && note.classList.contains('krw-note')) {
-        const krw = BALANCE_KRW[parseInt(el.textContent, 10)];
-        note.textContent = krw ? `(완납 ${+note.dataset.deposit + krw}만원)` : '';
-      }
     });
   }
 

@@ -903,13 +903,6 @@
     margin-top: 1px;
   }
 
-  .option-card .option-price .balance .balance-krw {
-    font-size: 10px;
-    font-weight: 500;
-    color: #7a6a6a;
-    white-space: nowrap;
-  }
-
   .option-card.active .option-price {
     border-top: 1px dashed rgba(0,0,0,0.15);
   }
@@ -2449,7 +2442,7 @@ header nav {
         <p>6월 10일-7월 15일 한정<br>이동 및 대기시간 약 30분 포함</p>
         <hr class="info-rule">
         <p>원본 800장 내외, 보정본 15장</p>
-        <div class="info-price">예약금 40만원 + 잔금 100유로 <span style="font-size:10px;font-weight:500;opacity:.8;white-space:nowrap">(완납 57만원)</span></div>
+        <div class="info-price">예약금 40만원 + 잔금 100유로</div>
       </div>
     </div>
 
@@ -2932,15 +2925,6 @@ header nav {
 
   let addonMode = 'none'; // 'none' | 'heme' | 'package'
 
-  // 잔금(유로)을 한화로 낼 때의 금액(만원). 완납 금액 = 예약금 + 이 금액. 표에 없는 금액이면 문구를 붙이지 않는다.
-  const BALANCE_KRW = { 100: 17, 150: 26, 200: 35, 250: 45, 300: 50, 350: 60, 400: 70, 500: 85 };
-  function krwNote(depositText, balanceText) {
-    const d = String(depositText).match(/(\d+)\s*만원/);
-    const b = String(balanceText).match(/(\d+)\s*유로/);
-    const krw = b && BALANCE_KRW[+b[1]];
-    return d && krw ? ` <span class="balance-krw">(완납 ${+d[1] + krw}만원)</span>` : '';
-  }
-
   function addEuro(balanceStr, extra) {
     if (!extra) return balanceStr;
     const n = parseInt(balanceStr, 10);
@@ -3066,7 +3050,7 @@ header nav {
         const extCfg = extendConfig(tab, idx);
         const extended = !!extCfg && isExtended(tab, idx);
         const [l1, l2] = priceLines(info, extended ? extCfg.addBalance : 0);
-        card.querySelector('.option-price').innerHTML = `<span class="deposit">${l1}</span><span class="balance">${l2}${krwNote(l1, l2)}</span>`;
+        card.querySelector('.option-price').innerHTML = `<span class="deposit">${l1}</span><span class="balance">${l2}</span>`;
 
         if (extCfg) {
           card.querySelector('.option-name').textContent = extended ? extCfg.extName : extCfg.baseName;
