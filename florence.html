@@ -862,6 +862,7 @@
   @media (max-width: 480px) {
     .price-strip {
       gap: 4px;
+      margin-bottom: 6px; /* 아래 카루셀 윗여백을 +8px 늘린 만큼 줄여 카드 위치는 그대로 */
     }
     .price-chip {
       font-size: 9.5px;
@@ -1714,7 +1715,7 @@
   }
 
   .carousel-wrap {
-    padding: 6px 12% 10px;
+    padding: 14px 12% 10px; /* 카드 윗선에 걸친 뱃지(인기 상품/헤메 포함)가 잘리지 않도록 윗여백 확보 */
   }
 
   .carousel-controls {
