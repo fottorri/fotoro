@@ -2918,7 +2918,7 @@ header nav {
     3: { deposit: 45, balance: '150유로' },
   };
   const HEME_ADDON = 30;
-  const PACKAGE_DISCOUNT = 5; // 패키지 추가 할인(만원): 헤메+드레스 패키지 예약금에서 차감 (2·3시간 공통)
+  const PACKAGE_DISCOUNT = 5; // 패키지 추가 할인(만원): 3시간(새벽 포함) 패키지 예약금에서만 차감, 2시간은 할인 없음
   const PACKAGE_BALANCE = { 2: '250유로', 3: '300유로' };
   const addonDim = t => `<span class="addon-dim">${t}</span>`;
   const addonEm = t => `<b class="addon-em">${t}</b>`;
@@ -2950,7 +2950,7 @@ header nav {
     const base = BASE_PRICE[info.hours];
     const adj = info.depositAdjust || 0;
     if (addonMode === 'package') {
-      const deposit = base.deposit + HEME_ADDON - PACKAGE_DISCOUNT + adj;
+      const deposit = base.deposit + HEME_ADDON - (info.hours === 3 ? PACKAGE_DISCOUNT : 0) + adj;
       const balance = addEuro(info.packageBalance || PACKAGE_BALANCE[info.hours], extraBalance);
       return [`예약금 ${deposit}만원`, `+ 잔금 ${balance}`];
     }
