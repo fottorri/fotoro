@@ -439,6 +439,144 @@
     margin-top: 4px;
   }
 
+  /* ===== 시간대 설명 (? 버튼 + 팝업) ===== */
+  .info-section h3 .h3-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .help-btn {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 7px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid #cfcbc2;
+    background: #fff;
+    color: #7c7562;
+    font: 700 12px/1 "Noto Sans KR", Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .help-btn::before {
+    content: '';
+    position: absolute;
+    inset: -9px;
+  }
+
+  .help-btn:focus-visible,
+  .th-close:focus-visible {
+    outline: 2px solid #4a1520;
+    outline-offset: 2px;
+  }
+
+  .th-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(20, 16, 12, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overscroll-behavior: contain;
+  }
+
+  .th-overlay[hidden] {
+    display: none;
+  }
+
+  .th-card {
+    width: 100%;
+    max-width: 340px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    color: #2a2723;
+  }
+
+  .th-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .th-title {
+    font-family: "Noto Sans KR", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .th-close {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #e5e0d5;
+    color: #96938c;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .th-section {
+    margin: 10px 0 0;
+    font-family: "Noto Sans KR", Arial, sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #96938c;
+  }
+
+  .th-head + .th-section {
+    margin-top: 4px;
+  }
+
+  .th-row {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 7px 0;
+  }
+
+  .th-row + .th-row {
+    border-top: 1px dashed #ddd;
+  }
+
+  .th-name {
+    flex: 0 0 66px;
+    font-family: "Noto Sans KR", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #4a1520;
+    word-break: keep-all;
+  }
+
+  .th-desc {
+    flex: 1;
+    min-width: 0;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: #555;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
   /* ===== 30분 추가 토글 (피렌체 페이지의 버튼과 동일한 톤) ===== */
   .ext-toggle-row {
     display: flex;
@@ -1075,7 +1213,7 @@ header nav {
 
   <!-- ===== 2h / 3h 패키지 (핵심, 상단 배치) ===== -->
   <div class="info-section" id="hmPackages">
-    <h3>헤메드 패키지</h3>
+    <h3><span class="h3-text">헤메드 패키지<button type="button" class="help-btn" aria-label="시간대 설명 보기" aria-haspopup="dialog" onclick="openTimeHelp()">?</button></span></h3>
     <div class="ext-toggle-row">
       <button type="button" class="ext-toggle" id="hmExtToggle" onclick="toggleHmExtend()">30분 추가</button>
     </div>
@@ -1173,6 +1311,36 @@ header nav {
 
 <!-- 화면 우측 하단 고정 플로팅 버튼 -->
 <div class="cta-button cta-floating" onclick="openInquiry()"><svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M18 5C9.44 5 2.5 10.28 2.5 16.79c0 4.14 2.79 7.79 7.02 9.9-.31 1.13-1.12 4.1-1.28 4.73-.2.78.29.77.6.56.25-.17 4-2.72 5.63-3.83.83.12 1.68.17 2.53.17 8.56 0 15.5-5.28 15.5-11.79C33.5 10.28 26.56 5 18 5z" fill="#3C1E1E"/></svg>카카오톡 문의</div>
+<!-- 시간대 설명 팝업 (헤메드 패키지 제목 옆 ? 버튼) -->
+<div class="th-overlay" id="timeHelp" hidden onclick="closeTimeHelp()">
+  <div class="th-card" role="dialog" aria-modal="true" aria-labelledby="timeHelpTitle" onclick="event.stopPropagation()">
+    <div class="th-head">
+      <div class="th-title" id="timeHelpTitle">시간대 설명</div>
+      <button type="button" class="th-close" aria-label="닫기" onclick="closeTimeHelp()">✕</button>
+    </div>
+    <div class="th-row">
+      <div class="th-name">일출</div>
+      <div class="th-desc">해가 뜬 직후부터 시작, 노을에서 밝아지는 분위기</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">아침</div>
+      <div class="th-desc">해가 뜬 이후 약 2-3시간 이후 시작, 밝고 쨍한 분위기</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">일몰</div>
+      <div class="th-desc">해가 지기 직전까지 진행, 밝은 분위기에서 노을까지</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">일몰+야경</div>
+      <div class="th-desc">일몰 시간대와 더불어 해가 지고 난 이후 야경(라라랜드 시간대)</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">새벽</div>
+      <div class="th-desc">일몰+야경의 역순으로 야경 촬영 후 해 뜨는 노을에서 밝아지는 분위기</div>
+    </div>
+  </div>
+</div>
+
 <div id="inquiryRoot"></div>
 
 
@@ -1209,6 +1377,25 @@ header nav {
       if (!el.hasAttribute('data-plain')) el.classList.toggle('ext-bump', on);
     });
   }
+
+  // ===== 시간대 설명 팝업 (? 버튼) =====
+  let timeHelpReturnFocus = null;
+  function openTimeHelp() {
+    const overlay = document.getElementById('timeHelp');
+    timeHelpReturnFocus = document.activeElement;
+    overlay.hidden = false;
+    const closeBtn = overlay.querySelector('.th-close');
+    if (closeBtn) closeBtn.focus();
+  }
+  function closeTimeHelp() {
+    const overlay = document.getElementById('timeHelp');
+    if (overlay.hidden) return;
+    overlay.hidden = true;
+    if (timeHelpReturnFocus && timeHelpReturnFocus.focus) timeHelpReturnFocus.focus();
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeTimeHelp();
+  });
 
   // ===== 카카오톡 문의 버튼 + 모달 =====
   const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_Gxdxnwxj/chat';
