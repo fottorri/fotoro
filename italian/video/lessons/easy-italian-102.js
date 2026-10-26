@@ -2,6 +2,8 @@
 window.LESSONS = window.LESSONS || [];
 window.LESSONS.push({
  "id": "easy-italian-102",
+ "no": 1,
+ "label": "① Easy Italian 102 · 이탈리아어는 어려운 언어일까?",
  "youtubeId": "q2bUdfFVllI",
  "url": "https://youtu.be/q2bUdfFVllI",
  "title": "Easy Italian 102",

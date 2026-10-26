@@ -47,15 +47,18 @@
   .topbar { max-width: 1180px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .back { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; }
   .topbar-title { font-size: 15px; font-weight: 700; }
+  .lesson-sel {
+    max-width: 66vw; min-width: 0; font-family: inherit; font-size: 13px; font-weight: 700; padding: 8px 10px;
+    border-radius: 10px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); text-overflow: ellipsis;
+  }
 
   .page { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .layout, .col-main, .col-side { display: contents; }
-  .video-card { order: 1; }
-  .controls-card { order: 2; }
+  .controls-card { order: 1; }
+  .video-card { order: 2; }
   .now-card { order: 3; }
-  .settings-card { order: 4; }
-  .explain-card { order: 5; }
-  .list-card { order: 6; }
+  .explain-card { order: 4; }
+  .list-card { order: 5; }
 
   .card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
@@ -85,11 +88,18 @@
   .ibtn:disabled { opacity: 0.4; cursor: default; }
   .ibtn .lbl { display: none; }
 
-  .ctl-main { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 14px; }
+  .controls-card { padding: 10px 12px 6px; }
+  .controls-card .ibtn { width: 38px; height: 38px; font-size: 15px; box-shadow: none; }
+  .controls-card .ibtn.sec { width: 34px; height: 34px; font-size: 13px; }
+  .controls-card .ibtn.big { width: 48px; height: 48px; font-size: 19px; }
+  .ctl-main { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
   .ctl-label { font-size: 11.5px; color: var(--text-muted); margin: 10px 0 6px; font-weight: 600; }
-  .seg { display: flex; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .ctl-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .ctl-row .ctl-label { margin: 0; flex-shrink: 0; }
+  .ctl-row .seg { flex: 1; }
+  .seg { display: flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .seg button {
-    flex: 1; border: none; background: transparent; padding: 10px 6px; font-size: 13px; cursor: pointer;
+    flex: 1; border: none; background: transparent; padding: 6px 4px; font-size: 12.5px; cursor: pointer;
     color: var(--text-muted); border-right: 1px solid var(--border);
   }
   .seg button:last-child { border-right: none; }
@@ -109,13 +119,13 @@
   .blur { filter: blur(7px); cursor: pointer; user-select: none; transition: filter 0.15s ease; }
   .blur.reveal { filter: none; }
 
-  /* settings */
-  .settings-card { padding: 0; }
-  .settings-card > summary { list-style: none; cursor: pointer; padding: 14px 16px; font-size: 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-  .settings-card > summary::-webkit-details-marker { display: none; }
-  .settings-card > summary::after { content: "▾"; color: var(--text-muted); }
-  .settings-card[open] > summary::after { content: "▴"; }
-  .settings-inner { padding: 0 16px 16px; border-top: 1px dashed var(--border); }
+  /* settings (collapsed, inside the playback box) */
+  .settings { margin-top: 8px; border-top: 1px dashed var(--border); }
+  .settings > summary { list-style: none; cursor: pointer; padding: 7px 2px 4px; font-size: 12px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); }
+  .settings > summary::-webkit-details-marker { display: none; }
+  .settings > summary::after { content: "▾"; }
+  .settings[open] > summary::after { content: "▴"; }
+  .settings-inner { padding: 0 2px 4px; }
   .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; }
   .tog {
     border: 1px solid var(--border); background: transparent; color: var(--text-muted); padding: 8px 12px;
@@ -226,7 +236,7 @@
 <body>
 <div class="topbar">
   <a class="back" href="../">← 단어 학습기</a>
-  <span class="topbar-title">영상으로 공부하기</span>
+  <select id="lessonSel" class="lesson-sel" aria-label="영상 선택" hidden></select>
 </div>
 
 <div class="page">
@@ -239,19 +249,45 @@
           <button type="button" class="ibtn big" id="btnPlay" aria-label="재생" title="재생/일시정지 (스페이스)">▶</button>
           <button type="button" class="ibtn sec" id="btnNext" aria-label="다음 문장" title="다음 문장 (→)">⏭</button>
         </div>
-        <div class="ctl-label">재생 방식</div>
         <div class="seg" id="modeGroup" role="group" aria-label="재생 방식">
           <button type="button" data-mode="flow" aria-pressed="true">연속 재생</button>
           <button type="button" data-mode="stop" aria-pressed="false">문장마다 멈춤</button>
           <button type="button" data-mode="loop" aria-pressed="false">문장 반복</button>
         </div>
-        <div class="seg-note" id="modeNote"></div>
-        <div class="ctl-label">속도</div>
-        <div class="seg" id="speedGroup" role="group" aria-label="재생 속도">
-          <button type="button" data-rate="0.5" aria-pressed="false">0.5×</button>
-          <button type="button" data-rate="0.75" aria-pressed="false">0.75×</button>
-          <button type="button" data-rate="1" aria-pressed="true">1×</button>
+        <div class="ctl-row">
+          <span class="ctl-label">속도</span>
+          <div class="seg" id="speedGroup" role="group" aria-label="재생 속도">
+            <button type="button" data-rate="0.5" aria-pressed="false">0.5×</button>
+            <button type="button" data-rate="0.75" aria-pressed="false">0.75×</button>
+            <button type="button" data-rate="1" aria-pressed="true">1×</button>
+          </div>
         </div>
+        <details class="settings" id="settingsCard">
+          <summary>자막 표시 · 싱크 설정</summary>
+          <div class="settings-inner">
+            <div class="ctl-label">자막 보이기 <span style="font-weight:400">(끄면 흐리게 가려져요. 눌러서 잠깐 볼 수 있어요)</span></div>
+            <div class="toggle-row">
+              <button type="button" class="tog" id="tgIt" aria-pressed="true">이탈리아어</button>
+              <button type="button" class="tog" id="tgKr" aria-pressed="true">한국어</button>
+              <button type="button" class="tog" id="tgSkip" aria-pressed="false">음악·광고 구간 건너뛰기</button>
+            </div>
+            <div class="ctl-label">자막 싱크 (전체)</div>
+            <div class="sync-row">
+              <button type="button" class="sbtn" id="syncMinus">◀ 0.25초 당기기</button>
+              <span class="val" id="syncVal">0.00초</span>
+              <button type="button" class="sbtn" id="syncPlus">0.25초 늦추기 ▶</button>
+              <button type="button" class="sbtn" id="syncReset">초기화</button>
+            </div>
+            <div class="ctl-label">자막 싱크 (지금 문장만)</div>
+            <div class="sync-row">
+              <button type="button" class="sbtn" id="nudgeMinus">◀ 시작 앞당기기</button>
+              <span class="val" id="nudgeVal">0.00초</span>
+              <button type="button" class="sbtn" id="nudgePlus">시작 늦추기 ▶</button>
+              <button type="button" class="sbtn" id="nudgeReset">초기화</button>
+            </div>
+            <p class="sync-help">소리보다 자막이 먼저 나오면 "늦추기", 늦게 나오면 "당기기"를 누르세요. 문장 반복·멈춤 구간도 같은 기준으로 움직입니다. 조정한 값은 이 기기에 저장됩니다.</p>
+          </div>
+        </details>
       </section>
 
       <section class="card now-card" id="nowCard" aria-label="지금 나오는 자막">
@@ -262,33 +298,6 @@
           <div class="now-hint" id="nowHint"></div>
         </div>
       </section>
-
-      <details class="card settings-card" id="settingsCard">
-        <summary>자막 표시 · 싱크 설정</summary>
-        <div class="settings-inner">
-          <div class="ctl-label">자막 보이기 <span style="font-weight:400">(끄면 흐리게 가려져요. 눌러서 잠깐 볼 수 있어요)</span></div>
-          <div class="toggle-row">
-            <button type="button" class="tog" id="tgIt" aria-pressed="true">이탈리아어</button>
-            <button type="button" class="tog" id="tgKr" aria-pressed="true">한국어</button>
-            <button type="button" class="tog" id="tgSkip" aria-pressed="false">음악·광고 구간 건너뛰기</button>
-          </div>
-          <div class="ctl-label">자막 싱크 (전체)</div>
-          <div class="sync-row">
-            <button type="button" class="sbtn" id="syncMinus">◀ 0.25초 당기기</button>
-            <span class="val" id="syncVal">0.00초</span>
-            <button type="button" class="sbtn" id="syncPlus">0.25초 늦추기 ▶</button>
-            <button type="button" class="sbtn" id="syncReset">초기화</button>
-          </div>
-          <div class="ctl-label">자막 싱크 (지금 문장만)</div>
-          <div class="sync-row">
-            <button type="button" class="sbtn" id="nudgeMinus">◀ 시작 앞당기기</button>
-            <span class="val" id="nudgeVal">0.00초</span>
-            <button type="button" class="sbtn" id="nudgePlus">시작 늦추기 ▶</button>
-            <button type="button" class="sbtn" id="nudgeReset">초기화</button>
-          </div>
-          <p class="sync-help">소리보다 자막이 먼저 나오면 "늦추기", 늦게 나오면 "당기기"를 누르세요. 문장 반복·멈춤 구간도 같은 기준으로 움직입니다. 조정한 값은 이 기기에 저장됩니다.</p>
-        </div>
-      </details>
 
       <details class="card explain-card" id="explainCard" open>
         <summary><span>이 구간 설명<span class="tag" id="explainTag"></span></span></summary>
@@ -326,14 +335,30 @@
 <div class="toast" id="toast"></div>
 
 <script src="lessons/easy-italian-102.js"></script>
+<script src="lessons/easy-italian-266.js"></script>
 <script>
 (function () {
   "use strict";
 
   var LESSONS = window.LESSONS || [];
+  var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   var wanted = new URLSearchParams(location.search).get("lesson");
+  if (!wanted) { try { wanted = JSON.parse(localStorage.getItem(LAST_LESSON_KEY)); } catch (e) {} }
   var LESSON = LESSONS.filter(function (l) { return l.id === wanted; })[0] || LESSONS[0];
   if (!LESSON) { document.body.textContent = "자막 데이터를 불러오지 못했습니다."; return; }
+  try { localStorage.setItem(LAST_LESSON_KEY, JSON.stringify(LESSON.id)); } catch (e) {}
+  (function () {
+    var sel = document.getElementById("lessonSel");
+    if (LESSONS.length < 2) return;
+    LESSONS.forEach(function (l) {
+      var o = document.createElement("option");
+      o.value = l.id; o.textContent = l.label || l.title;
+      if (l.id === LESSON.id) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.hidden = false;
+    sel.addEventListener("change", function () { location.search = "?lesson=" + encodeURIComponent(sel.value); });
+  })();
 
   var SEGS = LESSON.segs, N = SEGS.length;
   var SECTIONS = LESSON.sections, GROUPS = LESSON.groups;
@@ -750,7 +775,7 @@
   };
   function updateModeButtons() {
     document.querySelectorAll("#modeGroup button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.mode === st.mode); });
-    $("modeNote").textContent = MODE_NOTES[st.mode];
+    document.querySelectorAll("#modeGroup button").forEach(function (b) { b.title = MODE_NOTES[b.dataset.mode]; });
   }
   function updateRateButtons() {
     document.querySelectorAll("#speedGroup button").forEach(function (b) { b.setAttribute("aria-pressed", Math.abs(parseFloat(b.dataset.rate) - st.rate) < 0.01); });
@@ -761,6 +786,7 @@
     if (m === "stop" && activeIdx >= 0) stopIdx = activeIdx;
     $("nowHint").textContent = "";
     saveSettings(); updateModeButtons();
+    toast(MODE_NOTES[m]);
   }
   function setRate(r) {
     st.rate = r; saveSettings(); updateRateButtons();
@@ -845,6 +871,7 @@
   window.__vp = {
     setPlayer: function (p) { player = p; ready = true; updatePlayButtons(); setInterval(tick, TICK_MS); },
     state: function () { return { activeIdx: activeIdx, holdIdx: holdIdx, stopIdx: stopIdx, loopIdx: loopIdx, mode: st.mode, offset: st.offset, ready: ready, t: ready ? player.getCurrentTime() : null, ps: ready ? player.getPlayerState() : null, rate: ready ? player.getPlaybackRate() : null }; },
+    player: function () { return player; },
     seekToSeg: seekToSeg, setMode: setMode, indexAt: indexAt, startOf: startOf, tick: tick
   };
 })();
