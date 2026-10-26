@@ -289,6 +289,8 @@
             <button type="button" data-rate="0.5" aria-pressed="false">0.5×</button>
             <button type="button" data-rate="0.75" aria-pressed="false">0.75×</button>
             <button type="button" data-rate="1" aria-pressed="true">1×</button>
+            <button type="button" data-rate="1.25" aria-pressed="false">1.25×</button>
+            <button type="button" data-rate="1.5" aria-pressed="false">1.5×</button>
           </div>
         </div>
         <details class="settings" id="settingsCard">
@@ -374,13 +376,13 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/easy-italian-102.js?v=2026-10-26.4"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-26.4"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-26.5"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-26.5"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-26.4";
+  var BUILD = "2026-10-26.5";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   var BUILTIN = window.LESSONS || [];
@@ -450,7 +452,7 @@
 
   // ---- sentence timing helpers ----
   function startOf(i) { return SEGS[i].t + st.offset + (nudges[i] || 0); }
-  function endOf(i) { return i + 1 < N ? startOf(i + 1) - END_PRE : Infinity; }
+  function endOf(i) { return i + 1 < N ? startOf(i + 1) - END_PRE * Math.max(1, st.rate) : Infinity; }
   function indexAt(t) {
     var lo = 0, hi = N - 1, ans = 0;
     while (lo <= hi) {
