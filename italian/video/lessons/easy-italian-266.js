@@ -1,4 +1,4 @@
-// Easy Italian 266 — subtitle timing, Korean translation and per-block notes for the video page
+// Easy Italian 266 — subtitle lines follow the burned-in subtitles of the video; Korean translation and per-section notes for the video page
 window.LESSONS = window.LESSONS || [];
 window.LESSONS.push({
  "id": "easy-italian-266",
@@ -1805,11 +1805,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "in alcuni casi"
+       "in alcune case"
       ],
       [
        "t",
-       " (어떤 경우에는)"
+       " (어떤 집에서는)"
       ]
      ]
     },
@@ -1864,7 +1864,7 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "tutti gli italiani non sanno cucinare"
+       "non tutti gli italiani sanno cucinare"
       ],
       [
        "t",
@@ -3383,11 +3383,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "il super"
+       "il supermercato"
       ],
       [
        "t",
-       " (남 / 슈퍼마켓 (supermercato의 줄임말))"
+       " (남 / 슈퍼마켓)"
       ]
      ]
     },
@@ -4127,11 +4127,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "sgelare"
+       "scongelare"
       ],
       [
        "t",
-       " (해동하다 (scongelare와 같은 뜻))"
+       " (해동하다 (sgelare도 같은 뜻))"
       ]
      ]
     },
@@ -4307,23 +4307,15 @@ window.LESSONS.push({
    "t": 0.15,
    "s": 0,
    "g": 0,
-   "d": 0,
-   "it": "Tutti gli italiani sono chef e hanno la cucina nel DNA.",
-   "kr": "이탈리아 사람은 모두 요리사고 요리가 DNA에 새겨져 있다고들 하죠."
-  },
-  {
-   "t": 5.05,
-   "s": 0,
-   "g": 0,
-   "d": 0,
-   "it": "Pasta fresca ogni giorno e forno acceso ogni ora.",
-   "kr": "매일 생면 파스타를 만들고 오븐은 한 시간도 꺼지지 않는다고요."
+   "d": 1,
+   "it": "Tutti gli italiani sono chef e hanno la cucina nel DNA: pasta fresca ogni giorno e forno acceso ogni ora.",
+   "kr": "이탈리아 사람은 모두 요리사고 요리가 DNA에 새겨져 있다고들 하죠. 매일 생면 파스타를 만들고 오븐은 한 시간도 꺼지지 않는다고요."
   },
   {
    "t": 9.77,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "Ma è veramente così o si vede solo nei film?",
    "kr": "그런데 정말 그럴까요, 아니면 영화에서나 볼 수 있는 모습일까요?"
   },
@@ -4331,7 +4323,7 @@ window.LESSONS.push({
    "t": 13.32,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "Oggi chiediamo agli italiani se cucinano bene o se, come me, mettono la pancetta nella carbonara.",
    "kr": "오늘은 이탈리아 사람들에게 요리를 잘하는지, 아니면 저처럼 카르보나라에 판체타를 넣는지 물어봅니다."
   },
@@ -4339,15 +4331,15 @@ window.LESSONS.push({
    "t": 20.23,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "Andiamo a scoprirlo.",
    "kr": "한번 알아보러 가 봅시다."
   },
   {
-   "t": 22.0,
+   "t": 22,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "♪",
    "kr": "(오프닝 음악)",
    "music": true
@@ -4356,39 +4348,63 @@ window.LESSONS.push({
    "t": 32.64,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 2,
    "it": "Quanto cucini bene da uno a dieci?",
    "kr": "요리를 얼마나 잘해요? 1에서 10점까지로요."
   },
   {
-   "t": 35.27,
+   "t": 35.48,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Tre. Tre direi. Tre.",
-   "kr": "3점이요. 3점쯤이요. 3점."
+   "d": 3,
+   "it": "Tre.",
+   "kr": "3점이요."
+  },
+  {
+   "t": 36.97,
+   "s": 1,
+   "g": 1,
+   "d": 3,
+   "it": "Direi tre.",
+   "kr": "3점쯤이요."
   },
   {
    "t": 37.86,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Sette. Sei. Sufficiente, dai.",
-   "kr": "7점. 6점. 합격점은 되죠, 뭐."
+   "d": 4,
+   "it": "Sette.",
+   "kr": "7점."
+  },
+  {
+   "t": 38.94,
+   "s": 1,
+   "g": 1,
+   "d": 4,
+   "it": "Sei.",
+   "kr": "6점."
+  },
+  {
+   "t": 39.94,
+   "s": 1,
+   "g": 1,
+   "d": 4,
+   "it": "Sufficiente, dai.",
+   "kr": "합격점은 되죠, 뭐."
   },
   {
    "t": 41.55,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Otto. Dai.",
-   "kr": "8점이요. 뭐, 그 정도?"
+   "d": 5,
+   "it": "Otto, dai.",
+   "kr": "8점이요, 뭐."
   },
   {
    "t": 43.23,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 5,
    "it": "È un voto alto.",
    "kr": "높은 점수네요."
   },
@@ -4396,15 +4412,23 @@ window.LESSONS.push({
    "t": 43.91,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Sì, sì, sì. Ho fatto l'alberghiero.",
-   "kr": "네, 맞아요. 저는 호텔·조리 전문학교를 나왔어요."
+   "d": 5,
+   "it": "Sì.",
+   "kr": "네."
+  },
+  {
+   "t": 44.83,
+   "s": 1,
+   "g": 1,
+   "d": 5,
+   "it": "Sì, sì, ho fatto l'alberghiero.",
+   "kr": "네, 네, 저는 호텔·조리 전문학교를 나왔어요."
   },
   {
    "t": 46.12,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 5,
    "it": "Ah, ecco perché.",
    "kr": "아, 그래서 그렇군요."
   },
@@ -4412,7 +4436,7 @@ window.LESSONS.push({
    "t": 47.93,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 5,
    "it": "Sì, sì.",
    "kr": "네, 네."
   },
@@ -4420,7 +4444,7 @@ window.LESSONS.push({
    "t": 48.68,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 6,
    "it": "Dieci.",
    "kr": "10점."
   },
@@ -4428,23 +4452,31 @@ window.LESSONS.push({
    "t": 50.5,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Wow!",
+   "d": 6,
+   "it": "Wow.",
    "kr": "우와!"
   },
   {
    "t": 51.63,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Sì, sì, sì. Dieci. Per me dieci, per la mia famiglia…",
-   "kr": "네, 맞아요. 10점이요. 저는 10점이고, 우리 가족한테는…"
+   "d": 6,
+   "it": "Sì, sì, sì, dieci.",
+   "kr": "네, 네, 네, 10점이요."
+  },
+  {
+   "t": 52.39,
+   "s": 1,
+   "g": 1,
+   "d": 7,
+   "it": "Per me dieci, per la mia famiglia…",
+   "kr": "저는 10점, 우리 가족한테는…"
   },
   {
    "t": 56.67,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 7,
    "it": "No, dai, cucino bene.",
    "kr": "아니, 진짜로 요리 잘해요."
   },
@@ -4452,23 +4484,31 @@ window.LESSONS.push({
    "t": 58.47,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "Sette. Buon voto.",
-   "kr": "7점. 좋은 점수죠."
+   "d": 8,
+   "it": "Sette.",
+   "kr": "7점."
+  },
+  {
+   "t": 60.35,
+   "s": 1,
+   "g": 2,
+   "d": 8,
+   "it": "Buon voto.",
+   "kr": "좋은 점수죠."
   },
   {
    "t": 61.88,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "Sì, buon voto. Da napoletana ho imparato qualcosa in cucina.",
+   "d": 8,
+   "it": "Sì, buon voto, da napoletana ho imparato qualcosa in cucina.",
    "kr": "네, 좋은 점수죠. 나폴리 사람이라서 부엌에서 배운 게 좀 있어요."
   },
   {
    "t": 65.47,
    "s": 1,
    "g": 2,
-   "d": 2,
+   "d": 9,
    "it": "Otto.",
    "kr": "8점."
   },
@@ -4476,7 +4516,7 @@ window.LESSONS.push({
    "t": 68.61,
    "s": 1,
    "g": 2,
-   "d": 2,
+   "d": 9,
    "it": "Sei.",
    "kr": "6점."
   },
@@ -4484,23 +4524,31 @@ window.LESSONS.push({
    "t": 69.51,
    "s": 1,
    "g": 2,
-   "d": 2,
+   "d": 9,
    "it": "Con l'aiuto del Bimby.",
    "kr": "'비미'의 도움을 받아서요."
   },
   {
-   "t": 72.23,
+   "t": 72.38,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "No, la sufficienza c'è.",
-   "kr": "아니에요, 합격점은 돼요."
+   "d": 9,
+   "it": "Però la sufficienza c'è.",
+   "kr": "그래도 합격점은 돼요."
+  },
+  {
+   "t": 73.67,
+   "s": 1,
+   "g": 2,
+   "d": 9,
+   "it": "Sì, dai.",
+   "kr": "네, 괜찮아요."
   },
   {
    "t": 74.25,
    "s": 1,
    "g": 2,
-   "d": 2,
+   "d": 10,
    "it": "Io penso due, perché io cucino per sopravvivere, di base.",
    "kr": "저는 2점이라고 생각해요. 기본적으로 살아남으려고 요리하거든요."
   },
@@ -4508,15 +4556,31 @@ window.LESSONS.push({
    "t": 78.77,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "Otto. Dai, otto. Anch'io. Otto.",
-   "kr": "8점. 그래, 8점. 저도요. 8점."
+   "d": 11,
+   "it": "Otto, dai.",
+   "kr": "8점이요, 뭐."
+  },
+  {
+   "t": 80.0,
+   "s": 1,
+   "g": 2,
+   "d": 11,
+   "it": "Otto anch'io.",
+   "kr": "저도 8점이요."
+  },
+  {
+   "t": 80.86,
+   "s": 1,
+   "g": 2,
+   "d": 12,
+   "it": "Otto.",
+   "kr": "8점."
   },
   {
    "t": 82.94,
    "s": 1,
    "g": 2,
-   "d": 2,
+   "d": 12,
    "it": "Voto abbastanza alto.",
    "kr": "꽤 높은 점수네요."
   },
@@ -4524,31 +4588,23 @@ window.LESSONS.push({
    "t": 84.22,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "No, mi piace cucinare. Mi capita spesso di fare la pasta fresca,",
-   "kr": "아니에요, 저는 요리하는 걸 좋아해요. 생면 파스타를 자주 만들게 돼요,"
-  },
-  {
-   "t": 87.65,
-   "s": 1,
-   "g": 3,
-   "d": 3,
-   "it": "Faccio la lasagna con mia sorella perché, boh, ci piace, a entrambi.",
-   "kr": "제 여자 형제랑 라자냐도 만드는데, 뭐랄까, 둘 다 좋아하거든요."
+   "d": 12,
+   "it": "Mah, mi piace cucinare, mi capita spesso di fare la pasta fresca, faccio la lasagna con mia sorella perché, boh, ci piace, a entrambi.",
+   "kr": "음, 요리하는 걸 좋아해요. 생면 파스타를 자주 만들게 되고, 여자 형제랑 라자냐도 만들어요. 뭐랄까, 둘 다 좋아하거든요."
   },
   {
    "t": 91.59,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "I secondi non mi escono benissimo, però, effettivamente, forse un po' altino. Otto.",
-   "kr": "메인 요리는 아주 잘 나오진 않지만, 사실 좀 높게 말한 것 같긴 해요. 8점이요."
+   "d": 12,
+   "it": "I secondi non mi escono benissimo però, effettivamente forse è un po' altino otto.",
+   "kr": "메인 요리는 아주 잘 나오진 않지만, 사실 8점은 좀 높게 말한 것 같긴 해요."
   },
   {
    "t": 96.21,
    "s": 1,
    "g": 4,
-   "d": 4,
+   "d": 13,
    "it": "Quanto cucina bene da uno a dieci?",
    "kr": "요리를 얼마나 잘하세요? 1에서 10점까지로요."
   },
@@ -4556,15 +4612,23 @@ window.LESSONS.push({
    "t": 98.96,
    "s": 1,
    "g": 4,
-   "d": 4,
-   "it": "Io uno.",
-   "kr": "저는 1점이요."
+   "d": 13,
+   "it": "Io?",
+   "kr": "저요?"
+  },
+  {
+   "t": 100.01,
+   "s": 1,
+   "g": 4,
+   "d": 14,
+   "it": "Uno.",
+   "kr": "1점이요."
   },
   {
    "t": 101.81,
    "s": 1,
    "g": 4,
-   "d": 4,
+   "d": 14,
    "it": "Perché uno?",
    "kr": "왜 1점이에요?"
   },
@@ -4572,7 +4636,7 @@ window.LESSONS.push({
    "t": 103.34,
    "s": 1,
    "g": 4,
-   "d": 4,
+   "d": 15,
    "it": "Perché non mi diverte cucinare, perché vivo da solo e quindi mi pare tempo perso.",
    "kr": "요리하는 게 재미없고, 혼자 살아서 시간 낭비 같거든요."
   },
@@ -4580,15 +4644,15 @@ window.LESSONS.push({
    "t": 110.08,
    "s": 1,
    "g": 4,
-   "d": 4,
-   "it": "Poi sono come mia madre, la quale diceva: «Io in cucina non ci sto mai»,",
-   "kr": "게다가 저는 어머니를 닮았어요. 어머니는 '난 부엌에는 절대 안 있는다'고 하셨거든요,"
+   "d": 15,
+   "it": "Poi sono come mia madre, la quale diceva: \"Io, in cucina, non ci sto mai\".",
+   "kr": "게다가 저는 어머니를 닮았어요. 어머니는 '나는 부엌에 있는 일이 절대 없다'고 하셨거든요."
   },
   {
    "t": 115.35,
    "s": 1,
    "g": 4,
-   "d": 4,
+   "d": 15,
    "it": "Allora io vado avanti coi surgelati.",
    "kr": "그래서 저는 냉동식품으로 버텨요."
   },
@@ -4596,39 +4660,31 @@ window.LESSONS.push({
    "t": 117.82,
    "s": 2,
    "g": 5,
-   "d": 5,
-   "it": "Quando gli italiani parlano di cibo e di cucina si emozionano e quindi parlano velocemente e magari perdi il filo del discorso.",
+   "d": 16,
+   "it": "Quando gli italiani parlano di cibo e di cucina, si emozionano e quindi parlano velocemente, e magari perdi il filo del discorso.",
    "kr": "이탈리아 사람들은 음식과 요리 이야기를 하면 감정이 북받쳐서 말이 빨라지고, 그러다 보면 이야기의 흐름을 놓칠 수도 있어요."
   },
   {
    "t": 128.22,
    "s": 2,
    "g": 5,
-   "d": 5,
-   "it": "Questo può creare un po' di frustrazione, ma è normale, capita anche a me con l'inglese,",
+   "d": 16,
+   "it": "Questo può creare un po' di frustrazione, ma è normale: capita anche a me con l'inglese.",
    "kr": "그래서 좀 답답할 수 있지만 자연스러운 일이에요. 저도 영어로 그런 일이 생기거든요."
   },
   {
    "t": 134.06,
    "s": 2,
    "g": 5,
-   "d": 5,
-   "it": "ma c'è un trucco che funziona per memorizzare pezzi di frase o espressioni fisse,",
-   "kr": "그래도 문장 조각이나 고정 표현을 외우는 데 효과 있는 요령이 있어요."
-  },
-  {
-   "t": 139.71,
-   "s": 2,
-   "g": 5,
-   "d": 5,
-   "it": "e cioè riascoltare le conversazioni ad una velocità più bassa.",
-   "kr": "바로 대화를 더 느린 속도로 다시 들어 보는 거예요."
+   "d": 16,
+   "it": "Ma c'è un trucco che funziona per memorizzare pezzi di frase o espressioni fisse, e cioè riascoltare le conversazioni ad una velocità più bassa.",
+   "kr": "그래도 문장 조각이나 고정 표현을 외우는 데 효과 있는 요령이 있어요. 바로 대화를 더 느린 속도로 다시 들어 보는 거예요."
   },
   {
    "t": 145.33,
    "s": 2,
    "g": 5,
-   "d": 5,
+   "d": 16,
    "it": "Per esempio, puoi provare ad ascoltare il nostro audio lento.",
    "kr": "예를 들어 저희의 느린 오디오를 들어 보세요."
   },
@@ -4636,15 +4692,15 @@ window.LESSONS.push({
    "t": 150.51,
    "s": 2,
    "g": 5,
-   "d": 5,
-   "it": "Per saperne di più clicca il link in descrizione.",
+   "d": 16,
+   "it": "Per saperne di più, clicca il link in descrizione.",
    "kr": "더 알고 싶다면 설명란의 링크를 눌러 보세요."
   },
   {
    "t": 154.49,
    "s": 3,
    "g": 6,
-   "d": 6,
+   "d": 17,
    "it": "Secondo te è vero che tutti gli italiani cucinano bene o è solo un mito?",
    "kr": "이탈리아 사람이라면 누구나 요리를 잘한다는 게 사실일까요, 아니면 그냥 신화일까요?"
   },
@@ -4652,7 +4708,7 @@ window.LESSONS.push({
    "t": 158.87,
    "s": 3,
    "g": 6,
-   "d": 6,
+   "d": 18,
    "it": "No, è solo un mito, decisamente.",
    "kr": "아니요, 그냥 신화예요, 확실히."
   },
@@ -4660,7 +4716,7 @@ window.LESSONS.push({
    "t": 161.92,
    "s": 3,
    "g": 6,
-   "d": 6,
+   "d": 18,
    "it": "Perché dici così?",
    "kr": "왜 그렇게 말해요?"
   },
@@ -4668,71 +4724,71 @@ window.LESSONS.push({
    "t": 163.41,
    "s": 3,
    "g": 6,
-   "d": 6,
-   "it": "Vabbè, perché conosco molte persone italiane che non amano cucinare e lo dicono anche,",
-   "kr": "음, 요리를 안 좋아하는 이탈리아 사람을 많이 알고, 본인들도 그렇게 말하거든요."
+   "d": 19,
+   "it": "Vabbè, perché conosco molte persone italiane che non amano cucinare e lo dicono anche, quindi…",
+   "kr": "음, 요리를 안 좋아하는 이탈리아 사람을 많이 알고, 본인들도 그렇게 말하거든요. 그러니까…"
   },
   {
-   "t": 171.06,
+   "t": 171.45,
    "s": 3,
    "g": 6,
-   "d": 6,
-   "it": "quindi no, è un mito. È un mito.",
-   "kr": "그러니까 아니에요, 신화예요. 신화."
+   "d": 20,
+   "it": "No, è un mito, è un mito.",
+   "kr": "아니에요, 신화예요. 신화."
   },
   {
    "t": 173.57,
    "s": 3,
    "g": 6,
-   "d": 6,
-   "it": "Soprattutto gli universitari secondo me non cucinano bene.",
+   "d": 20,
+   "it": "Soprattutto gli universitari, secondo me, non cucinano bene.",
    "kr": "특히 대학생들은 제 생각에 요리를 잘 못해요."
   },
   {
    "t": 176.18,
    "s": 3,
    "g": 6,
-   "d": 6,
-   "it": "Non tutti, perché sennò dopo i miei amici mi ammazzano, però la maggior parte non cucina bene.",
+   "d": 20,
+   "it": "Non tutti, perché sennò dopo miei amici mi ammazzano, però la maggior parte non cucina bene.",
    "kr": "전부는 아니에요. 안 그러면 나중에 제 친구들이 저를 가만 안 둘 테니까요. 그래도 대부분은 요리를 잘 못해요."
   },
   {
    "t": 181.42,
    "s": 3,
    "g": 7,
-   "d": 7,
-   "it": "Falso. Ho mangiato male a casa di italiani.",
+   "d": 21,
+   "it": "Falso: ho mangiato male a casa di italiani.",
    "kr": "거짓이에요. 이탈리아 사람 집에서 맛없게 먹은 적 있어요."
   },
   {
    "t": 184.86,
    "s": 3,
    "g": 7,
-   "d": 7,
-   "it": "È normale, non saper cucinare, non è una cosa per tutti, ci sta.",
+   "d": 21,
+   "it": "È normale non saper cucinare, non è una cosa per tutti, ci sta.",
    "kr": "요리를 못하는 건 자연스러운 일이에요. 모두에게 맞는 일은 아니니까요. 그럴 수 있죠."
   },
   {
    "t": 188.41,
    "s": 3,
    "g": 7,
-   "d": 7,
-   "it": "Direi che sulla media mondiale però è più facile trovare un italiano che cucina mediamente bene piuttosto che uno che cucina male.",
+   "d": 21,
+   "it": "Direi che sulla media mondiale, però, è più facile trovare un italiano che cucina mediamente bene piuttosto che uno che cucina male.",
    "kr": "그래도 세계 평균으로 보면, 요리를 못하는 이탈리아 사람보다 평균적으로 괜찮게 하는 사람을 찾기가 더 쉽다고 봐요."
   },
   {
    "t": 195.51,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "Secondo lei gli italiani cucinano bene?",
+   "d": 22,
+   "it": "Secondo Lei gli italiani cucinano bene?",
    "kr": "선생님은 이탈리아 사람들이 요리를 잘한다고 생각하세요?"
   },
   {
    "t": 198.7,
    "s": 3,
    "g": 8,
-   "d": 8,
+   "d": 23,
    "it": "Cucinano benissimo.",
    "kr": "아주 잘해요."
   },
@@ -4740,15 +4796,15 @@ window.LESSONS.push({
    "t": 200.34,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "E il suo piatto preferito italiano qual è?",
-   "kr": "가장 좋아하는 이탈리아 요리는 뭐예요?"
+   "d": 23,
+   "it": "E il suo piatto preferito italiano, qual è?",
+   "kr": "그리고 가장 좋아하는 이탈리아 요리는 뭐예요?"
   },
   {
    "t": 203.03,
    "s": 3,
    "g": 8,
-   "d": 8,
+   "d": 24,
    "it": "Lasagne.",
    "kr": "라자냐요."
   },
@@ -4756,7 +4812,7 @@ window.LESSONS.push({
    "t": 203.93,
    "s": 3,
    "g": 8,
-   "d": 8,
+   "d": 25,
    "it": "Sono quello che cucina in casa, non mia moglie.",
    "kr": "집에서 요리하는 사람은 저예요, 아내가 아니라."
   },
@@ -4764,55 +4820,55 @@ window.LESSONS.push({
    "t": 206.63,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "Quindi è vero che gli italiani cucinano bene? Non è solo un mito?",
+   "d": 25,
+   "it": "Quindi è vero che gli italiani cucinano bene, non è solo un mito?",
    "kr": "그러면 이탈리아 사람들이 요리를 잘한다는 게 사실인가요? 그냥 신화가 아니고요?"
   },
   {
    "t": 211.42,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "Credo di sì. Credo di sì.",
-   "kr": "그렇다고 생각해요. 그렇다고 봐요."
+   "d": 26,
+   "it": "Credo di sì, credo di sì, sì.",
+   "kr": "그렇다고 생각해요. 그렇다고 봐요. 네."
   },
   {
-   "t": 213.04,
+   "t": 213.31,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "Sì, è qualcosa che abbiamo probabilmente nella nostra cultura. Ci teniamo,",
-   "kr": "네, 아마 우리 문화에 있는 무언가일 거예요. 우리가 중요하게 여기죠."
+   "d": 26,
+   "it": "È qualcosa che abbiamo probabilmente nella nostra cultura, ci teniamo.",
+   "kr": "아마 우리 문화에 있는 무언가일 거예요. 우리가 중요하게 여기죠."
   },
   {
    "t": 219.08,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "ma è più che il tema della preparazione del cibo, che è importantissimo, è più forte forse quello della convivialità",
-   "kr": "하지만 음식을 준비하는 것 자체가 아주 중요하긴 해도, 어쩌면 더 강한 건 '함께 어울려 먹는 즐거움'이라는 주제예요,"
+   "d": 26,
+   "it": "Ma più che il tema della preparazione del cibo, che è importantissimo ovviamente,",
+   "kr": "하지만 음식을 준비하는 것 자체도 물론 아주 중요하지만,"
   },
   {
-   "t": 227.2,
+   "t": 224.55,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "e quindi per avere più persone in casa impari a cucinare meglio, credo.",
-   "kr": "그러다 보니 집에 사람들을 더 많이 부르려고 요리를 더 잘 배우게 되는 것 같아요."
+   "d": 26,
+   "it": "è più forte forse quello della convivialità, e quindi, per avere più persone in casa, impari a cucinare meglio, credo.",
+   "kr": "어쩌면 더 강한 건 '함께 어울려 먹는 즐거움'이라서, 집에 사람을 더 많이 부르려고 요리를 더 잘 배우게 되는 것 같아요."
   },
   {
    "t": 231.39,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Tutti gli italiani cucinano bene, è vero o è solo un mito?",
+   "d": 27,
+   "it": "Tutti gli italiani cucinano bene: è vero o è solo un mito?",
    "kr": "이탈리아 사람은 누구나 요리를 잘한다, 사실일까요 아니면 신화일까요?"
   },
   {
    "t": 235.6,
    "s": 3,
    "g": 10,
-   "d": 10,
+   "d": 28,
    "it": "No, tutti gli italiani cucinano bene.",
    "kr": "아니요, 이탈리아 사람은 모두 요리를 잘해요."
   },
@@ -4820,7 +4876,7 @@ window.LESSONS.push({
    "t": 237.77,
    "s": 3,
    "g": 10,
-   "d": 10,
+   "d": 28,
    "it": "Oggi c'è una grande cultura, dai, della cucina.",
    "kr": "요즘은 요리 문화가 정말 대단하잖아요."
   },
@@ -4828,127 +4884,143 @@ window.LESSONS.push({
    "t": 240.45,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Penso di sì. Siamo tutti piuttosto bravi, anche perché abbiamo la fortuna di avere delle buone materie prime e quello gioca a nostro favore.",
-   "kr": "그렇다고 생각해요. 우리는 다들 꽤 잘하는데, 좋은 식재료를 가진 행운이 있고 그게 우리에게 유리하게 작용하거든요."
+   "d": 29,
+   "it": "Penso di sì, siamo tutti piuttosto bravi,",
+   "kr": "그렇다고 생각해요. 우리는 다들 꽤 잘하는데,"
   },
   {
-   "t": 248.18,
+   "t": 243.01,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Penso che, con poca trasformazione, riusciamo a fare le cose bene.",
-   "kr": "재료를 많이 가공하지 않아도 잘 만들어 낼 수 있다고 생각해요."
+   "d": 29,
+   "it": "anche perché abbiamo la fortuna di avere delle buone materie prime, e quello gioca a nostro favore, penso.",
+   "kr": "좋은 식재료를 가진 행운이 있어서, 그게 우리에게 유리하게 작용한다고 생각해요."
+  },
+  {
+   "t": 248.54,
+   "s": 3,
+   "g": 10,
+   "d": 29,
+   "it": "Poca trasformazione; riusciamo a far le cose bene.",
+   "kr": "재료를 거의 가공하지 않아도 잘 만들어 내요."
   },
   {
    "t": 255.02,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Sì, anch'io sono dello stesso parere.",
-   "kr": "네, 저도 같은 생각이에요."
+   "d": 29,
+   "it": "Sì, anch'io sono dello stesso parere,",
+   "kr": "네, 저도 같은 생각이에요,"
   },
   {
    "t": 257.37,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Sì, sì, sempre col Bimby.",
-   "kr": "네, 네, 항상 비미랑 같이요."
+   "d": 29,
+   "it": "Sì, sì.",
+   "kr": "네, 네,"
+  },
+  {
+   "t": 257.9,
+   "s": 3,
+   "g": 10,
+   "d": 29,
+   "it": "Sempre col Bimby.",
+   "kr": "항상 비미랑 같이요."
   },
   {
    "t": 259.82,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Che cos'è il Bimby per i nostri spettatori?",
+   "d": 29,
+   "it": "Che cos'è il Bimby, per i nostri spettatori?",
    "kr": "시청자분들을 위해 설명해 주세요. 비미가 뭐예요?"
   },
   {
    "t": 261.95,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Ah, è un attrezzo che aiuta molto in cucina, diciamo, quando anche non hai tempo. Devo dire che aiuta.",
-   "kr": "아, 주방에서 아주 도움이 되는 도구예요. 시간이 없을 때도요. 도움이 되는 건 인정해야죠."
+   "d": 30,
+   "it": "Ah, per voi… è un attrezzo che aiuta molto in cucina, diciamo, quando anche non hai tempo, devo dire che aiuta,",
+   "kr": "아, 여러분께는… 주방에서 아주 도움이 되는 도구예요. 시간이 없을 때도요. 도움이 되는 건 인정해야죠,"
   },
   {
-   "t": 270.01,
+   "t": 269.97,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Aiuta. Sì.",
-   "kr": "도움이 돼요. 네."
+   "d": 31,
+   "it": "aiuta, sì.",
+   "kr": "도움이 돼요, 네."
   },
   {
    "t": 270.73,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "È più un mito perché alla fine comunque varia da persona a persona,",
-   "kr": "저는 오히려 신화에 가깝다고 봐요. 결국 어쨌든 사람마다 다르니까요,"
-  },
-  {
-   "t": 274.57,
-   "s": 3,
-   "g": 11,
-   "d": 11,
-   "it": "perché dipende sempre se i figli vengono…",
-   "kr": "늘 자녀가 오느냐에 달려 있어서…"
+   "d": 32,
+   "it": "È più un mito, perché alla fine, comunque, varia da persona a persona, perché dipende sempre se i figli vengono…",
+   "kr": "저는 오히려 신화에 가깝다고 봐요. 결국 어쨌든 사람마다 다르니까요, 늘 자녀가 오느냐에 달려 있어서…"
   },
   {
    "t": 277.21,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "cioè, se i genitori aiutano i figli a cucinare.",
+   "d": 32,
+   "it": "Cioè, se i genitori aiutano i figli a cucinare.",
    "kr": "그러니까, 부모가 자녀가 요리하는 걸 도와주느냐에 달려 있다는 거예요."
   },
   {
    "t": 279.97,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "La maggior parte delle volte, in alcuni casi, i genitori neanche gli insegnano, direttamente cucinano e il figlio trova il piatto pronto.",
-   "kr": "대부분의 경우, 어떤 경우에는 부모가 아예 가르쳐 주지도 않고 그냥 직접 요리해서 자녀는 차려진 음식을 받아요."
+   "d": 32,
+   "it": "La maggior parte delle volte, in alcune case, i genitori neanche gli insegnano: direttamente cucinano e il figlio trova il piatto pronto.",
+   "kr": "대부분은 어떤 집에서는 부모가 아예 가르쳐 주지도 않고 그냥 직접 요리해서 자녀는 차려진 음식을 받아요."
   },
   {
    "t": 287.14,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "Per esempio, io ho trovato subito il piatto pronto, però dopo un po', ovviamente senza il padre a casa, ho iniziato a cucinare io, quindi,",
-   "kr": "예를 들어 저도 처음엔 바로 차려진 음식을 먹었는데, 얼마 뒤 아버지가 집에 안 계시게 되면서 제가 요리를 시작했어요. 그래서,"
+   "d": 32,
+   "it": "Per esempio, io ho trovato subito il piatto pronto, però, dopo un po',",
+   "kr": "예를 들어 저도 처음엔 바로 차려진 음식을 먹었는데, 얼마 뒤"
+  },
+  {
+   "t": 290.65,
+   "s": 3,
+   "g": 11,
+   "d": 32,
+   "it": "ovviamente senza il padre a casa, ho iniziato a cucinare io, quindi…",
+   "kr": "아버지가 집에 안 계시게 되면서 제가 요리를 시작했어요. 그래서…"
   },
   {
    "t": 294.19,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "ma secondo me è un mito.",
-   "kr": "아무튼 제 생각엔 신화예요."
+   "d": 33,
+   "it": "Mah, secondo me è un mito.",
+   "kr": "음, 제 생각엔 신화예요."
   },
   {
    "t": 295.56,
    "s": 3,
    "g": 12,
-   "d": 12,
-   "it": "La cucina italiana è buona, però tutti gli italiani non sanno cucinare.",
-   "kr": "이탈리아 요리는 훌륭하지만, 이탈리아 사람이 다 요리를 할 줄 아는 건 아니에요."
+   "d": 33,
+   "it": "La cucina italiana è buona, però non tutti gli italiani sanno cucinare, secondo me.",
+   "kr": "이탈리아 요리는 훌륭하지만, 제 생각엔 이탈리아 사람이 다 요리를 할 줄 아는 건 아니에요."
   },
   {
    "t": 299.77,
    "s": 3,
    "g": 12,
-   "d": 12,
-   "it": "Non tutti sanno cucinare, alla fin fine, però diciamo che molti sanno cucinare bene, ma non tutti.",
+   "d": 33,
+   "it": "Non tutti sanno cucinare alla fin fine, però diciamo che molti sanno cucinare bene, ma non tutti.",
    "kr": "결국 다 요리를 할 줄 아는 건 아니고요. 그래도 많은 사람이 잘하긴 하지만, 전부는 아니에요."
   },
   {
    "t": 307.21,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 34,
    "it": "I vostri amici italiani sanno cucinare?",
    "kr": "이탈리아 친구들은 요리를 할 줄 알아요?"
   },
@@ -4956,7 +5028,7 @@ window.LESSONS.push({
    "t": 309.65,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 35,
    "it": "Dipende, c'è chi non sa neanche farsi una pasta, quindi dipende.",
    "kr": "상황에 따라 달라요. 파스타 하나 못 해 먹는 사람도 있으니까요. 그러니까 사람마다 달라요."
   },
@@ -4964,7 +5036,7 @@ window.LESSONS.push({
    "t": 313.65,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 35,
    "it": "Diciamo il classico \"pasta da fuorisede\", insomma.",
    "kr": "말하자면 전형적인 '자취생 파스타'죠."
   },
@@ -4972,7 +5044,7 @@ window.LESSONS.push({
    "t": 317.06,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 35,
    "it": "Di dove siete voi?",
    "kr": "두 분은 어디 출신이에요?"
   },
@@ -4980,23 +5052,23 @@ window.LESSONS.push({
    "t": 318.4,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 36,
    "it": "Entrambi pugliesi, però io vivo a Milano.",
    "kr": "둘 다 풀리아 사람인데, 저는 밀라노에 살아요."
   },
   {
-   "t": 320.69,
+   "t": 320.87,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Pugliesi. Io invece a Bari.",
-   "kr": "풀리아 사람이죠. 저는 바리에 살아요."
+   "d": 36,
+   "it": "Io invece a Bari.",
+   "kr": "저는 바리에 살아요."
   },
   {
    "t": 322.56,
    "s": 4,
    "g": 13,
-   "d": 13,
+   "d": 37,
    "it": "Il fuorisede è una persona che sceglie di studiare all'università in una città diversa dalla sua.",
    "kr": "'푸오리세데'는 대학을 자기 고향이 아닌 다른 도시에서 다니기로 한 사람을 말해요."
   },
@@ -5004,15 +5076,15 @@ window.LESSONS.push({
    "t": 331.21,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "Gli italiani cucinano bene, è vero o è un mito?",
+   "d": 38,
+   "it": "Gli italiani cucinano bene: è vero o è un mito?",
    "kr": "이탈리아 사람들이 요리를 잘한다는 게 사실이에요, 신화예요?"
   },
   {
    "t": 335.57,
    "s": 4,
    "g": 14,
-   "d": 14,
+   "d": 39,
    "it": "Abbastanza vero, però dipende molto.",
    "kr": "꽤 사실이긴 한데, 상황에 많이 달라요."
   },
@@ -5020,15 +5092,31 @@ window.LESSONS.push({
    "t": 338.5,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "Dipende da casa a casa, da regione, da molti fattori, però in generale sì, abbastanza bene, credo.",
-   "kr": "집마다 다르고, 지역마다 다르고, 여러 요인에 달려 있지만, 전반적으로는 그래요, 꽤 잘한다고 생각해요."
+   "d": 39,
+   "it": "Dipende dalla… da casa a casa, dalla regione, da…",
+   "kr": "상황에 따라 달라요… 집마다 다르고, 지역마다 다르고,"
+  },
+  {
+   "t": 343.21,
+   "s": 4,
+   "g": 14,
+   "d": 39,
+   "it": "Da molti fattori.",
+   "kr": "여러 요인에 따라서요."
+  },
+  {
+   "t": 345.15,
+   "s": 4,
+   "g": 14,
+   "d": 39,
+   "it": "Però, in generale, sì, abbastanza bene, credo.",
+   "kr": "그래도 전반적으로는 네, 꽤 잘한다고 생각해요."
   },
   {
    "t": 348.61,
    "s": 4,
    "g": 14,
-   "d": 14,
+   "d": 40,
    "it": "È un mito, è una chiacchiera.",
    "kr": "신화예요, 그냥 하는 소리예요."
   },
@@ -5036,47 +5124,55 @@ window.LESSONS.push({
    "t": 350.26,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "A me piace molto la cucina indiana, per dirne una, e perché no? La cucina araba, anche molto buona, tunisina:",
-   "kr": "저는 예를 들어 인도 요리를 정말 좋아해요. 그리고 왜 아니겠어요, 아랍 요리도 아주 훌륭하고, 튀니지 요리도요."
+   "d": 40,
+   "it": "A me piace molto la cucina indiana, per dirne una.",
+   "kr": "저는 예를 들어 인도 요리를 정말 좋아해요."
+  },
+  {
+   "t": 354.13,
+   "s": 4,
+   "g": 14,
+   "d": 40,
+   "it": "Perché no? La cucina araba, anche molto buona, tunisina…",
+   "kr": "왜 아니겠어요? 아랍 요리도 아주 훌륭하고, 튀니지 요리도요…"
   },
   {
    "t": 359.99,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "tutto il mondo cucina bene perché usa quello che ha per fare il meglio per il proprio gusto.",
+   "d": 40,
+   "it": "Tutto il mondo cucina bene perché usa quello che ha per fare il meglio per il proprio gusto.",
    "kr": "전 세계 사람들이 다 요리를 잘해요. 가진 재료로 자기 입맛에 가장 맞게 만들어 내니까요."
   },
   {
    "t": 366.15,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "Quindi queste sono palle che la cucina italiana sia la migliore.",
+   "d": 40,
+   "it": "Quindi queste sono palle, che la cucina italiana sia la migliore.",
    "kr": "그러니 이탈리아 요리가 최고라는 건 다 헛소리예요."
   },
   {
    "t": 369.54,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "È buona, e soprattutto una ricchezza di, diciamo, di tipi di culture,",
-   "kr": "맛있긴 하고, 무엇보다 다양한 문화가 있다는 게 풍요로움이에요,"
+   "d": 40,
+   "it": "È buona e ha, soprattutto, una ricchezza di… di…",
+   "kr": "맛있고, 무엇보다 풍부한… 그…"
   },
   {
-   "t": 376.17,
+   "t": 373.86,
    "s": 4,
    "g": 14,
-   "d": 14,
-   "it": "perché l'Italia è molto divisa tra il nord e il sud in culture diverse, ma è tutto lì.",
-   "kr": "이탈리아는 북부와 남부가 서로 다른 문화로 나뉘어 있으니까요. 그게 전부예요."
+   "d": 40,
+   "it": "Diciamo, di tipi di culture, perché l'Italia è molto divisa tra nord e sud, in culture diverse, ma è tutto lì.",
+   "kr": "말하자면 다양한 문화가 있다는 거예요. 이탈리아는 북부와 남부가 서로 다른 문화로 나뉘어 있으니까요. 하지만 그게 전부예요."
   },
   {
    "t": 381.1,
    "s": 5,
    "g": 15,
-   "d": 15,
+   "d": 41,
    "it": "Qual è il piatto italiano più difficile da cucinare?",
    "kr": "가장 만들기 어려운 이탈리아 요리는 뭐예요?"
   },
@@ -5084,15 +5180,15 @@ window.LESSONS.push({
    "t": 384.57,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "I canederli, non so se li conoscete, eh.",
+   "d": 42,
+   "it": "I canederli, non so se li conoscete.",
    "kr": "카네데를리요. 아마 모르실 텐데요."
   },
   {
    "t": 387.02,
    "s": 5,
    "g": 15,
-   "d": 15,
+   "d": 42,
    "it": "Spiega.",
    "kr": "설명해 줘요."
   },
@@ -5100,15 +5196,23 @@ window.LESSONS.push({
    "t": 387.71,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "Beh, sono dei gnocchi di pane con dentro tanti ingredienti. Era un piatto povero.",
-   "kr": "음, 빵으로 만든 뇨키인데 안에 여러 재료가 들어가요. 원래는 가난한 사람들의 음식이었어요."
+   "d": 42,
+   "it": "Beh, sono degli gnocchi di pane con dentro tanti ingredienti.",
+   "kr": "음, 빵으로 만든 뇨키인데 안에 여러 재료가 들어가요."
+  },
+  {
+   "t": 391.7,
+   "s": 5,
+   "g": 15,
+   "d": 42,
+   "it": "Era un piatto povero.",
+   "kr": "원래는 가난한 사람들의 음식이었어요."
   },
   {
    "t": 393.09,
    "s": 5,
    "g": 15,
-   "d": 15,
+   "d": 42,
    "it": "Di quale regione?",
    "kr": "어느 지역 음식이에요?"
   },
@@ -5116,71 +5220,71 @@ window.LESSONS.push({
    "t": 394.12,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "Trentino. Vengo dal Trentino.",
+   "d": 43,
+   "it": "Trentino, vengo dal Trentino.",
    "kr": "트렌티노요. 저는 트렌티노 출신이에요."
   },
   {
    "t": 396.44,
    "s": 5,
    "g": 15,
-   "d": 16,
-   "it": "Secondo me quelli della tradizione, tipo antichi, dolci, panettoni, dolci tipici, hanno una preparazione molto lunga. Non li so fare.",
+   "d": 44,
+   "it": "Secondo me quelli della tradizione, tipo antichi, dolci, panettoni, dolci tipici, hanno una preparazione molto lunga; non li so fare.",
    "kr": "제 생각엔 전통 요리, 그러니까 오래된 것들, 디저트, 파네토네 같은 전통 과자들은 준비 과정이 아주 길어요. 저는 만들 줄 몰라요."
   },
   {
    "t": 405.7,
    "s": 5,
    "g": 15,
-   "d": 16,
-   "it": "Io direi tutti gli impasti.",
-   "kr": "저는 반죽류가 전부 어렵다고 하겠어요."
-  },
-  {
-   "t": 408.18,
-   "s": 5,
-   "g": 15,
-   "d": 16,
-   "it": "Non li so fare. Sono bravo sui salati, ma sugli impasti fatico un po'.",
-   "kr": "못 만들어요. 짭짤한 요리는 잘하지만, 반죽은 좀 힘들어요."
+   "d": 45,
+   "it": "Io direi tutti gli impasti, non li so fare; sono bravo sui salati, ma sugli impasti fatico un po'.",
+   "kr": "저는 반죽류가 전부 어렵다고 하겠어요. 못 만들어요. 짭짤한 요리는 잘하지만, 반죽은 좀 힘들어요."
   },
   {
    "t": 414.76,
    "s": 5,
    "g": 15,
-   "d": 17,
-   "it": "No, io invece il contrario. Mi diverto un po' di più sugli impasti, quindi sui panificati, però sui dolci, diciamo, pecco un po'.",
+   "d": 45,
+   "it": "No, io invece il contrario: mi diverto un po' di più sugli impasti, quindi sui panificati, però sui dolci, diciamo, pecco un po'.",
    "kr": "저는 반대예요. 반죽 다루는 게 좀 더 재밌어서 빵 종류는 괜찮은데, 디저트 쪽은, 말하자면, 좀 약해요."
   },
   {
    "t": 422.13,
    "s": 5,
    "g": 15,
-   "d": 17,
+   "d": 45,
    "it": "Che cosa fai?",
    "kr": "뭘 만들어요?"
   },
   {
-   "t": 423.92,
+   "t": 424.28,
    "s": 5,
    "g": 15,
-   "d": 17,
-   "it": "Eh, parlando di panificati, per esempio, ho iniziato a fare la pizza, insomma, a casa, mentre dolci, l'unica cosa che so fare è la cheesecake, solo quella.",
-   "kr": "빵 종류로는 예를 들어 집에서 피자를 만들기 시작했고, 디저트로는 제가 할 줄 아는 게 치즈케이크뿐이에요. 그것만요."
+   "d": 46,
+   "it": "Parlando di panificati, per esempio, ho iniziato a fare la pizza, insomma, a casa,",
+   "kr": "빵 종류로는 예를 들어 집에서 피자를 만들기 시작했고,"
+  },
+  {
+   "t": 429.52,
+   "s": 5,
+   "g": 15,
+   "d": 46,
+   "it": "mentre dolci… l'unica cosa che so fare è la cheesecake, solo quella.",
+   "kr": "디저트는… 제가 할 줄 아는 건 치즈케이크뿐이에요. 그것만요."
   },
   {
    "t": 433.6,
    "s": 5,
    "g": 15,
-   "d": 17,
-   "it": "Quella la so fare anch'io. L'unico dolce che so fare, assieme al tiramisù.",
+   "d": 46,
+   "it": "Quella la so fare anch'io, l'unico dolce che so fare assieme al tiramisù.",
    "kr": "그건 저도 만들 줄 알아요. 제가 할 줄 아는 유일한 디저트예요, 티라미수랑 같이요."
   },
   {
    "t": 436.79,
    "s": 5,
    "g": 15,
-   "d": 17,
+   "d": 46,
    "it": "Esattamente.",
    "kr": "맞아요."
   },
@@ -5188,7 +5292,7 @@ window.LESSONS.push({
    "t": 437.8,
    "s": 5,
    "g": 16,
-   "d": 18,
+   "d": 47,
    "it": "Qual è il piatto italiano più difficile da cucinare?",
    "kr": "가장 만들기 어려운 이탈리아 요리는 뭐예요?"
   },
@@ -5196,63 +5300,63 @@ window.LESSONS.push({
    "t": 441.44,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "La lasagna.",
-   "kr": "라자냐요."
+   "d": 48,
+   "it": "La lasagna, la lasagna.",
+   "kr": "라자냐요, 라자냐요."
   },
   {
-   "t": 442.92,
+   "t": 444.39,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "La lasagna, secondo me, anche la lasagna, però non sono sicura,",
-   "kr": "라자냐, 제 생각엔 라자냐도 그렇고요. 그런데 확실하진 않아요,"
+   "d": 49,
+   "it": "Secondo me è anche la lasagna, anche, però non sono sicura, anche perché non conosco così…",
+   "kr": "제 생각엔 라자냐도 그렇고요. 그런데 확실하진 않아요, 잘 모르거든요…"
   },
   {
-   "t": 447.65,
+   "t": 448.82,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "anche perché non conosco tutti i piatti di alta cucina italiani,",
-   "kr": "이탈리아 고급 요리를 다 아는 건 아니라서요,"
+   "d": 49,
+   "it": "Cioè, non conosco tutti i piatti di alta cucina italiani, però direi, come piatto comune, la lasagna, sì.",
+   "kr": "그러니까 이탈리아 고급 요리를 다 아는 건 아니라서요. 그래도 흔한 요리로는 라자냐라고 하겠어요."
   },
   {
-   "t": 451.94,
+   "t": 454.59,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "però direi, come piatto comune, la lasagna, sì, o la pasta al forno.",
-   "kr": "그래도 흔한 요리로는 라자냐라고 하겠어요. 아니면 오븐 파스타요."
+   "d": 49,
+   "it": "O la pasta al forno, anche.",
+   "kr": "아니면 오븐 파스타요."
   },
   {
-   "t": 455.57,
+   "t": 455.76,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "Anche... mi vien da dire la porchetta da zero perché, boh, è una cottura lunga,",
-   "kr": "그리고… 처음부터 만드는 포르케타라고 말하고 싶어요. 글쎄요, 오래 익혀야 하고,"
+   "d": 50,
+   "it": "Mi vien da dire la porchetta da zero, perché, boh, è una cottura lunga, hai bisogno di cose difficili da procurare,",
+   "kr": "처음부터 만드는 포르케타라고 말하고 싶어요. 글쎄요, 오래 익혀야 하고 구하기 어려운 재료가 필요하거든요,"
   },
   {
-   "t": 460.77,
+   "t": 464.55,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "hai bisogno di cose difficili da procurare, cioè è un maialino intero, un po' difficile,",
-   "kr": "구하기 어려운 재료가 필요하거든요. 새끼 돼지 한 마리를 통째로 써야 하니 좀 어렵고,"
+   "d": 50,
+   "it": "cioè, un maialino intero è un po' difficile; lunghi tempi di cottura, anche saperla fare bene, che non rimanga secca, così.",
+   "kr": "새끼 돼지 한 마리를 통째로 써야 하니 좀 어렵고, 조리 시간도 길고, 잘 만들어서 퍽퍽해지지 않게 하는 것도 그렇고요."
   },
   {
-   "t": 468.13,
+   "t": 471.91,
    "s": 5,
    "g": 16,
-   "d": 18,
-   "it": "lunghi tempi di cottura, anche saperla fare bene, che non rimanga secca, così... mi sembra abbastanza complicato.",
-   "kr": "조리 시간도 길고, 잘 만들어서 퍽퍽해지지 않게 하는 것도 그렇고… 꽤 까다로워 보여요."
+   "d": 50,
+   "it": "Mi sembra abbastanza complicato.",
+   "kr": "꽤 까다로워 보여요."
   },
   {
    "t": 474.12,
    "s": 5,
    "g": 16,
-   "d": 18,
+   "d": 51,
    "it": "Le paste ripiene.",
    "kr": "속을 채운 파스타요."
   },
@@ -5260,7 +5364,7 @@ window.LESSONS.push({
    "t": 477.41,
    "s": 5,
    "g": 16,
-   "d": 18,
+   "d": 51,
    "it": "Le paste ripiene, sì.",
    "kr": "속을 채운 파스타, 맞아요."
   },
@@ -5268,7 +5372,7 @@ window.LESSONS.push({
    "t": 479.44,
    "s": 5,
    "g": 16,
-   "d": 18,
+   "d": 51,
    "it": "Beh, per me è un po' tutto, faccio poco testo.",
    "kr": "음, 저한테는 거의 전부 다 어려워요. 제가 말할 처지는 못 돼요."
   },
@@ -5276,7 +5380,7 @@ window.LESSONS.push({
    "t": 483.52,
    "s": 6,
    "g": 17,
-   "d": 19,
+   "d": 52,
    "it": "Quando non hai tempo di cucinare, cosa cucini?",
    "kr": "요리할 시간이 없을 땐 뭘 해 먹어요?"
   },
@@ -5284,79 +5388,95 @@ window.LESSONS.push({
    "t": 486.52,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "Generalmente in casa mia c'è sempre qualcosa di già pronto, tipo dei ravioli pronti, dei tortellini, cose del genere.",
+   "d": 53,
+   "it": "Generalmente, in casa mia, c'è sempre qualcosa di già pronto, tipo dei ravioli pronti, dei tortellini, cose del genere:",
    "kr": "보통 우리 집엔 늘 이미 만들어진 게 있어요. 예를 들면 라비올리나 토르텔리니 같은 거요."
   },
   {
    "t": 493.97,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "Si mettono in padella, in due minuti sono pronti, con burro e salvia, o un sugo che c'è in frigo,",
+   "d": 53,
+   "it": "si mettono in padella, in due minuti son pronti, con burro e salvia o un sugo che c'è in frigo.",
    "kr": "프라이팬에 넣으면 2분 만에 되고, 버터와 세이지를 곁들이거나 냉장고에 있는 소스를 얹어요."
   },
   {
    "t": 499.22,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "uno spaghettino, pomodoro fresco e capperi,",
-   "kr": "스파게티니에 신선한 토마토와 케이퍼를 넣거나,"
+   "d": 54,
+   "it": "Uno spaghettino pomodoro fresco e capperi.",
+   "kr": "스파게티니에 신선한 토마토와 케이퍼를 넣어서요."
   },
   {
    "t": 502.99,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "probabilmente qualsiasi cosa che si mette dentro la friggitrice ad aria, veloce veloce, così.",
+   "d": 55,
+   "it": "Probabilmente qualsiasi cosa che si mette dentro la friggitrice ad aria, veloce veloce… così.",
    "kr": "아마 에어프라이어에 넣을 수 있는 건 뭐든지요. 빨리빨리, 그런 식으로요."
   },
   {
    "t": 509.36,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "Io piadina con pollo, insomma, la cosa più semplice che possa esistere.",
+   "d": 55,
+   "it": "Io piadina con pollo, insomma la cosa più semplice che possa esistere.",
    "kr": "저는 닭고기 피아디나요. 세상에서 제일 간단한 거죠."
   },
   {
    "t": 514.18,
    "s": 6,
    "g": 17,
-   "d": 21,
-   "it": "La frittata; semplice, veloce. O anche delle uova semplici, o al[l'occhio di] bue, così.",
-   "kr": "프리타타요. 간단하고 빠르죠. 아니면 그냥 계란 요리나 계란 프라이 같은 거요."
+   "d": 56,
+   "it": "La frittata; semplice, veloce.",
+   "kr": "프리타타요. 간단하고 빠르죠."
+  },
+  {
+   "t": 517.24,
+   "s": 6,
+   "g": 17,
+   "d": 56,
+   "it": "O anche delle uova semplici, o all'occhio di bue, così.",
+   "kr": "아니면 그냥 계란 요리나 계란 프라이 같은 거요."
   },
   {
    "t": 519.34,
    "s": 6,
    "g": 17,
-   "d": 21,
-   "it": "Pasta al pomodoro, rapida, indolore.",
+   "d": 57,
+   "it": "Pasta al pomodoro: rapida e indolore.",
    "kr": "토마토 파스타요. 빠르고 간단해요."
   },
   {
    "t": 522.53,
    "s": 6,
    "g": 17,
-   "d": 22,
-   "it": "Carne alla brace: faccio subito una bella insalatona con avocado, cipolle, noci…",
-   "kr": "숯불 고기를 굽고, 바로 아보카도, 양파, 호두를 넣은 큼직한 샐러드를 만들어요…"
+   "d": 58,
+   "it": "Carne alla brace: faccio subito.",
+   "kr": "숯불 고기요. 바로 구워요."
+  },
+  {
+   "t": 524.88,
+   "s": 6,
+   "g": 17,
+   "d": 58,
+   "it": "Una bella insalatona con avocado, cipolle, noci…",
+   "kr": "아보카도, 양파, 호두를 넣은 큼직한 샐러드를 곁들여요…"
   },
   {
    "t": 529.73,
    "s": 6,
    "g": 17,
-   "d": 22,
-   "it": "ci metto di tutto e va così la serata.",
+   "d": 58,
+   "it": "Ci metto di tutto, e va così la serata.",
    "kr": "다 집어넣어서 그렇게 저녁을 보내요."
   },
   {
    "t": 532.74,
    "s": 6,
    "g": 17,
-   "d": 22,
+   "d": 59,
    "it": "Gli hamburger, le uova, queste cose qui, appunto, quando devo fare qualcosa di rapido, sennò la pasta in bianco.",
    "kr": "햄버거, 계란, 이런 거요. 빨리 만들어야 할 때는요. 아니면 소스 없는 파스타죠."
   },
@@ -5364,7 +5484,7 @@ window.LESSONS.push({
    "t": 542.17,
    "s": 7,
    "g": 18,
-   "d": 23,
+   "d": 60,
    "it": "Quando non avete tempo di cucinare, cosa cucinate alla svelta?",
    "kr": "요리할 시간이 없을 때, 얼른 뭘 만들어 먹어요?"
   },
@@ -5372,39 +5492,47 @@ window.LESSONS.push({
    "t": 546.2,
    "s": 7,
    "g": 18,
-   "d": 23,
+   "d": 61,
    "it": "Insalata.",
    "kr": "샐러드요."
   },
   {
-   "t": 547.23,
+   "t": 548.27,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "Insalate. Pasta, ramen istantaneo.",
-   "kr": "샐러드. 파스타, 인스턴트 라멘."
+   "d": 61,
+   "it": "Pasta.",
+   "kr": "파스타요."
+  },
+  {
+   "t": 549.53,
+   "s": 7,
+   "g": 18,
+   "d": 62,
+   "it": "Ramen istantaneo.",
+   "kr": "인스턴트 라멘요."
   },
   {
    "t": 551.36,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "Quindi, sei a favore del cibo confezionato?",
+   "d": 62,
+   "it": "Quindi sei a favore del cibo confezionato?",
    "kr": "그럼 포장·가공 음식에 찬성하는 편이에요?"
   },
   {
    "t": 553.86,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "Sì, dai. Sì, dai, abbastanza.",
+   "d": 63,
+   "it": "Sì dai, sì dai, abbastanza.",
    "kr": "네, 그런 편이에요. 꽤요."
   },
   {
    "t": 556.59,
    "s": 7,
    "g": 19,
-   "d": 24,
+   "d": 64,
    "it": "Cibi confezionati?",
    "kr": "포장 음식이요?"
   },
@@ -5412,23 +5540,31 @@ window.LESSONS.push({
    "t": 560.2,
    "s": 7,
    "g": 19,
-   "d": 24,
-   "it": "No, a meno che non sia l'affettato, ma anche lì. O il pane, queste cose semplici. Del resto no. Non amo i cibi confezionati, ecco.",
-   "kr": "아니요, 햄이나 살라미 같은 슬라이스 육가공품이 아니라면요. 그것도 사실 별로고요. 아니면 빵 같은 간단한 것들. 나머지는 아니에요. 포장 음식은 안 좋아해요."
+   "d": 65,
+   "it": "No, a meno che non sia l'affettato, ma anche lì… o il pane,",
+   "kr": "아니요, 햄이나 살라미 같은 슬라이스 육가공품이 아니라면요. 그것도 사실 별로고요… 아니면 빵,"
   },
   {
-   "t": 567.76,
+   "t": 563.27,
    "s": 7,
    "g": 19,
-   "d": 24,
-   "it": "Ma poco, in realtà, però a volte sì.",
+   "d": 65,
+   "it": "queste cose semplici, del resto no, non amo i cibi confezionati, ecco.",
+   "kr": "이런 간단한 것들요. 나머지는 아니에요. 포장 음식은 안 좋아해요."
+  },
+  {
+   "t": 567.73,
+   "s": 7,
+   "g": 19,
+   "d": 66,
+   "it": "Mah, poco in realtà, però a volte sì.",
    "kr": "사실 많이는 안 먹지만, 가끔은 먹어요."
   },
   {
    "t": 570.95,
    "s": 7,
    "g": 19,
-   "d": 24,
+   "d": 67,
    "it": "No, non ne uso.",
    "kr": "아니요, 안 써요(안 먹어요)."
   },
@@ -5436,71 +5572,135 @@ window.LESSONS.push({
    "t": 572.5,
    "s": 7,
    "g": 20,
-   "d": 25,
-   "it": "No, ma non particolarmente. Cerco di evitarli il più possibile, comunque sia a livello di sapore preferisco piuttosto impiegarci dieci minuti in più, ma preferisco evitarli.",
-   "kr": "아니요, 딱히요. 가능한 한 피하려고 해요. 어쨌든 맛 때문에 10분 더 걸리더라도 직접 하는 쪽을 택해요. 되도록 피해요."
+   "d": 68,
+   "it": "No.",
+   "kr": "아니요."
+  },
+  {
+   "t": 572.86,
+   "s": 7,
+   "g": 20,
+   "d": 69,
+   "it": "Mah, non particolarmente, cerco di evitarli il più possibile comunque, sia a livello di sapore…",
+   "kr": "음, 딱히 그렇진 않아요. 가능한 한 피하려고 해요. 맛으로 봐도…"
+  },
+  {
+   "t": 580.2,
+   "s": 7,
+   "g": 20,
+   "d": 69,
+   "it": "Preferisco piuttosto impiegarci dieci minuti in più, ma preferisco evitarli.",
+   "kr": "차라리 10분 더 걸리더라도 직접 하는 쪽이 좋아요. 되도록 피해요."
   },
   {
    "t": 584.57,
    "s": 7,
    "g": 20,
-   "d": 25,
-   "it": "Io invece, seguendo una dieta, maggiormente, magari li consumo nel fine settimana, solo per togliermi qualche sfizio, ma altrimenti in settimana nulla.",
-   "kr": "저는 반대로 식단 관리 중이라서, 주말에만 먹을 때가 있어요. 그냥 먹고 싶은 걸 풀려고요. 그 외 평일에는 전혀 안 먹어요."
+   "d": 70,
+   "it": "Io invece seguendo una dieta maggiormente…",
+   "kr": "저는 반대로 식단 관리를 좀 하는 중이라서…"
+  },
+  {
+   "t": 587.12,
+   "s": 7,
+   "g": 20,
+   "d": 70,
+   "it": "Magari li consumo nel fine settimana solo per togliermi qualche sfizio, ma altrimenti, in settimana, nulla.",
+   "kr": "주말에만 먹을 때가 있어요. 그냥 먹고 싶은 걸 풀려고요. 그 외 평일에는 전혀 안 먹어요."
   },
   {
    "t": 593.96,
    "s": 7,
    "g": 21,
-   "d": 26,
-   "it": "Cibi confezionati, siete a favore o no?",
+   "d": 71,
+   "it": "Cibi confezionati: siete a favore o no?",
    "kr": "포장 음식, 찬성이에요 아니에요?"
   },
   {
    "t": 598.39,
    "s": 7,
    "g": 21,
-   "d": 26,
-   "it": "Ni.",
-   "kr": "니(Ni)."
-  },
-  {
-   "t": 599.49,
-   "s": 7,
-   "g": 21,
-   "d": 26,
-   "it": "No.",
-   "kr": "아니요."
+   "d": 72,
+   "it": "Ni, ni.",
+   "kr": "니, 니."
   },
   {
    "t": 600.6,
    "s": 7,
    "g": 21,
-   "d": 26,
-   "it": "Hai sentito? La signora ha appena detto «ni». Che cosa significa? Né sì né no? C'è la N del no e la I del sì: ni.",
-   "kr": "들으셨죠? 방금 그분이 '니'라고 했어요. 무슨 뜻일까요? 예도 아니고 아니오도 아닌? 'no'의 N과 'sì'의 I가 들어 있어요. 그래서 'ni'예요."
+   "d": 73,
+   "it": "Hai sentito?",
+   "kr": "들으셨죠?"
+  },
+  {
+   "t": 601.55,
+   "s": 7,
+   "g": 21,
+   "d": 74,
+   "it": "La signora ha appena detto \"ni\".",
+   "kr": "방금 그분이 '니'라고 했어요."
+  },
+  {
+   "t": 604.47,
+   "s": 7,
+   "g": 21,
+   "d": 74,
+   "it": "Che cosa significa?",
+   "kr": "무슨 뜻일까요?"
+  },
+  {
+   "t": 605.79,
+   "s": 7,
+   "g": 21,
+   "d": 75,
+   "it": "Né sì né no.",
+   "kr": "예도 아니고 아니오도 아닌 거예요."
+  },
+  {
+   "t": 607.39,
+   "s": 7,
+   "g": 21,
+   "d": 75,
+   "it": "C'è la N del \"no\" e la I del \"sì\"",
+   "kr": "'no'의 N과 'sì'의 I가 들어 있어요."
+  },
+  {
+   "t": 610.88,
+   "s": 7,
+   "g": 21,
+   "d": 75,
+   "it": "Ni.",
+   "kr": "그래서 'ni'예요."
   },
   {
    "t": 611.44,
    "s": 7,
    "g": 21,
-   "d": 26,
-   "it": "Se proprio magari non ne posso fare a meno, allora vado al super e trovo qualcosa di veloce da poter acquistare e utilizzare, però per il resto,",
-   "kr": "정말 어쩔 수 없을 때는 슈퍼에 가서 빨리 사서 쓸 수 있는 걸 찾아요. 하지만 그 외에는,"
+   "d": 76,
+   "it": "Se proprio magari non ne posso fare a meno,",
+   "kr": "정말 어쩔 수 없을 때는"
+  },
+  {
+   "t": 613.62,
+   "s": 7,
+   "g": 21,
+   "d": 76,
+   "it": "allora vado al supermercato e trovo qualcosa di veloce da poter acquistare e utilizzare, però, per il resto…",
+   "kr": "슈퍼에 가서 빨리 사서 쓸 수 있는 걸 찾아요. 하지만 그 외에는…"
   },
   {
    "t": 621.6,
    "s": 7,
    "g": 21,
-   "d": 26,
-   "it": "tanto, fare una pasta… dieci minuti, eh.",
+   "d": 76,
+   "it": "Tanto, fare una pasta… dieci minuti, eh.",
    "kr": "어차피 파스타 하나 만드는 데… 10분이면 되잖아요."
   },
   {
    "t": 626.03,
    "s": 7,
    "g": 22,
-   "d": 27,
+   "d": 76,
    "it": "Sì, anch'io non sono molto favorevole ai piatti pronti, anch'io sono…",
    "kr": "네, 저도 즉석 요리에는 별로 호의적이지 않아요. 저도 오히려…"
   },
@@ -5508,23 +5708,15 @@ window.LESSONS.push({
    "t": 631.36,
    "s": 7,
    "g": 22,
-   "d": 27,
-   "it": "Piuttosto una cosa veloce, cucinata, preferisco.",
-   "kr": "차라리 빠르더라도 직접 요리한 걸 선호해요."
-  },
-  {
-   "t": 633.89,
-   "s": 7,
-   "g": 22,
-   "d": 27,
-   "it": "Sì, sì.",
-   "kr": "네, 네."
+   "d": 76,
+   "it": "Piuttosto una cosa veloce, cucinata, preferisco, sì, sì.",
+   "kr": "차라리 빠르더라도 직접 요리한 걸 선호해요. 네, 네."
   },
   {
    "t": 634.99,
    "s": 7,
    "g": 22,
-   "d": 27,
+   "d": 77,
    "it": "Sei a favore dei cibi confezionati?",
    "kr": "포장 음식에 찬성이에요?"
   },
@@ -5532,39 +5724,47 @@ window.LESSONS.push({
    "t": 637.65,
    "s": 7,
    "g": 22,
-   "d": 27,
-   "it": "In realtà no, però sono comodi.",
+   "d": 78,
+   "it": "In realtà no, però son comodi.",
    "kr": "사실 아니에요. 그래도 편하긴 하죠."
   },
   {
-   "t": 641.58,
+   "t": 641.15,
    "s": 7,
    "g": 22,
-   "d": 27,
-   "it": "Quindi preferirei non averli, ma la vita è sempre incasinata, quindi non si ha tempo.",
-   "kr": "그러니까 없었으면 좋겠지만, 삶이 늘 정신없어서 시간이 없어요."
+   "d": 78,
+   "it": "Va bene.",
+   "kr": "좋아요."
+  },
+  {
+   "t": 642.6,
+   "s": 7,
+   "g": 22,
+   "d": 78,
+   "it": "Preferirei non averli, ma la vita è sempre incasinata e quindi non si ha tempo.",
+   "kr": "없었으면 좋겠지만, 삶이 늘 정신없어서 시간이 없어요."
   },
   {
    "t": 648.48,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 79,
    "it": "E qual è il piatto italiano che cucini meglio?",
    "kr": "그럼 가장 잘 만드는 이탈리아 요리는 뭐예요?"
   },
   {
-   "t": 652.52,
+   "t": 653.05,
    "s": 8,
    "g": 23,
-   "d": 28,
-   "it": "Eh, la pasta al pesto.",
-   "kr": "음, 페스토 파스타요."
+   "d": 80,
+   "it": "La pasta al pesto.",
+   "kr": "페스토 파스타요."
   },
   {
    "t": 655.11,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 80,
    "it": "Ma il pesto comprato o fatto da te?",
    "kr": "그런데 페스토는 산 거예요, 직접 만든 거예요?"
   },
@@ -5572,7 +5772,7 @@ window.LESSONS.push({
    "t": 656.81,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 81,
    "it": "Ovviamente comprato.",
    "kr": "당연히 산 거죠."
   },
@@ -5580,39 +5780,39 @@ window.LESSONS.push({
    "t": 659.13,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 82,
    "it": "Qual è il vostro piatto preferito da cucinare?",
    "kr": "두 분이 요리하기 가장 좋아하는 요리는 뭐예요?"
   },
   {
-   "t": 662.95,
+   "t": 663.21,
    "s": 8,
    "g": 23,
-   "d": 28,
-   "it": "Mm, da cucinare?",
-   "kr": "음, 요리하는 거요?"
+   "d": 82,
+   "it": "Da cucinare?",
+   "kr": "요리하는 거요?"
   },
   {
-   "t": 664.77,
+   "t": 664.79,
    "s": 8,
    "g": 23,
-   "d": 28,
-   "it": "Ma direi la matriciana. Classico.",
+   "d": 83,
+   "it": "Mah, direi l'amatriciana: classico.",
    "kr": "글쎄요, 마트리차나라고 하겠어요. 클래식이죠."
   },
   {
    "t": 668.55,
    "s": 8,
    "g": 23,
-   "d": 28,
-   "it": "Per me invece carbonara.",
+   "d": 83,
+   "it": "Per me, invece, carbonara.",
    "kr": "저는 카르보나라요."
   },
   {
    "t": 670.67,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 83,
    "it": "E vi vengono bene?",
    "kr": "잘 나와요?"
   },
@@ -5620,7 +5820,7 @@ window.LESSONS.push({
    "t": 671.94,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 84,
    "it": "Sì, sì, decisamente.",
    "kr": "네, 네, 확실히요."
   },
@@ -5628,7 +5828,7 @@ window.LESSONS.push({
    "t": 673.67,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 84,
    "it": "A volte sì, a volte no.",
    "kr": "어떨 땐 잘되고, 어떨 땐 아니에요."
   },
@@ -5636,7 +5836,7 @@ window.LESSONS.push({
    "t": 675.39,
    "s": 8,
    "g": 23,
-   "d": 28,
+   "d": 85,
    "it": "La parmigiana di melanzane, fatta bene, però.",
    "kr": "가지 파르미자나요. 잘 만들면요."
   },
@@ -5644,7 +5844,7 @@ window.LESSONS.push({
    "t": 681.06,
    "s": 8,
    "g": 24,
-   "d": 29,
+   "d": 85,
    "it": "Il tuo piatto preferito da cucinare?",
    "kr": "요리하기 가장 좋아하는 요리는요?"
   },
@@ -5652,7 +5852,7 @@ window.LESSONS.push({
    "t": 682.8,
    "s": 8,
    "g": 24,
-   "d": 29,
+   "d": 86,
    "it": "Le polpette della nonna.",
    "kr": "할머니표 미트볼이요."
   },
@@ -5660,7 +5860,7 @@ window.LESSONS.push({
    "t": 685.49,
    "s": 8,
    "g": 24,
-   "d": 29,
+   "d": 87,
    "it": "Il piatto che cucini meglio?",
    "kr": "가장 잘 만드는 요리는요?"
   },
@@ -5668,103 +5868,135 @@ window.LESSONS.push({
    "t": 688.18,
    "s": 8,
    "g": 24,
-   "d": 29,
-   "it": "Forse è la pasta con i pomodorini, semplice,",
-   "kr": "아마 방울토마토 파스타일 거예요. 간단한 거요."
+   "d": 88,
+   "it": "Forse la pasta con i pomodorini.",
+   "kr": "아마 방울토마토 파스타일 거예요."
+  },
+  {
+   "t": 690.7,
+   "s": 8,
+   "g": 24,
+   "d": 88,
+   "it": "Semplice.",
+   "kr": "간단한 거요."
+  },
+  {
+   "t": 691.54,
+   "s": 8,
+   "g": 24,
+   "d": 89,
+   "it": "Com'è?",
+   "kr": "어떻게 만들어요?"
   },
   {
    "t": 692.1,
    "s": 8,
    "g": 24,
-   "d": 29,
-   "it": "con semplicemente olio, un po' di acciuga nel soffritto, poi si mettono i pomodorini, si mette l'acqua,",
-   "kr": "올리브유에, 소프리토에 멸치를 조금 넣고, 방울토마토를 넣고, 물을 넣고,"
+   "d": 90,
+   "it": "Con semplicemente olio, un po' di acciuga nel soffritto, poi si mettono i pomodorini, si mette l'acqua, metà cottura più o meno,",
+   "kr": "그냥 올리브유에, 소프리토에 멸치를 조금 넣고, 방울토마토를 넣고, 물을 넣고, 중간쯤 익으면"
   },
   {
-   "t": 700.51,
+   "t": 701.43,
    "s": 8,
    "g": 24,
-   "d": 29,
-   "it": "a metà cottura, più o meno, si scola la pasta nei pomodorini e basta, si completa la cottura così.",
-   "kr": "조리 중간쯤에 면을 건져서 토마토 쪽에 넣고, 그렇게 끝까지 익히면 돼요."
+   "d": 90,
+   "it": "Si scola la pasta nella…",
+   "kr": "면을 건져서…"
+  },
+  {
+   "t": 703.29,
+   "s": 8,
+   "g": 24,
+   "d": 90,
+   "it": "Nei pomodorini e basta, si completa la cottura così.",
+   "kr": "토마토 쪽에 넣고 그걸로 끝, 그렇게 끝까지 익히면 돼요."
   },
   {
    "t": 707.64,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Diciamo, io… mi piace la cucina italiana, mi piace tutto.",
-   "kr": "말하자면 저는… 이탈리아 요리가 좋아요. 다 좋아해요."
+   "d": 91,
+   "it": "Diciamo, io…",
+   "kr": "말하자면 저는…"
+  },
+  {
+   "t": 708.6,
+   "s": 8,
+   "g": 25,
+   "d": 91,
+   "it": "Mi piace la cucina italiana, mi piace tutto.",
+   "kr": "이탈리아 요리가 좋아요. 다 좋아해요."
+  },
+  {
+   "t": 713.58,
+   "s": 8,
+   "g": 25,
+   "d": 91,
+   "it": "Direi, pesto…",
+   "kr": "굳이 말하자면, 페스토…"
   },
   {
    "t": 715.4,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Pasta col pesto, mio piatto preferito.",
-   "kr": "페스토 파스타요. 제가 제일 좋아하는 요리예요."
+   "d": 91,
+   "it": "Pasta col pesto.",
+   "kr": "페스토 파스타요."
+  },
+  {
+   "t": 717.8,
+   "s": 8,
+   "g": 25,
+   "d": 91,
+   "it": "Il mio piatto preferito.",
+   "kr": "제가 제일 좋아하는 요리예요."
   },
   {
    "t": 719.66,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Di dov'è lei?",
+   "d": 91,
+   "it": "Di dov'è Lei?",
    "kr": "어디 출신이세요?"
   },
   {
    "t": 721.11,
    "s": 8,
    "g": 25,
-   "d": 30,
+   "d": 92,
    "it": "Sono georgiana.",
    "kr": "조지아 사람이에요."
   },
   {
-   "t": 722.34,
+   "t": 722.74,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Oh! E qual è un piatto famoso del suo paese?",
-   "kr": "오! 그럼 그쪽 나라의 유명한 요리는 뭐예요?"
+   "d": 92,
+   "it": "E qual è un piatto famoso del Suo paese?",
+   "kr": "그럼 그쪽 나라의 유명한 요리는 뭐예요?"
   },
   {
    "t": 726.09,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Anche noi abbiamo una cucina meravigliosa, cucina georgiana, famosa nel mondo.",
+   "d": 93,
+   "it": "Anche noi abbiamo una cucina meravigliosa: cucina georgiana famosa nel mondo.",
    "kr": "우리도 훌륭한 요리가 있어요. 조지아 요리는 세계적으로 유명해요."
   },
   {
    "t": 732.48,
    "s": 8,
    "g": 25,
-   "d": 30,
-   "it": "Il più famoso, diciamo, khachapuri,",
-   "kr": "가장 유명한 건, 말하자면, 하차푸리예요,"
-  },
-  {
-   "t": 735.81,
-   "s": 8,
-   "g": 25,
-   "d": 30,
-   "it": "tipo pizza, però un po' diverso, eh.",
-   "kr": "피자 같은데 조금 달라요."
-  },
-  {
-   "t": 739.77,
-   "s": 8,
-   "g": 25,
-   "d": 30,
-   "it": "E melanzane con le noci.",
-   "kr": "그리고 호두를 넣은 가지 요리도요."
+   "d": 93,
+   "it": "Il più famoso, diciamo, khachapuri, tipo pizza, però un po' diverso, e melanzane con le noci.",
+   "kr": "가장 유명한 건, 말하자면, 하차푸리예요, 피자 같은데 조금 달라요. 그리고 호두를 넣은 가지 요리도요."
   },
   {
    "t": 741.64,
    "s": 8,
    "g": 26,
-   "d": 31,
+   "d": 94,
    "it": "E qual è il piatto che ti viene meglio?",
    "kr": "그럼 가장 잘 나오는 요리는 뭐예요?"
   },
@@ -5772,71 +6004,63 @@ window.LESSONS.push({
    "t": 745.38,
    "s": 8,
    "g": 26,
-   "d": 31,
-   "it": "Carbonara, dai. Abbastanza, sì. O carbonara, oppure il pollo.",
-   "kr": "카르보나라요, 뭐. 꽤 잘 나와요. 카르보나라 아니면 닭 요리요."
+   "d": 95,
+   "it": "Carbonara, dai, abbastanza, sì.",
+   "kr": "카르보나라요, 뭐. 꽤 잘 나와요."
   },
   {
-   "t": 753.78,
+   "t": 749.32,
    "s": 8,
    "g": 26,
-   "d": 31,
-   "it": "Il pollo in umido.",
-   "kr": "닭고기 스튜요."
+   "d": 95,
+   "it": "O carbonara oppure il pollo, il pollo in umido.",
+   "kr": "카르보나라 아니면 닭 요리, 닭고기 스튜요."
   },
   {
-   "t": 755.84,
+   "t": 755.5,
    "s": 8,
    "g": 26,
-   "d": 31,
-   "it": "Mio piatto preferito, la pasta con le vongole.",
-   "kr": "제가 제일 좋아하는 요리는 조개 파스타예요."
+   "d": 96,
+   "it": "Il mio piatto preferito…",
+   "kr": "제가 제일 좋아하는 요리는…"
+  },
+  {
+   "t": 756.87,
+   "s": 8,
+   "g": 26,
+   "d": 96,
+   "it": "La pasta con le vongole.",
+   "kr": "조개 파스타예요."
   },
   {
    "t": 758.64,
    "s": 8,
    "g": 26,
-   "d": 31,
+   "d": 96,
    "it": "Come si fa?",
    "kr": "어떻게 만들어요?"
   },
   {
-   "t": 759.98,
+   "t": 760.02,
    "s": 8,
    "g": 26,
-   "d": 31,
-   "it": "Ma non è difficile. Aglio, olio.",
-   "kr": "어렵지 않아요. 마늘, 올리브유."
-  },
-  {
-   "t": 763.49,
-   "s": 8,
-   "g": 26,
-   "d": 31,
-   "it": "Fai andare un po' le vongole,",
-   "kr": "조개를 좀 볶다가,"
+   "d": 97,
+   "it": "Mah, non è difficile: aglio, olio, fai andare un po' le vongole,",
+   "kr": "어렵지 않아요. 마늘, 올리브유, 조개를 좀 볶다가,"
   },
   {
    "t": 765.65,
    "s": 8,
    "g": 26,
-   "d": 31,
-   "it": "dopodiché le risotti un pochino,",
-   "kr": "그다음에 조금 더 (물을 넣어 가며) 익히고,"
-  },
-  {
-   "t": 767.89,
-   "s": 8,
-   "g": 26,
-   "d": 31,
-   "it": "un po' di prezzemolo, se lo vuoi, e basta.",
-   "kr": "원하면 파슬리를 조금 넣으면 끝이에요."
+   "d": 97,
+   "it": "dopodiché le risotti un pochino, un po' di prezzemolo, se lo vuoi, e basta.",
+   "kr": "그다음에 조금 더 익히고, 원하면 파슬리를 조금 넣으면 끝이에요."
   },
   {
    "t": 770.16,
    "s": 9,
    "g": 27,
-   "d": 32,
+   "d": 98,
    "it": "Cosa mangia oggi?",
    "kr": "오늘은 뭐 드세요?"
   },
@@ -5844,55 +6068,63 @@ window.LESSONS.push({
    "t": 772.35,
    "s": 9,
    "g": 27,
-   "d": 32,
-   "it": "Oggi… salmone. Naturalmente è surgelato, quindi devo sgelarlo",
-   "kr": "오늘은 연어요. 당연히 냉동이라 해동해야 해요,"
+   "d": 99,
+   "it": "Oggi salmone: naturalmente è surgelato, quindi devo scongelarlo, con insalata e basta perché anche…",
+   "kr": "오늘은 연어요. 당연히 냉동이라 해동해야 하고, 샐러드랑 그게 다예요. 왜냐하면…"
   },
   {
-   "t": 780.9,
+   "t": 783.99,
    "s": 9,
    "g": 27,
-   "d": 32,
-   "it": "con insalata e basta, perché anche mi devo tenere leggero, perché…",
-   "kr": "샐러드랑 그게 다예요. 저도 가볍게 먹어야 하거든요. 왜냐하면…"
+   "d": 99,
+   "it": "Mi devo tenere leggero, perché, insomma…",
+   "kr": "가볍게 먹어야 하거든요, 왜냐하면, 뭐…"
   },
   {
    "t": 786.88,
    "s": 9,
    "g": 27,
-   "d": 32,
+   "d": 99,
    "it": "È sempre bene tenersi leggeri.",
    "kr": "늘 가볍게 먹는 게 좋으니까요."
-  },
-  {
-   "t": 788.9,
-   "s": 9,
-   "g": 27,
-   "d": 32,
-   "it": "Leggera.",
-   "kr": "가볍게요(여성형 leggera)."
   },
   {
    "t": 789.13,
    "s": 10,
    "g": 28,
-   "d": 33,
-   "it": "Va bene, abbiamo finito. Grazie mille, è stato gentilissimo.",
-   "kr": "좋아요, 끝났어요. 정말 고맙습니다. 아주 친절하셨어요."
+   "d": 100,
+   "it": "Va bene, abbiamo finito.",
+   "kr": "좋아요, 끝났어요."
+  },
+  {
+   "t": 790.33,
+   "s": 10,
+   "g": 28,
+   "d": 100,
+   "it": "Grazie mille, è stato gentilissimo.",
+   "kr": "정말 고맙습니다. 아주 친절하셨어요."
   },
   {
    "t": 792.16,
    "s": 10,
    "g": 28,
-   "d": 33,
-   "it": "E tu cucini bene? Hai mai cucinato un piatto italiano?",
-   "kr": "여러분은 요리를 잘하나요? 이탈리아 요리를 만들어 본 적 있나요?"
+   "d": 101,
+   "it": "E tu cucini bene?",
+   "kr": "여러분은 요리를 잘하나요?"
+  },
+  {
+   "t": 794.27,
+   "s": 10,
+   "g": 28,
+   "d": 101,
+   "it": "Hai mai cucinato un piatto italiano?",
+   "kr": "이탈리아 요리를 만들어 본 적 있나요?"
   },
   {
    "t": 796.9,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "Scrivicelo nei commenti.",
    "kr": "댓글로 남겨 주세요."
   },
@@ -5900,7 +6132,7 @@ window.LESSONS.push({
    "t": 798.93,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "Ciao.",
    "kr": "안녕!"
   },
@@ -5908,7 +6140,7 @@ window.LESSONS.push({
    "t": 800.09,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "Per esempio, puoi provare a…",
    "kr": "예를 들어, 한번 해 볼 수 있는데…"
   },
@@ -5916,7 +6148,7 @@ window.LESSONS.push({
    "t": 803.19,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "Quindi, è probabile…",
    "kr": "그러니까 아마…"
   },
@@ -5924,7 +6156,7 @@ window.LESSONS.push({
    "t": 804.89,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "E vaffancu…",
    "kr": "아, 젠장… (욕이 나오려다 만 말이에요)"
   },
@@ -5932,7 +6164,7 @@ window.LESSONS.push({
    "t": 806.1,
    "s": 10,
    "g": 28,
-   "d": 33,
+   "d": 102,
    "it": "Vabbè, rifaccio, scusa.",
    "kr": "아, 다시 할게요. 미안해요."
   }

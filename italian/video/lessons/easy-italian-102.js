@@ -1,4 +1,4 @@
-// Easy Italian 102 — subtitle timing, Korean translation and per-section notes for the video page
+// Easy Italian 102 — subtitle lines follow the burned-in subtitles of the video; Korean translation and per-section notes for the video page
 window.LESSONS = window.LESSONS || [];
 window.LESSONS.push({
  "id": "easy-italian-102",
@@ -11,7 +11,7 @@ window.LESSONS.push({
  "titleKr": "이탈리아어는 어려운 언어일까?",
  "sections": [
   {
-   "t": 0.0,
+   "t": 0.09,
    "it": "Introduzione",
    "kr": "오프닝"
   },
@@ -578,11 +578,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "metterci l'impegno"
+       "mettersi d'impegno"
       ],
       [
        "t",
-       " (노력을 쏟다)"
+       " (노력하다, 열심히 하다)"
       ]
      ]
     },
@@ -754,11 +754,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "ci sta"
+       "c'è 'sta"
       ],
       [
        "t",
-       " (이해된다, 그럴 만하다)"
+       " (= c'è questa (구어 축약). 'c'è 'sta motivazione in più' = 이런 동기가 더 있다)"
       ]
      ]
     },
@@ -767,11 +767,11 @@ window.LESSONS.push({
      "r": [
       [
        "i",
-       "al confronto di ~"
+       "a confronto di ~"
       ],
       [
        "t",
-       " (~와 비교하여)"
+       " (~와 비교하면)"
       ]
      ]
     },
@@ -3016,18 +3016,18 @@ window.LESSONS.push({
  ],
  "segs": [
   {
-   "t": 0.0,
+   "t": 0.09,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "Sappiamo tutti che imparare una lingua straniera può essere difficile a volte,",
    "kr": "외국어를 배우는 게 때로는 어려울 수 있다는 건 우리 모두 알지만,"
   },
   {
-   "t": 4.93,
+   "t": 4.28,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "ma non dobbiamo mai dimenticare che è anche abbastanza normale fare degli errori nella nostra lingua madre.",
    "kr": "우리 모국어로도 실수하는 게 꽤 자연스러운 일이라는 점을 절대 잊으면 안 됩니다."
   },
@@ -3035,7 +3035,7 @@ window.LESSONS.push({
    "t": 10.88,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "Quindi oggi chiediamo agli italiani se l'italiano è una lingua difficile e quali sono gli errori più comuni.",
    "kr": "그래서 오늘은 이탈리아 사람들에게 이탈리아어가 어려운 언어인지, 가장 흔한 실수는 무엇인지 물어봅니다."
   },
@@ -3043,15 +3043,15 @@ window.LESSONS.push({
    "t": 17.29,
    "s": 0,
    "g": 0,
-   "d": 0,
-   "it": "Andiamo!",
+   "d": 1,
+   "it": "Andiamo.",
    "kr": "가 봅시다!"
   },
   {
-   "t": 21.0,
+   "t": 21,
    "s": 0,
    "g": 0,
-   "d": 0,
+   "d": 1,
    "it": "♪",
    "kr": "(오프닝 음악)",
    "music": true
@@ -3060,15 +3060,31 @@ window.LESSONS.push({
    "t": 31.89,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "L'italiano secondo te è difficile da imparare?",
-   "kr": "이탈리아어, 배우기 어렵다고 생각해요?"
+   "d": 2,
+   "it": "L'italiano…",
+   "kr": "이탈리아어는…"
+  },
+  {
+   "t": 32.74,
+   "s": 1,
+   "g": 1,
+   "d": 2,
+   "it": "Ok.",
+   "kr": "좋아요."
+  },
+  {
+   "t": 33.48,
+   "s": 1,
+   "g": 1,
+   "d": 2,
+   "it": "Secondo te è difficile da imparare?",
+   "kr": "배우기 어렵다고 생각해요?"
   },
   {
    "t": 36.05,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 3,
    "it": "Beh, non è sicuramente una lingua facile.",
    "kr": "글쎄요, 확실히 쉬운 언어는 아니죠."
   },
@@ -3076,15 +3092,31 @@ window.LESSONS.push({
    "t": 39.85,
    "s": 1,
    "g": 1,
-   "d": 1,
-   "it": "Bisogna studiarla abbastanza perché c'è tanta grammatica, però sicuramente conversare in maniera continua può aiutare ad avere un vocabolario molto ampio.",
-   "kr": "문법이 많아서 꽤 공부해야 하지만, 꾸준히 대화하다 보면 어휘를 아주 넓게 쌓는 데 분명 도움이 돼요."
+   "d": 3,
+   "it": "Bisogna studiarla abbastanza perché c'è tanta grammatica.",
+   "kr": "문법이 많아서 꽤 공부해야 해요."
+  },
+  {
+   "t": 43.44,
+   "s": 1,
+   "g": 1,
+   "d": 3,
+   "it": "Però sicuramente…",
+   "kr": "하지만 분명히…"
+  },
+  {
+   "t": 45.36,
+   "s": 1,
+   "g": 1,
+   "d": 3,
+   "it": "Conversare in maniera continua può aiutare ad avere un vocabolario molto ampio.",
+   "kr": "꾸준히 대화하다 보면 어휘를 아주 넓게 쌓는 데 도움이 돼요."
   },
   {
    "t": 51.77,
    "s": 1,
    "g": 1,
-   "d": 1,
+   "d": 4,
    "it": "Penso che tra le lingue latine sia tra le più semplici da imparare, onestamente.",
    "kr": "솔직히 라틴계 언어 중에서는 배우기 쉬운 편에 속한다고 생각해요."
   },
@@ -3092,111 +3124,175 @@ window.LESSONS.push({
    "t": 60.58,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "Secondo me è facile se uno ci mette l'impegno, puoi impararla.",
-   "kr": "제 생각엔 노력만 하면 쉬워요. 충분히 배울 수 있어요."
+   "d": 5,
+   "it": "Secondo me è facile; se uno si mette d'impegno, può impararla.",
+   "kr": "제 생각엔 쉬워요. 노력만 하면 배울 수 있어요."
   },
   {
-   "t": 65.73,
+   "t": 65.83,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "Sì, beh, per uno straniero è abbastanza complicata perché comunque parliamo di verbi, di coniugazioni...",
-   "kr": "그래요, 뭐, 외국인에게는 꽤 복잡하죠. 어쨌든 동사나 동사 활용 같은 걸 이야기하게 되니까요..."
+   "d": 6,
+   "it": "Secondo me, per uno straniero, sì, è abbastanza complicata, perché comunque…",
+   "kr": "제 생각엔 외국인에게는 꽤 복잡해요. 왜냐하면 어쨌든…"
+  },
+  {
+   "t": 70.87,
+   "s": 1,
+   "g": 2,
+   "d": 6,
+   "it": "Più che altro parliamo di verbi, di coniugazione di questi…",
+   "kr": "무엇보다 동사, 그리고 그 활용을 이야기하게 되니까요…"
   },
   {
    "t": 74.09,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "E questi potrebbero risultare abbastanza complicati, soprattutto se vieni da una lingua abbastanza semplice.",
+   "d": 6,
+   "it": "E potrebbero risultare abbastanza complicati, soprattutto se vieni da una lingua abbastanza semplice.",
    "kr": "그런 건 꽤 복잡하게 느껴질 수 있어요. 특히 비교적 단순한 언어권에서 왔다면 더 그렇죠."
   },
   {
    "t": 81.49,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "E quindi diciamo che devi un attimo entrare nelle logiche della lingua,",
-   "kr": "그래서 언어의 논리 속으로 잠시 들어가 봐야 한다고 할까요,"
+   "d": 6,
+   "it": "E quindi.",
+   "kr": "그래서요."
+  },
+  {
+   "t": 82.85,
+   "s": 1,
+   "g": 2,
+   "d": 6,
+   "it": "Diciamo che devi un attimo entrare nelle logiche della lingua.",
+   "kr": "그러니까 언어의 논리 속으로 잠시 들어가 봐야 한다고 할까요."
   },
   {
    "t": 87.0,
    "s": 1,
    "g": 2,
-   "d": 2,
-   "it": "come poi alla fine è normale per tutte le lingue, ecco.",
+   "d": 6,
+   "it": "Come poi, alla fine, è normale per tutte le lingue, ecco.",
    "kr": "결국 모든 언어가 다 그렇듯이 말이에요."
   },
   {
    "t": 89.28,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Difficile sì, però è bellissima!",
+   "d": 7,
+   "it": "Difficile, sì, però è bellissima.",
    "kr": "어렵긴 한데, 정말 아름다워요!"
   },
   {
    "t": 92.01,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Quindi ci sta una motivazione in più, capito?",
+   "d": 7,
+   "it": "Quindi c'è 'sta motivazione in più, capito?",
    "kr": "그래서 동기가 더 생기죠, 무슨 말인지 알겠죠?"
   },
   {
    "t": 94.01,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "È troppo bella la lingua italiana: cantata, bella, espressiva.",
-   "kr": "이탈리아어는 너무 아름다워요. 노래하는 것 같고, 예쁘고, 표현이 풍부하죠."
+   "d": 8,
+   "it": "È troppo bella la lingua italiana.",
+   "kr": "이탈리아어는 너무 아름다워요."
+  },
+  {
+   "t": 96.75,
+   "s": 1,
+   "g": 3,
+   "d": 8,
+   "it": "È cantata, è bella, è espressiva.",
+   "kr": "노래하는 것 같고, 예쁘고, 표현이 풍부하죠."
   },
   {
    "t": 99.03,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Diciamo che la pronuncia, al confronto del francese per esempio, dove è più macchinoso e bisogna concentrarsi di più...",
-   "kr": "발음만 해도, 예를 들어 프랑스어와 비교하면 프랑스어는 더 번거롭고 더 집중해야 하는데..."
+   "d": 9,
+   "it": "Diciamo, la pronuncia.",
+   "kr": "말하자면, 발음이요."
   },
   {
-   "t": 108.82,
+   "t": 101.85,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "In qualche modo penso che l'italiano, essendo molto musicale, se sei nel flow ce la fai!",
-   "kr": "이탈리아어는 아주 음악적이라서, 흐름만 타면 어떻게든 해낼 수 있다고 생각해요!"
+   "d": 9,
+   "it": "A confronto del francese, per esempio, dov'è più… macchinoso, bisogna concentrarsi di più, in qualche modo.",
+   "kr": "예를 들어 프랑스어와 비교하면, 프랑스어는 더… 번거롭고 어떻게든 더 집중해야 하죠."
   },
   {
-   "t": 116.8,
+   "t": 109.88,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Come si legge la parola, così si dice, in linea di massima.",
-   "kr": "대체로 단어는 읽는 대로 발음해요."
+   "d": 9,
+   "it": "Penso che l'italiano, essendo molto musicale…",
+   "kr": "이탈리아어는 아주 음악적이라서…"
+  },
+  {
+   "t": 113.06,
+   "s": 1,
+   "g": 3,
+   "d": 9,
+   "it": "Se sei nel \"flow\", ce la fai.",
+   "kr": "흐름만 타면 해낼 수 있어요."
+  },
+  {
+   "t": 116.0,
+   "s": 1,
+   "g": 3,
+   "d": 9,
+   "it": "Giusto, poi come si legge la parola, così si dice.",
+   "kr": "맞아요, 그리고 단어는 읽는 대로 발음해요."
+  },
+  {
+   "t": 120.0,
+   "s": 1,
+   "g": 3,
+   "d": 9,
+   "it": "In linea di massima, sì.",
+   "kr": "대체로는요."
   },
   {
    "t": 122.05,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Non sempre, però sono poche le regole dove non è così.",
-   "kr": "항상 그런 건 아니지만, 그렇지 않은 규칙은 몇 개 안 돼요."
+   "d": 9,
+   "it": "Non sempre.",
+   "kr": "항상 그런 건 아니지만,"
+  },
+  {
+   "t": 122.89,
+   "s": 1,
+   "g": 3,
+   "d": 9,
+   "it": "Però sono poche le regole dove non è così.",
+   "kr": "그렇지 않은 규칙은 몇 개 안 돼요."
   },
   {
    "t": 125.08,
    "s": 1,
    "g": 3,
-   "d": 3,
-   "it": "Quindi è facile perché è l'unica lingua dove come si scrive, si legge.",
-   "kr": "그래서 쉬워요. 쓰는 대로 읽는 유일한 언어니까요."
+   "d": 9,
+   "it": "Quindi, sì.",
+   "kr": "그래서요, 네."
+  },
+  {
+   "t": 126.33,
+   "s": 1,
+   "g": 3,
+   "d": 10,
+   "it": "Facile, perché è l'unica lingua che come si, come si scrive si, si legge…",
+   "kr": "쉬워요. 쓰는 대로 읽는 유일한 언어니까요…"
   },
   {
    "t": 132.55,
    "s": 1,
    "g": 4,
-   "d": 4,
+   "d": 11,
    "it": "Io penso invece che sia semplice l'italiano.",
    "kr": "저는 오히려 이탈리아어가 간단하다고 생각해요."
   },
@@ -3204,119 +3300,111 @@ window.LESSONS.push({
    "t": 136.08,
    "s": 1,
    "g": 4,
-   "d": 4,
-   "it": "Sì, è semplice nel senso che è molto interiore,",
+   "d": 11,
+   "it": "Sì, è semplice, nel senso che è molto, molto interiore.",
    "kr": "네, 아주 내면적이라는 점에서 간단해요."
   },
   {
    "t": 140.7,
    "s": 1,
    "g": 4,
-   "d": 4,
-   "it": "quindi se tu inizi a parlare l'italiano riesci già a prendere il mood dell'italiano,",
-   "kr": "이탈리아어로 말하기 시작하면 벌써 이탈리아어 특유의 분위기를 잡을 수 있고,"
-  },
-  {
-   "t": 145.64,
-   "s": 1,
-   "g": 4,
-   "d": 4,
-   "it": "quindi riesci già a capire le persone.",
-   "kr": "그러면 벌써 사람들을 이해할 수 있게 돼요."
+   "d": 11,
+   "it": "Quindi, se tu inizi a parlare l'italiano, riesci già a prendere il \"mood\" dell'italiano, quindi a già capire le persone.",
+   "kr": "이탈리아어로 말하기 시작하면 벌써 이탈리아어 특유의 분위기를 잡을 수 있고, 그러면 벌써 사람들을 이해할 수 있게 돼요."
   },
   {
    "t": 147.68,
    "s": 1,
    "g": 5,
-   "d": 5,
-   "it": "Secondo me sì, abbiamo anche molti verbi, molti tempi verbali...",
-   "kr": "제 생각엔 어려워요. 동사도 많고, 동사 시제도 많고..."
+   "d": 12,
+   "it": "Secondo me, sì, abbiamo anche molti verbi, molti tempi verbali, quindi penso di sì.",
+   "kr": "제 생각엔 그래요, 어려워요. 동사도 많고 동사 시제도 많으니까, 그렇다고 생각해요."
   },
   {
-   "t": 154.87,
+   "t": 153.86,
    "s": 1,
    "g": 5,
-   "d": 5,
-   "it": "Ci sono diversi costrutti complessi, quindi sì.",
-   "kr": "복잡한 구문도 여러 개 있어서, 그렇죠."
+   "d": 12,
+   "it": "Sì, anche secondo me, ci sono diversi costrutti complessi, quindi, sì.",
+   "kr": "네, 저도 그렇게 생각해요. 복잡한 구문이 여러 개 있어서, 그렇죠."
   },
   {
    "t": 158.23,
    "s": 1,
    "g": 5,
-   "d": 5,
-   "it": "Esatto, anche magari le declinazioni dei verbi o anche semplicemente maschile e femminile può essere difficile.",
+   "d": 12,
+   "it": "Esatto, anche magari le declinazioni dei verbi o anche semplicemente maschile e femminile, può essere difficile.",
    "kr": "맞아요, 동사 변화나 심지어 그냥 남성형과 여성형도 어려울 수 있어요."
   },
   {
-   "t": 166.54,
+   "t": 166.17,
    "s": 1,
    "g": 5,
-   "d": 5,
-   "it": "Dal punto di vista grammaticale lì siamo già su un livello un po' più complicato,",
-   "kr": "문법 측면에서 보면 벌써 한층 복잡한 수준이에요,"
+   "d": 13,
+   "it": "Invece, dal punto di vista grammaticale, lì siamo già su un livello un po' più complicato,",
+   "kr": "반면에 문법 측면에서 보면 벌써 한층 복잡한 수준이에요,"
   },
   {
    "t": 171.61,
    "s": 1,
    "g": 5,
-   "d": 5,
+   "d": 13,
    "it": "perché ha una grande grammatica e quindi diventa complicato impararla.",
    "kr": "문법 체계가 방대해서 배우기가 복잡해지거든요."
+  },
+  {
+   "t": 178.16,
+   "s": 1,
+   "g": 5,
+   "d": 14,
+   "it": "E secondo voi l'italiano è una lingua difficile?",
+   "kr": "그러면 여러분은 이탈리아어가 어려운 언어라고 생각하세요?"
   },
   {
    "t": 182.76,
    "s": 1,
    "g": 6,
-   "d": 6,
-   "it": "Sicuramente non è facilissima perché ha tante regole grammaticali,",
-   "kr": "문법 규칙이 많아서 아주 쉽다고는 할 수 없어요,"
+   "d": 15,
+   "it": "Sicuramente non è facilissima, perché ha tante regole grammaticali, quindi mi rendo conto che se non…",
+   "kr": "문법 규칙이 많아서 아주 쉽다고는 할 수 없어요. 그러니 제가 보기에도, 만약…"
   },
   {
-   "t": 186.75,
+   "t": 189.4,
    "s": 1,
    "g": 6,
-   "d": 6,
-   "it": "quindi mi rendo conto che se non sei appunto madrelingua non è facilissimo impararla,",
-   "kr": "그러니 원어민이 아니라면 배우기가 쉽지 않다는 걸 저도 알아요,"
-  },
-  {
-   "t": 193.69,
-   "s": 1,
-   "g": 6,
-   "d": 6,
-   "it": "però non è neanche tra le più difficili credo.",
-   "kr": "그래도 가장 어려운 축에 들지는 않는다고 생각해요."
+   "d": 15,
+   "it": "Sei, appunto, madrelingua, non è facilissimo impararla, però non è neanche tra le più difficili, credo.",
+   "kr": "원어민이 아니라면 배우기가 쉽지 않아요. 그래도 가장 어려운 축에 들지는 않는다고 생각해요."
   },
   {
    "t": 196.65,
    "s": 1,
    "g": 6,
-   "d": 6,
-   "it": "È anche vero che ci sono molti italiani che ancora non lo sanno...",
-   "kr": "이탈리아어를 아직도 잘 모르는 이탈리아 사람이 많은 것도 사실이죠..."
+   "d": 15,
+   "it": "È anche vero che ci sono molti italiani che ancora non la sanno, quindi, sì, è difficile.",
+   "kr": "이탈리아어를 아직도 잘 모르는 이탈리아 사람이 많은 것도 사실이죠. 그러니까, 네, 어려워요."
   },
   {
-   "t": 200.36,
+   "t": 201.41,
    "s": 1,
    "g": 6,
-   "d": 6,
-   "it": "È difficile!",
-   "kr": "어려워요!"
+   "d": 15,
+   "it": "Sì.",
+   "kr": "네."
   },
   {
    "t": 202.41,
    "s": 2,
    "g": 7,
-   "d": 7,
-   "it": "Questa puntata è utilissima anche per me perché così ripeto anche un po' in italiano!",
+   "d": 16,
+   "it": "Questa puntata è utilissima anche per me, perché così ripeto anche un po' l'italiano.",
    "kr": "이번 편은 저한테도 아주 유용해요. 이렇게 이탈리아어를 조금 복습하게 되니까요!"
   },
   {
    "t": 207.65,
    "s": 2,
    "g": 7,
-   "d": 7,
+   "d": 16,
    "it": "Ma sapete cos'altro è molto utile?",
    "kr": "그런데 또 뭐가 아주 유용한지 아세요?"
   },
@@ -3324,31 +3412,31 @@ window.LESSONS.push({
    "t": 210.17,
    "s": 2,
    "g": 7,
-   "d": 7,
-   "it": "Tutti gli esercizi e i materiali che sono disponibili per ogni puntata.",
+   "d": 16,
+   "it": "Tutti gli esercizi e materiali che sono disponibili per ogni puntata.",
    "kr": "각 편마다 제공되는 모든 연습 문제와 자료예요."
   },
   {
    "t": 214.47,
    "s": 2,
    "g": 7,
-   "d": 7,
-   "it": "Se volete materiali come esercizi, cruciverba, audio lento e veloce, video senza sottotitoli e accesso al Grammar Bank,",
-   "kr": "연습 문제, 십자말풀이, 느린 오디오와 빠른 오디오, 자막 없는 영상, 그리고 Grammar Bank 이용 같은 자료를 원하신다면,"
+   "d": 16,
+   "it": "Se volete materiali come esercizi, cruciverba, audio lento e veloce, e video senza sottotitoli,",
+   "kr": "연습 문제, 십자말풀이, 느린 오디오와 빠른 오디오, 자막 없는 영상,"
   },
   {
-   "t": 226.01,
+   "t": 222.6,
    "s": 2,
    "g": 7,
-   "d": 7,
-   "it": "basta far parte della comunità Easy Italian!",
-   "kr": "Easy Italian 커뮤니티에 가입하기만 하면 됩니다!"
+   "d": 16,
+   "it": "e accesso al grammar bank, basta far parte della comunità Easy Italian.",
+   "kr": "그리고 Grammar Bank 이용 같은 자료를 원하신다면, Easy Italian 커뮤니티에 가입하기만 하면 됩니다!"
   },
   {
    "t": 229.48,
    "s": 2,
    "g": 7,
-   "d": 7,
+   "d": 16,
    "it": "Per sapere come far parte della comunità Easy Italian, il link è in descrizione.",
    "kr": "Easy Italian 커뮤니티에 가입하는 방법은 설명란의 링크에서 확인하세요."
   },
@@ -3356,7 +3444,7 @@ window.LESSONS.push({
    "t": 234.89,
    "s": 3,
    "g": 8,
-   "d": 8,
+   "d": 17,
    "it": "Secondo te l'italiano è una lingua difficile da imparare?",
    "kr": "이탈리아어는 배우기 어려운 언어라고 생각해요?"
   },
@@ -3364,23 +3452,15 @@ window.LESSONS.push({
    "t": 239.42,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "Secondo me sì.",
-   "kr": "제 생각엔 그래요."
-  },
-  {
-   "t": 242.05,
-   "s": 3,
-   "g": 8,
-   "d": 8,
-   "it": "Io sono italiana, però mi rendo conto che non è semplicissimo, tipo come un inglese che è più semplice.",
-   "kr": "저는 이탈리아 사람이지만, 아주 쉽지는 않다는 걸 알아요. 예를 들면 더 간단한 영어처럼은 아니니까요."
+   "d": 18,
+   "it": "Secondo me, sì, nonostante io sia italiana, però mi rendo conto che non è semplicissimo, tipo, come l'inglese, che è più semplice.",
+   "kr": "제 생각엔 그래요. 저는 이탈리아 사람이지만, 아주 쉽지는 않다는 걸 알아요. 예를 들면 더 간단한 영어처럼은 아니니까요."
   },
   {
    "t": 249.95,
    "s": 3,
    "g": 8,
-   "d": 8,
+   "d": 18,
    "it": "E secondo te perché è difficile?",
    "kr": "그런데 왜 어렵다고 생각해요?"
   },
@@ -3388,39 +3468,47 @@ window.LESSONS.push({
    "t": 252.1,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "Perché la grammatica è molto complicata.",
-   "kr": "문법이 아주 복잡하니까요."
+   "d": 19,
+   "it": "Perché la grammatica è molto…",
+   "kr": "문법이 아주…"
   },
   {
-   "t": 256.29,
+   "t": 255.68,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "Per uno straniero la lingua italiana è un po' difficile, quello sicuramente sì.",
+   "d": 19,
+   "it": "Complicata per uno straniero.",
+   "kr": "외국인에게는 복잡해서요."
+  },
+  {
+   "t": 258.09,
+   "s": 3,
+   "g": 8,
+   "d": 20,
+   "it": "La lingua italiana per gli stranieri è un po' difficile, quello sicuramente sì.",
    "kr": "외국인에게 이탈리아어는 조금 어렵죠. 그건 분명해요."
   },
   {
    "t": 263.25,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "Forse per gli europei, quindi francesi e spagnoli, è già un po' più gestibile,",
+   "d": 20,
+   "it": "Forse per gli europei, quindi francesi, spagnoli, è già un po' più gestibile.",
    "kr": "유럽 사람들, 그러니까 프랑스인이나 스페인인에게는 그래도 좀 더 다루기 쉬울 수 있지만,"
   },
   {
    "t": 270.09,
    "s": 3,
    "g": 8,
-   "d": 8,
-   "it": "però per anglosassoni e tedeschi è già molto più complicata da poter parlare.",
+   "d": 20,
+   "it": "Però per anglosassoni, tedeschi, là è già molto più complicata da poter parlare.",
    "kr": "영어권이나 독일어권 사람들에게는 말하기가 훨씬 더 복잡하죠."
   },
   {
    "t": 277.65,
    "s": 3,
    "g": 9,
-   "d": 9,
+   "d": 21,
    "it": "Quali sono gli aspetti più difficili della lingua italiana?",
    "kr": "이탈리아어에서 가장 어려운 점은 뭐예요?"
   },
@@ -3428,79 +3516,79 @@ window.LESSONS.push({
    "t": 281.08,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "Allora, di sicuro la grammatica, specialmente i tempi verbali secondo me,",
-   "kr": "음, 단연 문법이죠. 제 생각엔 특히 동사 시제요,"
-  },
-  {
-   "t": 287.14,
-   "s": 3,
-   "g": 9,
-   "d": 9,
-   "it": "e soprattutto il fatto che c'è un vocabolario molto ampio",
-   "kr": "그리고 무엇보다 어휘가 아주 방대하다는 점이에요."
+   "d": 22,
+   "it": "Allora, di sicuro la grammatica, specialmente i tempi verbali, secondo me, e soprattutto il fatto che c'è un vocabolario molto ampio,",
+   "kr": "음, 단연 문법이죠. 제 생각엔 특히 동사 시제요, 그리고 무엇보다 어휘가 아주 방대하다는 점이에요."
   },
   {
    "t": 294.08,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "per cui si possono dire le stesse cose con tante parole diverse",
-   "kr": "그래서 같은 말을 여러 가지 다른 단어로 표현할 수 있는데,"
+   "d": 22,
+   "it": "per cui si possono dire le stesse cose con tante parole diverse, che magari hanno solo piccole sfumature.",
+   "kr": "그래서 같은 말을 여러 가지 다른 단어로 표현할 수 있는데, 그 단어들 사이에 미묘한 뉘앙스 차이만 있기도 하거든요."
   },
   {
-   "t": 297.75,
+   "t": 300.24,
    "s": 3,
    "g": 9,
-   "d": 9,
-   "it": "che magari hanno solo piccole sfumature.",
-   "kr": "그 단어들 사이에 미묘한 뉘앙스 차이만 있기도 하거든요."
+   "d": 23,
+   "it": "Eh, da…",
+   "kr": "어, 그러니까…"
   },
   {
    "t": 302.4,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Per la mia esperienza sono tanti suoni che la gente fa fatica a riprodurre rispetto magari ad altre lingue.",
+   "d": 23,
+   "it": "Per la mia esperienza, sono tanti suoni che la gente fa fatica a riprodurre rispetto magari ad altre, appunto, ad altre lingue.",
    "kr": "제 경험으로는, 다른 언어에 비해 사람들이 따라 내기 힘들어하는 소리가 많아요."
   },
   {
-   "t": 314.29,
+   "t": 314.43,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Però magari anche la parte più grammaticale:",
-   "kr": "그리고 문법적인 부분도 있죠."
+   "d": 23,
+   "it": "Poi magari anche la parte più… grammaticale italiana, è molto più complicata e complessa.",
+   "kr": "그리고 문법적인 부분도요. 이탈리아어의 문법은 훨씬 더 복잡하고 까다로워요."
   },
   {
-   "t": 317.58,
+   "t": 319.2,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "in italiano ci sono molti tempi verbali che in altre lingue vengono magari ripetuti in maniera differente o semplificati.",
+   "d": 23,
+   "it": "Ci sono magari molti tempi verbali che in altre lingue vengono, magari, ripetuti in maniera differente o semplificati, magari.",
    "kr": "이탈리아어에는 시제가 많은데, 다른 언어에서는 그런 시제들이 다른 방식으로 나타나거나 단순화되기도 해요."
   },
   {
-   "t": 325.94,
+   "t": 326.48,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "Magari in molte lingue c'è la stessa parola che vuole dire più significati,",
-   "kr": "많은 언어에서는 같은 단어 하나가 여러 의미를 갖기도 하는데,"
+   "d": 23,
+   "it": "Tipo, in molte altre lingue ci sono, magari…",
+   "kr": "예를 들면 다른 많은 언어에는…"
+  },
+  {
+   "t": 328.49,
+   "s": 3,
+   "g": 10,
+   "d": 23,
+   "it": "La stessa parola vuole dire più significati.",
+   "kr": "같은 단어 하나가 여러 의미를 갖기도 해요."
   },
   {
    "t": 331.47,
    "s": 3,
    "g": 10,
-   "d": 10,
-   "it": "in italiano abbiamo un vocabolario molto più ampio per descrivere ogni singola cosa, azione o oggetto che sia.",
+   "d": 23,
+   "it": "In italiano abbiamo, magari, abbiamo un vocabolario molto più ampio per descrivere ogni singola cosa o azione o oggetto che sia.",
    "kr": "이탈리아어에는 사물이든 행동이든 물건이든 하나하나를 묘사할 어휘가 훨씬 더 많아요."
   },
   {
    "t": 338.54,
    "s": 3,
    "g": 11,
-   "d": 11,
+   "d": 24,
    "it": "L'aspetto più difficile secondo me sono i verbi.",
    "kr": "제 생각에 가장 어려운 부분은 동사예요."
   },
@@ -3508,311 +3596,367 @@ window.LESSONS.push({
    "t": 341.35,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "Imparare i verbi è difficile anche per un italiano stesso, soprattutto coniugarli.",
-   "kr": "동사를 배우는 건 이탈리아 사람 자신에게도 어려워요. 특히 활용하는 게 그렇죠."
+   "d": 24,
+   "it": "Imparare i verbi è difficile anche per un italiano stesso, soprattutto coniugarli, quindi…",
+   "kr": "동사를 배우는 건 이탈리아 사람 자신에게도 어려워요. 특히 활용하는 게 그렇죠. 그래서…"
   },
   {
-   "t": 346.98,
+   "t": 347.82,
    "s": 3,
    "g": 11,
-   "d": 11,
-   "it": "Quindi l'italiano in generale ha queste difficoltà.",
-   "kr": "그래서 이탈리아어는 전반적으로 이런 어려움이 있어요."
-  },
-  {
-   "t": 350.8,
-   "s": 3,
-   "g": 11,
-   "d": 11,
-   "it": "Poi per il resto le parole sono molto semplici.",
-   "kr": "그 외에 나머지 단어들은 아주 단순해요."
+   "d": 24,
+   "it": "L'italiano in generale ha questa difficoltà, poi, per il resto, le parole sono molto semplici.",
+   "kr": "그래서 이탈리아어는 전반적으로 이런 어려움이 있어요. 그 외에 나머지 단어들은 아주 단순해요."
   },
   {
    "t": 353.37,
    "s": 4,
    "g": 12,
-   "d": 12,
+   "d": 25,
    "it": "Può essere difficile a volte anche per gli italiani?",
    "kr": "이탈리아 사람들에게도 가끔은 어려울 수 있나요?"
   },
   {
-   "t": 358.75,
+   "t": 357.78,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "Sì, anche perché soprattutto, secondo me, magari meno a Milano ma più in altre realtà territoriali,",
-   "kr": "네, 제 생각엔 무엇보다 밀라노에서는 덜하지만 다른 지역에서는 더 그런데,"
+   "d": 25,
+   "it": "L'italiano?",
+   "kr": "이탈리아어요?"
   },
   {
-   "t": 366.43,
+   "t": 358.63,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "c'è ancora una partecipazione attiva del dialetto.",
-   "kr": "방언이 아직도 활발하게 쓰이고 있어요."
+   "d": 26,
+   "it": "Molto, molto.",
+   "kr": "아주 많이요."
+  },
+  {
+   "t": 360.21,
+   "s": 4,
+   "g": 12,
+   "d": 26,
+   "it": "Anche perché soprattutto, secondo me, magari meno a Milano ma più in altre realtà territoriali, c'è ancora una partecipazione attiva del dialetto.",
+   "kr": "특히 제 생각엔 밀라노에서는 덜하지만 다른 지역에서는 방언이 아직도 활발히 쓰이거든요."
   },
   {
    "t": 369.68,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "Quindi anche quelli che magari all'estero vengono definiti \"slang\" o modi di dire differenti, qua spesso c'è ancora una parte dialettale forte.",
-   "kr": "그래서 해외에서는 '슬랭'이나 다른 관용 표현이라고 부르는 것들도, 여기서는 여전히 방언 색채가 강한 경우가 많아요."
+   "d": 26,
+   "it": "Quindi anche quelle che magari all'estero vengono definiti \"slang\" o modi di dire differenti, qua spesso anche è… ancora una parte dialettale forte.",
+   "kr": "그래서 해외에서는 '슬랭'이나 다른 관용 표현이라고 부르는 것들도, 여기서는 아직도 방언의 영향이 강한 경우가 많아요."
   },
   {
    "t": 378.4,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "Su Milano magari si sente meno perché è molto più internazionale,",
-   "kr": "밀라노는 훨씬 국제적이라서 그런 게 덜 느껴질 수 있지만,"
+   "d": 26,
+   "it": "Su Milano magari si sente meno, perché è molto più internazionale, però in altre località,",
+   "kr": "밀라노는 훨씬 국제적이라서 그런 게 덜 느껴질 수 있지만, 다른 지역들에서는요,"
   },
   {
-   "t": 381.45,
+   "t": 382.61,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "però in altre località (che non siano per forza la classica Roma o Napoli,",
-   "kr": "다른 지역들에서는요 (꼭 전형적인 로마나 나폴리가 아니더라도,"
+   "d": 26,
+   "it": "che non siano per forza, magari, la classica Roma o Napoli, ma si vede anche, so, in Liguria, a Genova…",
+   "kr": "꼭 전형적인 로마나 나폴리가 아니더라도, 제가 알기로는 리구리아의 제노바에서도 볼 수 있어요…"
   },
   {
-   "t": 385.68,
+   "t": 389.31,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "ma si vede anche in Liguria a Genova, o in Veneto da dove arrivo io)",
-   "kr": "리구리아의 제노바나 제가 온 베네토에서도 볼 수 있어요)"
+   "d": 26,
+   "it": "In Veneto…",
+   "kr": "베네토에서도…"
   },
   {
-   "t": 392.54,
+   "t": 390.51,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "ci sono secondo me molte difficoltà da quel punto di vista.",
-   "kr": "그런 면에서는 제 생각에 어려움이 많아요."
+   "d": 26,
+   "it": "In Veneto, da dove arriva lui, cioè, ci sono, secondo me, molte difficoltà da quel punto di vista,",
+   "kr": "이 친구가 온 베네토에도, 그러니까, 제 생각엔 그런 면에서 어려움이 많아요,"
   },
   {
    "t": 395.74,
    "s": 4,
    "g": 12,
-   "d": 12,
-   "it": "Però è la parte caratteristica dell'Italia secondo me!",
+   "d": 26,
+   "it": "però è la parte caratteristica dell'Italia, secondo me.",
    "kr": "그래도 그게 제 생각엔 이탈리아다운 특징이에요!"
   },
   {
-   "t": 399.57,
+   "t": 398.31,
    "s": 4,
-   "g": 13,
-   "d": 13,
-   "it": "Tipo le doppie, per esempio!",
-   "kr": "예를 들면 이중 자음이요!"
+   "g": 12,
+   "d": 27,
+   "it": "E, tipo…",
+   "kr": "그리고, 예를 들면…"
   },
   {
-   "t": 402.91,
+   "t": 400.83,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Mi rendo conto che molti stranieri...",
-   "kr": "많은 외국인이... 그렇다는 걸 느껴요..."
+   "d": 27,
+   "it": "Non so, le doppie.",
+   "kr": "글쎄요, 이중 자음이요."
+  },
+  {
+   "t": 402.34,
+   "s": 4,
+   "g": 13,
+   "d": 27,
+   "it": "Per esempio, mi rendo conto che molti stranieri…",
+   "kr": "예를 들어 많은 외국인이…"
   },
   {
    "t": 404.63,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Io quando andavo alle superiori avevo in classe delle persone straniere",
+   "d": 27,
+   "it": "Io, quando andavo alle superiori, che avevo comunque in classe delle persone straniere,",
    "kr": "저는 고등학교 때 반에 외국인 친구들이 있었는데,"
   },
   {
-   "t": 409.47,
+   "t": 409.68,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "e mi rendevo conto che loro non riuscivano a capire",
-   "kr": "그 친구들이 이해하지 못한다는 걸 알았어요,"
-  },
-  {
-   "t": 412.84,
-   "s": 4,
-   "g": 13,
-   "d": 13,
-   "it": "quando alcune parole andavano con le lettere doppie, queste cose qua.",
-   "kr": "어떤 단어에 이중 자음이 들어가는지, 그런 것들요."
+   "d": 27,
+   "it": "mi rendevo conto che loro non riuscivano a capire quando in alcune parole andavano, non so, le lettere doppie, queste cose qua.",
+   "kr": "그 친구들이 이해하지 못한다는 걸 알았어요, 어떤 단어에 이중 자음이 들어가는지, 그런 것들요."
   },
   {
    "t": 417.76,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Oppure anche per gli articoli determinativi e indeterminativi, o per la grammatica in generale.",
+   "d": 27,
+   "it": "Oppure anche per gli articoli determinativi, indeterminativi, oppure per la grammatica in generale, secondo me.",
    "kr": "정관사와 부정관사도 그렇고, 문법 전반도 그래요."
   },
   {
    "t": 426.52,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Un'altra cosa che mi fanno notare è che parliamo tanto veloce!",
-   "kr": "또 하나 사람들이 지적하는 건 우리가 말을 너무 빨리 한다는 거예요!"
+   "d": 28,
+   "it": "Un'altra cosa che mi fanno notare: parliamo tanto veloce… mai come i francesi, però.",
+   "kr": "또 하나 사람들이 지적하는 건 우리가 말을 너무 빨리 한다는 거예요! 프랑스 사람들만큼은 아니지만요..."
   },
   {
-   "t": 429.74,
+   "t": 431.68,
    "s": 4,
    "g": 13,
-   "d": 13,
-   "it": "Mai come i francesi, però...",
-   "kr": "프랑스 사람들만큼은 아니지만요..."
+   "d": 28,
+   "it": "Mo': \"Sono francese\". Scusa.",
+   "kr": "지금은 이렇게요: '저는 프랑스 사람이에요.' 실례."
+  },
+  {
+   "t": 434.69,
+   "s": 4,
+   "g": 13,
+   "d": 28,
+   "it": "No, no, no.",
+   "kr": "아니, 아니, 아니."
   },
   {
    "t": 436.72,
    "s": 5,
    "g": 14,
-   "d": 14,
+   "d": 29,
    "it": "Anche gli italiani sbagliano a volte?",
    "kr": "이탈리아 사람들도 가끔 실수해요?"
   },
   {
-   "t": 440.3,
+   "t": 440.01,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "Eh sì!",
-   "kr": "그럼요!"
+   "d": 30,
+   "it": "Mah.",
+   "kr": "글쎄요."
   },
   {
-   "t": 441.43,
+   "t": 441.14,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "L'altro è forse il congiuntivo...",
-   "kr": "또 하나는 아마 접속법일 거예요..."
+   "d": 30,
+   "it": "Sì.",
+   "kr": "네."
+  },
+  {
+   "t": 441.91,
+   "s": 5,
+   "g": 14,
+   "d": 30,
+   "it": "Esatto, forse il congiuntivo.",
+   "kr": "맞아요, 아마 접속법이요."
   },
   {
    "t": 443.49,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "Suggeriscono il congiuntivo!",
-   "kr": "다들 접속법을 꼽죠!"
+   "d": 30,
+   "it": "Suggeriscono \"il congiuntivo\".",
+   "kr": "다들 '접속법'을 꼽네요."
   },
   {
    "t": 445.93,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "Io non lo sbaglio,",
-   "kr": "저는 틀리지 않지만,"
+   "d": 30,
+   "it": "Io non lo sbaglio, eh.",
+   "kr": "저는 안 틀려요, 어."
   },
   {
    "t": 447.3,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "però magari quando uno è un po' più piccolo e sta iniziando ad andare a scuola impara l'importanza del congiuntivo.",
-   "kr": "그래도 아이가 조금 어릴 때 학교에 다니기 시작하면서 접속법의 중요성을 배우게 되죠."
+   "d": 30,
+   "it": "Però…",
+   "kr": "그래도…"
+  },
+  {
+   "t": 447.99,
+   "s": 5,
+   "g": 14,
+   "d": 30,
+   "it": "No, magari, quando uno è un po' più piccolo, che sta iniziando a andare a scuola e impara l'importanza del congiuntivo.",
+   "kr": "아니, 어쩌면 조금 더 어릴 때, 학교에 다니기 시작하면서 접속법의 중요성을 배울 때요."
   },
   {
    "t": 456.39,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "Sì, purtroppo sì, capita ed è molto frequente soprattutto con il condizionale e il congiuntivo,",
-   "kr": "네, 안타깝게도 그래요. 자주 일어나는데, 특히 조건법과 접속법에서 그렇고,"
+   "d": 31,
+   "it": "Sì, purtroppo sì, capita.",
+   "kr": "네, 안타깝게도 그래요. 그런 일이 있어요."
+  },
+  {
+   "t": 459.94,
+   "s": 5,
+   "g": 14,
+   "d": 31,
+   "it": "E è molto frequente soprattutto con il condizionale e il congiuntivo.",
+   "kr": "그리고 아주 흔해요. 특히 조건법과 접속법에서요."
   },
   {
    "t": 466.07,
    "s": 5,
    "g": 14,
-   "d": 14,
-   "it": "quindi i tempi verbali, perché sono effettivamente complicati.",
-   "kr": "그러니까 동사 시제들이죠. 실제로 복잡하거든요."
-  },
-  {
-   "t": 469.49,
-   "s": 5,
-   "g": 14,
-   "d": 14,
-   "it": "Per cui anche gli italiani devono sempre continuamente esercitarsi con la lingua.",
-   "kr": "그래서 이탈리아 사람들도 언어를 계속해서 끊임없이 연습해야 해요."
+   "d": 31,
+   "it": "Quindi i tempi verbali, perché sono effettivamente complicati, per cui anche gli italiani devono sempre, continuamente esercitarsi con la lingua.",
+   "kr": "그러니까 동사 시제들이죠. 실제로 복잡하거든요. 그래서 이탈리아 사람들도 언어를 늘 계속 연습해야 해요."
   },
   {
    "t": 474.5,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "Assolutamente sì, sempre, sempre!",
-   "kr": "당연히 그렇죠, 항상, 항상요!"
+   "d": 32,
+   "it": "Assolutamente sì, sempre, sempre…",
+   "kr": "당연히 그렇죠, 항상, 항상요…"
+  },
+  {
+   "t": 476.97,
+   "s": 5,
+   "g": 15,
+   "d": 32,
+   "it": "Sì, però…",
+   "kr": "네, 그런데…"
   },
   {
    "t": 477.42,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "Soprattutto i congiuntivi: il congiuntivo è il verbo più difficile da usare,",
-   "kr": "특히 접속법이요. 접속법은 쓰기 가장 어려운 동사 형태인데,"
+   "d": 32,
+   "it": "Soprattutto i congiuntivi, i congiuntivi sono il verbo più difficile da usare.",
+   "kr": "특히 접속법이요. 접속법은 쓰기 가장 어려운 동사 형태예요."
   },
   {
    "t": 481.94,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "che bisognerebbe usare sempre e in realtà non si usa mai,",
-   "kr": "늘 써야 마땅한데 실제로는 거의 안 쓰이고,"
+   "d": 33,
+   "it": "Che bisognerebbe usare sempre.",
+   "kr": "늘 써야 마땅한데"
   },
   {
-   "t": 484.87,
+   "t": 483.61,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "ed è uno degli elementi chiave dell'italiano.",
-   "kr": "이탈리아어의 핵심 요소 중 하나예요."
+   "d": 33,
+   "it": "In realtà, non si usa mai, ed è uno degli elementi chiave dell'italiano.",
+   "kr": "사실은 거의 안 쓰이고요, 이탈리아어의 핵심 요소 중 하나예요."
   },
   {
    "t": 488.24,
    "s": 5,
    "g": 15,
-   "d": 15,
-   "it": "Quindi quello sì, è difficile per gli italiani e sarà difficile anche per gli stranieri.",
+   "d": 33,
+   "it": "Quindi quello, sì, è difficile per gli italiani, sarà difficile anche per gli stranieri.",
    "kr": "그러니 그건 정말 이탈리아 사람에게도 어렵고, 외국인에게도 어려울 거예요."
   },
   {
    "t": 491.53,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Quindi anche gli italiani sbagliano?",
+   "d": 34,
+   "it": "Quindi anche gli italiani sbagliano a volte?",
    "kr": "그러면 이탈리아 사람들도 실수하나요?"
+  },
+  {
+   "t": 494.07,
+   "s": 5,
+   "g": 16,
+   "d": 35,
+   "it": "Sì.",
+   "kr": "네."
   },
   {
    "t": 494.82,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Molte volte sì!",
-   "kr": "자주 해요!"
+   "d": 35,
+   "it": "Molte volte, sì, perché è una lingua molto complicata, anche, ha tante regole,",
+   "kr": "자주 해요, 네. 아주 복잡한 언어고, 규칙도 많거든요,"
   },
   {
-   "t": 495.92,
+   "t": 498.7,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "È una lingua molto complicata e ha tante regole a differenza delle altre lingue che sono un po' più semplici.",
-   "kr": "아주 복잡한 언어고, 조금 더 단순한 다른 언어들과 달리 규칙이 많아요."
+   "d": 35,
+   "it": "a differenza di altre, magari, lingue che sono un po' più semplici.",
+   "kr": "조금 더 단순한 다른 언어들과 달리요."
   },
   {
-   "t": 505.0,
+   "t": 503.62,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Gli errori più comuni?",
-   "kr": "가장 흔한 실수요?"
+   "d": 35,
+   "it": "E quali sono gli errori più comuni?",
+   "kr": "그러면 가장 흔한 실수는 뭐예요?"
+  },
+  {
+   "t": 506.85,
+   "s": 5,
+   "g": 16,
+   "d": 36,
+   "it": "I congiuntivi.",
+   "kr": "접속법이요."
+  },
+  {
+   "t": 509.45,
+   "s": 5,
+   "g": 16,
+   "d": 36,
+   "it": "Sì, esatto.",
+   "kr": "네, 맞아요."
   },
   {
    "t": 509.93,
    "s": 5,
    "g": 16,
-   "d": 16,
+   "d": 36,
    "it": "I congiuntivi.",
    "kr": "접속법이죠."
   },
@@ -3820,351 +3964,631 @@ window.LESSONS.push({
    "t": 510.73,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Diciamo che gli italiani hanno dimenticato l'italiano, la famosa grammatica ormai è un hobby!",
-   "kr": "이탈리아 사람들이 이탈리아어를 잊어버렸다고 할 수 있죠. 그 유명한 문법은 이제 취미 같은 거예요!"
+   "d": 37,
+   "it": "Diciamo che gli italiani hanno dimenticato l'italiano, cioè, la famosa grammatica ormai è un hobby,",
+   "kr": "이탈리아 사람들이 이탈리아어를 잊어버렸다고 할 수 있죠. 그 유명한 문법은 이제 취미 같은 거예요,"
+  },
+  {
+   "t": 516.82,
+   "s": 5,
+   "g": 16,
+   "d": 37,
+   "it": "Sì, sì, sì.",
+   "kr": "네, 네, 네."
   },
   {
    "t": 518.58,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Sicuramente sì, poi direi che oggigiorno ancora di più.",
-   "kr": "확실히 그래요. 요즘은 더 그렇다고 봐요."
+   "d": 38,
+   "it": "Sicuramente, sì.",
+   "kr": "확실히 그래요."
+  },
+  {
+   "t": 520.52,
+   "s": 5,
+   "g": 16,
+   "d": 38,
+   "it": "Poi direi che oggigiorno ancora di più.",
+   "kr": "요즘은 더 그렇다고 봐요."
   },
   {
    "t": 523.3,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Capita abbastanza spesso che la gente non sa leggere una parola,",
-   "kr": "사람들이 단어 하나를 읽지 못하는 일이 꽤 자주 있고,"
+   "d": 38,
+   "it": "Capita, capita abbastanza spesso che, che la gente non sa…",
+   "kr": "자주 있는 일이에요, 사람들이 모르는 경우가…"
   },
   {
-   "t": 530.98,
+   "t": 530.01,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "non sa cosa vuol dire,",
-   "kr": "무슨 뜻인지 모르기도 하고,"
-  },
-  {
-   "t": 532.6,
-   "s": 5,
-   "g": 16,
-   "d": 16,
-   "it": "o magari si usano sempre le stesse parole.",
-   "kr": "아니면 늘 같은 단어만 쓰기도 해요."
+   "d": 38,
+   "it": "Legge una parola, non sa cosa vuol dire o magari si usano sempre le stesse parole.",
+   "kr": "단어를 읽고도 무슨 뜻인지 모르거나, 아니면 늘 같은 단어만 쓰죠."
   },
   {
    "t": 534.64,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "Un po' questo è il problema:",
+   "d": 38,
+   "it": "Un po' questo è il problema.",
    "kr": "바로 그게 문제예요."
   },
   {
    "t": 535.86,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "in Italia si inizia a leggere sempre meno",
-   "kr": "이탈리아에서는 읽는 양이 점점 줄고 있고,"
+   "d": 38,
+   "it": "In Italia si inizia a leggere sempre meno e questo è chiaramente poi un problema per, per la lingua parlata anche in giro, sicuramente.",
+   "kr": "이탈리아에서는 읽는 양이 점점 줄고 있고, 그건 결국 일상에서 쓰는 말에도 분명 문제가 되죠."
   },
   {
-   "t": 538.18,
+   "t": 544.21,
    "s": 5,
    "g": 16,
-   "d": 16,
-   "it": "e questo è chiaramente poi un problema per la lingua parlata.",
-   "kr": "그건 결국 구어에도 분명한 문제가 되죠."
+   "d": 39,
+   "it": "Sì, purtroppo, sì.",
+   "kr": "네, 안타깝지만 그래요."
   },
   {
    "t": 546.08,
    "s": 6,
    "g": 17,
-   "d": 17,
-   "it": "Con i verbi soprattutto, i congiuntivi.",
-   "kr": "동사, 특히 접속법에서요."
+   "d": 40,
+   "it": "Con i verbi, soprattutto.",
+   "kr": "특히 동사에서요."
+  },
+  {
+   "t": 549.34,
+   "s": 6,
+   "g": 17,
+   "d": 40,
+   "it": "I congiuntivi.",
+   "kr": "접속법이요."
+  },
+  {
+   "t": 551.13,
+   "s": 6,
+   "g": 17,
+   "d": 40,
+   "it": "I congiuntivi.",
+   "kr": "접속법이요."
+  },
+  {
+   "t": 551.49,
+   "s": 6,
+   "g": 17,
+   "d": 41,
+   "it": "Il congiuntivo, sì.",
+   "kr": "접속법, 네."
+  },
+  {
+   "t": 551.98,
+   "s": 6,
+   "g": 17,
+   "d": 41,
+   "it": "Sì, tanto.",
+   "kr": "네, 많이요."
   },
   {
    "t": 552.98,
    "s": 6,
    "g": 17,
-   "d": 17,
+   "d": 41,
    "it": "Potreste farci un esempio?",
    "kr": "예를 하나 들어 주실 수 있나요?"
+  },
+  {
+   "t": 554.84,
+   "s": 6,
+   "g": 17,
+   "d": 42,
+   "it": "Lo sapevo!",
+   "kr": "그럴 줄 알았어요!"
   },
   {
    "t": 556.02,
    "s": 6,
    "g": 17,
-   "d": 17,
-   "it": "Un errore tipico: dire 'Se io avrei...' invece di 'Se io avessi...'.",
-   "kr": "전형적인 실수는 'Se io avessi...' 대신 'Se io avrei...'라고 말하는 거예요."
+   "d": 42,
+   "it": "Un errore tipico che potrebbe fare un italiano.",
+   "kr": "이탈리아 사람이 할 법한 전형적인 실수예요."
   },
   {
-   "t": 563.98,
+   "t": 557.85,
    "s": 6,
    "g": 17,
-   "d": 17,
-   "it": "Questo è tipico!",
-   "kr": "이게 아주 전형적이에요!"
+   "d": 42,
+   "it": "\"Se io avrei…\"",
+   "kr": "'Se io avrei…'"
+  },
+  {
+   "t": 559.34,
+   "s": 6,
+   "g": 17,
+   "d": 43,
+   "it": "\"Se io avrei…\"",
+   "kr": "'Se io avrei…'"
+  },
+  {
+   "t": 560.73,
+   "s": 6,
+   "g": 17,
+   "d": 43,
+   "it": "Invece di \"se io avessi…\", \"se io avrei…\", questo è tipico, sì.",
+   "kr": "'Se io avessi…' 대신 'Se io avrei…'라고 하는 게 아주 전형적이에요."
   },
   {
    "t": 565.61,
    "s": 6,
    "g": 17,
-   "d": 18,
-   "it": "Oppure utilizzare 'gli' anche al femminile",
+   "d": 43,
+   "it": "Oppure utilizzare \"gli\" anche al femminile.",
    "kr": "아니면 여성에게도 'gli'를 쓰는 거예요."
   },
   {
-   "t": 569.54,
+   "t": 569.17,
    "s": 6,
    "g": 17,
-   "d": 18,
-   "it": "('Gli ho detto' quando ci riferiamo ad una ragazza,",
-   "kr": "(여자아이를 가리키는데 'Gli ho detto'(그에게 말했다)라고 하는 경우인데,"
+   "d": 43,
+   "it": "Tipo, \"gli ho detto\" quando ci riferiamo ad una ragazza, magari sarebbe più…",
+   "kr": "예를 들어 여자아이를 가리키는데 'gli ho detto'(그에게 말했다)라고 하는 경우인데, 아마 더…"
   },
   {
-   "t": 572.91,
+   "t": 574.47,
    "s": 6,
    "g": 17,
-   "d": 18,
-   "it": "mentre sarebbe più corretto utilizzare 'Le ho detto').",
-   "kr": "'Le ho detto'(그녀에게 말했다)라고 쓰는 게 더 올바릅니다.)"
+   "d": 43,
+   "it": "È più corretto utilizzare \"le ho detto\".",
+   "kr": "'le ho detto'(그녀에게 말했다)라고 쓰는 게 더 올바릅니다."
   },
   {
-   "t": 577.82,
+   "t": 577.22,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "Oppure ad esempio 'un albero' va senza l'apostrofo quando scritto, mentre l'apostrofo viene messo solo al femminile (quindi ad esempio 'un'ancora').",
-   "kr": "또는 예를 들어 'un albero'는 쓸 때 아포스트로피가 없는데, 아포스트로피는 여성형에만 붙어요(예: 'un'ancora')."
+   "d": 43,
+   "it": "Sì, oppure, ad esempio, \"un albero\" va senza l'apostrofo quando scritto, mentre…",
+   "kr": "네, 또는 예를 들어 'un albero'는 쓸 때 아포스트로피가 없는데, 반면에…"
   },
   {
-   "t": 589.92,
+   "t": 584.47,
    "s": 6,
    "g": 17,
-   "d": 19,
-   "it": "Alcune persone lo mettono anche al maschile.",
-   "kr": "어떤 사람들은 남성형에도 붙여요."
+   "d": 43,
+   "it": "L'apostrofo viene messo solo al femminile, quindi, ad esempio, \"un'ancora\",",
+   "kr": "아포스트로피는 여성형에만 붙어요. 예를 들어 'un'ancora'처럼요,"
   },
   {
-   "t": 593.57,
+   "t": 589.61,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "Poi il classico congiuntivo:",
-   "kr": "그리고 전형적인 접속법 문제예요."
+   "d": 43,
+   "it": "e alcune persone lo mettono anche al maschile, quindi scrivendo, magari, pure se ne fanno.",
+   "kr": "어떤 사람들은 남성형에도 붙여요. 그래서 글을 쓸 때 그런 실수를 하기도 하죠."
   },
   {
-   "t": 598.16,
+   "t": 595.39,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "la regola base è che dopo il 'se' va sempre il congiuntivo,",
-   "kr": "기본 규칙은 'se' 뒤에는 항상 접속법이 온다는 건데,"
+   "d": 44,
+   "it": "Il classico congiuntivo; la regola base è: dopo il \"se\", va sempre il congiuntivo, e a volte si sbaglia con il condizionale.",
+   "kr": "그리고 전형적인 접속법 문제예요. 기본 규칙은 'se' 뒤에는 항상 접속법이 온다는 건데, 가끔 조건법과 혼동해서 틀려요."
   },
   {
-   "t": 604.79,
+   "t": 606.81,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "a volte si sbaglia con il condizionale.",
-   "kr": "가끔 조건법과 혼동해서 틀려요."
+   "d": 44,
+   "it": "E un altro comune quando si scrive, forse gli accenti, anche.",
+   "kr": "글로 쓸 때 흔한 또 다른 실수는 악센트, 그것도 있어요."
   },
   {
-   "t": 607.46,
+   "t": 612.1,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "Un altro comune quando si scrive sono gli accenti con la 'a' e la 'ha'...",
-   "kr": "글로 쓸 때 흔한 또 다른 실수는 악센트, 그리고 'a'와 'ha'예요..."
+   "d": 44,
+   "it": "\"Ha\" con l'H, \"a\" senza H, ormai è la stessa cosa, però va bene…",
+   "kr": "'ha'는 H가 붙고 'a'는 H가 없는데, 요즘은 같은 거나 마찬가지지만 그래도 괜찮아요…"
   },
   {
-   "t": 619.7,
+   "t": 617.79,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "'a' con l'H e 'a' senza H sono due cose completamente diverse!",
-   "kr": "H가 붙은 'a'(ha)와 H가 없는 'a'는 완전히 다른 거예요!"
+   "d": 44,
+   "it": "Per chi ci guarda, no: \"ha\" con l'H e \"a\" senza H sono due cose completamente diverse.",
+   "kr": "지켜보는 분들을 위해 말하자면, 아니에요. H가 붙은 'ha'와 H가 없는 'a'는 완전히 다른 거예요."
   },
   {
-   "t": 624.73,
+   "t": 623.76,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "'a' con l'H è del verbo avere.",
-   "kr": "H가 붙은 'a'(ha)는 동사 avere의 활용형이에요."
+   "d": 44,
+   "it": "Però, va bene…",
+   "kr": "그래도, 괜찮아요…"
   },
   {
-   "t": 628.59,
+   "t": 625.31,
    "s": 6,
    "g": 17,
-   "d": 20,
-   "it": "E 'e' con l'accento ('è') e senza accento ('e'): congiunzione e verbo sono due cose completamente diverse!",
-   "kr": "그리고 악센트가 있는 'è'와 없는 'e'도 동사와 접속사로 완전히 다른 거예요!"
+   "d": 44,
+   "it": "Quindi \"ha\" con l'H del verbo \"avere\"?",
+   "kr": "그러면 H가 붙은 'ha'는 동사 'avere'의 활용형이에요?"
+  },
+  {
+   "t": 628.07,
+   "s": 6,
+   "g": 17,
+   "d": 45,
+   "it": "Esatto.",
+   "kr": "맞아요."
+  },
+  {
+   "t": 628.5,
+   "s": 6,
+   "g": 17,
+   "d": 46,
+   "it": "Esatto.",
+   "kr": "맞아요."
+  },
+  {
+   "t": 628.93,
+   "s": 6,
+   "g": 17,
+   "d": 46,
+   "it": "Anche \"è\" con l'accento, \"è\" senza accento.",
+   "kr": "악센트가 있는 'è'와 악센트가 없는 'e'도 그래요."
+  },
+  {
+   "t": 633.12,
+   "s": 6,
+   "g": 17,
+   "d": 46,
+   "it": "Congiunzione; verbo.",
+   "kr": "접속사와 동사죠."
+  },
+  {
+   "t": 634.6,
+   "s": 6,
+   "g": 17,
+   "d": 46,
+   "it": "Sono due cose completamente diverse, però.",
+   "kr": "완전히 다른 거예요, 그런데."
+  },
+  {
+   "t": 637.66,
+   "s": 6,
+   "g": 17,
+   "d": 46,
+   "it": "\"Hanno\" come verbo è con l'H, \"anno\" inteso come periodo è senza H, e alcuni scrivono…",
+   "kr": "동사 'hanno'는 H가 붙고, 기간을 뜻하는 'anno'는 H가 없는데, 어떤 사람들은 이렇게 써요…"
+  },
+  {
+   "t": 644.17,
+   "s": 6,
+   "g": 17,
+   "d": 47,
+   "it": "Comunque, bisogna…",
+   "kr": "어쨌든, …해야 해요…"
   },
   {
    "t": 646.49,
    "s": 7,
    "g": 18,
-   "d": 21,
-   "it": "Uno straniero che vuole imparare l'italiano deve stare abbastanza tranquillo,",
+   "d": 48,
+   "it": "Uno straniero che vuole imparare italiano deve stare abbastanza tranquillo, perché…",
    "kr": "이탈리아어를 배우고 싶은 외국인은 마음을 편하게 가져도 돼요,"
   },
   {
    "t": 650.85,
    "s": 7,
    "g": 18,
-   "d": 21,
-   "it": "proprio perché gli italiani fanno già fatica loro a parlare la propria lingua!",
-   "kr": "이탈리아 사람들조차 자기 언어를 말하는 데 이미 애를 먹으니까요!"
+   "d": 48,
+   "it": "Proprio perché gli italiani fanno già fatica loro a parlare la propria lingua, anche loro non hanno…",
+   "kr": "바로 이탈리아 사람들조차 자기 언어를 말하는 데 이미 애를 먹으니까요. 그들도 …"
   },
   {
-   "t": 656.31,
+   "t": 655.52,
    "s": 7,
    "g": 18,
-   "d": 21,
-   "it": "Importante è farsi capire.",
+   "d": 48,
+   "it": "Devono…",
+   "kr": "(그들도) 해야…"
+  },
+  {
+   "t": 656.1,
+   "s": 7,
+   "g": 18,
+   "d": 48,
+   "it": "L'importante è farsi capire.",
    "kr": "중요한 건 의사소통이 되는 거예요."
   },
   {
    "t": 657.13,
    "s": 7,
    "g": 18,
-   "d": 21,
-   "it": "Poi noi italiani abbiamo anche il linguaggio dei gesti, quindi basta un po' di movimento di mani e ti fai capire!",
-   "kr": "게다가 우리 이탈리아 사람들에겐 손짓 언어도 있어서, 손을 조금만 움직여도 다 통해요!"
+   "d": 48,
+   "it": "Poi noi italiani abbiamo anche il linguaggio dei gesti,",
+   "kr": "게다가 우리 이탈리아 사람들에겐 손짓 언어도 있어서,"
   },
   {
-   "t": 667.21,
+   "t": 659.34,
    "s": 7,
    "g": 18,
-   "d": 22,
-   "it": "Sbagliare?",
-   "kr": "실수요?"
+   "d": 48,
+   "it": "e quindi basta un po' di movimento di mani e più o meno ti fai capire facilmente.",
+   "kr": "손을 조금만 움직여도 대충 쉽게 통해요."
   },
   {
-   "t": 668.01,
+   "t": 663.57,
    "s": 7,
    "g": 18,
-   "d": 22,
-   "it": "Io non mi vergogno a dire che a volte mi è capitato,",
-   "kr": "저는 가끔 실수한 적이 있다고 말하는 게 부끄럽지 않아요,"
+   "d": 48,
+   "it": "Giusto.",
+   "kr": "맞아요."
   },
   {
-   "t": 671.24,
+   "t": 665.16,
    "s": 7,
    "g": 18,
-   "d": 22,
-   "it": "perché magari sei sovrappensiero o ti senti imbarazzato in quel momento.",
-   "kr": "다른 생각에 빠져 있거나 그 순간 쑥스러울 수 있으니까요."
+   "d": 49,
+   "it": "A voi capita di sbagliare?",
+   "kr": "두 분은 실수할 때가 있어요?"
   },
   {
-   "t": 676.9,
+   "t": 667.72,
    "s": 7,
    "g": 18,
-   "d": 22,
-   "it": "Capita che magari sbagli a coniugare un verbo o pronunciare una parola.",
-   "kr": "동사 활용을 틀리거나 단어를 잘못 발음하는 일도 생기죠."
+   "d": 50,
+   "it": "Mah, io non mi vergogno a dire che a volte mi è capitato, perché magari… o, boh,",
+   "kr": "음, 저는 가끔 그런 적이 있다고 말하는 게 부끄럽지 않아요. 왜냐하면 어쩌면… 아니, 글쎄요,"
+  },
+  {
+   "t": 673.87,
+   "s": 7,
+   "g": 18,
+   "d": 50,
+   "it": "sei sovrappensiero oppure ti senti imbarazzato in quel momento, capita che magari sbagli a o coniugare un verbo oppure pronunciare una parola.",
+   "kr": "다른 생각에 빠져 있거나 그 순간 쑥스러울 수 있고, 동사 활용을 틀리거나 단어를 잘못 발음하는 일도 생기죠."
   },
   {
    "t": 682.29,
    "s": 7,
    "g": 18,
-   "d": 22,
-   "it": "Tutti possono sbagliare!",
+   "d": 50,
+   "it": "Tutti possono sbagliare.",
    "kr": "누구나 실수할 수 있어요!"
+  },
+  {
+   "t": 684.93,
+   "s": 7,
+   "g": 18,
+   "d": 50,
+   "it": "Sì, concordo.",
+   "kr": "네, 동의해요."
+  },
+  {
+   "t": 685.78,
+   "s": 7,
+   "g": 18,
+   "d": 51,
+   "it": "Sì.",
+   "kr": "네."
+  },
+  {
+   "t": 686.15,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Abbondantemente, sì.",
+   "kr": "충분히 그래요, 네."
+  },
+  {
+   "t": 688.59,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Per forza.",
+   "kr": "당연하죠."
   },
   {
    "t": 689.99,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "Anche nello scrivere molto spesso si fa fatica a regolarsi su come si scrive una determinata parola,",
-   "kr": "글을 쓸 때도 어떤 단어를 어떻게 써야 할지 감을 잡기 어려운 경우가 아주 많은데,"
+   "d": 52,
+   "it": "Anche, magari, nello scrivere.",
+   "kr": "글을 쓸 때도요."
+  },
+  {
+   "t": 691.39,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Molto spesso magari si fa fatica a ricordarsi come si scrive una determinata parola,",
+   "kr": "어떤 단어를 어떻게 쓰는지 기억하기 어려운 경우가 아주 많은데,"
   },
   {
    "t": 695.45,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "però c'è Google che ci aiuta e in qualche modo ci supporta!",
+   "d": 52,
+   "it": "però c'è Google che ci aiuta e in qualche modo ci supporta.",
    "kr": "구글이 도와주고 어떻게든 뒷받침해 주죠!"
   },
   {
-   "t": 699.69,
+   "t": 699.47,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "Anche l'utilizzo del passato, anche se il passato remoto forse è la forma più difficile...",
-   "kr": "과거 시제를 쓰는 것도 그래요. 원과거(passato remoto)가 아마 가장 어려운 형태겠지만..."
+   "d": 52,
+   "it": "Ma anche l'utilizzo del passato.",
+   "kr": "하지만 과거 시제를 쓰는 것도 그래요."
   },
   {
-   "t": 714.28,
+   "t": 700.83,
    "s": 7,
    "g": 18,
-   "d": 23,
-   "it": "basti pensare che abbiamo tre passati: prossimo, imperfetto e remoto.",
+   "d": 52,
+   "it": "Anche, sì.",
+   "kr": "그것도 맞아요."
+  },
+  {
+   "t": 701.69,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Tanto, il passato forse è la forma verbale più difficile, perché…",
+   "kr": "과거 시제가 어쩌면 가장 어려운 동사 형태일 거예요, 왜냐하면…"
+  },
+  {
+   "t": 706.17,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Magari dovresti usare un passato remoto invece di un passato…",
+   "kr": "원과거를 써야 할 때 다른 과거를 쓰게 되기도 하거든요…"
+  },
+  {
+   "t": 710.21,
+   "s": 7,
+   "g": 18,
+   "d": 52,
+   "it": "Prossimo, imperfetto, che sono più recenti.",
+   "kr": "근과거나 반과거 같은, 더 최근의 시제요."
+  },
+  {
+   "t": 712.38,
+   "s": 7,
+   "g": 18,
+   "d": 53,
+   "it": "Esatto.",
+   "kr": "맞아요."
+  },
+  {
+   "t": 712.65,
+   "s": 7,
+   "g": 18,
+   "d": 53,
+   "it": "L'imperfetto, quindi magari…",
+   "kr": "반과거요, 그래서 어쩌면…"
+  },
+  {
+   "t": 713.81,
+   "s": 7,
+   "g": 18,
+   "d": 53,
+   "it": "Utilizzi sbagli…",
+   "kr": "잘못 쓰게 되는…"
+  },
+  {
+   "t": 714.33,
+   "s": 7,
+   "g": 18,
+   "d": 54,
+   "it": "Basti pensare che abbiamo tre passati: c'è prossimo, imperfetto, remoto.",
    "kr": "과거가 세 가지나 있다는 것만 떠올려 보세요. 근과거, 반과거, 원과거요."
   },
   {
-   "t": 718.27,
+   "t": 718.58,
    "s": 7,
    "g": 18,
-   "d": 24,
-   "it": "E capita anche a me perché sono per metà tedesco, e ogni tanto sapendo anche l'inglese e altre lingue mi confondo...",
-   "kr": "저도 그래요. 저는 절반이 독일 사람이라서, 영어와 다른 언어도 알다 보니 가끔 헷갈리거든요..."
+   "d": 55,
+   "it": "Sicuramente, sì, perché sono per metà tedesco e ogni tanto, sapendo anche l'inglese e altre lingue, ogni tanto mi confondo con le altre lingue.",
+   "kr": "물론 그래요, 저는 절반이 독일 사람이라서, 영어와 다른 언어도 알다 보니 가끔 다른 언어들과 헷갈리거든요."
   },
   {
-   "t": 731.5,
+   "t": 730.26,
    "s": 7,
    "g": 18,
-   "d": 24,
-   "it": "Capita anche a me di fare lapsus ed errori!",
-   "kr": "저도 말실수나 실수를 하곤 해요!"
+   "d": 55,
+   "it": "E poi, vabbè, capita anche… errori, vari lapsus.",
+   "kr": "그리고, 뭐, 말실수 같은 여러 실수도 해요."
   },
   {
-   "t": 751.88,
+   "t": 735.04,
    "s": 7,
    "g": 18,
-   "d": 24,
-   "it": "Purtroppo è frequente, poi ovviamente nella lingua quotidiana parlata magari si percepisce meno,",
-   "kr": "안타깝게도 흔한 일이에요. 물론 일상 구어에서는 덜 티가 나지만,"
+   "d": 55,
+   "it": "Cioè, ci sono sicuramente.",
+   "kr": "그러니까, 분명히 있죠."
+  },
+  {
+   "t": 737.01,
+   "s": 7,
+   "g": 18,
+   "d": 56,
+   "it": "Ogni tanto, sì.",
+   "kr": "가끔은, 네."
+  },
+  {
+   "t": 738.18,
+   "s": 7,
+   "g": 18,
+   "d": 56,
+   "it": "Per esempio?",
+   "kr": "예를 들면요?"
+  },
+  {
+   "t": 739.94,
+   "s": 7,
+   "g": 18,
+   "d": 57,
+   "it": "Mah, magari qualche parola che mi suona strana, poi dico: \"No, è sbagliato\", invece è giusta, però… errori così.",
+   "kr": "음, 어떤 단어가 이상하게 들려서 '아니야, 틀렸어' 했는데 알고 보니 맞는 단어였던 적이 있어요. 그런 실수요."
+  },
+  {
+   "t": 748.86,
+   "s": 7,
+   "g": 18,
+   "d": 58,
+   "it": "Beh, certo, sì, sì, sì.",
+   "kr": "그럼요, 물론이죠, 네, 네, 네."
+  },
+  {
+   "t": 750.58,
+   "s": 7,
+   "g": 18,
+   "d": 58,
+   "it": "No, assolutamente, purtroppo è frequente.",
+   "kr": "아니, 정말로, 안타깝게도 흔한 일이에요."
+  },
+  {
+   "t": 753.82,
+   "s": 7,
+   "g": 18,
+   "d": 58,
+   "it": "Poi ovviamente nella lingua quotidiana, nel parlato, magari si percepisce meno.",
+   "kr": "물론 일상 구어에서는 덜 티가 나지만,"
   },
   {
    "t": 758.65,
    "s": 7,
    "g": 18,
-   "d": 24,
-   "it": "quando invece devi scrivere delle mail o cose un po' più formali",
-   "kr": "이메일이나 좀 더 격식 있는 글을 써야 할 때는"
-  },
-  {
-   "t": 762.61,
-   "s": 7,
-   "g": 18,
-   "d": 24,
-   "it": "lì bisogna fare particolarmente attenzione perché può essere complicato.",
-   "kr": "특히 신경 써야 해요. 복잡할 수 있으니까요."
+   "d": 58,
+   "it": "Quando invece, magari, devi scrivere delle e-mail o cose un po' più formali, eh, lì bisogna fare particolarmente attenzione, perché può essere complicato.",
+   "kr": "이메일이나 좀 더 격식 있는 글을 써야 할 때는 특히 신경 써야 해요. 복잡할 수 있거든요."
   },
   {
    "t": 766.59,
    "s": 7,
    "g": 18,
-   "d": 25,
-   "it": "È ufficiale: anche gli italiani fanno degli errori, meno male!",
-   "kr": "공식 확인입니다. 이탈리아 사람들도 실수를 해요. 다행이네요!"
+   "d": 59,
+   "it": "È ufficiale: anche gli italiani fanno degli errori.",
+   "kr": "공식 확인입니다. 이탈리아 사람들도 실수를 해요."
+  },
+  {
+   "t": 770.07,
+   "s": 7,
+   "g": 18,
+   "d": 59,
+   "it": "Meno male.",
+   "kr": "다행이네요!"
   },
   {
    "t": 771.31,
    "s": 7,
    "g": 18,
-   "d": 25,
+   "d": 59,
    "it": "E voi, qual è l'errore che fate più spesso in italiano?",
    "kr": "여러분은 이탈리아어에서 어떤 실수를 가장 자주 하세요?"
   },
@@ -4172,7 +4596,7 @@ window.LESSONS.push({
    "t": 775.04,
    "s": 7,
    "g": 18,
-   "d": 25,
+   "d": 60,
    "it": "Scrivetecelo nei commenti.",
    "kr": "댓글로 남겨 주세요."
   },
@@ -4180,8 +4604,8 @@ window.LESSONS.push({
    "t": 776.85,
    "s": 7,
    "g": 18,
-   "d": 25,
-   "it": "Ciao!",
+   "d": 60,
+   "it": "Ciao.",
    "kr": "안녕!"
   }
  ]

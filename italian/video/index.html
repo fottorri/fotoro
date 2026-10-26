@@ -6,6 +6,15 @@
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex, nofollow">
 <title>영상으로 공부하기 · 이탈리아어 단어 반복 학습</title>
+<link rel="manifest" href="/italian/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/italian/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/italian/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="이탈리아어">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#f3f4f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131418" media="(prefers-color-scheme: dark)">
 <style>
   :root {
     --bg: #f3f4f8;
@@ -406,13 +415,13 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/easy-italian-102.js?v=2026-10-26.6"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-26.6"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-26.7"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-26.7"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-26.6";
+  var BUILD = "2026-10-26.7";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   // ---- storage ----
@@ -629,7 +638,7 @@
   var SECTIONS = LESSON.sections, GROUPS = LESSON.groups;
 
   // ---- timing constants (seconds) ----
-  var LEAD = 0.1;       // show a subtitle slightly before the voice starts (start times follow the on-screen subtitles)
+  var LEAD = 0.05;      // show a subtitle slightly before the voice starts (start times follow the on-screen subtitles)
   var PRE = 0.2;        // when jumping to a sentence, start a little earlier so the first syllable is not clipped
   var END_PRE = 0.2;    // stop/loop slightly before the next sentence begins
   var TICK_MS = 60;
@@ -643,7 +652,7 @@
   function saveSettings() { saveJSON(SETTINGS_KEY, st); }
   function saveNudges() { allNudges[LESSON.id] = nudges; saveJSON(NUDGE_KEY, allNudges); }
   // the built-in subtitle times were re-measured against the burned-in subtitles: older sync adjustments no longer apply
-  var TIMING_VER = "ocr-1";
+  var TIMING_VER = "ocr-2";
   if (st.timingVer !== TIMING_VER) {
     var hadAdjust = !!st.offset;
     st.offset = 0;
