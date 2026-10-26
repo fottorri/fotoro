@@ -44,29 +44,9 @@
   }
   button { font-family: inherit; color: inherit; }
 
-  .topbar { position: relative; max-width: 1180px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  .back { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; }
-  .topbar-title { font-size: 15px; font-weight: 700; }
-  .lesson-btn {
-    display: flex; align-items: center; gap: 8px; max-width: 72vw; min-width: 0; cursor: pointer;
-    border: 1px solid var(--border); background: var(--card-bg); color: var(--text); border-radius: 12px;
-    padding: 8px 12px; font-size: 13px; font-weight: 700; box-shadow: var(--shadow);
-  }
-  .lb-label { color: var(--accent); font-size: 11.5px; flex-shrink: 0; }
-  .lb-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .sheet {
-    position: absolute; right: 0; top: calc(100% + 6px); z-index: 400; width: min(100%, 460px); max-height: 70vh; overflow-y: auto;
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); padding: 10px;
-  }
-  .sheet[hidden] { display: none; }
-  .sheet-title { font-size: 12px; font-weight: 700; color: var(--text-muted); padding: 4px 6px 8px; }
-  .li { display: flex; align-items: stretch; gap: 6px; margin-bottom: 6px; }
-  .li-main { flex: 1; min-width: 0; text-align: left; border: 1px solid var(--border); background: transparent; border-radius: 12px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; }
-  .li.active .li-main { border-color: var(--accent); background: var(--accent-soft); }
-  .li-title { font-size: 14px; font-weight: 700; overflow-wrap: anywhere; }
-  .li-meta { font-size: 11.5px; color: var(--text-muted); }
-  .li-del { border: 1px solid var(--border); background: transparent; border-radius: 12px; padding: 0 12px; font-size: 12px; color: var(--danger); cursor: pointer; }
-  .li-add { width: 100%; border: 1px dashed var(--accent); background: transparent; color: var(--accent); border-radius: 12px; padding: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+  .topbar { max-width: 1180px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .back { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .topbar-title { min-width: 0; font-size: 13.5px; font-weight: 700; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   dialog.dlg { border: 1px solid var(--border); border-radius: 18px; background: var(--card-bg); color: var(--text); padding: 18px; width: min(92vw, 520px); }
   dialog.dlg::backdrop { background: rgba(0, 0, 0, 0.55); }
   dialog.dlg h2 { margin: 0 0 12px; font-size: 16px; }
@@ -79,6 +59,35 @@
   .dlg-actions { display: flex; gap: 8px; justify-content: flex-end; }
   .sbtn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
   .now-kr:empty, .row-kr:empty { display: none; }
+
+  /* video library (start screen) */
+  .lib[hidden], #studyView[hidden] { display: none; }
+  .lib { max-width: 1180px; margin: 0 auto; }
+  .lib-head { margin: 8px 2px 16px; }
+  .lib-head h1 { margin: 0 0 6px; font-size: 22px; }
+  .lib-head p { margin: 0; font-size: 13.5px; color: var(--text-muted); line-height: 1.6; word-break: keep-all; overflow-wrap: break-word; }
+  .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+  .vcard { position: relative; display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .vlink { display: flex; flex-direction: column; flex: 1; color: inherit; text-decoration: none; }
+  .vlink:hover .vtitle { color: var(--accent); }
+  .vthumb { position: relative; aspect-ratio: 16 / 9; background: #20222b; overflow: hidden; }
+  .vthumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .vdur { position: absolute; right: 8px; bottom: 10px; background: rgba(0, 0, 0, 0.74); color: #fff; font-size: 11.5px; font-weight: 600; padding: 1px 6px; border-radius: 6px; font-variant-numeric: tabular-nums; }
+  .vtag { position: absolute; left: 8px; top: 8px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
+  .vbar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255, 255, 255, 0.35); }
+  .vbar i { display: block; height: 100%; background: var(--accent); }
+  .vbody { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 3px; }
+  .vtitle { font-size: 15.5px; font-weight: 700; overflow-wrap: anywhere; }
+  .vsub { font-size: 13.5px; opacity: 0.85; }
+  .vsub:empty { display: none; }
+  .vmeta { font-size: 12px; color: var(--text-muted); }
+  .vcta { margin-top: 8px; font-size: 13.5px; font-weight: 700; color: var(--accent); }
+  .vdel { position: absolute; right: 8px; top: 8px; border: 1px solid rgba(255, 255, 255, 0.55); background: rgba(0, 0, 0, 0.62); color: #fff; border-radius: 999px; font-size: 11.5px; padding: 3px 10px; cursor: pointer; }
+  .vadd { border: 2px dashed var(--accent); background: transparent; box-shadow: none; align-items: center; justify-content: center; text-align: center; padding: 22px 18px; min-height: 210px; cursor: pointer; color: var(--text); gap: 6px; font-family: inherit; }
+  .vadd:hover { background: var(--accent-soft); }
+  .vadd-plus { font-size: 34px; line-height: 1; color: var(--accent); }
+  .vadd-title { font-size: 16px; font-weight: 700; color: var(--accent); }
+  .vadd-help { max-width: 30em; font-size: 12.5px; line-height: 1.65; color: var(--text-muted); word-break: keep-all; overflow-wrap: break-word; }
 
   .page { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .layout, .col-main, .col-side { display: contents; }
@@ -113,6 +122,7 @@
   .ibtn:active { transform: scale(0.92); }
   .ibtn.sec { background: var(--border); color: var(--text); width: 46px; height: 46px; font-size: 16px; box-shadow: none; }
   .ibtn.big { width: 64px; height: 64px; font-size: 24px; }
+  .ibtn.skip { border-radius: 999px; font-weight: 700; letter-spacing: -0.2px; }
   .ibtn:disabled { opacity: 0.4; cursor: default; }
   .ibtn .lbl { display: none; }
 
@@ -120,6 +130,7 @@
   .controls-card .ibtn { width: 38px; height: 38px; font-size: 15px; box-shadow: none; }
   .controls-card .ibtn.sec { width: 34px; height: 34px; font-size: 13px; }
   .controls-card .ibtn.big { width: 48px; height: 48px; font-size: 19px; }
+  .controls-card .ibtn.skip { width: auto; min-width: 58px; padding: 0 13px; font-size: 13px; }
   .ctl-main { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
   .ctl-label { font-size: 11.5px; color: var(--text-muted); margin: 10px 0 6px; font-weight: 600; }
   .ctl-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
@@ -227,24 +238,30 @@
   .credit { max-width: 1180px; margin: 18px auto 0; text-align: center; font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
   .credit a { color: var(--text-muted); }
 
-  /* bottom dock: transport controls stay reachable while reading the notes */
+  /* bottom dock: the current line (both languages, in full) and the transport controls stay on screen while scrolling */
   .dock {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 300;
     background: var(--card-bg); border-top: 1px solid var(--border); box-shadow: 0 -4px 14px rgba(0,0,0,0.12);
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 9px 14px; padding-bottom: max(9px, env(safe-area-inset-bottom));
+    padding: 12px 14px; padding-bottom: max(12px, env(safe-area-inset-bottom));
     transform: translateY(110%); transition: transform 0.2s ease;
   }
   .dock.show { transform: none; }
-  .dock-info { flex: 1; min-width: 0; }
-  .dock-it { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .dock-kr { font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .dock-ctl { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .dock .ibtn { width: 42px; height: 42px; font-size: 16px; box-shadow: none; }
-  .dock .ibtn.sec { width: 38px; height: 38px; font-size: 14px; }
+  .dock-in { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .dock-info { min-width: 0; min-height: 84px; max-height: 40vh; overflow-y: auto; overscroll-behavior: contain; }
+  .dock-it { font-size: clamp(19px, 5.2vw, 25px); font-weight: 700; line-height: 1.35; overflow-wrap: break-word; }
+  .dock-kr { margin-top: 4px; font-size: clamp(16px, 4.4vw, 20px); line-height: 1.5; opacity: 0.9; word-break: keep-all; overflow-wrap: break-word; }
+  .dock-kr:empty { display: none; }
+  .dock-ctl { display: flex; align-items: center; justify-content: center; gap: 12px; flex-shrink: 0; }
+  .dock .ibtn { width: 56px; height: 56px; font-size: 22px; box-shadow: none; }
+  .dock .ibtn.sec { width: 48px; height: 48px; font-size: 20px; }
+  .dock .ibtn.skip { width: auto; min-width: 70px; padding: 0 16px; font-size: 15.5px; }
+  @media (min-width: 760px) {
+    .dock-in { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .dock-info { flex: 1; min-height: 72px; }
+  }
 
   .toast {
-    position: fixed; left: 50%; bottom: 84px; transform: translate(-50%, 20px);
+    position: fixed; left: 50%; bottom: calc(var(--dock-h, 0px) + 20px); transform: translate(-50%, 20px);
     background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 13px;
     opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; max-width: 90vw; text-align: center; z-index: 500;
   }
@@ -262,10 +279,20 @@
 </style>
 </head>
 <body>
-<div class="topbar" id="topbar">
-  <a class="back" href="../">← 단어 학습기</a>
-  <button type="button" class="lesson-btn" id="lessonBtn" aria-haspopup="true" aria-expanded="false" aria-label="영상 선택"><span class="lb-label">영상 선택</span><span class="lb-text" id="lbText"></span><span aria-hidden="true">▾</span></button>
-  <div class="sheet" id="lessonSheet" hidden></div>
+<div class="lib" id="libView" hidden>
+  <div class="topbar"><a class="back" href="../">← 단어 학습기</a></div>
+  <header class="lib-head">
+    <h1>영상으로 공부하기</h1>
+    <p>영상을 고르면 소리에 맞춰 자막이 나와요. 보던 곳은 자동으로 저장돼서 다음에 이어서 볼 수 있어요.</p>
+  </header>
+  <div class="lib-grid" id="libGrid"></div>
+  <p class="credit">자막과 번역은 개인 학습용으로 만든 것입니다.<br>페이지 버전 <span id="buildTag2"></span></p>
+</div>
+
+<div id="studyView" hidden>
+<div class="topbar">
+  <a class="back" href="./">← 영상 목록</a>
+  <span class="topbar-title" id="topTitle"></span>
 </div>
 
 <div class="page">
@@ -273,10 +300,10 @@
     <div class="col-main">
       <section class="card controls-card" id="controlsCard">
         <div class="ctl-main">
-          <button type="button" class="ibtn sec" id="btnPrev" aria-label="이전 문장" title="이전 문장 (←)">⏮</button>
+          <button type="button" class="ibtn sec skip" id="btnBack" aria-label="5초 뒤로" title="5초 뒤로 (←)">−5초</button>
           <button type="button" class="ibtn sec" id="btnReplay" aria-label="이 문장 다시 듣기" title="이 문장 다시 듣기 (R)">↺</button>
           <button type="button" class="ibtn big" id="btnPlay" aria-label="재생" title="재생/일시정지 (스페이스)">▶</button>
-          <button type="button" class="ibtn sec" id="btnNext" aria-label="다음 문장" title="다음 문장 (→)">⏭</button>
+          <button type="button" class="ibtn sec skip" id="btnFwd" aria-label="5초 앞으로" title="5초 앞으로 (→)">+5초</button>
         </div>
         <div class="seg" id="modeGroup" role="group" aria-label="재생 방식">
           <button type="button" data-mode="flow" aria-pressed="true">연속 재생</button>
@@ -354,14 +381,17 @@
 
 <p class="credit">영상: <a id="creditLink" target="_blank" rel="noopener">YouTube 원본</a> · 자막과 번역은 개인 학습용으로 만든 것입니다.<br>페이지 버전 <span id="buildTag"></span></p>
 
-<div class="dock" id="dock">
-  <div class="dock-info"><div class="dock-it" id="dockIt" lang="it"></div><div class="dock-kr" id="dockKr"></div></div>
-  <div class="dock-ctl">
-    <button type="button" class="ibtn sec" id="dPrev" aria-label="이전 문장">⏮</button>
-    <button type="button" class="ibtn sec" id="dReplay" aria-label="다시 듣기">↺</button>
-    <button type="button" class="ibtn" id="dPlay" aria-label="재생">▶</button>
-    <button type="button" class="ibtn sec" id="dNext" aria-label="다음 문장">⏭</button>
+<div class="dock" id="dock" role="region" aria-label="재생 컨트롤">
+  <div class="dock-in">
+    <div class="dock-info"><div class="dock-it" id="dockIt" lang="it"></div><div class="dock-kr" id="dockKr"></div></div>
+    <div class="dock-ctl">
+      <button type="button" class="ibtn sec skip" id="dBack" aria-label="5초 뒤로" title="5초 뒤로 (←)">−5초</button>
+      <button type="button" class="ibtn sec" id="dReplay" aria-label="이 문장 다시 듣기" title="이 문장 다시 듣기 (R)">↺</button>
+      <button type="button" class="ibtn" id="dPlay" aria-label="재생">▶</button>
+      <button type="button" class="ibtn sec skip" id="dFwd" aria-label="5초 앞으로" title="5초 앞으로 (→)">+5초</button>
+    </div>
   </div>
+</div>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -376,32 +406,15 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/easy-italian-102.js?v=2026-10-26.5"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-26.5"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-26.6"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-26.6"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-26.5";
+  var BUILD = "2026-10-26.6";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
-  var BUILTIN = window.LESSONS || [];
-  var LESSONS = BUILTIN.concat(loadCustom());
-  var wanted = new URLSearchParams(location.search).get("lesson");
-  if (!wanted) { try { wanted = JSON.parse(localStorage.getItem(LAST_LESSON_KEY)); } catch (e) {} }
-  var LESSON = LESSONS.filter(function (l) { return l.id === wanted; })[0] || LESSONS[0];
-  if (!LESSON) { document.body.textContent = "자막 데이터를 불러오지 못했습니다."; return; }
-  try { localStorage.setItem(LAST_LESSON_KEY, JSON.stringify(LESSON.id)); } catch (e) {}
-
-  var SEGS = LESSON.segs, N = SEGS.length;
-  var SECTIONS = LESSON.sections, GROUPS = LESSON.groups;
-
-  // ---- timing constants (seconds) ----
-  var LEAD = 0.25;      // show a subtitle slightly before the voice starts
-  var PRE = 0.2;        // when jumping to a sentence, start a little earlier so the first syllable is not clipped
-  var END_PRE = 0.2;    // stop/loop slightly before the next sentence begins
-  var TICK_MS = 60;
-
   // ---- storage ----
   var SETTINGS_KEY = "italianVideo.settings.v1";
   var POS_KEY = "italianVideo.pos.v1";
@@ -409,26 +422,6 @@
   function loadJSON(k) { try { var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
   function saveJSON(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
   function loadCustom() { var l = loadJSON(CUSTOM_KEY); return Array.isArray(l) ? l : []; }
-
-  var st = { mode: "flow", rate: 1, showIt: true, showKr: true, skip: false, offset: 0 };
-  var saved = loadJSON(SETTINGS_KEY) || {};
-  Object.keys(st).forEach(function (k) { if (saved[k] !== undefined) st[k] = saved[k]; });
-  if (["flow", "stop", "loop"].indexOf(st.mode) < 0) st.mode = "flow";
-  var allNudges = loadJSON(NUDGE_KEY) || {};
-  var nudges = allNudges[LESSON.id] || {};
-  function saveSettings() { saveJSON(SETTINGS_KEY, st); }
-  function saveNudges() { allNudges[LESSON.id] = nudges; saveJSON(NUDGE_KEY, allNudges); }
-
-  // ---- derived data ----
-  var rankOf = [], total = 0;
-  SEGS.forEach(function (s, i) {
-    s.skip = !!(s.music || (SECTIONS[s.s] && SECTIONS[s.s].skip));
-    rankOf[i] = s.music ? 0 : ++total;
-  });
-  var firstOfSection = SECTIONS.map(function (sec, si) {
-    for (var i = 0; i < N; i++) if (SEGS[i].s === si && !SEGS[i].music) return i;
-    return 0;
-  });
 
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, text) {
@@ -449,6 +442,228 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2200);
   }
+
+  var BUILTIN = window.LESSONS || [];
+  var LESSONS = BUILTIN.concat(loadCustom());
+  var addDlg = $("addDlg");
+  function openLesson(id) { location.search = "?lesson=" + encodeURIComponent(id); }
+  function lineCount(l) { var n = 0; l.segs.forEach(function (sg) { if (!sg.music) n++; }); return n; }
+
+  // ---- "add my own video" ----
+  function youtubeIdOf(url) {
+    url = String(url || "").trim();
+    var m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/);
+    if (m) return m[1];
+    return /^[A-Za-z0-9_-]{11}$/.test(url) ? url : null;
+  }
+  function toSec(str) {
+    var p = str.split(":").map(Number);
+    return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p[0] * 60 + p[1];
+  }
+  function wordCount(t) { return (t.match(/\S+/g) || []).length; }
+  // YouTube "show transcript" text (time line + text line), "0:03 text" lines, or SRT / VTT
+  function parseCues(raw) {
+    raw = String(raw || "").replace(/\r/g, "");
+    var cues = [];
+    if (raw.indexOf("-->") >= 0) {
+      raw.split(/\n{2,}/).forEach(function (block) {
+        var lines = block.split("\n").map(function (l) { return l.trim(); }).filter(Boolean);
+        var i = lines.findIndex(function (l) { return l.indexOf("-->") >= 0; });
+        if (i < 0) return;
+        var m = lines[i].match(/(?:(\d+):)?(\d{1,2}):(\d{2})[.,](\d{1,3})/);
+        if (!m) return;
+        var t = (m[1] ? +m[1] * 3600 : 0) + (+m[2]) * 60 + (+m[3]) + (+m[4]) / Math.pow(10, m[4].length);
+        var text = lines.slice(i + 1).join(" ").replace(/<[^>]+>/g, "").trim();
+        if (text) cues.push({ t: t, text: text });
+      });
+      return cues;
+    }
+    var TS = /^(\d{1,2}:\d{2}(?::\d{2})?)$/, TSTXT = /^(\d{1,2}:\d{2}(?::\d{2})?)\s+(\S.*)$/;
+    var cur = null;
+    raw.split("\n").forEach(function (line) {
+      line = line.trim();
+      if (!line) return;
+      var m = line.match(TS);
+      if (m) { cur = { t: toSec(m[1]), text: "" }; cues.push(cur); return; }
+      m = line.match(TSTXT);
+      if (m) { cur = { t: toSec(m[1]), text: m[2] }; cues.push(cur); return; }
+      if (cur) cur.text += (cur.text ? " " : "") + line;
+    });
+    return cues.filter(function (c) { return c.text; }).sort(function (a, b) { return a.t - b.t; });
+  }
+  // cue lines are short and cut mid-sentence: join them into sentence-sized subtitle lines
+  function groupCues(cues) {
+    var out = [], cur = null;
+    function flush() { if (cur) { out.push(cur); cur = null; } }
+    cues.forEach(function (c) {
+      var text = c.text.replace(/\s+/g, " ").trim();
+      if (/^[\[(♪]/.test(text) && wordCount(text) <= 3) { flush(); out.push({ t: c.t, text: "♪", music: true }); return; }
+      text = text.replace(/\[[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
+      if (!text) return;
+      if (!cur) cur = { t: c.t, text: text, words: wordCount(text) };
+      else { cur.text += " " + text; cur.words += wordCount(text); }
+      if ((/[.!?…]["»”')\]]*$/.test(text) && cur.words >= 3) || cur.words >= 12) flush();
+    });
+    flush();
+    var merged = [];
+    out.forEach(function (sg) {
+      if (sg.music && merged.length && merged[merged.length - 1].music) return;
+      if (!sg.music) sg.text = sg.text.charAt(0).toUpperCase() + sg.text.slice(1);
+      merged.push(sg);
+    });
+    return merged;
+  }
+  function makeCustomLesson(id, title, raw) {
+    var segs = groupCues(parseCues(raw)).map(function (p) {
+      var o = { t: Math.round(p.t * 10) / 10, s: 0, g: 0, d: 0, it: p.text, kr: "" };
+      if (p.music) o.music = true;
+      return o;
+    });
+    var hasSubs = segs.some(function (x) { return !x.music; });
+    if (!hasSubs) segs = [{ t: 0, s: 0, g: 0, d: 0, it: "(붙여넣은 자막이 없어요 — 영상만 재생돼요)", kr: "", music: true }];
+    var name = title || ("YouTube 영상 " + id);
+    return {
+      id: "custom-" + id, custom: true, autoTitle: !title, hasSubs: hasSubs, youtubeId: id, url: "https://youtu.be/" + id,
+      title: name, titleKr: "", label: name,
+      sections: [{ t: segs[0].t, it: "", kr: "전체" }],
+      groups: [{ sec: 0, label: "", vocab: [], grammar: [] }],
+      segs: segs
+    };
+  }
+  function openAdd() {
+    $("addErr").hidden = true;
+    if (typeof addDlg.showModal === "function") addDlg.showModal(); else addDlg.setAttribute("open", "");
+    $("addUrl").focus();
+  }
+  function closeAdd() { if (typeof addDlg.close === "function") addDlg.close(); else addDlg.removeAttribute("open"); }
+  function addError(msg) { var e = $("addErr"); e.textContent = msg; e.hidden = false; }
+  $("addCancel").addEventListener("click", closeAdd);
+  $("addOk").addEventListener("click", function () {
+    var id = youtubeIdOf($("addUrl").value);
+    if (!id) { addError("YouTube 링크를 읽지 못했어요. 예: https://youtu.be/영상ID"); return; }
+    var same = LESSONS.filter(function (l) { return l.youtubeId === id; })[0];
+    if (same) { closeAdd(); toast("이미 목록에 있는 영상이에요."); openLesson(same.id); return; }
+    var raw = $("addSub").value;
+    var lesson = makeCustomLesson(id, $("addTitle").value.trim(), raw);
+    if (raw.trim() && !lesson.hasSubs) {
+      addError("자막 형식을 읽지 못했어요. 줄마다 시간(예: 0:03)이 있는 YouTube '스크립트 표시' 내용이나 SRT를 붙여넣어 주세요. 자막 없이 추가하려면 자막 칸을 비워 주세요.");
+      return;
+    }
+    var list = loadCustom(); list.push(lesson);
+    if (!saveJSON(CUSTOM_KEY, list)) { addError("이 브라우저에서는 저장할 수 없어요. (사생활 보호 모드이거나 저장 공간이 가득 찼을 수 있어요)"); return; }
+    closeAdd();
+    openLesson(lesson.id);
+  });
+
+
+  // ---- library (start screen) ----
+  function removeCustom(id) {
+    if (!window.confirm("이 영상을 목록에서 지울까요? (붙여넣은 자막도 함께 지워져요)")) return;
+    saveJSON(CUSTOM_KEY, loadCustom().filter(function (l) { return l.id !== id; }));
+    var pos = loadJSON(POS_KEY) || {}; delete pos[id]; saveJSON(POS_KEY, pos);
+    var nd = loadJSON(NUDGE_KEY) || {}; delete nd[id]; saveJSON(NUDGE_KEY, nd);
+    LESSONS = BUILTIN.concat(loadCustom());
+    renderLibrary();
+  }
+  function libCard(l, p, recent) {
+    var card = el("article", "vcard");
+    var a = el("a", "vlink"); a.href = "?lesson=" + encodeURIComponent(l.id);
+    var th = el("div", "vthumb");
+    var img = el("img"); img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+    img.src = "https://i.ytimg.com/vi/" + l.youtubeId + "/hqdefault.jpg";
+    img.addEventListener("error", function () { img.remove(); });
+    th.appendChild(img);
+    var dur = (p && p.d) || l.dur || 0;
+    var started = !!(p && p.t > 5);
+    if (dur) th.appendChild(el("span", "vdur", fmt(dur)));
+    if (recent) th.appendChild(el("span", "vtag", "최근"));
+    if (started && dur) {
+      var bar = el("div", "vbar"), fill = el("i");
+      fill.style.width = Math.min(100, p.t / dur * 100).toFixed(1) + "%";
+      bar.appendChild(fill); th.appendChild(bar);
+    }
+    a.appendChild(th);
+    var body = el("div", "vbody");
+    body.appendChild(el("div", "vtitle", l.title));
+    body.appendChild(el("div", "vsub", l.titleKr || ""));
+    body.appendChild(el("div", "vmeta", l.custom
+      ? "내 영상 · " + (l.hasSubs === false ? "자막 없음" : "자막 " + lineCount(l) + "줄") + " · 번역·설명 없음"
+      : lineCount(l) + "문장 · 한국어 번역·설명 포함"));
+    var finished = !!(started && dur && p.t / dur > 0.95);
+    body.appendChild(el("div", "vcta", finished ? "↻ 다시 보기" : started ? "▶ 이어보기 " + fmt(p.t) : "▶ 처음부터 보기"));
+    a.appendChild(body);
+    card.appendChild(a);
+    if (l.custom) {
+      var del = el("button", "vdel", "삭제"); del.type = "button"; del.setAttribute("aria-label", "목록에서 삭제");
+      del.addEventListener("click", function () { removeCustom(l.id); });
+      card.appendChild(del);
+    }
+    return card;
+  }
+  function renderLibrary() {
+    $("libView").hidden = false;
+    $("buildTag2").textContent = BUILD;
+    var pos = loadJSON(POS_KEY) || {};
+    var recentId = null, at = 0;
+    LESSONS.forEach(function (l) { var q = pos[l.id]; if (q && q.at > at) { at = q.at; recentId = l.id; } });
+    if (!recentId) { var last = loadJSON(LAST_LESSON_KEY); if (last && pos[last]) recentId = last; }
+    var grid = $("libGrid");
+    grid.textContent = "";
+    LESSONS.forEach(function (l) { grid.appendChild(libCard(l, pos[l.id], l.id === recentId)); });
+    var add = el("button", "vcard vadd"); add.type = "button";
+    add.appendChild(el("div", "vadd-plus", "＋"));
+    add.appendChild(el("div", "vadd-title", "내 영상 추가"));
+    add.appendChild(el("div", "vadd-help", "보고 싶은 YouTube 영상의 링크를 넣으면 이 목록에 들어와요. 영상의 '스크립트'(자막)를 같이 붙여넣으면 소리에 맞춰 자막도 나옵니다. 한국어 번역과 단어 설명은 따로 정리한 영상에만 들어 있어요."));
+    add.addEventListener("click", openAdd);
+    grid.appendChild(add);
+  }
+
+  // ---- which screen? ----
+  var wanted = new URLSearchParams(location.search).get("lesson");
+  var LESSON = LESSONS.filter(function (l) { return l.id === wanted; })[0];
+  if (!LESSON) { renderLibrary(); return; }
+  $("studyView").hidden = false;
+  try { localStorage.setItem(LAST_LESSON_KEY, JSON.stringify(LESSON.id)); } catch (e) {}
+
+  var SEGS = LESSON.segs, N = SEGS.length;
+  var SECTIONS = LESSON.sections, GROUPS = LESSON.groups;
+
+  // ---- timing constants (seconds) ----
+  var LEAD = 0.1;       // show a subtitle slightly before the voice starts (start times follow the on-screen subtitles)
+  var PRE = 0.2;        // when jumping to a sentence, start a little earlier so the first syllable is not clipped
+  var END_PRE = 0.2;    // stop/loop slightly before the next sentence begins
+  var TICK_MS = 60;
+
+  var st = { mode: "flow", rate: 1, showIt: true, showKr: true, skip: false, offset: 0, timingVer: "" };
+  var saved = loadJSON(SETTINGS_KEY) || {};
+  Object.keys(st).forEach(function (k) { if (saved[k] !== undefined) st[k] = saved[k]; });
+  if (["flow", "stop", "loop"].indexOf(st.mode) < 0) st.mode = "flow";
+  var allNudges = loadJSON(NUDGE_KEY) || {};
+  var nudges = allNudges[LESSON.id] || {};
+  function saveSettings() { saveJSON(SETTINGS_KEY, st); }
+  function saveNudges() { allNudges[LESSON.id] = nudges; saveJSON(NUDGE_KEY, allNudges); }
+  // the built-in subtitle times were re-measured against the burned-in subtitles: older sync adjustments no longer apply
+  var TIMING_VER = "ocr-1";
+  if (st.timingVer !== TIMING_VER) {
+    var hadAdjust = !!st.offset;
+    st.offset = 0;
+    BUILTIN.forEach(function (l) { if (allNudges[l.id] && Object.keys(allNudges[l.id]).length) hadAdjust = true; delete allNudges[l.id]; });
+    nudges = allNudges[LESSON.id] || {};
+    st.timingVer = TIMING_VER;
+    saveSettings(); saveJSON(NUDGE_KEY, allNudges);
+    if (hadAdjust) setTimeout(function () { toast("자막 시간을 새로 맞췄어요 (예전 싱크 조정값은 초기화됐어요)"); }, 900);
+  }
+
+  // ---- derived data ----
+  var rankOf = [], total = 0;
+  SEGS.forEach(function (s, i) {
+    s.skip = !!(s.music || (SECTIONS[s.s] && SECTIONS[s.s].skip));
+    rankOf[i] = s.music ? 0 : ++total;
+  });
+  var firstOfSection = SECTIONS.map(function (sec, si) {
+    for (var i = 0; i < N; i++) if (SEGS[i].s === si && !SEGS[i].music) return i;
+    return 0;
+  });
 
   // ---- sentence timing helpers ----
   function startOf(i) { return SEGS[i].t + st.offset + (nudges[i] || 0); }
@@ -601,12 +816,17 @@
     nowIt.classList.toggle("blur", !st.showIt);
     nowKr.classList.toggle("blur", !st.showKr);
     nowIt.classList.remove("reveal"); nowKr.classList.remove("reveal");
+    dockIt.classList.toggle("blur", !st.showIt); dockKr.classList.toggle("blur", !st.showKr);
+    dockIt.classList.remove("reveal"); dockKr.classList.remove("reveal");
     listEl.classList.toggle("hide-it", !st.showIt);
     listEl.classList.toggle("hide-kr", !st.showKr);
     $("tgIt").setAttribute("aria-pressed", st.showIt);
     $("tgKr").setAttribute("aria-pressed", st.showKr);
   }
+  var dockIt = $("dockIt"), dockKr = $("dockKr");
   nowIt.addEventListener("click", function () { if (!st.showIt) nowIt.classList.toggle("reveal"); });
+  dockIt.addEventListener("click", function () { if (!st.showIt) dockIt.classList.toggle("reveal"); });
+  dockKr.addEventListener("click", function () { if (!st.showKr) dockKr.classList.toggle("reveal"); });
   nowKr.addEventListener("click", function () { if (!st.showKr) nowKr.classList.toggle("reveal"); });
 
   var userScrollUntil = 0;
@@ -632,8 +852,9 @@
     applyBlur();
     $("nowSec").textContent = SECTIONS[s.s].kr + (SECTIONS[s.s].it ? " · " + SECTIONS[s.s].it : "");
     $("nowCount").textContent = s.music ? "♪" : rankOf[i] + " / " + total;
-    $("dockIt").textContent = s.it;
-    $("dockKr").textContent = s.kr;
+    dockIt.textContent = s.it;
+    dockKr.textContent = s.kr;
+    fitDock();
     if (rows[prev]) rows[prev].classList.remove("active");
     if (rows[i]) rows[i].classList.add("active");
     chipEls.forEach(function (c, si) { c.classList.toggle("active", si === s.s); });
@@ -690,7 +911,7 @@
           var all = loadCustom();
           all.forEach(function (l) { if (l.id === LESSON.id) { l.title = vd.title; l.label = vd.title; l.autoTitle = false; } });
           saveJSON(CUSTOM_KEY, all);
-          $("videoTitle").textContent = vd.title; $("lbText").textContent = vd.title;
+          $("videoTitle").textContent = vd.title; $("topTitle").textContent = vd.title; document.title = vd.title + " · 영상으로 공부하기";
         }
       }
     } catch (e) {}
@@ -724,6 +945,36 @@
     ["btnPlay", "dPlay"].forEach(function (id) {
       var b = $(id); b.textContent = p ? "⏸" : "▶"; b.setAttribute("aria-label", p ? "일시정지" : "재생");
     });
+  }
+
+  function savePos(t) {
+    var pos = loadJSON(POS_KEY) || {};
+    var rec = { t: Math.round(t * 10) / 10, at: Date.now() };
+    var d = 0;
+    try { d = player.getDuration(); } catch (e) {}
+    d = d > 0 ? d : (pos[LESSON.id] && pos[LESSON.id].d) || LESSON.dur || 0;
+    if (d > 0) rec.d = Math.round(d);
+    pos[LESSON.id] = rec;
+    saveJSON(POS_KEY, pos);
+  }
+  // +/- seconds from where the video is now (the sentence mode follows the new position)
+  var skipTarget = 0, skipAt = 0;
+  function skipBy(sec) {
+    if (!ready) { toast("영상을 불러오는 중입니다"); return; }
+    var t = 0, dur = 0;
+    try { t = player.getCurrentTime(); dur = player.getDuration(); } catch (e) { return; }
+    if (Date.now() - skipAt < 900) t = skipTarget;
+    var nt = Math.max(0, t + sec);
+    if (dur > 1) nt = Math.min(nt, dur - 0.5);
+    holdIdx = null;
+    skipTarget = nt; skipAt = Date.now();
+    player.seekTo(nt, true);
+    var i = indexAt(nt);
+    if (st.mode === "loop") loopIdx = i;
+    if (st.mode === "stop") stopIdx = i;
+    setActive(i, true);
+    follow(i, true);
+    $("nowHint").textContent = "";
   }
 
   function clampIdx(i) { return Math.max(0, Math.min(N - 1, i)); }
@@ -803,9 +1054,7 @@
       }
       if (Date.now() - lastSave > 2000) {
         lastSave = Date.now();
-        var pos = loadJSON(POS_KEY) || {};
-        pos[LESSON.id] = { t: Math.round(t * 10) / 10 };
-        saveJSON(POS_KEY, pos);
+        savePos(t);
       }
     } else if (holdIdx !== null) {
       i = holdIdx;
@@ -817,7 +1066,7 @@
   var MODE_NOTES = {
     flow: "영상 소리가 계속 이어지고 자막이 따라갑니다.",
     stop: "문장이 끝날 때마다 멈춥니다. 따라 말한 뒤 ▶ 를 누르세요.",
-    loop: "지금 문장을 계속 반복합니다. ⏮ ⏭ 로 다른 문장으로 옮길 수 있어요."
+    loop: "지금 문장을 계속 반복합니다. 다른 문장은 아래 목록에서 눌러 고르세요."
   };
   function updateModeButtons() {
     document.querySelectorAll("#modeGroup button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.mode === st.mode); });
@@ -858,10 +1107,10 @@
 
   $("btnPlay").addEventListener("click", togglePlay);
   $("dPlay").addEventListener("click", togglePlay);
-  $("btnPrev").addEventListener("click", function () { stepSeg(-1); });
-  $("dPrev").addEventListener("click", function () { stepSeg(-1); });
-  $("btnNext").addEventListener("click", function () { stepSeg(1); });
-  $("dNext").addEventListener("click", function () { stepSeg(1); });
+  $("btnBack").addEventListener("click", function () { skipBy(-5); });
+  $("dBack").addEventListener("click", function () { skipBy(-5); });
+  $("btnFwd").addEventListener("click", function () { skipBy(5); });
+  $("dFwd").addEventListener("click", function () { skipBy(5); });
   $("btnReplay").addEventListener("click", replay);
   $("dReplay").addEventListener("click", replay);
   document.querySelectorAll("#modeGroup button").forEach(function (b) { b.addEventListener("click", function () { setMode(b.dataset.mode); }); });
@@ -880,178 +1129,37 @@
     var tag = (e.target && e.target.tagName) || "";
     if (/INPUT|TEXTAREA|SELECT/.test(tag) || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === " " && tag !== "BUTTON" && tag !== "SUMMARY") { e.preventDefault(); togglePlay(); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); stepSeg(-1); }
-    else if (e.key === "ArrowRight") { e.preventDefault(); stepSeg(1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); if (e.shiftKey) stepSeg(-1); else skipBy(-5); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); if (e.shiftKey) stepSeg(1); else skipBy(5); }
     else if (e.key === "r" || e.key === "R") { replay(); }
   });
 
   // dock appears when the main controls scroll out of view
+  var dock = $("dock"), dockMax = 0;
+  function fitDock() {
+    var h = dock.classList.contains("show") ? dock.offsetHeight : 0;
+    document.documentElement.style.setProperty("--dock-h", h + "px");
+    // the page bottom only ever grows to the tallest line seen, so the page does not twitch while sentences change
+    if (h > dockMax) { dockMax = h; document.body.style.paddingBottom = (dockMax + 24) + "px"; }
+  }
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
-      $("dock").classList.toggle("show", !entries[0].isIntersecting);
+      dock.classList.toggle("show", !entries[0].isIntersecting);
+      fitDock();
     }, { threshold: 0.01 }).observe($("controlsCard"));
   }
+  if ("ResizeObserver" in window) new ResizeObserver(fitDock).observe(dock);
+  window.addEventListener("resize", function () { dockMax = 0; document.body.style.paddingBottom = ""; fitDock(); });
   window.addEventListener("pagehide", function () {
     if (ready) {
-      try {
-        var pos = loadJSON(POS_KEY) || {};
-        pos[LESSON.id] = { t: Math.round(player.getCurrentTime() * 10) / 10 };
-        saveJSON(POS_KEY, pos);
-      } catch (e) {}
+      try { savePos(player.getCurrentTime()); } catch (e) {}
     }
-  });
-
-  // ---- video picker + "add my own video" ----
-  var topbar = $("topbar"), lessonBtn = $("lessonBtn"), sheet = $("lessonSheet"), addDlg = $("addDlg");
-  function lessonName(l) { return l.label || l.title; }
-  function lineCount(l) { var n = 0; l.segs.forEach(function (s) { if (!s.music) n++; }); return n; }
-  function closeSheet() { sheet.hidden = true; lessonBtn.setAttribute("aria-expanded", "false"); }
-  function openSheet() { buildSheet(); sheet.hidden = false; lessonBtn.setAttribute("aria-expanded", "true"); }
-  function switchLesson(id) {
-    if (id === LESSON.id) { closeSheet(); return; }
-    location.search = "?lesson=" + encodeURIComponent(id);
-  }
-  function removeCustom(id) {
-    if (!window.confirm("이 영상을 목록에서 지울까요? (붙여넣은 자막도 함께 지워져요)")) return;
-    saveJSON(CUSTOM_KEY, loadCustom().filter(function (l) { return l.id !== id; }));
-    location.search = "?lesson=" + encodeURIComponent(id === LESSON.id ? BUILTIN[0].id : LESSON.id);
-  }
-  function buildSheet() {
-    sheet.textContent = "";
-    sheet.appendChild(el("div", "sheet-title", "영상 선택"));
-    LESSONS.forEach(function (l) {
-      var row = el("div", "li" + (l.id === LESSON.id ? " active" : ""));
-      var main = el("button", "li-main"); main.type = "button";
-      main.appendChild(el("span", "li-title", lessonName(l)));
-      main.appendChild(el("span", "li-meta", l.custom
-        ? "내 영상 · " + (l.hasSubs === false ? "자막 없음" : "자막 " + lineCount(l) + "줄") + " · 번역·설명 없음"
-        : lineCount(l) + "문장 · 한국어 번역·설명 포함"));
-      main.addEventListener("click", function () { switchLesson(l.id); });
-      row.appendChild(main);
-      if (l.custom) {
-        var del = el("button", "li-del", "삭제"); del.type = "button";
-        del.addEventListener("click", function () { removeCustom(l.id); });
-        row.appendChild(del);
-      }
-      sheet.appendChild(row);
-    });
-    var add = el("button", "li-add", "＋ 내 영상 추가 (YouTube 링크)"); add.type = "button";
-    add.addEventListener("click", openAdd);
-    sheet.appendChild(add);
-  }
-  lessonBtn.addEventListener("click", function (e) { e.stopPropagation(); if (sheet.hidden) openSheet(); else closeSheet(); });
-  document.addEventListener("click", function (e) { if (!sheet.hidden && !topbar.contains(e.target)) closeSheet(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
-  $("lbText").textContent = lessonName(LESSON);
-
-  function youtubeIdOf(url) {
-    url = String(url || "").trim();
-    var m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:[^#]*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/);
-    if (m) return m[1];
-    return /^[A-Za-z0-9_-]{11}$/.test(url) ? url : null;
-  }
-  function toSec(str) {
-    var p = str.split(":").map(Number);
-    return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p[0] * 60 + p[1];
-  }
-  function wordCount(t) { return (t.match(/\S+/g) || []).length; }
-  // YouTube "show transcript" text (time line + text line), "0:03 text" lines, or SRT / VTT
-  function parseCues(raw) {
-    raw = String(raw || "").replace(/\r/g, "");
-    var cues = [];
-    if (raw.indexOf("-->") >= 0) {
-      raw.split(/\n{2,}/).forEach(function (block) {
-        var lines = block.split("\n").map(function (l) { return l.trim(); }).filter(Boolean);
-        var i = lines.findIndex(function (l) { return l.indexOf("-->") >= 0; });
-        if (i < 0) return;
-        var m = lines[i].match(/(?:(\d+):)?(\d{1,2}):(\d{2})[.,](\d{1,3})/);
-        if (!m) return;
-        var t = (m[1] ? +m[1] * 3600 : 0) + (+m[2]) * 60 + (+m[3]) + (+m[4]) / Math.pow(10, m[4].length);
-        var text = lines.slice(i + 1).join(" ").replace(/<[^>]+>/g, "").trim();
-        if (text) cues.push({ t: t, text: text });
-      });
-      return cues;
-    }
-    var TS = /^(\d{1,2}:\d{2}(?::\d{2})?)$/, TSTXT = /^(\d{1,2}:\d{2}(?::\d{2})?)\s+(\S.*)$/;
-    var cur = null;
-    raw.split("\n").forEach(function (line) {
-      line = line.trim();
-      if (!line) return;
-      var m = line.match(TS);
-      if (m) { cur = { t: toSec(m[1]), text: "" }; cues.push(cur); return; }
-      m = line.match(TSTXT);
-      if (m) { cur = { t: toSec(m[1]), text: m[2] }; cues.push(cur); return; }
-      if (cur) cur.text += (cur.text ? " " : "") + line;
-    });
-    return cues.filter(function (c) { return c.text; }).sort(function (a, b) { return a.t - b.t; });
-  }
-  // cue lines are short and cut mid-sentence: join them into sentence-sized subtitle lines
-  function groupCues(cues) {
-    var out = [], cur = null;
-    function flush() { if (cur) { out.push(cur); cur = null; } }
-    cues.forEach(function (c) {
-      var text = c.text.replace(/\s+/g, " ").trim();
-      if (/^[\[(♪]/.test(text) && wordCount(text) <= 3) { flush(); out.push({ t: c.t, text: "♪", music: true }); return; }
-      text = text.replace(/\[[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
-      if (!text) return;
-      if (!cur) cur = { t: c.t, text: text, words: wordCount(text) };
-      else { cur.text += " " + text; cur.words += wordCount(text); }
-      if ((/[.!?…]["»”')\]]*$/.test(text) && cur.words >= 3) || cur.words >= 12) flush();
-    });
-    flush();
-    var merged = [];
-    out.forEach(function (sg) {
-      if (sg.music && merged.length && merged[merged.length - 1].music) return;
-      if (!sg.music) sg.text = sg.text.charAt(0).toUpperCase() + sg.text.slice(1);
-      merged.push(sg);
-    });
-    return merged;
-  }
-  function makeCustomLesson(id, title, raw) {
-    var segs = groupCues(parseCues(raw)).map(function (p) {
-      var o = { t: Math.round(p.t * 10) / 10, s: 0, g: 0, d: 0, it: p.text, kr: "" };
-      if (p.music) o.music = true;
-      return o;
-    });
-    var hasSubs = segs.some(function (x) { return !x.music; });
-    if (!hasSubs) segs = [{ t: 0, s: 0, g: 0, d: 0, it: "(붙여넣은 자막이 없어요 — 영상만 재생돼요)", kr: "", music: true }];
-    var name = title || ("YouTube 영상 " + id);
-    return {
-      id: "custom-" + id, custom: true, autoTitle: !title, hasSubs: hasSubs, youtubeId: id, url: "https://youtu.be/" + id,
-      title: name, titleKr: "", label: name,
-      sections: [{ t: segs[0].t, it: "", kr: "전체" }],
-      groups: [{ sec: 0, label: "", vocab: [], grammar: [] }],
-      segs: segs
-    };
-  }
-  function openAdd() {
-    closeSheet();
-    $("addErr").hidden = true;
-    if (typeof addDlg.showModal === "function") addDlg.showModal(); else addDlg.setAttribute("open", "");
-    $("addUrl").focus();
-  }
-  function closeAdd() { if (typeof addDlg.close === "function") addDlg.close(); else addDlg.removeAttribute("open"); }
-  function addError(msg) { var e = $("addErr"); e.textContent = msg; e.hidden = false; }
-  $("addCancel").addEventListener("click", closeAdd);
-  $("addOk").addEventListener("click", function () {
-    var id = youtubeIdOf($("addUrl").value);
-    if (!id) { addError("YouTube 링크를 읽지 못했어요. 예: https://youtu.be/영상ID"); return; }
-    var same = LESSONS.filter(function (l) { return l.youtubeId === id; })[0];
-    if (same) { closeAdd(); toast("이미 목록에 있는 영상이에요."); switchLesson(same.id); return; }
-    var raw = $("addSub").value;
-    var lesson = makeCustomLesson(id, $("addTitle").value.trim(), raw);
-    if (raw.trim() && !lesson.hasSubs) {
-      addError("자막 형식을 읽지 못했어요. 줄마다 시간(예: 0:03)이 있는 YouTube '스크립트 표시' 내용이나 SRT를 붙여넣어 주세요. 자막 없이 추가하려면 자막 칸을 비워 주세요.");
-      return;
-    }
-    var list = loadCustom(); list.push(lesson);
-    if (!saveJSON(CUSTOM_KEY, list)) { addError("이 브라우저에서는 저장할 수 없어요. (사생활 보호 모드이거나 저장 공간이 가득 찼을 수 있어요)"); return; }
-    closeAdd();
-    location.search = "?lesson=" + encodeURIComponent(lesson.id);
   });
 
   // ---- start ----
   $("videoTitle").textContent = LESSON.title + (LESSON.titleKr ? " · " + LESSON.titleKr : "");
+  $("topTitle").textContent = LESSON.title;
+  document.title = LESSON.title + " · 영상으로 공부하기";
   $("buildTag").textContent = BUILD;
   $("videoLink").href = LESSON.url;
   $("creditLink").href = LESSON.url;
