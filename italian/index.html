@@ -41,6 +41,8 @@
   .container { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
   h1 { font-size: 21px; text-align: center; margin: 4px 0 2px; font-weight: 700; }
   .subtitle { text-align: center; color: var(--text-muted); font-size: 13px; margin: 0 0 8px; }
+  .video-link { display: inline-block; color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; background: var(--card-bg); }
+  .video-link:hover { border-color: var(--accent); }
   .card {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -337,6 +339,7 @@
 <div class="container">
   <h1>이탈리아어 단어 반복 학습</h1>
   <p class="subtitle">단어를 등록하고 재생하면 한국어 → 이탈리아어 순으로 계속 반복해서 읽어줍니다.</p>
+  <p class="subtitle"><a class="video-link" href="video/">▶ 영상으로 공부하기 (Easy Italian)</a></p>
 
   <section class="card">
     <h2>재생</h2>
