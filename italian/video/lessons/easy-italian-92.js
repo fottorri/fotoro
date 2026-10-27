@@ -794,6 +794,7 @@ window.LESSONS.push({
    "g": 0,
    "d": 1,
    "it": "C'è una cosa che quasi tutti sbagliano quando iniziano a studiare l'italiano: la differenza tra \"mi piace\" e \"mi piacciono\".",
+   "lt": "한 가지가 있어요, 거의 모두가 틀리는 것이, 이탈리아어를 공부하기 시작할 때: \"mi piace\"와 \"mi piacciono\"의 차이예요.",
    "kr": "거의 모든 사람이 이탈리아어를 공부하기 시작할 때 틀리는 게 있어요. 'mi piace'와 'mi piacciono'의 차이예요."
   },
   {
@@ -802,6 +803,7 @@ window.LESSONS.push({
    "g": 0,
    "d": 1,
    "it": "Impariamola insieme con l'aiuto degli italiani per strada.",
+   "lt": "함께 배워 봐요, 길 위의 이탈리아 사람들의 도움으로.",
    "kr": "이탈리아 사람들과 거리에서 함께 익혀 봐요."
   },
   {
@@ -810,6 +812,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 2,
    "it": "Pronti?",
+   "lt": "준비됐나요?",
    "kr": "준비됐나요?"
   },
   {
@@ -818,6 +821,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 3,
    "it": "Mi piace…",
+   "lt": "나에게 마음에 들어요…",
    "kr": "저는 …을 좋아해요…"
   },
   {
@@ -826,6 +830,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 3,
    "it": "Mi piace il gelato.",
+   "lt": "나에게 아이스크림이 마음에 들어요.",
    "kr": "저는 젤라토를 좋아해요."
   },
   {
@@ -834,6 +839,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 4,
    "it": "Mi piace il trucco.",
+   "lt": "나에게 화장이 마음에 들어요.",
    "kr": "저는 화장(메이크업)을 좋아해요."
   },
   {
@@ -842,6 +848,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 5,
    "it": "Mi piace il cioccolato.",
+   "lt": "나에게 초콜릿이 마음에 들어요.",
    "kr": "저는 초콜릿을 좋아해요."
   },
   {
@@ -850,6 +857,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 6,
    "it": "Che tipo di cioccolato?",
+   "lt": "어떤 종류의 초콜릿이요?",
    "kr": "어떤 초콜릿이요?"
   },
   {
@@ -858,6 +866,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 7,
    "it": "Quello fondente.",
+   "lt": "그 다크한 것이요.",
    "kr": "다크 초콜릿이요."
   },
   {
@@ -866,6 +875,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 8,
    "it": "Non mi piace la pizza.",
+   "lt": "나에게 피자가 마음에 들지 않아요.",
    "kr": "저는 피자를 좋아하지 않아요."
   },
   {
@@ -874,6 +884,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 8,
    "it": "Non è vero.",
+   "lt": "사실이 아니에요.",
    "kr": "거짓말이죠."
   },
   {
@@ -882,6 +893,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 8,
    "it": "Giura.",
+   "lt": "맹세해 봐요.",
    "kr": "맹세해요?"
   },
   {
@@ -890,6 +902,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 8,
    "it": "Giuro.",
+   "lt": "맹세해요.",
    "kr": "맹세해요."
   },
   {
@@ -898,6 +911,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 9,
    "it": "Non mi piace la banana.",
+   "lt": "나에게 바나나가 마음에 들지 않아요.",
    "kr": "저는 바나나를 좋아하지 않아요."
   },
   {
@@ -906,6 +920,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 9,
    "it": "Mi piace il sole.",
+   "lt": "나에게 해가 마음에 들어요.",
    "kr": "저는 햇볕을 좋아해요."
   },
   {
@@ -914,6 +929,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 10,
    "it": "Mi piace il gelato.",
+   "lt": "나에게 아이스크림이 마음에 들어요.",
    "kr": "저는 젤라토를 좋아해요."
   },
   {
@@ -922,6 +938,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 11,
    "it": "Mi piace l'inverno.",
+   "lt": "나에게 겨울이 마음에 들어요.",
    "kr": "저는 겨울을 좋아해요."
   },
   {
@@ -930,6 +947,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 12,
    "it": "Non mi piace il sesamo.",
+   "lt": "나에게 참깨가 마음에 들지 않아요.",
    "kr": "저는 참깨를 좋아하지 않아요."
   },
   {
@@ -938,6 +956,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 13,
    "it": "Non mi piace l'egoismo.",
+   "lt": "나에게 이기주의가 마음에 들지 않아요.",
    "kr": "저는 이기주의를 좋아하지 않아요."
   },
   {
@@ -946,6 +965,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 14,
    "it": "Mi piace il matcha, che siamo in Chinatown.",
+   "lt": "나에게 말차가 마음에 들어요, 우리가 차이나타운에 있으니까요.",
    "kr": "저는 말차를 좋아해요, 차이나타운에 왔으니까요."
   },
   {
@@ -954,6 +974,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 14,
    "it": "Cos'è il matcha?",
+   "lt": "무엇이에요 말차는?",
    "kr": "말차가 뭐예요?"
   },
   {
@@ -962,6 +983,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 15,
    "it": "Il matcha è una bevanda che è praticamente giapponese, e niente, mi piace molto.",
+   "lt": "말차는 음료예요, 사실상 일본 것인, 그리고 뭐, 나에게 아주 마음에 들어요.",
    "kr": "말차는 사실상 일본 음료예요. 그냥, 아주 좋아해요."
   },
   {
@@ -970,6 +992,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 16,
    "it": "Mi piace ballare.",
+   "lt": "나에게 춤추는 것이 마음에 들어요.",
    "kr": "저는 춤추는 걸 좋아해요."
   },
   {
@@ -978,6 +1001,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 16,
    "it": "Che cosa?",
+   "lt": "무엇이요?",
    "kr": "뭘요?"
   },
   {
@@ -986,6 +1010,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 17,
    "it": "Tutto.",
+   "lt": "전부요.",
    "kr": "전부요."
   },
   {
@@ -994,6 +1019,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 18,
    "it": "Da grande italiana mi piace la pizza.",
+   "lt": "대단한 이탈리아 사람으로서, 나에게 피자가 마음에 들어요.",
    "kr": "진짜 이탈리아 사람으로서 피자를 좋아해요."
   },
   {
@@ -1002,6 +1028,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 18,
    "it": "Che tipo di pizza?",
+   "lt": "어떤 종류의 피자요?",
    "kr": "어떤 피자요?"
   },
   {
@@ -1010,6 +1037,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 19,
    "it": "Margherita; sono classica, io.",
+   "lt": "마르게리타요; 나는 고전적이에요, 나는.",
    "kr": "마르게리타요. 저는 클래식을 좋아해요."
   },
   {
@@ -1018,6 +1046,7 @@ window.LESSONS.push({
    "g": 1,
    "d": 20,
    "it": "Non mi piace la pioggia.",
+   "lt": "나에게 비가 마음에 들지 않아요.",
    "kr": "저는 비를 좋아하지 않아요."
   },
   {
@@ -1026,6 +1055,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 21,
    "it": "Usiamo \"mi piace\" con un nome al singolare, per esempio \"mi piace il tè al limone\"",
+   "lt": "우리는 \"mi piace\"를 단수 명사와 함께 써요, 예를 들어 \"나에게 레몬 차가 마음에 들어요\".",
    "kr": "단수 명사와 함께 'mi piace'를 써요. 예를 들어 'mi piace il tè al limone'(레몬 아이스티를 좋아해요)."
   },
   {
@@ -1034,6 +1064,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 21,
    "it": "Usiamo \"mi piace\" anche con un verbo, per esempio \"mi piace nuotare\" o \"mi piace viaggiare in Italia\"",
+   "lt": "우리는 \"mi piace\"를 동사와도 함께 써요, 예를 들어 \"나에게 수영하는 것이 마음에 들어요\" 또는 \"나에게 이탈리아에서 여행하는 것이 마음에 들어요\".",
    "kr": "동사와 함께도 'mi piace'를 써요. 예를 들어 'mi piace nuotare'(수영을 좋아해요), 'mi piace viaggiare in Italia'(이탈리아 여행을 좋아해요)."
   },
   {
@@ -1042,6 +1073,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 22,
    "it": "Mi piace ascoltare la musica.",
+   "lt": "나에게 음악을 듣는 것이 마음에 들어요.",
    "kr": "저는 음악 듣는 걸 좋아해요."
   },
   {
@@ -1050,6 +1082,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 23,
    "it": "Mi piace andare a comprare vestiti.",
+   "lt": "나에게 옷을 사러 가는 것이 마음에 들어요.",
    "kr": "저는 옷 사러 가는 걸 좋아해요."
   },
   {
@@ -1058,6 +1091,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 24,
    "it": "Non mi piace andare al mare.",
+   "lt": "나에게 바다에 가는 것이 마음에 들지 않아요.",
    "kr": "저는 바다에 가는 걸 좋아하지 않아요."
   },
   {
@@ -1066,6 +1100,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 25,
    "it": "Non mi piace guidare: la macchina a Milano è terribile.",
+   "lt": "나에게 운전하는 것이 마음에 들지 않아요: 자동차는 밀라노에서 끔찍해요.",
    "kr": "저는 운전을 좋아하지 않아요. 밀라노의 자동차는 끔찍하거든요."
   },
   {
@@ -1074,6 +1109,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 26,
    "it": "Non mi piace soffrire il caldo.",
+   "lt": "나에게 더위를 견디는 것이 마음에 들지 않아요.",
    "kr": "저는 더위를 견디는 걸 좋아하지 않아요."
   },
   {
@@ -1082,6 +1118,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 27,
    "it": "Mi piace andare al mare.",
+   "lt": "나에게 바다에 가는 것이 마음에 들어요.",
    "kr": "저는 바다에 가는 걸 좋아해요."
   },
   {
@@ -1090,6 +1127,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 28,
    "it": "Mi piace mangiare.",
+   "lt": "나에게 먹는 것이 마음에 들어요.",
    "kr": "저는 먹는 걸 좋아해요."
   },
   {
@@ -1098,6 +1136,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 28,
    "it": "Che cosa?",
+   "lt": "무엇이요?",
    "kr": "뭘요?"
   },
   {
@@ -1106,6 +1145,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 29,
    "it": "Di tutto, onestamente.",
+   "lt": "모든 것이요, 솔직히.",
    "kr": "솔직히 뭐든지요."
   },
   {
@@ -1114,6 +1154,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 30,
    "it": "Non mi piace stare in coda.",
+   "lt": "나에게 줄 서 있는 것이 마음에 들지 않아요.",
    "kr": "저는 줄 서는 걸 좋아하지 않아요."
   },
   {
@@ -1122,6 +1163,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 31,
    "it": "Mi piace viaggiare.",
+   "lt": "나에게 여행하는 것이 마음에 들어요.",
    "kr": "저는 여행을 좋아해요."
   },
   {
@@ -1130,6 +1172,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 31,
    "it": "Mi piace mangiare la pizza; scontato?",
+   "lt": "나에게 피자를 먹는 것이 마음에 들어요; 뻔한가요?",
    "kr": "저는 피자 먹는 걸 좋아해요. 너무 뻔한가요?"
   },
   {
@@ -1138,6 +1181,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 32,
    "it": "Vabbè, mi piace mangiare bene.",
+   "lt": "뭐, 나에게 잘 먹는 것이 마음에 들어요.",
    "kr": "뭐, 맛있게 먹는 걸 좋아해요."
   },
   {
@@ -1146,6 +1190,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 33,
    "it": "Mi piace ballare.",
+   "lt": "나에게 춤추는 것이 마음에 들어요.",
    "kr": "저는 춤추는 걸 좋아해요."
   },
   {
@@ -1154,6 +1199,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 34,
    "it": "Non mi piace dormire.",
+   "lt": "나에게 자는 것이 마음에 들지 않아요.",
    "kr": "저는 잠자는 걸 좋아하지 않아요."
   },
   {
@@ -1162,6 +1208,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 34,
    "it": "Eh, interessante.",
+   "lt": "아, 흥미롭네요.",
    "kr": "어, 흥미롭네요."
   },
   {
@@ -1170,6 +1217,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 35,
    "it": "Mi piace pedalare: grande libertà da la bicicletta.",
+   "lt": "나에게 페달 밟는 것이 마음에 들어요: 자전거에서 큰 자유가 와요.",
    "kr": "저는 자전거 타는 걸 좋아해요. 자전거는 큰 자유를 줘요."
   },
   {
@@ -1178,6 +1226,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 35,
    "it": "Cosa significa \"pedalare\"?",
+   "lt": "무엇을 의미해요 \"pedalare\"는?",
    "kr": "'pedalare'가 무슨 뜻이에요?"
   },
   {
@@ -1186,6 +1235,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 36,
    "it": "\"Pedalare\" significa utilizzare la bicicletta, poi per me è sinonimo di libertà, quantomeno per il movimento in città.",
+   "lt": "\"Pedalare\"는 자전거를 이용하는 것을 의미해요, 그리고 나에게는 자유와 동의어예요, 적어도 도시 안에서의 이동에 있어서는.",
    "kr": "'Pedalare'는 자전거를 타는 걸 뜻해요. 저한테는 자유와 같은 말이에요, 적어도 도시 안에서 움직일 때는요."
   },
   {
@@ -1194,6 +1244,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 37,
    "it": "Mi piace correre.",
+   "lt": "나에게 달리는 것이 마음에 들어요.",
    "kr": "저는 달리기를 좋아해요."
   },
   {
@@ -1202,6 +1253,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 38,
    "it": "Non mi piace viaggiare in aereo.",
+   "lt": "나에게 비행기로 여행하는 것이 마음에 들지 않아요.",
    "kr": "저는 비행기로 여행하는 걸 좋아하지 않아요."
   },
   {
@@ -1210,6 +1262,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 38,
    "it": "Perché?",
+   "lt": "왜요?",
    "kr": "왜요?"
   },
   {
@@ -1218,6 +1271,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 39,
    "it": "Perché è noioso; preferisco il treno.",
+   "lt": "왜냐하면 지루하니까요; 나는 기차를 더 좋아해요.",
    "kr": "지루하거든요. 저는 기차가 더 좋아요."
   },
   {
@@ -1226,6 +1280,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 40,
    "it": "Ah, mi piace il mochi.",
+   "lt": "아, 나에게 모치가 마음에 들어요.",
    "kr": "아, 저는 모찌를 좋아해요."
   },
   {
@@ -1234,6 +1289,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 41,
    "it": "Mi piace il mochi al mango.",
+   "lt": "나에게 망고 모치가 마음에 들어요.",
    "kr": "저는 망고 모찌를 좋아해요."
   },
   {
@@ -1242,6 +1298,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 41,
    "it": "Non mi piace il tiramisù.",
+   "lt": "나에게 티라미수가 마음에 들지 않아요.",
    "kr": "저는 티라미수를 좋아하지 않아요."
   },
   {
@@ -1250,6 +1307,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 41,
    "it": "Giuro.",
+   "lt": "맹세해요.",
    "kr": "진짜예요."
   },
   {
@@ -1258,6 +1316,7 @@ window.LESSONS.push({
    "g": 3,
    "d": 42,
    "it": "Una domanda che potrebbero farti i tuoi amici italiani è: \"Cosa ti piace dell'Italia?\"",
+   "lt": "네 이탈리아 친구들이 네게 할 수 있는 질문 하나는 이거예요: \"이탈리아에서 무엇이 네 마음에 들어?\"",
    "kr": "이탈리아 친구들이 물어볼 만한 질문이 있어요. \"이탈리아에서 뭐가 좋아?\""
   },
   {
@@ -1266,6 +1325,7 @@ window.LESSONS.push({
    "g": 3,
    "d": 42,
    "it": "Per rispondere senza paura, ti consiglio di fare i nostri esercizi di questa settimana per imparare a parlare e quello che non ti piace.",
+   "lt": "두려움 없이 대답하기 위해, 나는 네게 권해, 이번 주의 우리 연습 문제를 하도록, 말하는 것을 배우기 위해, 그리고 네 마음에 들지 않는 것도.",
    "kr": "겁내지 않고 대답하려면, 이번 주 연습 문제를 풀어서 좋아하는 것과 좋아하지 않는 것을 말하는 연습을 해 보세요."
   },
   {
@@ -1274,6 +1334,7 @@ window.LESSONS.push({
    "g": 3,
    "d": 42,
    "it": "Se entri a far parte della comunità di Easy Italian,",
+   "lt": "만약 네가 Easy Italian 공동체의 일원이 되면,",
    "kr": "Easy Italian 커뮤니티에 가입하면"
   },
   {
@@ -1282,6 +1343,7 @@ window.LESSONS.push({
    "g": 3,
    "d": 42,
    "it": "riceverai questi esercizi e altri materiali come la lista dei vocaboli, la trascrizione del video, l'audio lento e il cruciverba.",
+   "lt": "너는 이 연습 문제들과 다른 자료들을 받을 거야, 어휘 목록, 영상 전사본, 느린 오디오, 십자말풀이 같은.",
    "kr": "이 연습 문제와 단어 목록, 영상 대본, 느린 오디오, 십자말풀이 같은 자료를 받아요."
   },
   {
@@ -1290,6 +1352,7 @@ window.LESSONS.push({
    "g": 3,
    "d": 42,
    "it": "Per saperne di più, clicca il link in descrizione.",
+   "lt": "더 많이 알기 위해, 설명란에 있는 링크를 눌러요.",
    "kr": "더 알고 싶다면 설명란의 링크를 눌러 보세요."
   },
   {
@@ -1298,6 +1361,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 43,
    "it": "Mi piacciono i giocattoli.",
+   "lt": "나에게 장난감들이 마음에 들어요.",
    "kr": "저는 장난감을 좋아해요."
   },
   {
@@ -1306,6 +1370,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 44,
    "it": "Mi piacciono i biscotti.",
+   "lt": "나에게 쿠키들이 마음에 들어요.",
    "kr": "저는 과자(쿠키)를 좋아해요."
   },
   {
@@ -1314,6 +1379,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 45,
    "it": "Mi piacciono le passeggiate in Chinatown.",
+   "lt": "나에게 산책들이 차이나타운에서의 마음에 들어요.",
    "kr": "저는 차이나타운 산책을 좋아해요."
   },
   {
@@ -1322,6 +1388,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 46,
    "it": "Mi piacciono i colori.",
+   "lt": "나에게 색깔들이 마음에 들어요.",
    "kr": "저는 색깔을 좋아해요."
   },
   {
@@ -1330,6 +1397,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 47,
    "it": "Mi piacciono i gatti.",
+   "lt": "나에게 고양이들이 마음에 들어요.",
    "kr": "저는 고양이를 좋아해요."
   },
   {
@@ -1338,6 +1406,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 47,
    "it": "Usiamo \"mi piacciono\" con i nomi plurali.",
+   "lt": "우리는 \"mi piacciono\"를 복수 명사와 함께 써요.",
    "kr": "복수 명사와 함께 'mi piacciono'를 써요."
   },
   {
@@ -1346,6 +1415,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 47,
    "it": "Per esempio: \"mi piacciono gli animali, in modo particolare i cani\"",
+   "lt": "예를 들어: \"나에게 동물들이 마음에 들어요, 특별히 개들이\".",
    "kr": "예를 들어 'mi piacciono gli animali, in modo particolare i cani'(동물을 좋아해요, 특히 개를요)."
   },
   {
@@ -1354,6 +1424,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 48,
    "it": "Non mi piacciono…",
+   "lt": "나에게 마음에 들지 않아요…",
    "kr": "저는 …을 좋아하지 않아요…"
   },
   {
@@ -1362,6 +1433,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 48,
    "it": "Oh, cacchio!",
+   "lt": "오, 젠장!",
    "kr": "어머, 이런!"
   },
   {
@@ -1370,6 +1442,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 49,
    "it": "Non mi piacciono le bugie.",
+   "lt": "나에게 거짓말들이 마음에 들지 않아요.",
    "kr": "저는 거짓말을 좋아하지 않아요."
   },
   {
@@ -1378,6 +1451,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 49,
    "it": "Bella, bella.",
+   "lt": "좋아요, 좋아요.",
    "kr": "좋은데요, 좋아요."
   },
   {
@@ -1386,6 +1460,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 50,
    "it": "Mi piacciono…",
+   "lt": "나에게 마음에 들어요…",
    "kr": "저는 …을 좋아해요…"
   },
   {
@@ -1394,6 +1469,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 50,
    "it": "Mi piacciono i fiori.",
+   "lt": "나에게 꽃들이 마음에 들어요.",
    "kr": "저는 꽃을 좋아해요."
   },
   {
@@ -1402,6 +1478,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 51,
    "it": "Non mi piacciono le melanzane.",
+   "lt": "나에게 가지들이 마음에 들지 않아요.",
    "kr": "저는 가지를 좋아하지 않아요."
   },
   {
@@ -1410,6 +1487,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 51,
    "it": "Perché?",
+   "lt": "왜요?",
    "kr": "왜요?"
   },
   {
@@ -1418,6 +1496,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 52,
    "it": "Perché sono amare; non mi piacciono.",
+   "lt": "왜냐하면 쓰니까요; 나에게 마음에 들지 않아요.",
    "kr": "써서요. 그래서 좋아하지 않아요."
   },
   {
@@ -1426,6 +1505,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 53,
    "it": "Mi piacciono i videogiochi.",
+   "lt": "나에게 비디오 게임들이 마음에 들어요.",
    "kr": "저는 비디오 게임을 좋아해요."
   },
   {
@@ -1434,6 +1514,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 54,
    "it": "Non mi piacciono le esclusioni, che siano sociali, di appartenenza, personali.",
+   "lt": "나에게 배제들이 마음에 들지 않아요, 사회적이든, 소속에 관한 것이든, 개인적이든.",
    "kr": "저는 배제를 좋아하지 않아요. 사회적이든, 소속에 관한 것이든, 개인적이든요."
   },
   {
@@ -1442,6 +1523,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 54,
    "it": "Non mi piacciono i gatti.",
+   "lt": "나에게 고양이들이 마음에 들지 않아요.",
    "kr": "저는 고양이를 좋아하지 않아요."
   },
   {
@@ -1450,6 +1532,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 54,
    "it": "Perché?",
+   "lt": "왜요?",
    "kr": "왜요?"
   },
   {
@@ -1458,6 +1541,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 55,
    "it": "Graffiano.",
+   "lt": "할퀴어요.",
    "kr": "할퀴니까요."
   },
   {
@@ -1466,6 +1550,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 56,
    "it": "Non mi piacciono le corse.",
+   "lt": "나에게 달리기들이 마음에 들지 않아요.",
    "kr": "저는 달리기를 좋아하지 않아요."
   },
   {
@@ -1474,6 +1559,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 57,
    "it": "Non mi piacciono i cani.",
+   "lt": "나에게 개들이 마음에 들지 않아요.",
    "kr": "저는 개를 좋아하지 않아요."
   },
   {
@@ -1482,6 +1568,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 57,
    "it": "No!",
+   "lt": "아니!",
    "kr": "안 돼요!"
   },
   {
@@ -1490,6 +1577,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 57,
    "it": "Allora non andiamo d'accordo.",
+   "lt": "그럼 우리는 안 맞아요.",
    "kr": "그럼 우리는 안 맞네요."
   },
   {
@@ -1498,6 +1586,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 58,
    "it": "Non mi piacciono le zanzare.",
+   "lt": "나에게 모기들이 마음에 들지 않아요.",
    "kr": "저는 모기를 좋아하지 않아요."
   },
   {
@@ -1506,6 +1595,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 59,
    "it": "Non mi piacciono i posti affollati.",
+   "lt": "나에게 붐비는 장소들이 마음에 들지 않아요.",
    "kr": "저는 붐비는 곳을 좋아하지 않아요."
   },
   {
@@ -1514,6 +1604,7 @@ window.LESSONS.push({
    "g": 4,
    "d": 60,
    "it": "Non mi piacciono le ingiustizie.",
+   "lt": "나에게 부당함들이 마음에 들지 않아요.",
    "kr": "저는 불의를 좋아하지 않아요."
   },
   {
@@ -1522,6 +1613,7 @@ window.LESSONS.push({
    "g": 5,
    "d": 61,
    "it": "Ora tocca a te: scrivi nei commenti e quello che non ti piace.",
+   "lt": "이제 네 차례야: 댓글에 써, 그리고 네 마음에 들지 않는 것을.",
    "kr": "이제 여러분 차례예요. 좋아하는 것과 좋아하지 않는 것을 댓글로 써 보세요."
   },
   {
@@ -1530,6 +1622,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Mi piacciono…",
+   "lt": "나에게 마음에 들어요…",
    "kr": "저는 …을 좋아해요…"
   },
   {
@@ -1538,6 +1631,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Mi piacciono le pizze.",
+   "lt": "나에게 피자들이 마음에 들어요.",
    "kr": "저는 피자를 좋아해요."
   },
   {
@@ -1546,6 +1640,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "No, va bene…",
+   "lt": "아니, 괜찮아요…",
    "kr": "아니, 괜찮아요…"
   },
   {
@@ -1554,6 +1649,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Monotono.",
+   "lt": "단조로워요.",
    "kr": "단조롭네요."
   },
   {
@@ -1562,6 +1658,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Mi piacciono…",
+   "lt": "나에게 마음에 들어요…",
    "kr": "저는 …을 좋아해요…"
   },
   {
@@ -1570,6 +1667,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Le colline e… i vini un po' invecchiati, non genericamente tutti i vini, forse anche sì, ma non tutti tutti.",
+   "lt": "언덕들과… 조금 숙성된 와인들요, 일반적으로 모든 와인이 아니라, 어쩌면 그것도 맞지만, 모든 모든 와인은 아니에요.",
    "kr": "언덕이랑… 어느 정도 숙성된 와인이요. 와인이라면 다 좋다는 건 아니고, 어쩌면 그것도 맞지만 전부는 아니에요."
   },
   {
@@ -1578,6 +1676,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Non mi piacciono…",
+   "lt": "나에게 마음에 들지 않아요…",
    "kr": "저는 …을 좋아하지 않아요…"
   },
   {
@@ -1586,6 +1685,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Non mi piacciono le città troppo grandi.",
+   "lt": "나에게 너무 큰 도시들이 마음에 들지 않아요.",
    "kr": "저는 너무 큰 도시를 좋아하지 않아요."
   },
   {
@@ -1594,6 +1694,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 62,
    "it": "Come, per esempio?",
+   "lt": "예를 들어 어떤 거요?",
    "kr": "예를 들면요?"
   },
   {
@@ -1602,6 +1703,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "Milano…",
+   "lt": "밀라노…",
    "kr": "밀라노…"
   },
   {
@@ -1610,6 +1712,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "No.",
+   "lt": "아니.",
    "kr": "아니."
   },
   {
@@ -1618,6 +1721,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "No, città grandi come, per esempio, Milano o Napoli, cioè,",
+   "lt": "아니, 큰 도시들, 예를 들어, 밀라노나 나폴리 같은, 그러니까,",
    "kr": "아니, 큰 도시요. 예를 들어 밀라노나 나폴리, 그러니까요,"
   },
   {
@@ -1626,6 +1730,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "Mi piacciono, però relativamente.",
+   "lt": "나에게 마음에 들어요, 하지만 상대적으로요.",
    "kr": "마음에 들긴 해요, 그래도 어느 정도까지만요."
   },
   {
@@ -1634,6 +1739,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "Preferisco…",
+   "lt": "나는 더 좋아해요…",
    "kr": "저는 …을 더 좋아해요…"
   },
   {
@@ -1642,6 +1748,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "Ah no, poi aggiungo \"preferisco\"…",
+   "lt": "아 아니, 그다음에 \"preferisco\"를 덧붙일게요…",
    "kr": "아, 아니, 'preferisco'(더 좋아해요)를 덧붙일게요…"
   },
   {
@@ -1650,6 +1757,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "No,",
+   "lt": "아니,",
    "kr": "아니,"
   },
   {
@@ -1658,6 +1766,7 @@ window.LESSONS.push({
    "g": 6,
    "d": 63,
    "it": "preferisco…",
+   "lt": "나는 더 좋아해요…",
    "kr": "더 좋아해요…"
   }
  ]

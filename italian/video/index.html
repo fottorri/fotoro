@@ -161,6 +161,19 @@
   .now-body { min-height: 190px; }
   .now-it { font-size: clamp(22px, 5.4vw, 31px); line-height: 1.4; font-weight: 700; overflow-wrap: break-word; }
   .now-it.music { color: var(--text-muted); font-weight: 400; }
+  .now-nat, .dock-nat, .row-nat { display: none; color: var(--text-muted); word-break: keep-all; overflow-wrap: break-word; }
+  .now-nat { margin-top: 6px; font-size: clamp(14px, 3.8vw, 17px); line-height: 1.55; }
+  .dock-nat { margin-top: 2px; font-size: clamp(14px, 3.8vw, 16px); line-height: 1.45; }
+  .row-nat { font-size: 12px; line-height: 1.45; margin-top: 1px; }
+  body.show-nat .now-nat, body.show-nat .dock-nat { display: block; }
+  body.show-nat .list .row-nat { display: block; }
+  .now-nat:empty, .dock-nat:empty, .row-nat:empty { display: none !important; }
+  .w { border-radius: 3px; cursor: help; }
+  .w:hover, .w.pin { background: rgba(120, 130, 255, 0.22); }
+  #wordTip { position: fixed; z-index: 500; max-width: min(320px, 90vw); padding: 8px 11px; border-radius: 10px; background: #1f2230; color: #f3f4f8; border: 1px solid rgba(160,165,255,0.5); box-shadow: 0 6px 20px rgba(0,0,0,0.35); font-size: 14px; line-height: 1.5; pointer-events: none; opacity: 0; transition: opacity 0.1s; word-break: keep-all; overflow-wrap: break-word; }
+  #wordTip.on { opacity: 1; }
+  #wordTip b { display: block; font-size: 15px; margin-bottom: 1px; color: #c9ccff; }
+  #wordTip .miss { color: #aab; }
   .now-it mark { background: var(--mark); color: inherit; border-radius: 4px; padding: 0 2px; }
   .now-kr { margin-top: 12px; font-size: clamp(16px, 4.2vw, 20px); line-height: 1.6; color: var(--text); opacity: 0.88; word-break: keep-all; overflow-wrap: break-word; }
   .now-hint { margin-top: 12px; font-size: 13px; color: var(--accent); font-weight: 600; min-height: 18px; }
@@ -336,6 +349,7 @@
             <div class="toggle-row">
               <button type="button" class="tog" id="tgIt" aria-pressed="true">이탈리아어</button>
               <button type="button" class="tog" id="tgKr" aria-pressed="true">한국어</button>
+              <button type="button" class="tog" id="tgNat" aria-pressed="false">자연스러운 번역도 보기</button>
               <button type="button" class="tog" id="tgSkip" aria-pressed="false">음악·광고 구간 건너뛰기</button>
             </div>
             <div class="ctl-label">자막 싱크 (전체)</div>
@@ -362,6 +376,7 @@
         <div class="now-body">
           <div class="now-it" id="nowIt" lang="it"></div>
           <div class="now-kr" id="nowKr"></div>
+          <div class="now-nat" id="nowNat"></div>
           <div class="now-hint" id="nowHint"></div>
         </div>
       </section>
@@ -392,7 +407,7 @@
 
 <div class="dock" id="dock" role="region" aria-label="재생 컨트롤">
   <div class="dock-in">
-    <div class="dock-info"><div class="dock-it" id="dockIt" lang="it"></div><div class="dock-kr" id="dockKr"></div></div>
+    <div class="dock-info"><div class="dock-it" id="dockIt" lang="it"></div><div class="dock-kr" id="dockKr"></div><div class="dock-nat" id="dockNat"></div></div>
     <div class="dock-ctl">
       <button type="button" class="ibtn sec skip" id="dBack" aria-label="5초 뒤로" title="5초 뒤로 (←)">−5초</button>
       <button type="button" class="ibtn sec" id="dReplay" aria-label="이 문장 다시 듣기" title="이 문장 다시 듣기 (R)">↺</button>
@@ -415,15 +430,16 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/easy-italian-102.js?v=2026-10-27.2"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-27.2"></script>
-<script src="lessons/easy-italian-267.js?v=2026-10-27.2"></script>
-<script src="lessons/easy-italian-92.js?v=2026-10-27.2"></script>
+<script src="lessons/words.js?v=2026-10-27.3"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-27.3"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-27.3"></script>
+<script src="lessons/easy-italian-267.js?v=2026-10-27.3"></script>
+<script src="lessons/easy-italian-92.js?v=2026-10-27.3"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-27.2";
+  var BUILD = "2026-10-27.3";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   // ---- storage ----
@@ -645,7 +661,7 @@
   var END_PRE = 0.2;    // stop/loop slightly before the next sentence begins
   var TICK_MS = 60;
 
-  var st = { mode: "flow", rate: 1, showIt: true, showKr: true, skip: false, offset: 0, timingVer: "" };
+  var st = { mode: "flow", rate: 1, showIt: true, showKr: true, showNat: false, skip: false, offset: 0, timingVer: "" };
   var saved = loadJSON(SETTINGS_KEY) || {};
   Object.keys(st).forEach(function (k) { if (saved[k] !== undefined) st[k] = saved[k]; });
   if (["flow", "stop", "loop"].indexOf(st.mode) < 0) st.mode = "flow";
@@ -719,7 +735,8 @@
       var tx = el("span", "row-text");
       var it = el("span", "row-it", s.it); it.setAttribute("lang", "it");
       tx.appendChild(it);
-      tx.appendChild(el("span", "row-kr", s.kr));
+      tx.appendChild(el("span", "row-kr", s.lt || s.kr));
+      tx.appendChild(el("span", "row-nat", s.lt ? s.kr : ""));
       row.appendChild(tx);
       row.addEventListener("click", function () { seekToSeg(i, true); });
       frag.appendChild(row);
@@ -792,6 +809,52 @@
     }
   }
 
+  // ---- word meanings (hover on a computer, tap on a phone) ----
+  var WORDS = window.WORDS || {};
+  var WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿ]+['’]?/g;
+  function wordKey(w) { return w.toLowerCase().replace(/’/g, "'"); }
+  function appendWords(parent, text) {
+    var pos = 0, m;
+    WORD_RE.lastIndex = 0;
+    while ((m = WORD_RE.exec(text))) {
+      if (m.index > pos) parent.appendChild(document.createTextNode(text.slice(pos, m.index)));
+      var sp = el("span", "w", m[0]); sp.dataset.w = wordKey(m[0]);
+      parent.appendChild(sp);
+      pos = m.index + m[0].length;
+    }
+    if (pos < text.length) parent.appendChild(document.createTextNode(text.slice(pos)));
+  }
+  var wordTip = document.createElement("div"); wordTip.id = "wordTip"; wordTip.setAttribute("role", "tooltip");
+  document.body.appendChild(wordTip);
+  var pinnedWord = null;
+  function showTip(w) {
+    var key = w.dataset.w, g = WORDS[key];
+    wordTip.textContent = "";
+    wordTip.appendChild(el("b", "", w.textContent));
+    wordTip.appendChild(el("span", g ? "" : "miss", g || "뜻 정보가 아직 없어요"));
+    wordTip.classList.add("on");
+    var r = w.getBoundingClientRect(), tw = wordTip.offsetWidth, th = wordTip.offsetHeight;
+    var left = Math.min(Math.max(8, r.left + r.width / 2 - tw / 2), window.innerWidth - tw - 8);
+    var top = r.top - th - 8; if (top < 8) top = r.bottom + 8;
+    wordTip.style.left = left + "px"; wordTip.style.top = top + "px";
+  }
+  function hideTip() { wordTip.classList.remove("on"); if (pinnedWord) { pinnedWord.classList.remove("pin"); pinnedWord = null; } }
+  document.addEventListener("mouseover", function (e) {
+    var w = e.target.closest && e.target.closest(".w");
+    if (w && !pinnedWord) showTip(w);
+  });
+  document.addEventListener("mouseout", function (e) {
+    var w = e.target.closest && e.target.closest(".w");
+    if (w && !pinnedWord) wordTip.classList.remove("on");
+  });
+  document.addEventListener("click", function (e) {
+    var w = e.target.closest && e.target.closest(".w");
+    if (!w) { hideTip(); return; }
+    var same = pinnedWord === w; hideTip();
+    if (!same) { pinnedWord = w; w.classList.add("pin"); showTip(w); }
+  });
+  window.addEventListener("scroll", function () { if (pinnedWord) hideTip(); }, { passive: true });
+
   // ---- current subtitle ----
   var nowIt = $("nowIt"), nowKr = $("nowKr");
   function renderNowIt(s) {
@@ -817,11 +880,11 @@
     });
     var pos = 0;
     merged.forEach(function (r) {
-      if (r[0] > pos) nowIt.appendChild(document.createTextNode(s.it.slice(pos, r[0])));
-      nowIt.appendChild(el("mark", "", s.it.slice(r[0], r[1])));
+      if (r[0] > pos) appendWords(nowIt, s.it.slice(pos, r[0]));
+      var mk = el("mark", ""); appendWords(mk, s.it.slice(r[0], r[1])); nowIt.appendChild(mk);
       pos = r[1];
     });
-    if (pos < s.it.length) nowIt.appendChild(document.createTextNode(s.it.slice(pos)));
+    if (pos < s.it.length) appendWords(nowIt, s.it.slice(pos));
   }
   function applyBlur() {
     nowIt.classList.toggle("blur", !st.showIt);
@@ -833,6 +896,8 @@
     listEl.classList.toggle("hide-kr", !st.showKr);
     $("tgIt").setAttribute("aria-pressed", st.showIt);
     $("tgKr").setAttribute("aria-pressed", st.showKr);
+    document.body.classList.toggle("show-nat", !!st.showNat);
+    $("tgNat").setAttribute("aria-pressed", !!st.showNat);
   }
   var dockIt = $("dockIt"), dockKr = $("dockKr");
   nowIt.addEventListener("click", function () { if (!st.showIt) nowIt.classList.toggle("reveal"); });
@@ -859,12 +924,15 @@
     var s = SEGS[i];
     if (s.g !== curGroup) renderExplain(s.g);
     renderNowIt(s);
-    nowKr.textContent = s.kr;
+    nowKr.textContent = s.lt || s.kr;
+    $("nowNat").textContent = s.lt ? s.kr : "";
     applyBlur();
     $("nowSec").textContent = SECTIONS[s.s].kr + (SECTIONS[s.s].it ? " · " + SECTIONS[s.s].it : "");
     $("nowCount").textContent = s.music ? "♪" : rankOf[i] + " / " + total;
-    dockIt.textContent = s.it;
-    dockKr.textContent = s.kr;
+    dockIt.textContent = "";
+    appendWords(dockIt, s.it);
+    dockKr.textContent = s.lt || s.kr;
+    $("dockNat").textContent = s.lt ? s.kr : "";
     fitDock();
     if (rows[prev]) rows[prev].classList.remove("active");
     if (rows[i]) rows[i].classList.add("active");
@@ -1128,6 +1196,7 @@
   document.querySelectorAll("#speedGroup button").forEach(function (b) { b.addEventListener("click", function () { setRate(parseFloat(b.dataset.rate)); }); });
   $("tgIt").addEventListener("click", function () { st.showIt = !st.showIt; saveSettings(); applyBlur(); });
   $("tgKr").addEventListener("click", function () { st.showKr = !st.showKr; saveSettings(); applyBlur(); });
+  $("tgNat").addEventListener("click", function () { st.showNat = !st.showNat; saveSettings(); applyBlur(); });
   $("tgSkip").addEventListener("click", function () { st.skip = !st.skip; saveSettings(); $("tgSkip").setAttribute("aria-pressed", st.skip); });
   $("syncMinus").addEventListener("click", function () { st.offset = Math.max(-5, Math.round((st.offset - 0.25) * 100) / 100); saveSettings(); updateNudgeLabel(); });
   $("syncPlus").addEventListener("click", function () { st.offset = Math.min(5, Math.round((st.offset + 0.25) * 100) / 100); saveSettings(); updateNudgeLabel(); });
