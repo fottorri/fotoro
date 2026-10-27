@@ -172,8 +172,16 @@
   .w:hover, .w.pin { background: rgba(120, 130, 255, 0.22); }
   #wordTip { position: fixed; z-index: 500; max-width: min(320px, 90vw); padding: 8px 11px; border-radius: 10px; background: #1f2230; color: #f3f4f8; border: 1px solid rgba(160,165,255,0.5); box-shadow: 0 6px 20px rgba(0,0,0,0.35); font-size: 14px; line-height: 1.5; pointer-events: none; opacity: 0; transition: opacity 0.1s; word-break: keep-all; overflow-wrap: break-word; }
   #wordTip.on { opacity: 1; }
+  #wordTip.vb { max-width: min(400px, 94vw); }
   #wordTip b { display: block; font-size: 15px; margin-bottom: 1px; color: #c9ccff; }
   #wordTip .miss { color: #aab; }
+  #wordTip .vt { margin-top: 7px; padding-top: 6px; border-top: 1px solid rgba(160,165,255,0.3); }
+  #wordTip .vt-h { font-size: 12px; color: #c9ccff; margin-bottom: 4px; }
+  #wordTip .vt-g { display: grid; grid-template-columns: auto repeat(3, auto); gap: 1px 12px; font-size: 12px; line-height: 1.45; white-space: nowrap; }
+  #wordTip .vt-g span { padding: 0 3px; border-radius: 4px; }
+  #wordTip .vt-g .hd { color: #c9ccff; font-weight: 700; }
+  #wordTip .vt-g .pn { color: #99a; }
+  #wordTip .vt-g .hit { background: rgba(160,165,255,0.35); color: #fff; font-weight: 700; }
   .now-it mark { background: var(--mark); color: inherit; border-radius: 4px; padding: 0 2px; }
   .now-kr { margin-top: 12px; font-size: clamp(16px, 4.2vw, 20px); line-height: 1.6; color: var(--text); opacity: 0.88; word-break: keep-all; overflow-wrap: break-word; }
   .now-hint { margin-top: 12px; font-size: 13px; color: var(--accent); font-weight: 600; min-height: 18px; }
@@ -430,16 +438,17 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/words.js?v=2026-10-27.3"></script>
-<script src="lessons/easy-italian-102.js?v=2026-10-27.3"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-27.3"></script>
-<script src="lessons/easy-italian-267.js?v=2026-10-27.3"></script>
-<script src="lessons/easy-italian-92.js?v=2026-10-27.3"></script>
+<script src="lessons/words.js?v=2026-10-27.4"></script>
+<script src="lessons/verbs.js?v=2026-10-27.4"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-27.4"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-27.4"></script>
+<script src="lessons/easy-italian-267.js?v=2026-10-27.4"></script>
+<script src="lessons/easy-italian-92.js?v=2026-10-27.4"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-27.3";
+  var BUILD = "2026-10-27.4";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   // ---- storage ----
@@ -810,7 +819,7 @@
   }
 
   // ---- word meanings (hover on a computer, tap on a phone) ----
-  var WORDS = window.WORDS || {};
+  var WORDS = window.WORDS || {}, VERBS = window.VERBS || {}, VFORM = window.VFORM || {};
   var WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿ]+['’]?/g;
   function wordKey(w) { return w.toLowerCase().replace(/’/g, "'"); }
   function appendWords(parent, text) {
@@ -832,6 +841,21 @@
     wordTip.textContent = "";
     wordTip.appendChild(el("b", "", w.textContent));
     wordTip.appendChild(el("span", g ? "" : "miss", g || "뜻 정보가 아직 없어요"));
+    var lem = VFORM[key], vb = lem && VERBS[lem];
+    wordTip.classList.toggle("vb", !!vb);
+    if (vb) {
+      var box = el("div", "vt"), grid = el("div", "vt-g");
+      box.appendChild(el("div", "vt-h", (key === lem ? "활용표 · " : "원형 ") + lem + " · " + vb[0]));
+      ["", "현재", "과거", "미래"].forEach(function (t) { grid.appendChild(el("span", "hd", t)); });
+      ["io", "tu", "lui/lei", "noi", "voi", "loro"].forEach(function (pn, i) {
+        grid.appendChild(el("span", "pn", pn));
+        for (var t = 1; t <= 3; t++) {
+          var f = vb[t][i], fl = f.toLowerCase(), parts = fl.split(" ");
+          grid.appendChild(el("span", fl === key || parts[parts.length - 1] === key ? "hit" : "", f));
+        }
+      });
+      box.appendChild(grid); wordTip.appendChild(box);
+    }
     wordTip.classList.add("on");
     var r = w.getBoundingClientRect(), tw = wordTip.offsetWidth, th = wordTip.offsetHeight;
     var left = Math.min(Math.max(8, r.left + r.width / 2 - tw / 2), window.innerWidth - tw - 8);
