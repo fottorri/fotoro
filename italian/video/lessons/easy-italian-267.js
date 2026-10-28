@@ -1915,7 +1915,7 @@ window.LESSONS.push({
    "g": 2,
    "d": 32,
    "it": "Perché mi piace molto l'arte e lì si respira l'arte, è molto bella come città, mi piace molto.",
-   "lt": "왜냐하면 나는 예술을 아주 좋아하는데 그곳에서는 예술을 숨 쉬어요, 도시로서 아주 아름다워요, 아주 마음에 들어요.",
+   "lt": "왜냐하면 나는 예술이 아주 마음에 들어요, 그곳에서는 예술이 숨 쉬어져요, 도시로서 아주 아름다워요, 아주 마음에 들어요.",
    "kr": "저는 예술을 아주 좋아하는데, 거긴 예술이 숨 쉬는 곳이고 도시로서도 정말 아름다워서 아주 좋아요."
   },
   {
