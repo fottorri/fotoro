@@ -174,6 +174,7 @@
   #wordTip.on { opacity: 1; }
   #wordTip.vb { max-width: min(560px, 94vw); }
   #wordTip .vt-w { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  #wordTip b i.art { font-style: normal; font-weight: 500; color: #9fa3d9; }
   #wordTip b { display: block; font-size: 15px; margin-bottom: 1px; color: #c9ccff; }
   #wordTip .miss { color: #aab; }
   #wordTip .vt { margin-top: 7px; padding-top: 6px; border-top: 1px solid rgba(160,165,255,0.3); }
@@ -301,10 +302,12 @@
 
   @media (min-width: 980px) {
     body { padding: 20px 20px 104px; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 14px; align-items: start; }
+    .page, .dock-in { max-width: 1400px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 450px; gap: 14px; align-items: start; }
     .col-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
     .col-side { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 14px; max-height: calc(100vh - 28px); }
     .list-card { flex: 1 1 auto; min-height: 280px; }
+    .video-wrap { width: min(100%, calc(56vh * 16 / 9)); margin: 0 auto; min-height: 0; }
     .list { max-height: none; }
     .now-body { min-height: 210px; }
   }
@@ -330,6 +333,31 @@
 <div class="page">
   <div class="layout">
     <div class="col-main">
+      <section class="card video-card" id="videoCard">
+        <div class="video-wrap"><div id="player"></div></div>
+        <div class="video-note" id="videoNote" hidden></div>
+        <div class="video-meta"><span id="videoTitle"></span><a id="videoLink" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></div>
+      </section>
+
+
+      <section class="card now-card" id="nowCard" aria-label="지금 나오는 자막">
+        <div class="now-meta"><span class="sec" id="nowSec"></span><span id="nowCount"></span></div>
+        <div class="now-body">
+          <div class="now-it" id="nowIt" lang="it"></div>
+          <div class="now-kr" id="nowKr"></div>
+          <div class="now-nat" id="nowNat"></div>
+          <div class="now-hint" id="nowHint"></div>
+        </div>
+      </section>
+
+      <details class="card explain-card" id="explainCard" open>
+        <summary><span>이 구간 설명<span class="tag" id="explainTag"></span></span></summary>
+        <div class="explain-body" id="explainBody"></div>
+      </details>
+    </div>
+
+    <div class="col-side">
+
       <section class="card controls-card" id="controlsCard">
         <div class="ctl-main">
           <button type="button" class="ibtn sec" id="btnStart" aria-label="영상 처음부터 다시 보기" title="영상 처음부터 다시 보기">⏮</button>
@@ -382,29 +410,6 @@
         </details>
       </section>
 
-      <section class="card now-card" id="nowCard" aria-label="지금 나오는 자막">
-        <div class="now-meta"><span class="sec" id="nowSec"></span><span id="nowCount"></span></div>
-        <div class="now-body">
-          <div class="now-it" id="nowIt" lang="it"></div>
-          <div class="now-kr" id="nowKr"></div>
-          <div class="now-nat" id="nowNat"></div>
-          <div class="now-hint" id="nowHint"></div>
-        </div>
-      </section>
-
-      <details class="card explain-card" id="explainCard" open>
-        <summary><span>이 구간 설명<span class="tag" id="explainTag"></span></span></summary>
-        <div class="explain-body" id="explainBody"></div>
-      </details>
-    </div>
-
-    <div class="col-side">
-      <section class="card video-card" id="videoCard">
-        <div class="video-wrap"><div id="player"></div></div>
-        <div class="video-note" id="videoNote" hidden></div>
-        <div class="video-meta"><span id="videoTitle"></span><a id="videoLink" target="_blank" rel="noopener">YouTube에서 열기 ↗</a></div>
-      </section>
-
       <section class="card list-card" id="listCard">
         <div class="list-head"><span>자막 전체</span><span class="count" id="listCount"></span></div>
         <div class="chips" id="chips"></div>
@@ -442,17 +447,18 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/words.js?v=2026-10-28.1"></script>
-<script src="lessons/verbs.js?v=2026-10-28.1"></script>
-<script src="lessons/easy-italian-102.js?v=2026-10-28.1"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-28.1"></script>
-<script src="lessons/easy-italian-267.js?v=2026-10-28.1"></script>
-<script src="lessons/easy-italian-92.js?v=2026-10-28.1"></script>
+<script src="lessons/words.js?v=2026-10-28.2"></script>
+<script src="lessons/verbs.js?v=2026-10-28.2"></script>
+<script src="lessons/nouns.js?v=2026-10-28.2"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-28.2"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-28.2"></script>
+<script src="lessons/easy-italian-267.js?v=2026-10-28.2"></script>
+<script src="lessons/easy-italian-92.js?v=2026-10-28.2"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-28.1";
+  var BUILD = "2026-10-28.2";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   // ---- storage ----
@@ -823,7 +829,7 @@
   }
 
   // ---- word meanings (hover on a computer, tap on a phone) ----
-  var WORDS = window.WORDS || {}, VERBS = window.VERBS || {}, VFORM = window.VFORM || {};
+  var ART = window.ART || {}, WORDS = window.WORDS || {}, VERBS = window.VERBS || {}, VFORM = window.VFORM || {};
   var WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿ]+['’]?/g;
   function wordKey(w) { return w.toLowerCase().replace(/’/g, "'"); }
   function appendWords(parent, text) {
@@ -843,7 +849,10 @@
   function showTip(w) {
     var key = w.dataset.w, g = WORDS[key];
     wordTip.textContent = "";
-    wordTip.appendChild(el("b", "", w.textContent));
+    var hd = el("b", "", ""), ar = ART[key];
+    if (ar) { hd.appendChild(el("i", "art", ar + (ar.slice(-1) === "'" ? "" : " "))); }
+    hd.appendChild(document.createTextNode(w.textContent));
+    wordTip.appendChild(hd);
     wordTip.appendChild(el("span", g ? "" : "miss", g || "뜻 정보가 아직 없어요"));
     var lem = VFORM[key], vb = lem && VERBS[lem];
     wordTip.classList.toggle("vb", !!vb);
