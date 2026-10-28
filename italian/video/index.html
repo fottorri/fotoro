@@ -172,7 +172,8 @@
   .w:hover, .w.pin { background: rgba(120, 130, 255, 0.22); }
   #wordTip { position: fixed; z-index: 500; max-width: min(320px, 90vw); padding: 8px 11px; border-radius: 10px; background: #1f2230; color: #f3f4f8; border: 1px solid rgba(160,165,255,0.5); box-shadow: 0 6px 20px rgba(0,0,0,0.35); font-size: 14px; line-height: 1.5; pointer-events: none; opacity: 0; transition: opacity 0.1s; word-break: keep-all; overflow-wrap: break-word; }
   #wordTip.on { opacity: 1; }
-  #wordTip.vb { max-width: min(400px, 94vw); }
+  #wordTip.vb { max-width: min(560px, 94vw); }
+  #wordTip .vt-w { display: flex; flex-wrap: wrap; gap: 8px 22px; }
   #wordTip b { display: block; font-size: 15px; margin-bottom: 1px; color: #c9ccff; }
   #wordTip .miss { color: #aab; }
   #wordTip .vt { margin-top: 7px; padding-top: 6px; border-top: 1px solid rgba(160,165,255,0.3); }
@@ -284,6 +285,7 @@
   .dock-ctl { display: flex; align-items: center; justify-content: center; gap: 12px; flex-shrink: 0; }
   .dock .ibtn { width: 56px; height: 56px; font-size: 22px; box-shadow: none; }
   .dock .ibtn.sec { width: 48px; height: 48px; font-size: 20px; }
+  .dock .ibtn#dStart { width: 44px; height: 44px; }
   .dock .ibtn.skip { width: auto; min-width: 70px; padding: 0 16px; font-size: 15.5px; }
   @media (min-width: 760px) {
     .dock-in { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
@@ -330,6 +332,7 @@
     <div class="col-main">
       <section class="card controls-card" id="controlsCard">
         <div class="ctl-main">
+          <button type="button" class="ibtn sec" id="btnStart" aria-label="영상 처음부터 다시 보기" title="영상 처음부터 다시 보기">⏮</button>
           <button type="button" class="ibtn sec skip" id="btnBack" aria-label="5초 뒤로" title="5초 뒤로 (←)">−5초</button>
           <button type="button" class="ibtn sec" id="btnReplay" aria-label="이 문장 다시 듣기" title="이 문장 다시 듣기 (R)">↺</button>
           <button type="button" class="ibtn big" id="btnPlay" aria-label="재생" title="재생/일시정지 (스페이스)">▶</button>
@@ -417,6 +420,7 @@
   <div class="dock-in">
     <div class="dock-info"><div class="dock-it" id="dockIt" lang="it"></div><div class="dock-kr" id="dockKr"></div><div class="dock-nat" id="dockNat"></div></div>
     <div class="dock-ctl">
+      <button type="button" class="ibtn sec" id="dStart" aria-label="영상 처음부터 다시 보기" title="영상 처음부터 다시 보기">⏮</button>
       <button type="button" class="ibtn sec skip" id="dBack" aria-label="5초 뒤로" title="5초 뒤로 (←)">−5초</button>
       <button type="button" class="ibtn sec" id="dReplay" aria-label="이 문장 다시 듣기" title="이 문장 다시 듣기 (R)">↺</button>
       <button type="button" class="ibtn" id="dPlay" aria-label="재생">▶</button>
@@ -438,17 +442,17 @@
 </dialog>
 
 <!-- keep the ?v= in step with BUILD below: browsers keep these data files for hours otherwise -->
-<script src="lessons/words.js?v=2026-10-27.4"></script>
-<script src="lessons/verbs.js?v=2026-10-27.4"></script>
-<script src="lessons/easy-italian-102.js?v=2026-10-27.4"></script>
-<script src="lessons/easy-italian-266.js?v=2026-10-27.4"></script>
-<script src="lessons/easy-italian-267.js?v=2026-10-27.4"></script>
-<script src="lessons/easy-italian-92.js?v=2026-10-27.4"></script>
+<script src="lessons/words.js?v=2026-10-28.1"></script>
+<script src="lessons/verbs.js?v=2026-10-28.1"></script>
+<script src="lessons/easy-italian-102.js?v=2026-10-28.1"></script>
+<script src="lessons/easy-italian-266.js?v=2026-10-28.1"></script>
+<script src="lessons/easy-italian-267.js?v=2026-10-28.1"></script>
+<script src="lessons/easy-italian-92.js?v=2026-10-28.1"></script>
 <script>
 (function () {
   "use strict";
 
-  var BUILD = "2026-10-27.4";
+  var BUILD = "2026-10-28.1";
   var CUSTOM_KEY = "italianVideo.custom.v1";
   var LAST_LESSON_KEY = "italianVideo.lesson.v1";
   // ---- storage ----
@@ -844,17 +848,23 @@
     var lem = VFORM[key], vb = lem && VERBS[lem];
     wordTip.classList.toggle("vb", !!vb);
     if (vb) {
-      var box = el("div", "vt"), grid = el("div", "vt-g");
+      var box = el("div", "vt"), wrap = el("div", "vt-w");
       box.appendChild(el("div", "vt-h", (key === lem ? "활용표 · " : "원형 ") + lem + " · " + vb[0]));
-      ["", "현재", "과거", "미래"].forEach(function (t) { grid.appendChild(el("span", "hd", t)); });
-      ["io", "tu", "lui/lei", "noi", "voi", "loro"].forEach(function (pn, i) {
-        grid.appendChild(el("span", "pn", pn));
-        for (var t = 1; t <= 3; t++) {
-          var f = vb[t][i], fl = f.toLowerCase(), parts = fl.split(" ");
-          grid.appendChild(el("span", fl === key || parts[parts.length - 1] === key ? "hit" : "", f));
-        }
+      var fkey = key.replace(/a$/, "o").replace(/e$/, "i");   // feminine/plural participle -> masculine
+      [[["현재", 1], ["과거", 2], ["미래", 3]], [["반과거", 4], ["조건법", 5]]].forEach(function (cols) {
+        var grid = el("div", "vt-g"); grid.style.gridTemplateColumns = "auto repeat(" + cols.length + ", auto)";
+        grid.appendChild(el("span", "hd", ""));
+        cols.forEach(function (c) { grid.appendChild(el("span", "hd", c[0])); });
+        ["io", "tu", "lui/lei", "noi", "voi", "loro"].forEach(function (pn, i) {
+          grid.appendChild(el("span", "pn", pn));
+          cols.forEach(function (c) {
+            var f = vb[c[1]][i], fl = f.toLowerCase(), last = fl.split(" ").pop();
+            grid.appendChild(el("span", fl === key || last === key || (c[1] === 2 && last === fkey) ? "hit" : "", f));
+          });
+        });
+        wrap.appendChild(grid);
       });
-      box.appendChild(grid); wordTip.appendChild(box);
+      box.appendChild(wrap); wordTip.appendChild(box);
     }
     wordTip.classList.add("on");
     var r = w.getBoundingClientRect(), tw = wordTip.offsetWidth, th = wordTip.offsetHeight;
@@ -1101,6 +1111,20 @@
       try { if (!isPlaying()) showVideoNote("소리가 나지 않으면 영상 안의 ▶ 버튼을 한 번 눌러 주세요 (모바일 브라우저 제한).", false); } catch (e) {}
     }, 1800);
   }
+  // start the whole video over from 0:00 (also resets the sentence for the stop/loop modes)
+  function restartVideo() {
+    if (!ready) { toast("영상을 불러오는 중입니다"); return; }
+    holdIdx = null;
+    skipTarget = 0; skipAt = 0;
+    if (st.mode === "loop") loopIdx = 0;
+    if (st.mode === "stop") stopIdx = 0;
+    player.seekTo(0, true);
+    setActive(0, true);
+    follow(0, true);
+    $("nowHint").textContent = "";
+    startPlayback();
+    toast("처음부터 다시 봅니다");
+  }
   function stepSeg(dir) {
     var i = activeIdx;
     do { i += dir; } while (i >= 0 && i < N && SEGS[i].music);
@@ -1210,6 +1234,8 @@
 
   $("btnPlay").addEventListener("click", togglePlay);
   $("dPlay").addEventListener("click", togglePlay);
+  $("btnStart").addEventListener("click", restartVideo);
+  $("dStart").addEventListener("click", restartVideo);
   $("btnBack").addEventListener("click", function () { skipBy(-5); });
   $("dBack").addEventListener("click", function () { skipBy(-5); });
   $("btnFwd").addEventListener("click", function () { skipBy(5); });
