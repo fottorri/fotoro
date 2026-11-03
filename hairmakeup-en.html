@@ -293,7 +293,7 @@
   .info-section .section-note {
     text-align: center;
     font-size: 11px;
-    color: #999;
+    color: #777;
     margin-top: 8px;
     line-height: 1.6;
   }
@@ -383,8 +383,213 @@
 
   .package-card .pkg-note {
     font-size: 9.5px;
-    color: #999;
+    color: #777;
     margin-top: 4px;
+  }
+
+  /* ===== Time slot guide (? button + popup) ===== */
+  .info-section h3 .h3-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .help-btn {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 7px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid #cfcbc2;
+    background: #fff;
+    color: #7c7562;
+    font: 700 12px/1 Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .help-btn::before {
+    content: '';
+    position: absolute;
+    inset: -9px;
+  }
+
+  .help-btn:focus-visible,
+  .th-close:focus-visible {
+    outline: 2px solid #4a1520;
+    outline-offset: 2px;
+  }
+
+  .th-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(20, 16, 12, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overscroll-behavior: contain;
+  }
+
+  .th-overlay[hidden] {
+    display: none;
+  }
+
+  .th-card {
+    width: 100%;
+    max-width: 340px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    color: #2a2723;
+  }
+
+  .th-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .th-title {
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .th-close {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #e5e0d5;
+    color: #96938c;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .th-section {
+    margin: 10px 0 0;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #96938c;
+  }
+
+  .th-head + .th-section {
+    margin-top: 4px;
+  }
+
+  .th-row {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 7px 0;
+  }
+
+  .th-row + .th-row {
+    border-top: 1px dashed #ddd;
+  }
+
+  .th-name {
+    flex: 0 0 92px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #4a1520;
+  }
+
+  .th-desc {
+    flex: 1;
+    min-width: 0;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: #555;
+    overflow-wrap: anywhere;
+  }
+
+  /* ===== Add 30 min toggle (same look as the Florence page button) ===== */
+  .ext-toggle-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .ext-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fff;
+    border: 1px solid #e3e3e0;
+    color: #2a2723;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 7px 14px 7px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .ext-toggle::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #96938c;
+    display: inline-block;
+  }
+
+  .ext-toggle.active {
+    border-color: #4a1520;
+    color: #4a1520;
+  }
+
+  .ext-toggle.active::before {
+    background-color: #4a1520;
+    animation: ext-dot-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes ext-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .ext-only {
+    display: none;
+  }
+
+  .ext-on .ext-only {
+    display: inline;
+  }
+
+  .ext-bump {
+    color: #8c3149;
+    font-weight: 800;
+    background-color: rgba(140, 49, 73, 0.10);
+    border-radius: 4px;
+    padding: 0 3px;
+  }
+
+  /* Night shots highlight (same purple family as the Florence timeline) */
+  .night-em {
+    color: #4a3f70;
+    font-weight: 800;
+    background-color: rgba(202, 191, 224, 0.5);
+    border-radius: 4px;
+    padding: 0 3px;
   }
 
   @media (max-width: 480px) {
@@ -447,7 +652,7 @@
 
   .premium-card .pkg-note {
     font-size: 10px;
-    color: #999;
+    color: #777;
     margin-top: 4px;
   }
 
@@ -839,9 +1044,12 @@ header nav {
   <div class="notice-box">
     <div class="notice-title">Notice</div>
     <p>
+      * Packages are not eligible for the referral event.<br>
       * Prices are conditioned upon consent for SNS photo publication.<br>
       * For detailed shooting time slot guides, check the <strong><a href="florence-en.html" style="color:#4a1520; text-decoration:underline;">Florence Page</a></strong>.<br>
-      * FOTORO assists with initial availability checking & booking coordination for Salon Banha.
+      * FOTORO assists with initial availability checking & booking coordination for Salon Banha (consultation after booking is handled separately).<br>
+      * Package contents are based on a shoot for two people (an opposite-sex couple).<br>
+      * The balance is due on the day of the shoot, after the shoot ends.
     </p>
   </div>
 
@@ -864,53 +1072,56 @@ header nav {
   </div>
 
   <div class="mini-note">
-    Contact FOTORO to check joint availability.
+    When you inquire about a combined shoot with hair & makeup or a package, we will also check and advise on Salon Banha's availability.
   </div>
 
   <!-- ===== 2h / 3h Packages ===== -->
-  <div class="info-section">
-    <h3>Hair & Makeup & Dress Packages</h3>
+  <div class="info-section" id="hmPackages">
+    <h3><span class="h3-text">Hair & Makeup & Dress Packages<button type="button" class="help-btn" aria-label="Open the time slot guide" aria-haspopup="dialog" onclick="openTimeHelp()">?</button></span></h3>
+    <div class="ext-toggle-row">
+      <button type="button" class="ext-toggle" id="hmExtToggle" onclick="toggleHmExtend()">Add 30 Min</button>
+    </div>
     <div class="package-grid">
       <div class="package-card">
         <div class="pkg-header">
-          <div class="pkg-name">FOTORO 2h x Salon Banha</div>
-          <div class="pkg-time">Sunrise, Morning / Sunset</div>
+          <div class="pkg-name">FOTORO 2h<span class="ext-only"> 30m</span> x Salon Banha</div>
+          <div class="pkg-time">Sunrise, Morning / Sunset<br>(No night shots)</div>
         </div>
         <div class="pkg-detail">
-          ~800 Original JPGs<br>
-          15 Retouched JPGs
+          ~<span class="ext-num" data-base="800" data-bonus="150" data-unit="">800</span> Original JPGs<br>
+          <span class="ext-num" data-base="15" data-bonus="5" data-unit="">15</span> Retouched JPGs
           <span class="divider"></span>
           Hair & Makeup for Bride & Groom included<br>
           1 Female Dress included<br>
           Artificial Bouquet + Hair Ornaments included
         </div>
         <div class="pkg-price">
-          Deposit 700 EUR<br>+ Balance 400 EUR<br><br>
+          Deposit 700 EUR<br>+ Balance <span class="ext-num" data-base="400" data-bonus="50" data-unit=" EUR" data-plain>400 EUR</span><br><br>
         </div>
       </div>
 
       <div class="package-card featured">
         <span class="badge">Discount Promo Active</span>
         <div class="pkg-header">
-          <div class="pkg-name">FOTORO 3h x Salon Banha</div>
-          <div class="pkg-time">Dawn / Sunrise, Morning / Sunset<br>(Sunset Night Shots Included)</div>
+          <div class="pkg-name">FOTORO 3h<span class="ext-only"> 30m</span> x Salon Banha</div>
+          <div class="pkg-time">Dawn / <span class="night-em">Sunset + Night</span></div>
         </div>
         <div class="pkg-detail">
-          ~1200 Original JPGs<br>
-          25 Retouched JPGs
+          ~<span class="ext-num" data-base="1200" data-bonus="150" data-unit="">1200</span> Original JPGs<br>
+          <span class="ext-num" data-base="25" data-bonus="5" data-unit="">25</span> Retouched JPGs
           <span class="divider"></span>
           Hair & Makeup for Bride & Groom included<br>
           1 Female Dress included<br>
           Artificial Bouquet + Hair Ornaments included
         </div>
         <div class="pkg-price">
-          Deposit 700 EUR<br>+ Balance 450 EUR
+          Deposit 700 EUR<br>+ Balance <span class="ext-num" data-base="450" data-bonus="50" data-unit=" EUR" data-plain>450 EUR</span>
         </div>
         <div class="pkg-note">Dawn time slot +50 EUR surcharge</div>
       </div>
     </div>
     <div class="section-note">
-      Men's suit rental add-on: +50 EUR (Includes complimentary shoes for Bride & Groom)<br>
+      <strong>Men's suit rental add-on: +50 EUR</strong> (Includes complimentary shoes for Bride & Groom)<br>
       Salon Banha stylist attendance on request (inquire & pay via Salon Banha)
     </div>
   </div>
@@ -961,6 +1172,38 @@ header nav {
   </div>
 </footer>
 
+<!-- Time slot guide popup (? button next to the package heading) -->
+<div class="th-overlay" id="timeHelp" hidden onclick="closeTimeHelp()">
+  <div class="th-card" role="dialog" aria-modal="true" aria-labelledby="timeHelpTitle" onclick="event.stopPropagation()">
+    <div class="th-head">
+      <div class="th-title" id="timeHelpTitle">Time Slot Guide</div>
+      <button type="button" class="th-close" aria-label="Close" onclick="closeTimeHelp()">✕</button>
+    </div>
+    <div class="th-section">Morning Time Slots</div>
+    <div class="th-row">
+      <div class="th-name">Dawn</div>
+      <div class="th-desc">The reverse of Sunset + Night: night shots first, then a mood that brightens into the glow of the rising sun</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">Sunrise</div>
+      <div class="th-desc">Starts right after sunrise, with a mood that brightens out of the sunrise glow</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">Morning</div>
+      <div class="th-desc">Starts about 2-3 hours after sunrise, with a bright, crisp mood</div>
+    </div>
+    <div class="th-section">Afternoon Time Slots</div>
+    <div class="th-row">
+      <div class="th-name">Sunset</div>
+      <div class="th-desc">Runs until just before the sun sets, from a bright mood into the sunset glow</div>
+    </div>
+    <div class="th-row">
+      <div class="th-name">Sunset + Night</div>
+      <div class="th-desc">The sunset time slot plus night shots after the sun has set (the "La La Land" hour)</div>
+    </div>
+  </div>
+</div>
+
 <script>
   document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
@@ -970,6 +1213,36 @@ header nav {
 
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
+  });
+
+  // ===== Add 30 min: applies to the 2h / 3h package cards at once =====
+  function toggleHmExtend() {
+    const root = document.getElementById('hmPackages');
+    const on = root.classList.toggle('ext-on');
+    document.getElementById('hmExtToggle').classList.toggle('active', on);
+    root.querySelectorAll('.ext-num').forEach(el => {
+      el.textContent = (+el.dataset.base + (on ? +el.dataset.bonus : 0)) + el.dataset.unit;
+      if (!el.hasAttribute('data-plain')) el.classList.toggle('ext-bump', on);
+    });
+  }
+
+  // ===== Time slot guide popup (? button) =====
+  let timeHelpReturnFocus = null;
+  function openTimeHelp() {
+    const overlay = document.getElementById('timeHelp');
+    timeHelpReturnFocus = document.activeElement;
+    overlay.hidden = false;
+    const closeBtn = overlay.querySelector('.th-close');
+    if (closeBtn) closeBtn.focus();
+  }
+  function closeTimeHelp() {
+    const overlay = document.getElementById('timeHelp');
+    if (overlay.hidden) return;
+    overlay.hidden = true;
+    if (timeHelpReturnFocus && timeHelpReturnFocus.focus) timeHelpReturnFocus.focus();
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeTimeHelp();
   });
 </script>
 <script>
